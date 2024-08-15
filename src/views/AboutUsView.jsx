@@ -5,3 +5,5 @@ export const AboutUsView = () => {
     <div>AboutUsView</div>
   )
 }
+
+export default AboutUsView;

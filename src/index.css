@@ -1,0 +1,23 @@
+.logoHeader {
+    max-height: 80px;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.nav-link.active {
+    color: #ef8a3a;
+    font-weight: bold;
+    border-bottom: 2px solid #ef8a3a;
+    padding-bottom: 2px;
+  }
+  
+  .nav-link {
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #ef8a3a; /* Color al pasar el cursor sobre el NavLink */
+  }

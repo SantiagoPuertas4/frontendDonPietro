@@ -6,4 +6,4 @@ const Error404View = () => {
   )
 }
 
-export default Error404View
+export default Error404View;

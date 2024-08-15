@@ -6,4 +6,4 @@ const RegisteredUsersView = () => {
   )
 }
 
-export default RegisteredUsersView
+export default RegisteredUsersView;

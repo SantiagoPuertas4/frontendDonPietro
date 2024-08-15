@@ -6,4 +6,4 @@ const CreateProductView = () => {
   )
 }
 
-export default CreateProductView
+export default CreateProductView;

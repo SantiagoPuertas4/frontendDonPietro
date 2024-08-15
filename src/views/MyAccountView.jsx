@@ -6,4 +6,4 @@ const MyAccountView = () => {
   )
 }
 
-export default MyAccountView
+export default MyAccountView;

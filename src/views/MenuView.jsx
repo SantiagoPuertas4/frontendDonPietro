@@ -6,4 +6,4 @@ const MenuView = () => {
   )
 }
 
-export default MenuView
+export default MenuView;
