@@ -6,4 +6,4 @@ const ContactView = () => {
   )
 }
 
-export default ContactView
+export default ContactView;

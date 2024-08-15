@@ -6,4 +6,4 @@ const CartView = () => {
   )
 }
 
-export default CartView
+export default CartView;

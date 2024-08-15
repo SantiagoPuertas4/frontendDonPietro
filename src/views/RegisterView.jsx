@@ -6,4 +6,4 @@ const RegisterView = () => {
   )
 }
 
-export default RegisterView
+export default RegisterView;
