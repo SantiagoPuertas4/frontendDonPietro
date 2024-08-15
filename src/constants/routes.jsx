@@ -28,11 +28,11 @@ export const router = createBrowserRouter([
         element: <HomeView />,
       },
       {
-        path: 'acercade',
+        path: 'about',
         element: <AboutUsView />,
       },
       {
-        path: 'contacto',
+        path: 'contact',
         element: <ContactView />,
       },
       // RUTAS DE AUTENTICACION
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
             element: <LoginView />,
           },
           {
-            path: 'registro',
+            path: 'register',
             element: <RegisterView />,
           },
         ],
@@ -61,11 +61,11 @@ export const router = createBrowserRouter([
             element: <MenuView />,
           },
           {
-            path: 'carrito',
+            path: 'cart',
             element: <CartView />,
           },
           {
-            path: 'mi-cuenta',
+            path: 'my-account',
             element: <MyAccountView />,
           },
           {
@@ -73,11 +73,11 @@ export const router = createBrowserRouter([
             element: <AdminView />,
           },
           {
-            path: 'crear-producto',
+            path: 'create-product',
             element: <CreateProductView />,
           },
           {
-            path: 'usuarios-registrados',
+            path: 'registered-users',
             element: <RegisteredUsersView />,
           },
         ],
