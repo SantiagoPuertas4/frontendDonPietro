@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-      <div className='container'>
+      <div className='container-fluid custom-padding'>
         <Link className='navbar-brand' to='/'>
           <img className='logoHeader' src="../../../public/DonPietro.png" alt="Logo Don Pietro" />
         </Link>
@@ -35,7 +35,7 @@ const Header = () => {
           data-bs-toggle='collapse'
           type='button'
         >
-          <span className='navbar-toggler-icon'></span>
+          <i className="bi bi-list"></i>
         </button>
         <div className='collapse navbar-collapse' id='navbarNav'>
           <ul className='navbar-nav ms-auto'>
