@@ -14,9 +14,9 @@ const LoginView = () => {
         {/* Parte derecha */}
         <article className='col-12 col-md-6'>
           <img
-            alt='Empanadas tucumanas'
+            alt='Hamburguesa'
             className='rounded w-100'
-            src='https://www.infotuc.com.ar/wp-content/uploads/2022/02/empanadas-tucumanas-1024x683.jpg'
+            src='/img-login.png'
           />
         </article>
       </div>
