@@ -1,8 +1,11 @@
 import React from 'react'
+import { Portada } from '../components/HomeView/Portada'
 
-const HomeView = () => {
+import '../components/HomeView/HomeView.css'
+
+export const HomeView = () => {
   return (
-    <div>HomeView</div>
+    <Portada/>
   )
 }
 
