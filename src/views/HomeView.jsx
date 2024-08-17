@@ -1,6 +1,6 @@
-import React from 'react'
-import { PageCover } from '../components/HomeView/PageCover'
-import { Presentation } from '../components/HomeView/Presentation'
+import { PageCover } from '../components/HomeView/PageCover';
+import { Presentation } from '../components/HomeView/Presentation';
+import { Wines } from '../components/HomeView/Wines';
 
 import '../components/HomeView/HomeView.css'
 
@@ -9,6 +9,7 @@ export const HomeView = () => {
     <>
       <PageCover/>
       <Presentation/>
+      <Wines/>
     </>
   )
 }
