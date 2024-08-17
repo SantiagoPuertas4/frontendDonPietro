@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
-// import { postLoginFn } from '../../api/auth';
+
 
 import Input from '../../ui/input/Input';
 import { useSession } from '../../../stores/useSession';
@@ -39,6 +39,7 @@ const LoginForm = () => {
   const { mutate: postLogin } = useMutation({
     mutationFn: postLoginFn,
     onSuccess: (userData) => {
+      console.log(userData)
       toast.dismiss();
       toast.success(`Bienvenido, ${userData.fullname}`);
 
@@ -102,7 +103,7 @@ const LoginForm = () => {
         register={register}
         type='password'
       />
-      <div className='text-end mt-3'>
+      <div className='text-center mt-3'>
         <button className='btn btn-danger' type='submit'>
           Ingresar
         </button>
