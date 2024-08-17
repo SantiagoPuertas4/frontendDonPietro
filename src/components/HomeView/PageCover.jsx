@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useSession } from "../../stores/useSession.js";
 import logo from "/DonPietroBlanco.png";
 
-export const Portada = () => {
+export const PageCover = () => {
   const navigate = useNavigate();
   const { isLoggedIn, user } = useSession();
 
@@ -30,4 +30,4 @@ export const Portada = () => {
   );
 };
 
-export default Portada;
+export default PageCover;
