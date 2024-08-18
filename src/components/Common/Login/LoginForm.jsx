@@ -4,9 +4,10 @@ import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 
-import Input from '../../ui/input/Input';
 import { useSession } from '../../../stores/useSession';
+import Input from '../../ui/input/Input';
 import { postLoginFn } from '../../../api/auth';
+import '../Login/Login.css'
 
 const LoginForm = () => {
   // ---------------------------------------------
@@ -86,6 +87,7 @@ const LoginForm = () => {
           minLength: 3,
           maxLength: 50,
         }}
+        labelClassName='custom-label'
         register={register}
       />
       <Input
@@ -104,12 +106,12 @@ const LoginForm = () => {
         type='password'
       />
       <div className='text-center mt-3'>
-        <button className='btn btn-danger' type='submit'>
+        <button className='custom-btn' type='submit'>
           Ingresar
         </button>
       </div>
-      <p className='text-center text-md-start mt-2 mt-lg-0'>
-        ¿Primera vez? <Link to='/register'>Create un usuario acá</Link>
+      <p className='account-question'>
+        ¿Aun no tienes cuenta? <Link to='/register' className='register-link'>Ingresá aqui</Link>
       </p>
     </form>
   );

@@ -11,6 +11,7 @@ const Input = (props) => {
     options,
     placeholder = 'Ingrese un texto',
     textarea = false,
+    labelClassName = '',
   } = props;
 
   if (textarea) {
@@ -23,7 +24,7 @@ const Input = (props) => {
           type={type}
           {...register(name, options)}
         />
-        <label htmlFor={`${name}-input`}>{label}</label>
+        <label htmlFor={`${name}-input`}className={labelClassName}>{label}</label>
         <div className='invalid-feedback'>
           <span className='badge text-bg-danger'>{error?.message}</span>
         </div>
@@ -40,7 +41,7 @@ const Input = (props) => {
         type={type}
         {...register(name, options)}
       />
-      <label htmlFor={`${name}-input`}>{label}</label>
+      <label htmlFor={`${name}-input`}className={labelClassName}>{label}</label>
       <div className='invalid-feedback'>
         <span className='badge text-bg-danger'>{error?.message}</span>
       </div>
@@ -60,6 +61,7 @@ Input.propTypes = {
   options: PropTypes.object,
   placeholder: PropTypes.string,
   textarea: PropTypes.bool,
+  labelClassName: PropTypes.string,
 };
 
 export default Input;
