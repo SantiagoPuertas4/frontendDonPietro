@@ -51,11 +51,3 @@
   color: var(--color-primario);
   font-size: 30px;
 }
-
-.bg-register {
-  background-color: var(--color-primario);
-}
-
-.color-register {
-  color: var(--color-primario);
-}
