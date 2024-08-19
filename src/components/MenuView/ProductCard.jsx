@@ -4,23 +4,23 @@ const ProductCard = (props) => {
   const { product } = props;
 
   return (
-    <div className='card'>
+    <section className='card text-center'>
       <img alt={product.name} className='card-img-top' src={product.imageUrl} />
-      <div className='card-body'>
+      <article className='card-body'>
         <h5 className='card-title'>{product.name}</h5>
         <p className='card-text'>{product.description}</p>
-        <h6 className='card-subtitle mb-2 text-muted'>${product.price}</h6>
-        <div className='text-end'>
+        <h6 className='card-price mb-2'>${product.price}</h6>
+        <div>
           {product.stock > 0 ? (
-            <button className='btn btn-primary'>
-              Añadir al carrito
+            <button className='order-button'>
+              Añadir
             </button>
           ) : (
             <p className='text-danger'>Sin stock</p>
           )}
         </div>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 
