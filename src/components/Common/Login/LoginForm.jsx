@@ -73,7 +73,7 @@ const LoginForm = () => {
   // ---------------------------------------------
 
   return (
-    <form onSubmit={onSubmitRHF(handleSubmit)}>
+    <form onSubmit={onSubmitRHF(handleSubmit)} className="custom-form container">
       <Input
         className='mb-3'
         error={errors.usernameOrEmail}
@@ -88,6 +88,7 @@ const LoginForm = () => {
           maxLength: 50,
         }}
         labelClassName='custom-label'
+        inputClassName= 'custom-input'
         register={register}
       />
       <Input

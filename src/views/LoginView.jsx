@@ -1,4 +1,5 @@
 import LoginForm from "../components/Common/Login/LoginForm"
+import LocationMap from "../components/Common/Map/LocationMap";
 import '../components/Common/Login/Login.css';
 
 const LoginView = () => {
@@ -10,6 +11,9 @@ const LoginView = () => {
         <div className="row g-3">
           <article className="col-12">
             <LoginForm />
+          </article>
+          <article className="col-12">
+            <LocationMap/>
           </article>
         </div>
       </section>

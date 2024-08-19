@@ -12,13 +12,14 @@ const Input = (props) => {
     placeholder = 'Ingrese un texto',
     textarea = false,
     labelClassName = '',
+    inputClassName = '',
   } = props;
 
   if (textarea) {
     return (
       <fieldset className={`form-floating ${className}`}>
         <textarea
-          className={`form-control ${error ? 'is-invalid' : ''}`}
+          className={`form-control ${inputClassName} ${error ? 'is-invalid' : ''}`}
           id={`${name}-input`}
           placeholder={placeholder}
           type={type}
@@ -35,7 +36,7 @@ const Input = (props) => {
   return (
     <fieldset className={`form-floating ${className}`}>
       <input
-        className={`form-control ${error ? 'is-invalid' : ''}`}
+        className={`form-control ${inputClassName} ${error ? 'is-invalid' : ''}`}
         id={`${name}-input`}
         placeholder={placeholder}
         type={type}
@@ -62,6 +63,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   textarea: PropTypes.bool,
   labelClassName: PropTypes.string,
+  inputClassName: PropTypes.string,
 };
 
 export default Input;
