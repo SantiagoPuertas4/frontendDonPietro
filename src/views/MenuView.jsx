@@ -73,6 +73,12 @@ export const MenuView = () => {
           cancelButtonText: "Cerrar sesión",
           showDenyButton: true,
           denyButtonText: "Cerrar sesión",
+          preConfirm: (number) => {
+            if (!number) {
+              Swal.showValidationMessage("Por favor, selecciona un número de mesa.");
+            }
+            return number;
+          },
         });
 
         if (number) {
