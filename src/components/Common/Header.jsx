@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import "./Header.css";
 
 const Header = () => {
-  const { user, isLoggedIn, logout } = useSession();
+  const { user, isLoggedIn, logout, tableNumber } = useSession();
 
   const handleLogout = async () => {
     const action = await Swal.fire({
@@ -21,6 +21,8 @@ const Header = () => {
       logout();
     }
   };
+
+  const isAdmin = user ? user.isAdmin : false;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -79,7 +81,7 @@ const Header = () => {
                 </li>
               </>
             )}
-            {isLoggedIn && !user.isAdmin && (
+            {isLoggedIn && !isAdmin && (
               <>
                 <li className="nav-item">
                   <NavLink
@@ -113,7 +115,7 @@ const Header = () => {
                 </li>
               </>
             )}
-            {isLoggedIn && user.isAdmin && (
+            {isLoggedIn && isAdmin && (
               <>
                 <li className="nav-item">
                   <NavLink
@@ -147,30 +149,43 @@ const Header = () => {
                 </li>
               </>
             )}
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-                to="/about"
-              >
-                Acerca de
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-                to="/contact"
-              >
-                Contacto
-              </NavLink>
-            </li>
+            {!isAdmin && (
+              <>
+                <li className="nav-item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                    to="/about"
+                  >
+                    Acerca de
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                    to="/contact"
+                  >
+                    Contacto
+                  </NavLink>
+                </li>
+              </>
+            )}
             {isLoggedIn && (
-              <button className="btn btn-danger" onClick={handleLogout}>
-                Cerrar sesión
-              </button>
+              <>
+                {tableNumber && !isAdmin && (
+                  <li className="nav-item">
+                    <span className="nav-link">
+                      Mesa: {tableNumber}
+                    </span>
+                  </li>
+                )}
+                <button className="btn btn-danger" onClick={handleLogout}>
+                  Cerrar sesión
+                </button>
+              </>
             )}
           </ul>
         </div>
