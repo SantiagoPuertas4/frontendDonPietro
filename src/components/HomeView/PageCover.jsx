@@ -8,7 +8,7 @@ export const PageCover = () => {
 
   const handleButtonClick = () => {
     if (isLoggedIn) {
-      if (user.isAdmin) {
+      if (user && user.isAdmin) {
         navigate("/admin");
       } else {
         navigate("/menu");
@@ -22,9 +22,11 @@ export const PageCover = () => {
     <section className="container-fluid home-container">
       <article className="overlay">
         <img src={logo} alt="Logo Don Pietro Blanco" className="home-logo" />
-        <button onClick={handleButtonClick} className="order-button">
-          Hacé tu pedido
-        </button>
+        {!user || !user.isAdmin ? (
+          <button onClick={handleButtonClick} className="order-button">
+            Hacé tu pedido
+          </button>
+        ) : null}
       </article>
     </section>
   );
