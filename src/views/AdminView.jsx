@@ -33,7 +33,7 @@ const AdminView = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center flex-column align-items-center">
+    <div className="d-flex justify-content-center flex-column align-items-center container">
       <section className="d-flex justify-content-center row w-100">
         <div className="col-12 col-md-6 col-lg-4 m-1 px-1">
           <button

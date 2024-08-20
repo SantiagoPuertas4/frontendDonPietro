@@ -41,7 +41,7 @@ const UserRow = (props) => {
   };
 
   return (
-    <article className="d-flex row cardUsuario my-2 mx-1 py-1">
+    <article className="d-flex row cardUsuario my-2 mx-1 py-1 align-items-center">
       <div className="col-6 col-md-3 col-xl-2 my-1">
         <p className="text-center">{user.fullname}</p>
       </div>
