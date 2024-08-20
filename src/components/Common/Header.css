@@ -2,6 +2,10 @@
   max-height: 80px;
 }
 
+nav {
+  height: 10dvh;
+}
+
 .navbar {
   padding: 0;
 }
