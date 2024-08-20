@@ -2,3 +2,25 @@
   color: white !important;
   border: 2px white solid !important;
 }
+
+.btnCustom {
+  background-color: var(--color-primario) !important;
+}
+
+.titulo {
+  color: white;
+}
+
+.userListTitle {
+  color: var(--color-primario);
+  margin: 0;
+}
+
+p {
+  margin: 0 !important;
+  color: white;
+}
+
+.cardUsuario {
+  background-color: var(--color-adicional-1);
+}

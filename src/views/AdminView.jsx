@@ -34,8 +34,8 @@ const AdminView = () => {
 
   return (
     <div className="d-flex justify-content-center flex-column align-items-center">
-      <section className="d-flex justify-content-center row">
-        <div className="col-12 col-md-6 col-lg-4 my-1 px-1">
+      <section className="d-flex justify-content-center row w-100">
+        <div className="col-12 col-md-6 col-lg-4 m-1 px-1">
           <button
             onClick={handleProductList}
             className="btn btn-admin w-100 h-100"
@@ -60,7 +60,7 @@ const AdminView = () => {
           </button>
         </div>
       </section>
-      <section>
+      <section className="w-100">
         {help === true && <Help />}
         {productList === true && <ProductList />}
         {productForm === true && <ProductForm />}
