@@ -1,7 +1,13 @@
 import PropTypes from 'prop-types';
+import { useCart } from '../../stores/useCart';
 
 const ProductCard = (props) => {
   const { product } = props;
+  const addToCart = useCart((state) => state.addToCart);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
 
   return (
     <section className='card text-center'>
@@ -12,7 +18,7 @@ const ProductCard = (props) => {
         <h6 className='card-price mb-2'>${product.price}</h6>
         <div>
           {product.stock > 0 ? (
-            <button className='order-button'>
+            <button className='order-button' onClick={handleAddToCart}>
               Añadir
             </button>
           ) : (
@@ -27,7 +33,7 @@ const ProductCard = (props) => {
 ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
