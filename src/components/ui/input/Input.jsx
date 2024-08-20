@@ -33,7 +33,9 @@ const Input = (props) => {
           {label}
         </label>
         <div className="invalid-feedback">
-          <span className="badge text-bg-danger">{errors?.message}</span>
+          <span className="badge text-bg-danger text-wrap text-break">
+            {errors?.message}
+          </span>
         </div>
       </fieldset>
     );
@@ -55,7 +57,9 @@ const Input = (props) => {
         {label}
       </label>
       <div className="invalid-feedback">
-        <span className="badge text-bg-danger">{errors?.message}</span>
+        <span className="badge text-bg-danger text-wrap text-break">
+          {errors?.message}
+        </span>
       </div>
     </fieldset>
   );

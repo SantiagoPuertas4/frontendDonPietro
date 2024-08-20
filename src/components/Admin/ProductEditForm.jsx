@@ -57,7 +57,7 @@ const ProductEditForm = (props) => {
     setValue("imgProducto", product.imageUrl);
     setValue("categoriaProducto", product.category);
     setValue("descripcionProducto", product.description);
-  });
+  }, []);
 
   return (
     <section className="w-100 my-2">
@@ -97,7 +97,7 @@ const ProductEditForm = (props) => {
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
-          ClassName="col-6 p-0 px-1"
+          ClassName="col-6 p-0"
         />
         <Input
           register={register}
@@ -114,7 +114,7 @@ const ProductEditForm = (props) => {
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
-          ClassName="col-6 p-0 px-1"
+          ClassName="col-6 p-0"
         />
         <Input
           register={register}
@@ -130,7 +130,7 @@ const ProductEditForm = (props) => {
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
-          ClassName="col-8 p-0 px-1"
+          ClassName="col-8 p-0"
         />
         <Input
           register={register}
@@ -139,10 +139,14 @@ const ProductEditForm = (props) => {
           errors={errors.categoriaProducto}
           options={{
             required: "El campo es requerido",
+            pattern: {
+              value: /^(comidas|bebidas)$/,
+              message: "'comidas' o 'bebidas'",
+            },
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
-          ClassName="col-4 p-0 px-1"
+          ClassName="col-4 p-0"
         />
         <Input
           register={register}
@@ -162,7 +166,7 @@ const ProductEditForm = (props) => {
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
-          ClassName="g-col-12 p-0 px-1"
+          ClassName="g-col-12 p-0"
           textarea={true}
         />
         <div className="d-flex justify-content-center gap-1 my-1">
