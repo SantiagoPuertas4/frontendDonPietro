@@ -11,6 +11,10 @@
   color: white;
 }
 
+.tituloCustom {
+  color: var(--color-primario) !important;
+}
+
 .userListTitle {
   color: var(--color-primario);
   margin: 0;

@@ -164,7 +164,7 @@ const ProductForm = () => {
             ClassName="col-12 p-0"
             textarea={true}
           />
-          <div className="d-flex justify-content-end gap-2 p-0 my-1">
+          <div className="d-flex justify-content-center justify-content-sm-end  gap-2 p-0 my-1">
             <button onClick={handleClean} className="btn btn-danger">
               Limpiar formulario
             </button>
