@@ -67,6 +67,7 @@ export const MenuView = () => {
             19: "Mesa 19",
             20: "Mesa 20",
           },
+          inputValue: tableNumber || "", // set current table number if exists
           inputPlaceholder: "Selecciona un número",
           showCancelButton: false,
           confirmButtonText: "Guardar",
@@ -75,7 +76,9 @@ export const MenuView = () => {
           denyButtonText: "Cerrar sesión",
           preConfirm: (number) => {
             if (!number) {
-              Swal.showValidationMessage("Por favor, selecciona un número de mesa.");
+              Swal.showValidationMessage(
+                "Por favor, selecciona un número de mesa."
+              );
             }
             return number;
           },
@@ -142,6 +145,14 @@ export const MenuView = () => {
       <section className="container text-center mt-4 mb-4 instruction">
         <h2>ESCOGE TU PLATO Y BEBIDA</h2>
         <p>Por favor, seleccioná "Añadir" en la opción que desees.</p>
+      </section>
+      <section className="text-center mb-4">
+        <button
+          className="order-button"
+          onClick={() => setShowTableNumberPrompt(true)}
+        >
+          Editar número de mesa
+        </button>
       </section>
       <section className="container mt-3 category">
         {tableNumber ? (
