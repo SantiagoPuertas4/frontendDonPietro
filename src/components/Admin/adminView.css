@@ -22,7 +22,7 @@ p {
 }
 
 .cardUsuario {
-  background-color: var(--color-adicional-1);
+  background-color: var(--color-adicional-1) !important;
 }
 
 .imgProductAdmin {
