@@ -1,16 +1,35 @@
 import React from "react";
+import Swal from "sweetalert2";
 import { useCart } from "../stores/useCart";
 import { useSession } from "../stores/useSession";
-import '../styles/CartView.css'
+import "../styles/CartView.css";
 
 const CartView = () => {
   const { items, clearCart } = useCart();
   const { tableNumber } = useSession();
 
-  const total = items.reduce((acc, item) => acc + (item.quantity * item.price), 0);
+  const total = items.reduce(
+    (acc, item) => acc + item.quantity * item.price,
+    0
+  );
+
+  const handleOrder = () => {
+    Swal.fire({
+      title: "Éxito!",
+      text: "Pedido realizado con éxito",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    }).then(() => {
+      clearCart();
+    });
+  };
 
   if (items.length === 0) {
-    return <p className="text-center text-white mt-5">No hay productos en el carrito.</p>;
+    return (
+      <p className="text-center text-white mt-5">
+        No hay productos en el carrito.
+      </p>
+    );
   }
 
   return (
@@ -53,7 +72,14 @@ const CartView = () => {
             </tr>
           </tfoot>
         </table>
-        <button onClick={clearCart} className="btn-clear-cart">Vaciar Carrito</button>
+        <section className="text-center">
+          <button onClick={handleOrder} className="btn-order">
+            Realizar Pedido
+          </button>
+          <button onClick={clearCart} className="btn-clear">
+            Vaciar Carrito
+          </button>
+        </section>
       </section>
     </>
   );

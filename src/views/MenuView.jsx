@@ -67,7 +67,7 @@ export const MenuView = () => {
             19: "Mesa 19",
             20: "Mesa 20",
           },
-          inputValue: tableNumber || "", // set current table number if exists
+          inputValue: tableNumber || "",
           inputPlaceholder: "Selecciona un número",
           showCancelButton: false,
           confirmButtonText: "Guardar",
