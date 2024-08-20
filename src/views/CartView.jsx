@@ -1,11 +1,12 @@
 import React from "react";
 import { useCart } from "../stores/useCart";
+import { useSession } from "../stores/useSession";
 import '../styles/CartView.css'
 
 const CartView = () => {
   const { items, clearCart } = useCart();
+  const { tableNumber } = useSession();
 
-  // Calcula el total del pedido
   const total = items.reduce((acc, item) => acc + (item.quantity * item.price), 0);
 
   if (items.length === 0) {
@@ -18,7 +19,12 @@ const CartView = () => {
         <h1>CARRITO</h1>
       </section>
       <section>
-        <h2 className="mt-2 text-center text-white">Gestioná tu pedido</h2>
+        <h2 className="mt-3 text-center text-white">Gestioná tu pedido</h2>
+        {tableNumber && (
+          <h5 className="text-center text-white mt-3">
+            Número de mesa: {tableNumber}
+          </h5>
+        )}
       </section>
       <section className="container">
         <table className="cart-table">
@@ -54,4 +60,3 @@ const CartView = () => {
 };
 
 export default CartView;
-
