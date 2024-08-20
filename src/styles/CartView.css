@@ -1,0 +1,66 @@
+:root {
+  --color-primario: #ef8a3a;
+  --color-secundario: #111518;
+  --color-terciario: #13171a;
+  --color-adicional-1: #232426;
+  --color-adicional-2: #4c4c4c;
+  --color-adicional-3: #ffffff;
+  --color-adicional-4: #d02514;
+}
+
+.h1-cart {
+  background-color: var(--color-primario);
+  text-align: center;
+  color: var(--color-adicional-3);
+  padding: 10px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.cart-table th,
+.cart-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.cart-table th {
+  background-color: #f4f4f4;
+}
+
+.cart-table tfoot {
+  font-weight: bold;
+}
+
+.btn-clear-cart {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: var(--color-adicional-4);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-clear-cart:hover {
+  background-color: #e60000;
+}
+
+.cart-table {
+  td {
+    color: var(--color-adicional-3);
+    text-align: center;
+    background-color: var(--color-terciario)
+  }
+
+  th {
+    text-align: center;
+    color: var(--color-primario);
+    background-color: var(--color-secundario);
+  }
+}
