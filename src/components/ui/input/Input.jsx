@@ -5,54 +5,57 @@ const Input = (props) => {
     name,
     type = "text",
     label,
-    error,
-    fieldClassName = "",
+    errors,
+    ClassName = "",
     register,
     options,
     placeholder = "Ingrese un texto",
     textarea = false,
     labelClassName = "",
     inputClassName = "",
+    autocomplete = "off",
   } = props;
 
   if (textarea) {
     return (
-      <fieldset className={`form-floating ${fieldClassName}`}>
+      <fieldset className={`form-floating ${ClassName}`}>
         <textarea
           className={`form-control ${inputClassName} ${
-            error ? "is-invalid" : ""
+            errors ? "is-invalid" : ""
           }`}
           id={`${name}-input`}
           placeholder={placeholder}
           type={type}
+          autoComplete={autocomplete}
           {...register(name, options)}
         />
         <label htmlFor={`${name}-input`} className={labelClassName}>
           {label}
         </label>
         <div className="invalid-feedback">
-          <span className="badge text-bg-danger">{error?.message}</span>
+          <span className="badge text-bg-danger">{errors?.message}</span>
         </div>
       </fieldset>
     );
   }
 
   return (
-    <fieldset className={`form-floating ${fieldClassName}`}>
+    <fieldset className={`form-floating ${ClassName}`}>
       <input
         className={`form-control ${inputClassName} ${
-          error ? "is-invalid" : ""
+          errors ? "is-invalid" : ""
         }`}
         id={`${name}-input`}
         placeholder={placeholder}
         type={type}
+        autoComplete={autocomplete}
         {...register(name, options)}
       />
       <label htmlFor={`${name}-input`} className={labelClassName}>
         {label}
       </label>
       <div className="invalid-feedback">
-        <span className="badge text-bg-danger">{error?.message}</span>
+        <span className="badge text-bg-danger">{errors?.message}</span>
       </div>
     </fieldset>
   );
@@ -64,16 +67,17 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
   label: PropTypes.string.isRequired,
-  error: PropTypes.shape({
+  errors: PropTypes.shape({
     message: PropTypes.string,
   }),
-  fieldClassName: PropTypes.string,
+  ClassName: PropTypes.string,
   register: PropTypes.func.isRequired,
   options: PropTypes.object,
   placeholder: PropTypes.string,
   textarea: PropTypes.bool,
   labelClassName: PropTypes.string,
   inputClassName: PropTypes.string,
+  autocomplete: PropTypes.string,
 };
 
 export default Input;
