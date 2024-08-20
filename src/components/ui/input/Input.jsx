@@ -1,7 +1,6 @@
-import { forwardRef } from "react";
 import PropTypes from "prop-types";
 
-const Input = forwardRef((props, ref) => {
+const Input = (props) => {
   const {
     name,
     type = "text",
@@ -26,7 +25,6 @@ const Input = forwardRef((props, ref) => {
           id={`${name}-input`}
           placeholder={placeholder}
           type={type}
-          ref={ref}
           {...register(name, options)}
         />
         <label htmlFor={`${name}-input`} className={labelClassName}>
@@ -48,7 +46,6 @@ const Input = forwardRef((props, ref) => {
         id={`${name}-input`}
         placeholder={placeholder}
         type={type}
-        ref={ref}
         {...register(name, options)}
       />
       <label htmlFor={`${name}-input`} className={labelClassName}>
@@ -59,7 +56,7 @@ const Input = forwardRef((props, ref) => {
       </div>
     </fieldset>
   );
-});
+};
 
 Input.displayName = `name`;
 

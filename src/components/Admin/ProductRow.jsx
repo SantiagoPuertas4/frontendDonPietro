@@ -80,7 +80,7 @@ const ProductRow = (props) => {
         </button>
       </div>
 
-      {edit && <ProductEditForm product={product} />}
+      {edit && <ProductEditForm product={product} setEdit={setEdit} />}
     </article>
   );
 };

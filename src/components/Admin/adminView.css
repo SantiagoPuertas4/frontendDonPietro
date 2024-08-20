@@ -36,6 +36,8 @@ p {
 
 .productEditLabel::after {
   background-color: var(--color-secundario) !important;
+  margin-left: 10px;
+  padding-left: 10px;
 }
 
 .productEditInput {

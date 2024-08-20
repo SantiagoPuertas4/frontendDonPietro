@@ -16,7 +16,6 @@ export const getUsersFn = async () => {
     throw new Error("Ocurrio un error cargando la lista de usuarios");
   }
 
-  console.log(data);
   return data;
 };
 
