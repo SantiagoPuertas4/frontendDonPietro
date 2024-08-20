@@ -1,4 +1,4 @@
 const ProductForm = () => {
-  return <div>ProductForm</div>;
+  return <div></div>;
 };
 export default ProductForm;

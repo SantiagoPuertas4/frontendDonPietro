@@ -116,5 +116,4 @@ UserRow.propTypes = {
     email: PropTypes.string.isRequired,
     isAdmin: PropTypes.bool.isRequired,
   }),
-  // index: PropTypes.number.isRequired,
 };

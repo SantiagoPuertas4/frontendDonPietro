@@ -19,7 +19,9 @@ const UserList = () => {
   if (isError) {
     return (
       <div className="alert alert-danger mt-3">
-        <p>Ocurrio un error cargando la lista de usuarios</p>
+        <p className="text-black">
+          Ocurrio un error cargando la lista de usuarios
+        </p>
       </div>
     );
   }
