@@ -3,17 +3,23 @@ import Input from "../ui/input/Input";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { toast } from "sonner";
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import {
+  QueryClient,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { putProductsFn } from "../../api/products";
 
 const ProductEditForm = (props) => {
   const { product, setEdit } = props;
+  const QueryClient = useQueryClient();
   const {
     register,
     setValue,
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm();
+
   const { mutate: putProduct } = useMutation({
     mutationFn: putProductsFn,
     onSuccess: () => {
@@ -32,9 +38,18 @@ const ProductEditForm = (props) => {
   });
 
   const handleEdit = (data) => {
+    const transformedData = {
+      name: data.nombreProducto,
+      price: data.precioProducto,
+      stock: data.stockProducto,
+      imageUrl: data.imgProducto,
+      category: data.categoriaProducto,
+      description: data.descripcionProducto,
+    };
     toast.loading("Guardando... Aguarde");
-    putProduct({ productId: product.id, data });
+    putProduct({ productId: product.id, data: transformedData });
   };
+
   const handleCancel = () => {
     setEdit(false);
   };
