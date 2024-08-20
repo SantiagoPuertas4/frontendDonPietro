@@ -36,3 +36,20 @@ export const deleteUserFn = async (userId) => {
     );
   }
 };
+
+export const toggleUserFn = async (userId) => {
+  const token = sessionStorage.getItem("token");
+  const res = await fetch(`${BACKEND_URL}/users/${userId}/toggle-admin`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(
+      "Ocurrio un error intentando cambiar el tipo de cuenta al usuario seleccionado"
+    );
+  }
+};

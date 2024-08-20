@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import PropTypes from "prop-types";
-import { deleteUserFn } from "../../api/users";
+import { deleteUserFn, toggleUserFn } from "../../api/users";
 import { toast } from "sonner";
 import Swal from "sweetalert2";
 
@@ -13,6 +13,22 @@ const UserRow = (props) => {
     onSuccess: () => {
       toast.dismiss();
       toast.success("Usuario eliminado");
+
+      QueryClient.invalidateQueries({
+        queryKey: ["users"],
+      });
+    },
+    onError: (e) => {
+      toast.dismiss();
+      toast.error(e.message);
+    },
+  });
+
+  const { mutate: toggleUser } = useMutation({
+    mutationFn: toggleUserFn,
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Se cambio el tipo de usuario");
 
       QueryClient.invalidateQueries({
         queryKey: ["users"],
@@ -40,6 +56,22 @@ const UserRow = (props) => {
     }
   };
 
+  const handleToggle = async () => {
+    const action = await Swal.fire({
+      title: "Atencion",
+      icon: "info",
+      html: `¿Estas seguro que deseas cambiar el tipo de cuenta del usuario <b>${user.username}</b>?`,
+      confirmButtonText: "Si, cambiar",
+      cancelButtonText: "No, cancelar",
+      showCancelButton: true,
+    });
+
+    if (action.isConfirmed) {
+      toast.loading("Eliminando usuario ...");
+      toggleUser(user.id);
+    }
+  };
+
   return (
     <article className="d-flex row cardUsuario my-2 mx-1 py-1 align-items-center">
       <div className="col-6 col-md-3 col-xl-2 my-1">
@@ -59,9 +91,13 @@ const UserRow = (props) => {
 
       <div className="col-12 col-xl-2 d-flex justify-content-center my-1">
         {user.isAdmin ? (
-          <button className="btn btnCustom p-xl-2">Cambiar a Usuario</button>
+          <button onClick={handleToggle} className="btn btnCustom p-xl-2">
+            Cambiar a Usuario
+          </button>
         ) : (
-          <button className="btn btnCustom p-xl-2">Cambiar a Admin</button>
+          <button onClick={handleToggle} className="btn btnCustom p-xl-2">
+            Cambiar a Admin
+          </button>
         )}
 
         <button onClick={handleDelete} className="ms-1 btn btn-danger">
