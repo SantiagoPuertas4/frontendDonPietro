@@ -1,12 +1,26 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useCart } from '../../stores/useCart';
+import Swal from 'sweetalert2';
 
 const ProductCard = (props) => {
   const { product } = props;
+  const [localStock, setLocalStock] = useState(product.stock);
   const addToCart = useCart((state) => state.addToCart);
 
   const handleAddToCart = () => {
-    addToCart(product);
+    if (localStock > 0) {
+      addToCart(product);
+      setLocalStock(localStock - 1);
+      
+      Swal.fire({
+        title: 'Producto añadido',
+        text: `${product.name} se ha añadido a tu carrito.`,
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    }
   };
 
   return (
@@ -17,7 +31,7 @@ const ProductCard = (props) => {
         <p className='card-text'>{product.description}</p>
         <h6 className='card-price mb-2'>${product.price}</h6>
         <div>
-          {product.stock > 0 ? (
+          {localStock > 0 ? (
             <button className='order-button' onClick={handleAddToCart}>
               Añadir
             </button>
