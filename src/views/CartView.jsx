@@ -5,7 +5,7 @@ import { useSession } from "../stores/useSession";
 import "../styles/CartView.css";
 
 const CartView = () => {
-  const { items, clearCart } = useCart();
+  const { items, updateItemQuantity, removeItem, clearCart } = useCart();
   const { tableNumber } = useSession();
 
   const total = items.reduce(
@@ -22,6 +22,14 @@ const CartView = () => {
     }).then(() => {
       clearCart();
     });
+  };
+
+  const handleQuantityChange = (itemId, newQuantity) => {
+    if (newQuantity <= 0) {
+      removeItem(itemId);
+    } else {
+      updateItemQuantity(itemId, newQuantity);
+    }
   };
 
   if (items.length === 0) {
@@ -53,25 +61,59 @@ const CartView = () => {
               <th>Cantidad</th>
               <th>Precio</th>
               <th>Total</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {items.map((item) => (
               <tr key={item.id}>
-                <td>{item.name}</td>
-                <td>{item.quantity}</td>
-                <td>${item.price.toFixed(2)}</td>
-                <td>${(item.quantity * item.price).toFixed(2)}</td>
+                <td data-label="Producto">{item.name}</td>
+                <td data-label="Cantidad">
+                  <button className="btn-quantity"
+                    onClick={() =>
+                      handleQuantityChange(item.id, item.quantity - 1)
+                    }
+                    disabled={item.quantity <= 1}
+                  >
+                    -
+                  </button>
+                  {item.quantity}
+                  <button className="btn-quantity"
+                    onClick={() =>
+                      handleQuantityChange(item.id, item.quantity + 1)
+                    }
+                  >
+                    +
+                  </button>
+                </td>
+                <td data-label="Precio">${item.price.toFixed(2)}</td>
+                <td data-label="Total">
+                  ${(item.quantity * item.price).toFixed(2)}
+                </td>
+                <td data-label="Acciones">
+                  <button
+                    onClick={() => removeItem(item.id)}
+                    className="btn-remove"
+                  >
+                    x
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan="3">Total:</td>
+              <td colSpan="4">Total:</td>
               <td>${total.toFixed(2)}</td>
             </tr>
           </tfoot>
         </table>
+
+        <section className="text-center mt-4">
+          <p className="status">
+            Estado del pedido: <span className="waiting">En espera</span>
+          </p>
+        </section>
         <section className="text-center">
           <button onClick={handleOrder} className="btn-order">
             Realizar Pedido
