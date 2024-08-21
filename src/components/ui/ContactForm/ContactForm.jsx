@@ -3,15 +3,38 @@ import Input from "../input/Input";
 
 import "./ContactForm.css";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useRef, useState } from "react";
+import InvalidFeedback from "../InvalidFeedback/InvalidFeedback";
+
+const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
 
 const ContactForm = () => {
+  const [captcha, setCaptcha] = useState(null);
   const {
     register,
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm();
 
-  const handleSubmit = () => {};
+  const captchaRef = useRef(null);
+
+  const handleSubmit = () => {
+    if (!captchaRef.current.getValue()) {
+      setCaptcha(true);
+      return;
+    }
+
+    setCaptcha(false);
+  };
+
+  const handleCaptchaChange = () => {
+    if (!captchaRef.current.getValue()) {
+      setCaptcha(true);
+      return;
+    }
+    setCaptcha(false);
+  };
+
   return (
     <section className="container mt-5">
       <div>
@@ -91,9 +114,22 @@ const ContactForm = () => {
             ClassName="col-12 p-0"
             textarea={true}
           />
-          <div className="d-flex justify-content-center p-0 my-4">
-            <ReCAPTCHA />
-          </div>
+
+          <section className="d-flex flex-column align-items-center">
+            {captcha && (
+              <InvalidFeedback
+                noInput={true}
+                divClass="text-center mb-2"
+                msg="El Captcha debe ser resuelto para poder enviar un mail"
+              />
+            )}
+            <ReCAPTCHA
+              ref={captchaRef}
+              onChange={handleCaptchaChange}
+              sitekey={CAPTCHA_KEY}
+            />
+          </section>
+
           <div className="d-flex justify-content-center p-0 my-4">
             <button className="btn btnContactanos px-5">Enviar</button>
           </div>
