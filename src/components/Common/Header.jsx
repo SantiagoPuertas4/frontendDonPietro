@@ -25,9 +25,9 @@ const Header = () => {
   const isAdmin = user ? user.isAdmin : false;
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark m-0 p-0">
       <div className="container-fluid custom-padding">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand p-0 m-0" to="/">
           <img
             className="logoHeader"
             src="/DonPietro.png"
@@ -177,9 +177,7 @@ const Header = () => {
               <>
                 {tableNumber && !isAdmin && (
                   <li className="nav-item">
-                    <span className="nav-link">
-                      Mesa: {tableNumber}
-                    </span>
+                    <span className="nav-link">Mesa: {tableNumber}</span>
                   </li>
                 )}
                 <button className="btn btn-danger" onClick={handleLogout}>
