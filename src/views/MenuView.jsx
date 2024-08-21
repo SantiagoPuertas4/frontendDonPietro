@@ -105,7 +105,6 @@ export const MenuView = () => {
         const storedStock = parseInt(sessionStorage.getItem(`stock_${product.id}`), 10);
         const updatedStock = isNaN(storedStock) ? product.stock : storedStock;
         sessionStorage.setItem(`stock_${product.id}`, updatedStock);
-        console.log(`Stored stock for ${product.id}: ${updatedStock}`);
       });
     }
   }, [products]);

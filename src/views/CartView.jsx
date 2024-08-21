@@ -29,7 +29,6 @@ const CartView = () => {
         if (!isNaN(storedStock)) {
           const newStock = storedStock - item.quantity;
           sessionStorage.setItem(`stock_${item.id}`, newStock);
-          console.log(`Updated stock for ${item.id}: ${newStock}`);
         }
       });
       clearCart();
@@ -63,7 +62,6 @@ const CartView = () => {
           if (!isNaN(storedStock)) {
             const restoredStock = storedStock + item.quantity;
             sessionStorage.setItem(`stock_${item.id}`, restoredStock);
-            console.log(`Restored stock for ${item.id}: ${restoredStock}`);
           }
         });
         clearCart();
