@@ -1,8 +1,8 @@
-import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import Input from "../input/Input";
 
 import "./ContactForm.css";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = () => {
   const {
@@ -91,6 +91,9 @@ const ContactForm = () => {
             ClassName="col-12 p-0"
             textarea={true}
           />
+          <div className="d-flex justify-content-center p-0 my-4">
+            <ReCAPTCHA />
+          </div>
           <div className="d-flex justify-content-center p-0 my-4">
             <button className="btn btnContactanos px-5">Enviar</button>
           </div>

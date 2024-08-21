@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../../../stores/useSession";
-import Input from "../../ui/Input/Input";
+import Input from "../../ui/input/Input";
 import "./Register.css";
 import { postRegisterFn } from "../../../api/auth";
 
@@ -70,7 +70,7 @@ const RegisterForm = () => {
     };
     let pass1 = getValues("password");
     let pass2 = getValues("repeatPassword");
-    if (pass1!== pass2) {
+    if (pass1 !== pass2) {
       toast.error("Las contraseñas no coinciden");
       return;
     }
@@ -185,7 +185,10 @@ const RegisterForm = () => {
           Registrar
         </button>
         <p className="mt-3">
-          ¿Ya tienes una cuenta? <a href="/login" className="color-register">Inicia sesión</a>
+          ¿Ya tienes una cuenta?{" "}
+          <a href="/login" className="color-register">
+            Inicia sesión
+          </a>
         </p>
       </div>
     </form>
