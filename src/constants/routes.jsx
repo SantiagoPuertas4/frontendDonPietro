@@ -1,89 +1,89 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from "react-router-dom";
 
-import RootView from '../views/routing/RootView';
-import AuthViews from '../views/routing/AuthViews';
-import PrivateView from '../views/routing/PrivateView';
-import LoginView from '../views/LoginView';
-import HomeView from '../views/HomeView';
-import RegisterView from '../views/RegisterView';
-import MenuView from '../views/MenuView';
-import CartView from '../views/CartView';
-import MyAccountView from '../views/MyAccountView';
-import AdminView from '../views/AdminView';
-import CreateProductView from '../views/CreateProductView';
-import RegisteredUsersView from '../views/RegisteredUsersView';
-import AboutUsView from '../views/AboutUsView';
-import ContactView from '../views/ContactView';
-import Error404View from '../views/Error404View';
+import RootView from "../views/routing/RootView";
+import AuthViews from "../views/routing/AuthViews";
+import PrivateView from "../views/routing/PrivateView";
+import LoginView from "../views/LoginView";
+import HomeView from "../views/HomeView";
+import RegisterView from "../views/RegisterView";
+import MenuView from "../views/MenuView";
+import CartView from "../views/CartView";
+import MyAccountView from "../views/MyAccountView";
+import AdminView from "../views/AdminView";
+import CreateProductView from "../views/CreateProductView";
+import RegisteredUsersView from "../views/RegisteredUsersView";
+import AboutUsView from "../views/AboutUsView";
+import ContactView from "../views/ContactView";
+import Error404View from "../views/Error404View";
 
 // 2 Tipos de rutas: Públicas y Privadas
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <RootView />,
     children: [
       // RUTAS PÚBLICAS
       {
-        path: '',
+        path: "",
         element: <HomeView />,
       },
       {
-        path: 'about',
+        path: "about",
         element: <AboutUsView />,
       },
       {
-        path: 'contact',
+        path: "contact",
         element: <ContactView />,
       },
       // RUTAS DE AUTENTICACION
       // no deberían poder accederse estando logueados
       {
-        path: '',
+        path: "",
         element: <AuthViews />,
         children: [
           {
-            path: 'login',
+            path: "login",
             element: <LoginView />,
           },
           {
-            path: 'register',
+            path: "register",
             element: <RegisterView />,
           },
         ],
       },
       // RUTAS PRIVADAS
       {
-        path: '',
+        path: "",
         element: <PrivateView />,
         children: [
           {
-            path: 'menu',
+            path: "menu",
             element: <MenuView />,
           },
           {
-            path: 'cart',
+            path: "cart",
             element: <CartView />,
           },
           {
-            path: 'my-account',
+            path: "my-account",
             element: <MyAccountView />,
           },
           {
-            path: 'admin',
+            path: "admin",
             element: <AdminView />,
           },
           {
-            path: 'create-product',
+            path: "create-product",
             element: <CreateProductView />,
           },
           {
-            path: 'registered-users',
+            path: "registered-users",
             element: <RegisteredUsersView />,
           },
         ],
       },
       {
-        path: '*',
+        path: "*",
         element: <Error404View />,
       },
     ],

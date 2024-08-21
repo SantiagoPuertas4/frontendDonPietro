@@ -1,5 +1,19 @@
+nav {
+  width: 100%;
+  display: inline;
+  text-align: center;
+  margin-top: 0px;
+  position: fixed !important;
+  top: 0 !important;
+  z-index: 1 !important;
+}
+
 .logoHeader {
   max-height: 80px;
+}
+
+nav {
+  height: 10dvh;
 }
 
 .navbar {

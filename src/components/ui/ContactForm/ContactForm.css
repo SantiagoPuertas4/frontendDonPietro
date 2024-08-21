@@ -1,0 +1,24 @@
+.mainContactInput {
+  background-color: var(--color-adicional-1) !important;
+  color: var(--color-adicional-3) !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.mainContactLabel::after {
+  background-color: var(--color-adicional-1) !important;
+}
+
+.mainContactLabel {
+  color: var(--color-adicional-2) !important;
+}
+
+.btnContactanos {
+  border: 1px solid var(--color-adicional-3) !important;
+  color: var(--color-adicional-3) !important;
+  border-radius: 0 !important;
+}
+
+.textAreaContact {
+  height: 200px !important;
+}

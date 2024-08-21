@@ -1,4 +1,3 @@
-// import  React from 'react';
 import "./Footer.css";
 
 const Footer = () => {
@@ -6,9 +5,9 @@ const Footer = () => {
     <footer className="text-secondary">
       <hr />
       <section className="container text-center pt-5">
-        <h1>Copyrigth 2024 | DonPietro | Via Chiri 3017</h1>
-        <h2>(381)155-555-555</h2>
-        <div className="d-flex justify-content-evenly py-4 icon-link ">
+        <p>Copyrigth 2024 | DonPietro | Via Chiri 3017</p>
+        <p>(381) 155-555-555</p>
+        <div className="d-flex justify-content-center pb-4 icon-link ">
           <a href="https://www.facebook.com/" className="icon" target="_blank">
             <i className="bi bi-facebook"></i>
           </a>
