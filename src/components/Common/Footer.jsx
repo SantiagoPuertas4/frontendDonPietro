@@ -3,7 +3,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-secondary">
+    <footer className="text-secondary">
       <hr />
       <section className="container text-center pt-5">
         <h1>Copyrigth 2024 | DonPietro | Via Chiri 3017</h1>

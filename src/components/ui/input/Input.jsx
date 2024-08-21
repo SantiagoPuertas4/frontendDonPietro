@@ -20,7 +20,6 @@ const Input = (props) => {
           className={`form-control ${error ? 'is-invalid' : ''}`}
           id={`${name}-input`}
           placeholder={placeholder}
-          type={type}
           {...register(name, options)}
         />
         <label htmlFor={`${name}-input`}>{label}</label>
@@ -60,6 +59,7 @@ Input.propTypes = {
   options: PropTypes.object,
   placeholder: PropTypes.string,
   textarea: PropTypes.bool,
+  
 };
 
 export default Input;

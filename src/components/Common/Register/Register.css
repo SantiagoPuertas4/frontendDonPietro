@@ -1,0 +1,18 @@
+.bg-register {
+    background-color: var(--color-primario);
+}
+  
+.color-register {
+    color: var(--color-primario);
+}
+
+.custom-input{
+    background-color: #4c4c4c!important;
+    border-color:#4c4c4c!important; 
+    border-radius: none;
+}
+
+.custom-input:focus {
+    outline: 2px solid #4c4c4c !important;
+    outline-offset: 2px !important; 
+}
