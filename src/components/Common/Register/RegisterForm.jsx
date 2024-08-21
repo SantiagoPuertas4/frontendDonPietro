@@ -1,5 +1,6 @@
 import { toast } from "sonner";
 import ReCAPTCHA from "react-google-recaptcha";
+import emailjs from "@emailjs/browser";
 
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
@@ -15,6 +16,9 @@ import InvalidFeedback from "../../ui/InvalidFeedback/InvalidFeedback";
 import "./Register.css";
 
 const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
+const SERVICE_ID = import.meta.env.VITE_MAIL_SERVICE_ID;
+const TEMPLATE_ID_REGISTER = import.meta.env.VITE_MAIL_TEMPLATE_REGISTER_ID;
+const PUBLIC_KEY = import.meta.env.VITE_MAIL_PUBLIC_KEY;
 
 const RegisterForm = () => {
   const [captcha, setCaptcha] = useState(null);
@@ -53,6 +57,27 @@ const RegisterForm = () => {
       toast.dismiss();
       toast.success(`Registrado. Bienvenido, ${userData.username}`);
 
+      let dataMail = {
+        address: userData.email,
+        user_name: userData.fullname,
+      };
+
+      emailjs
+        .send(SERVICE_ID, TEMPLATE_ID_REGISTER, dataMail, {
+          publicKey: PUBLIC_KEY,
+        })
+        .then(
+          () => {
+            toast.dismiss();
+            toast.success("Se envio un correo a tu mail!");
+            reset();
+          },
+          (error) => {
+            toast.dismiss();
+            toast.error(error || "El correo no pudo ser enviado correctamente");
+          }
+        );
+
       reset();
 
       // Hacer el login en el cliente
@@ -80,18 +105,20 @@ const RegisterForm = () => {
 
     setCaptcha(false);
 
+    let pass1 = getValues("password");
+    let pass2 = getValues("repeatPassword");
+    if (pass1 !== pass2 || pass2 !== pass1) {
+      toast.error("Las contraseñas no coinciden");
+      setTimeout(toast.dismiss(), 2000);
+      return;
+    }
+
     const transformedData = {
       fullname: data.fullname,
       username: data.username,
       email: data.email,
       password: data.password,
     };
-    let pass1 = getValues("password");
-    let pass2 = getValues("repeatPassword");
-    if (pass1 !== pass2) {
-      toast.error("Las contraseñas no coinciden");
-      return;
-    }
     toast.loading("Guardando nuevo usuario");
     postRegister(transformedData);
   };
@@ -113,7 +140,7 @@ const RegisterForm = () => {
     <form className="row g-2" onSubmit={onSubmitRHF(handleSubmit)}>
       <div className="col-12 col-md-4">
         <Input
-          error={errors.fullname}
+          errors={errors.fullname}
           label="Nombre"
           name="fullname"
           options={{
@@ -129,7 +156,7 @@ const RegisterForm = () => {
       </div>
       <div className="col-12 col-md-4">
         <Input
-          error={errors.username}
+          errors={errors.username}
           label="Nombre de usuario"
           name="username"
           options={{
@@ -145,7 +172,7 @@ const RegisterForm = () => {
       </div>
       <div className="col-12 col-md-4">
         <Input
-          error={errors.email}
+          errors={errors.email}
           label="Correo electronico"
           name="email"
           options={{
@@ -159,7 +186,7 @@ const RegisterForm = () => {
       </div>
       <div className="col-12 col-md-6 relative">
         <Input
-          error={errors.password}
+          errors={errors.password}
           label="Contraseña"
           name="password"
           options={{
@@ -173,7 +200,7 @@ const RegisterForm = () => {
             },
             maxLength: 15,
             pattern: {
-              value: /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+              value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[.,@()]).{8,}$/,
               message:
                 "La contraseña debe tener al menos 8 caracteres, una minúscula y una mayúscula",
             },
@@ -184,8 +211,8 @@ const RegisterForm = () => {
       </div>
       <div className="col-12 col-md-6 relative">
         <Input
-          error={errors.password}
-          label="Repetir Contraseña"
+          errors={errors.passwordRepeat}
+          label="Repetir contraseña"
           name="repeatPassword"
           options={{
             required: {
@@ -198,9 +225,9 @@ const RegisterForm = () => {
             },
             maxLength: 15,
             pattern: {
-              value:
-                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/,
-              message: "Revisar",
+              value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[.,@()]).{8,}$/,
+              message:
+                "La contraseña debe tener al menos 8 caracteres, una minúscula y una mayúscula",
             },
           }}
           register={register}
@@ -212,7 +239,7 @@ const RegisterForm = () => {
           <InvalidFeedback
             noInput={true}
             divClass="text-center mb-2"
-            msg="El Captcha debe ser resuelto para poder enviar un mail"
+            msg="El Captcha debe ser resuelto para poder registrarte"
           />
         )}
         <ReCAPTCHA
