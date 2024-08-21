@@ -45,7 +45,7 @@ const Header = () => {
         >
           <i className="bi bi-list"></i>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse prueba navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <NavLink
