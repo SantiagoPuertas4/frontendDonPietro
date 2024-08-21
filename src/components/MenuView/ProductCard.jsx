@@ -5,8 +5,8 @@ import Swal from 'sweetalert2';
 
 const ProductCard = (props) => {
   const { product } = props;
-  const [localStock, setLocalStock] = useState(product.stock);
-  const addToCart = useCart((state) => state.addToCart);
+  const { addToCart, getCartItem } = useCart();
+  const [localStock, setLocalStock] = useState(product.stock - (getCartItem(product.id)?.quantity || 0));
 
   const handleAddToCart = () => {
     if (localStock > 0) {

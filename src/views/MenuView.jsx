@@ -71,6 +71,9 @@ export const MenuView = () => {
           inputPlaceholder: "Selecciona un número",
           showCancelButton: false,
           confirmButtonText: "Guardar",
+          customClass: {
+            confirmButton: "swal-button",
+          },
           cancelButtonText: "Cerrar sesión",
           showDenyButton: true,
           denyButtonText: "Cerrar sesión",

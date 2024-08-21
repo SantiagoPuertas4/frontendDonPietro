@@ -15,10 +15,13 @@ const CartView = () => {
 
   const handleOrder = () => {
     Swal.fire({
-      title: "Éxito!",
+      title: "¡Éxito!",
       text: "Pedido realizado con éxito",
       icon: "success",
       confirmButtonText: "Aceptar",
+      customClass: {
+        confirmButton: "swal-button",
+      },
     }).then(() => {
       clearCart();
     });
@@ -30,6 +33,34 @@ const CartView = () => {
     } else {
       updateItemQuantity(itemId, newQuantity);
     }
+  };
+
+  const handleClearCart = () => {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esto vaciará todo el carrito. Esta acción no se puede deshacer.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, vaciar carrito",
+      cancelButtonText: "Cancelar",
+      customClass: {
+        confirmButton: "swal-button",
+        cancelButton: "swal-button-cancel",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        clearCart();
+        Swal.fire({
+          title: "¡Carrito vacío!",
+          text: "El carrito ha sido vaciado con éxito.",
+          icon: "success",
+          confirmButtonText: "Aceptar",
+          customClass: {
+            confirmButton: "swal-button",
+          },
+        });
+      }
+    });
   };
 
   if (items.length === 0) {
@@ -69,7 +100,8 @@ const CartView = () => {
               <tr key={item.id}>
                 <td data-label="Producto">{item.name}</td>
                 <td data-label="Cantidad">
-                  <button className="btn-quantity"
+                  <button
+                    className="btn-quantity"
                     onClick={() =>
                       handleQuantityChange(item.id, item.quantity - 1)
                     }
@@ -78,10 +110,12 @@ const CartView = () => {
                     -
                   </button>
                   {item.quantity}
-                  <button className="btn-quantity"
+                  <button
+                    className="btn-quantity"
                     onClick={() =>
                       handleQuantityChange(item.id, item.quantity + 1)
                     }
+                    disabled={item.quantity >= item.stock}
                   >
                     +
                   </button>
@@ -118,7 +152,7 @@ const CartView = () => {
           <button onClick={handleOrder} className="btn-order">
             Realizar Pedido
           </button>
-          <button onClick={clearCart} className="btn-clear">
+          <button onClick={handleClearCart} className="btn-clear">
             Vaciar Carrito
           </button>
         </section>
