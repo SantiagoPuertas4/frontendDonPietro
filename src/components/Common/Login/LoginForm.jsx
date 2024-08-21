@@ -1,14 +1,22 @@
-import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
-import { useMutation } from '@tanstack/react-query';
-import { toast } from 'sonner';
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
 
+import { useSession } from "../../../stores/useSession";
+import { postLoginFn } from "../../../api/auth";
+import { useState } from "react";
 
-import Input from '../../ui/input/Input';
-import { useSession } from '../../../stores/useSession';
-import { postLoginFn } from '../../../api/auth';
+import Input from "../../ui/input/Input";
+import ReCAPTCHA from "react-google-recaptcha";
+import InvalidFeedback from "../../ui/InvalidFeedback/InvalidFeedback";
+import { useRef } from "react";
+
+const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
 
 const LoginForm = () => {
+  const [captcha, setCaptcha] = useState(null);
+  const captchaRef = useRef(null);
   // ---------------------------------------------
   // Zustand
   // ---------------------------------------------
@@ -39,7 +47,7 @@ const LoginForm = () => {
   const { mutate: postLogin } = useMutation({
     mutationFn: postLoginFn,
     onSuccess: (userData) => {
-      console.log(userData)
+      console.log(userData);
       toast.dismiss();
       toast.success(`Bienvenido, ${userData.fullname}`);
 
@@ -49,7 +57,7 @@ const LoginForm = () => {
       login(userData);
 
       setTimeout(() => {
-        navigate('/');
+        navigate("/");
       }, 1500);
     },
     onError: (e) => {
@@ -63,7 +71,14 @@ const LoginForm = () => {
   // ---------------------------------------------
 
   const handleSubmit = (data) => {
-    toast.loading('Cargando...');
+    if (!captchaRef.current.getValue()) {
+      setCaptcha(true);
+      return;
+    }
+
+    setCaptcha(false);
+
+    toast.loading("Cargando...");
     postLogin(data);
   };
 
@@ -71,17 +86,26 @@ const LoginForm = () => {
   // RENDERIZADO
   // ---------------------------------------------
 
+  const handleCaptchaChange = () => {
+    if (!captchaRef.current.getValue()) {
+      setCaptcha(true);
+      return;
+    }
+
+    setCaptcha(false);
+  };
+
   return (
     <form onSubmit={onSubmitRHF(handleSubmit)}>
       <Input
-        className='mb-3'
+        className="mb-3"
         error={errors.usernameOrEmail}
-        label='Nombre de usuario o Email'
-        name='usernameOrEmail'
+        label="Nombre de usuario o Email"
+        name="usernameOrEmail"
         options={{
           required: {
             value: true,
-            message: 'Este campo es requerido',
+            message: "Este campo es requerido",
           },
           minLength: 3,
           maxLength: 50,
@@ -90,26 +114,40 @@ const LoginForm = () => {
       />
       <Input
         error={errors.password}
-        label='Contraseña'
-        name='password'
+        label="Contraseña"
+        name="password"
         options={{
           required: {
             value: true,
-            message: 'Este campo es requerido',
+            message: "Este campo es requerido",
           },
           minLength: 3,
           maxLength: 20,
         }}
         register={register}
-        type='password'
+        type="password"
       />
-      <div className='text-center mt-3'>
-        <button className='btn btn-danger' type='submit'>
+      <section className="d-flex flex-column align-items-center mt-2">
+        {captcha && (
+          <InvalidFeedback
+            noInput={true}
+            divClass="text-center mb-2"
+            msg="El Captcha debe ser resuelto para poder enviar un mail"
+          />
+        )}
+        <ReCAPTCHA
+          ref={captchaRef}
+          onChange={handleCaptchaChange}
+          sitekey={CAPTCHA_KEY}
+        />
+      </section>
+      <div className="text-center mt-3">
+        <button className="btn btn-danger" type="submit">
           Ingresar
         </button>
       </div>
-      <p className='text-center text-md-start mt-2 mt-lg-0'>
-        ¿Primera vez? <Link to='/register'>Create un usuario acá</Link>
+      <p className="text-center text-md-start mt-2 mt-lg-0">
+        ¿Primera vez? <Link to="/register">Create un usuario acá</Link>
       </p>
     </form>
   );
