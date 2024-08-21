@@ -99,9 +99,9 @@ const LoginForm = () => {
     <form onSubmit={onSubmitRHF(handleSubmit)}>
       <Input
         className="mb-3"
-        error={errors.usernameOrEmail}
-        label="Nombre de usuario o Email"
-        name="usernameOrEmail"
+        error={errors.email}
+        label="Email"
+        name="Email"
         options={{
           required: {
             value: true,
@@ -121,8 +121,6 @@ const LoginForm = () => {
             value: true,
             message: "Este campo es requerido",
           },
-          minLength: 3,
-          maxLength: 20,
         }}
         register={register}
         type="password"

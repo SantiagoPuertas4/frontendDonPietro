@@ -82,7 +82,6 @@ const RegisterForm = () => {
 
     const transformedData = {
       fullname: data.fullname,
-      username: data.username,
       email: data.email,
       password: data.password,
     };
@@ -111,7 +110,7 @@ const RegisterForm = () => {
 
   return (
     <form className="row g-2" onSubmit={onSubmitRHF(handleSubmit)}>
-      <div className="col-12 col-md-4">
+      <div className="col-12 col-md-6">
         <Input
           error={errors.fullname}
           label="Nombre"
@@ -127,23 +126,7 @@ const RegisterForm = () => {
           register={register}
         />
       </div>
-      <div className="col-12 col-md-4">
-        <Input
-          error={errors.username}
-          label="Nombre de usuario"
-          name="username"
-          options={{
-            required: {
-              value: true,
-              message: "Este campo es requerido",
-            },
-            minLength: 3,
-            maxLength: 20,
-          }}
-          register={register}
-        />
-      </div>
-      <div className="col-12 col-md-4">
+      <div className="col-12 col-md-6">
         <Input
           error={errors.email}
           label="Correo electronico"
