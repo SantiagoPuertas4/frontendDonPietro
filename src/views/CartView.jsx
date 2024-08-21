@@ -23,10 +23,19 @@ const CartView = () => {
         confirmButton: "swal-button",
       },
     }).then(() => {
+
+      items.forEach((item) => {
+        const storedStock = parseInt(sessionStorage.getItem(`stock_${item.id}`), 10);
+        if (!isNaN(storedStock)) {
+          const newStock = storedStock - item.quantity;
+          sessionStorage.setItem(`stock_${item.id}`, newStock);
+          console.log(`Updated stock for ${item.id}: ${newStock}`);
+        }
+      });
       clearCart();
     });
   };
-
+  
   const handleQuantityChange = (itemId, newQuantity) => {
     if (newQuantity <= 0) {
       removeItem(itemId);
@@ -49,6 +58,14 @@ const CartView = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
+        items.forEach((item) => {
+          const storedStock = parseInt(sessionStorage.getItem(`stock_${item.id}`), 10);
+          if (!isNaN(storedStock)) {
+            const restoredStock = storedStock + item.quantity;
+            sessionStorage.setItem(`stock_${item.id}`, restoredStock);
+            console.log(`Restored stock for ${item.id}: ${restoredStock}`);
+          }
+        });
         clearCart();
         Swal.fire({
           title: "¡Carrito vacío!",

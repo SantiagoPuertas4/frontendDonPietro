@@ -99,6 +99,18 @@ export const MenuView = () => {
     requestTableNumber();
   }, [showTableNumberPrompt, setTableNumber, logout]);
 
+  useEffect(() => {
+    if (products) {
+      products.data.forEach((product) => {
+        const storedStock = parseInt(sessionStorage.getItem(`stock_${product.id}`), 10);
+        const updatedStock = isNaN(storedStock) ? product.stock : storedStock;
+        sessionStorage.setItem(`stock_${product.id}`, updatedStock);
+        console.log(`Stored stock for ${product.id}: ${updatedStock}`);
+      });
+    }
+  }, [products]);
+  
+
   if (isLoading) {
     return <p className="mt-3 text-center">Cargando productos...</p>;
   }
