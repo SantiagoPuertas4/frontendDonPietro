@@ -2,12 +2,11 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
-
-
 import { useSession } from '../../../stores/useSession';
 import Input from '../../ui/input/Input';
 import { postLoginFn } from '../../../api/auth';
-import '../Login/Login.css'
+import './Login.css'
+
 
 const LoginForm = () => {
   // ---------------------------------------------
@@ -77,7 +76,7 @@ const LoginForm = () => {
       <Input
         className='mb-3'
         error={errors.usernameOrEmail}
-        label='Nombre de usuario o Email'
+        label='CORREO ELECTRONICO'
         name='usernameOrEmail'
         options={{
           required: {
@@ -87,13 +86,13 @@ const LoginForm = () => {
           minLength: 3,
           maxLength: 50,
         }}
-        labelClassName='custom-label'
         inputClassName= 'custom-input'
+        labelClassName="custom-label"
         register={register}
       />
       <Input
         error={errors.password}
-        label='Contraseña'
+        label='CONTRASEÑA'
         name='password'
         options={{
           required: {
@@ -103,6 +102,8 @@ const LoginForm = () => {
           minLength: 3,
           maxLength: 20,
         }}
+         inputClassName= 'custom-input'
+         labelClassName="custom-label"
         register={register}
         type='password'
       />
