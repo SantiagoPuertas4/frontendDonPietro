@@ -1,30 +1,77 @@
-import { useForm } from "react-hook-form";
-import Input from "../input/Input";
-
-import "./ContactForm.css";
+import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useForm } from "react-hook-form";
 import { useRef, useState } from "react";
+import Input from "../input/Input";
 import InvalidFeedback from "../InvalidFeedback/InvalidFeedback";
+import "./ContactForm.css";
+import { toast } from "sonner";
 
 const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
+const SERVICE_ID = import.meta.env.VITE_MAIL_SERVICE_ID;
+const TEMPLATE_ID_CONTACT = import.meta.env.VITE_MAIL_TEMPLATE_CONTACT_ID;
+const TEMPLATE_ID_ADMIN = import.meta.env.VITE_MAIL_TEMPLATE_ADMIN_ID;
+const PUBLIC_KEY = import.meta.env.VITE_MAIL_PUBLIC_KEY;
 
 const ContactForm = () => {
   const [captcha, setCaptcha] = useState(null);
   const {
     register,
+    reset,
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm();
 
   const captchaRef = useRef(null);
 
-  const handleSubmit = () => {
+  const handleSubmit = (data) => {
+    const { nombreContacto, mailContacto, mensajeContacto } = data;
+    toast.loading("Registrando mensaje");
+
     if (!captchaRef.current.getValue()) {
       setCaptcha(true);
       return;
     }
 
     setCaptcha(false);
+
+    let dataContacto = {
+      user_name: nombreContacto,
+      address: mailContacto,
+      msg: mensajeContacto,
+    };
+
+    emailjs
+      .send(SERVICE_ID, TEMPLATE_ID_CONTACT, dataContacto, {
+        publicKey: PUBLIC_KEY,
+      })
+      .then(
+        () => {
+          emailjs
+            .send(SERVICE_ID, TEMPLATE_ID_ADMIN, dataContacto, {
+              publicKey: PUBLIC_KEY,
+            })
+            .then(
+              () => {
+                toast.dismiss();
+                toast.success("El mensaje fue registrado correctamente");
+                reset();
+              },
+              (error) => {
+                toast.dismiss();
+                toast.error(
+                  error || "El mensaje no pudo ser registrado correctamente"
+                );
+              }
+            );
+        },
+        (error) => {
+          toast.dismiss();
+          toast.error(
+            error || "El mensaje no pudo ser registrado correctamente"
+          );
+        }
+      );
   };
 
   const handleCaptchaChange = () => {
@@ -32,6 +79,7 @@ const ContactForm = () => {
       setCaptcha(true);
       return;
     }
+
     setCaptcha(false);
   };
 
