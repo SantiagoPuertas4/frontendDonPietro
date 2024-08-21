@@ -1,47 +1,55 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
-const getInitialCart = () => {
-  const storedCart = sessionStorage.getItem('cart');
-  return storedCart ? JSON.parse(storedCart) : [];
-};
+export const useCart = create((set, get) => {
+  const storedItems = sessionStorage.getItem("cartItems");
+  const initialItems = storedItems ? JSON.parse(storedItems) : [];
 
-export const useCart = create((set) => ({
-  items: getInitialCart(),
+  return {
+    items: initialItems,
+    addToCart: (product) => {
+      const existingItem = get().items.find((item) => item.id === product.id);
 
-  addToCart: (product) => set((state) => {
-    const existingItem = state.items.find(item => item.id === product.id);
-    let updatedItems;
+      set((state) => {
+        const newItems = existingItem
+          ? state.items.map((item) =>
+              item.id === product.id && item.quantity < product.stock
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            )
+          : [...state.items, { ...product, quantity: 1 }];
 
-    if (existingItem) {
-      updatedItems = state.items.map(item =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-    } else {
-      updatedItems = [...state.items, { ...product, quantity: 1 }];
-    }
+        sessionStorage.setItem("cartItems", JSON.stringify(newItems));
 
-    sessionStorage.setItem('cart', JSON.stringify(updatedItems));
-    return { items: updatedItems };
-  }),
+        return { items: newItems };
+      });
+    },
+    removeItem: (itemId) => {
+      set((state) => {
+        const newItems = state.items.filter((item) => item.id !== itemId);
 
-  updateItemQuantity: (id, quantity) => set((state) => {
-    const updatedItems = state.items.map(item =>
-      item.id === id ? { ...item, quantity } : item
-    );
+        sessionStorage.setItem("cartItems", JSON.stringify(newItems));
 
-    sessionStorage.setItem('cart', JSON.stringify(updatedItems));
-    return { items: updatedItems };
-  }),
+        return { items: newItems };
+      });
+    },
+    updateItemQuantity: (itemId, quantity) => {
+      set((state) => {
+        const newItems = state.items.map((item) =>
+          item.id === itemId ? { ...item, quantity } : item
+        );
 
-  removeItem: (id) => set((state) => {
-    const updatedItems = state.items.filter(item => item.id !== id);
+        sessionStorage.setItem("cartItems", JSON.stringify(newItems));
 
-    sessionStorage.setItem('cart', JSON.stringify(updatedItems));
-    return { items: updatedItems };
-  }),
+        return { items: newItems };
+      });
+    },
+    clearCart: () => {
+      set({ items: [] });
 
-  clearCart: () => {
-    sessionStorage.removeItem('cart');
-    set({ items: [] });
-  },
-}));
+      sessionStorage.removeItem("cartItems");
+    },
+    getCartItem: (itemId) => {
+      return get().items.find((item) => item.id === itemId);
+    },
+  };
+});

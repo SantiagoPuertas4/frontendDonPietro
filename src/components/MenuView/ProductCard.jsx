@@ -1,18 +1,30 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '../../stores/useCart';
 import Swal from 'sweetalert2';
 
 const ProductCard = (props) => {
   const { product } = props;
-  const [localStock, setLocalStock] = useState(product.stock);
-  const addToCart = useCart((state) => state.addToCart);
+  const { addToCart, getCartItem } = useCart();
+  const [localStock, setLocalStock] = useState(() => {
+    const storedStock = parseInt(sessionStorage.getItem(`stock_${product.id}`), 10);
+    return storedStock - (getCartItem(product.id)?.quantity || 0);
+  });
+
+  useEffect(() => {
+    const storedStock = parseInt(sessionStorage.getItem(`stock_${product.id}`), 10);
+    setLocalStock(storedStock - (getCartItem(product.id)?.quantity || 0));
+  }, [getCartItem(product.id)]);
 
   const handleAddToCart = () => {
-    if (localStock > 0) {
+    const cartItem = getCartItem(product.id);
+    const availableStock = parseInt(sessionStorage.getItem(`stock_${product.id}`), 10);
+    const currentQuantity = cartItem ? cartItem.quantity : 0;
+  
+    if (availableStock > currentQuantity) {
       addToCart(product);
-      setLocalStock(localStock - 1);
-      
+      setLocalStock(availableStock - (currentQuantity + 1));
+  
       Swal.fire({
         title: 'Producto añadido',
         text: `${product.name} se ha añadido a tu carrito.`,
@@ -20,8 +32,16 @@ const ProductCard = (props) => {
         timer: 1500,
         showConfirmButton: false,
       });
+    } else {
+      Swal.fire({
+        title: 'Sin stock',
+        text: 'No hay suficiente stock para añadir más unidades.',
+        icon: 'error',
+        timer: 1500,
+        showConfirmButton: false,
+      });
     }
-  };
+  };  
 
   return (
     <section className='card text-center'>
