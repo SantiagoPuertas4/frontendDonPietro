@@ -1,8 +1,9 @@
 import { useLoadScript, GoogleMap } from "@react-google-maps/api";
 import { useState, useEffect, useRef } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./LocationMap.css";
 
-const libraries = ['places'];
+const libraries = ["places"];
 
 const LocationMap = () => {
   const { isLoaded } = useLoadScript({
@@ -10,12 +11,11 @@ const LocationMap = () => {
     libraries,
   });
 
-  const [location] = useState({ lat: 40.7128, lng: -74.0060 });
+  const [location] = useState({ lat: 40.7128, lng: -74.006 });
   const mapRef = useRef(null);
-  
+
   //Para almacenar la referencia del marcador
-  const markerRef = useRef(null); 
-  
+  const markerRef = useRef(null);
 
   useEffect(() => {
     if (isLoaded && mapRef.current) {
