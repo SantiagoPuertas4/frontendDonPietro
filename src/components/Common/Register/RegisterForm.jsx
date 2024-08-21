@@ -2,7 +2,7 @@ import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-// import { useSession } from "../../../stores/useSession";
+import { useSession } from "../../../stores/useSession";
 import Input from "../../ui/Input/Input";
 import "./Register.css";
 import { postRegisterFn } from "../../../api/auth";
@@ -12,7 +12,7 @@ const RegisterForm = () => {
   // Zustand
   // ---------------------------------------------
 
-
+  const { login } = useSession();
 
   // ---------------------------------------------
   // RRD
@@ -39,10 +39,12 @@ const RegisterForm = () => {
     mutationFn: postRegisterFn,
     onSuccess: (userData) => {
       toast.dismiss();
-      toast.success(`Registrado. Bienvenido, ${userData.fullname}`);
+      toast.success(`Registrado. Bienvenido, ${userData.username}`);
 
       reset();
 
+      // Hacer el login en el cliente
+      login(userData);
 
       setTimeout(() => {
         navigate("/");
@@ -66,8 +68,6 @@ const RegisterForm = () => {
       password: data.password,
     };
     toast.loading("Guardando nuevo usuario");
-    console.log(transformedData);
-    console.log(data);
     postRegister(transformedData);
   };
 
