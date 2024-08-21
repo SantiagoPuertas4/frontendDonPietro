@@ -51,7 +51,7 @@ const RegisterForm = () => {
     mutationFn: postRegisterFn,
     onSuccess: (userData) => {
       toast.dismiss();
-      toast.success(`Registrado. Bienvenido, ${userData.username}`);
+      toast.success(`Registrado. Bienvenido, ${userData.fullname}`);
 
       reset();
 

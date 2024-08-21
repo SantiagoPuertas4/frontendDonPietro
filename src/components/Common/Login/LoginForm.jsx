@@ -61,6 +61,7 @@ const LoginForm = () => {
       }, 1500);
     },
     onError: (e) => {
+      console.log(e);
       toast.dismiss();
       toast.warning(e.message);
     },
@@ -79,6 +80,7 @@ const LoginForm = () => {
     setCaptcha(false);
 
     toast.loading("Cargando...");
+    console.log(data);
     postLogin(data);
   };
 
@@ -100,8 +102,8 @@ const LoginForm = () => {
       <Input
         className="mb-3"
         error={errors.email}
-        label="Email"
-        name="Email"
+        label="Correo electronico"
+        name="email"
         options={{
           required: {
             value: true,
