@@ -33,15 +33,16 @@ export const postLoginFn = async (data) => {
 };
 
 export const postRegisterFn = async (data) => {
+  (data);
   const res = await fetch(`${BACKEND_URL}/users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      firstname: data.firstname,
-      lastname: data.lastname,
+      fullname: data.fullname,
       username: data.username,
+      email: data.email,
       password: data.password,
     }),
   });
@@ -49,12 +50,11 @@ export const postRegisterFn = async (data) => {
   if (!res.ok) {
     throw new Error('Ocurrió un error guardando el usuario');
   }
-
-  // Token en registro
   const userData = await postLoginFn({
-    username: data.username,
+    usernameOrEmail: data.username,
     password: data.password,
   });
 
   return userData;
+
 };

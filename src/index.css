@@ -18,36 +18,6 @@
   flex-direction: column;
 }
 
-.logoHeader {
-  max-height: 80px;
-}
-
-.navbar {
-  padding: 0;
-}
-
-.custom-padding {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.nav-link.active {
-  color: var(--color-primario);
-  font-weight: bold;
-  border-bottom: 2px solid var(--color-primario);
-  padding-bottom: 2px;
-}
-
-.nav-link {
-  color: var(--color-adicional-3);
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: var(--color-primario);
-}
-
-.bi-list {
-  color: var(--color-primario);
-  font-size: 30px;
+.marginHeader {
+  margin-top: 10dvh;
 }
