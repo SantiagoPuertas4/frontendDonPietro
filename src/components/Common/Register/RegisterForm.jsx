@@ -1,13 +1,24 @@
 import { toast } from "sonner";
-import { useMutation } from "@tanstack/react-query";
+import ReCAPTCHA from "react-google-recaptcha";
+
 import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../../../stores/useSession";
-import Input from "../../ui/input/Input";
-import "./Register.css";
+import { useState } from "react";
+import { useRef } from "react";
+
 import { postRegisterFn } from "../../../api/auth";
+import Input from "../../ui/input/Input";
+import InvalidFeedback from "../../ui/InvalidFeedback/InvalidFeedback";
+
+import "./Register.css";
+
+const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
 
 const RegisterForm = () => {
+  const [captcha, setCaptcha] = useState(null);
+  const captchaRef = useRef(null);
   // ---------------------------------------------
   // Zustand
   // ---------------------------------------------
@@ -62,6 +73,13 @@ const RegisterForm = () => {
   // ---------------------------------------------
 
   const handleSubmit = (data) => {
+    if (!captchaRef.current.getValue()) {
+      setCaptcha(true);
+      return;
+    }
+
+    setCaptcha(false);
+
     const transformedData = {
       fullname: data.fullname,
       username: data.username,
@@ -76,6 +94,15 @@ const RegisterForm = () => {
     }
     toast.loading("Guardando nuevo usuario");
     postRegister(transformedData);
+  };
+
+  const handleCaptchaChange = () => {
+    if (!captchaRef.current.getValue()) {
+      setCaptcha(true);
+      return;
+    }
+
+    setCaptcha(false);
   };
 
   // ---------------------------------------------
@@ -180,6 +207,20 @@ const RegisterForm = () => {
           type="password"
         />
       </div>
+      <section className="d-flex flex-column align-items-center mt-2">
+        {captcha && (
+          <InvalidFeedback
+            noInput={true}
+            divClass="text-center mb-2"
+            msg="El Captcha debe ser resuelto para poder enviar un mail"
+          />
+        )}
+        <ReCAPTCHA
+          ref={captchaRef}
+          onChange={handleCaptchaChange}
+          sitekey={CAPTCHA_KEY}
+        />
+      </section>
       <div className="text-center mt-3">
         <button className="btn btn-outline-light" type="submit">
           Registrar
