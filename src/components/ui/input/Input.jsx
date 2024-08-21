@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import InvalidFeedback from "../InvalidFeedback/InvalidFeedback";
 
 const Input = (props) => {
   const {
@@ -56,11 +57,7 @@ const Input = (props) => {
       <label htmlFor={`${name}-input`} className={labelClassName}>
         {label}
       </label>
-      <div className="invalid-feedback">
-        <span className="badge text-bg-danger text-wrap text-break">
-          {errors?.message}
-        </span>
-      </div>
+      <InvalidFeedback msg={errors?.message} />
     </fieldset>
   );
 };
