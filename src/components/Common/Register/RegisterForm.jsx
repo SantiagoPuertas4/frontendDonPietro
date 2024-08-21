@@ -29,6 +29,7 @@ const RegisterForm = () => {
     handleSubmit: onSubmitRHF,
     formState: { errors },
     reset,
+    getValues,
   } = useForm();
 
   // ---------------------------------------------
@@ -67,6 +68,12 @@ const RegisterForm = () => {
       email: data.email,
       password: data.password,
     };
+    let pass1 = getValues("password");
+    let pass2 = getValues("repeatPassword");
+    if (pass1!== pass2) {
+      toast.error("Las contraseñas no coinciden");
+      return;
+    }
     toast.loading("Guardando nuevo usuario");
     postRegister(transformedData);
   };
@@ -168,10 +175,6 @@ const RegisterForm = () => {
                 /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/,
               message: "Revisar",
             },
-            // TODO: Revisar que las contraseñas coincidan
-            // validate: (value) => {
-            //     return value === data.password
-            // }
           }}
           register={register}
           type="password"
@@ -181,6 +184,9 @@ const RegisterForm = () => {
         <button className="btn btn-outline-light" type="submit">
           Registrar
         </button>
+        <p className="mt-3">
+          ¿Ya tienes una cuenta? <a href="/login" className="color-register">Inicia sesión</a>
+        </p>
       </div>
     </form>
   );
