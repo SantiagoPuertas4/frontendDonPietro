@@ -13,7 +13,6 @@ import "./ContactForm.css";
 const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
 const SERVICE_ID = import.meta.env.VITE_MAIL_SERVICE_ID;
 const TEMPLATE_ID_CONTACT = import.meta.env.VITE_MAIL_TEMPLATE_CONTACT_ID;
-const TEMPLATE_ID_ADMIN = import.meta.env.VITE_MAIL_TEMPLATE_ADMIN_ID;
 const PUBLIC_KEY = import.meta.env.VITE_MAIL_PUBLIC_KEY;
 
 const ContactForm = () => {
@@ -38,20 +37,46 @@ const ContactForm = () => {
 
     setCaptcha(false);
 
-    let dataContacto = {
-      user_name: nombreContacto,
+    let dataContactoUsuario = {
+      title: `¡Gracias por contactarnos, ${nombreContacto}!`,
       address: mailContacto,
-      msg: mensajeContacto,
+      msg: `Gracias por ponerte en contacto con nosotros a través de nuestro sitio web. Hemos recibido tu mensaje y nos pondremos en contacto contigo lo antes posible. Tu opinión y preguntas son muy importantes para nosotros, y estamos aquí para asegurarnos de que tengas la mejor experiencia posible en Don Pietro.
+
+En breve, uno de nuestros representantes se comunicará contigo para atender tu consulta.
+
+¡Gracias por elegirnos!
+
+Saludos cordiales,
+Equipo de Don Pietro`,
+    };
+
+    let dataContactoAdmin = {
+      title: `Nuevo mensaje recibido a través del formulario de contacto`,
+      address: `donpietro.grupo2@gmail.com`,
+      msg: `Hola Admin,
+
+Se ha recibido un nuevo mensaje a través del formulario de contacto en el sitio web de Don Pietro.
+
+Detalles del mensaje:
+
+Nombre del Cliente: ${nombreContacto}
+Correo Electrónico: ${mailContacto}
+Mensaje:
+${mensajeContacto}
+Por favor, revisa el mensaje y ponte en contacto con el cliente a la mayor brevedad posible.
+
+Saludos,
+Diosito`,
     };
 
     emailjs
-      .send(SERVICE_ID, TEMPLATE_ID_CONTACT, dataContacto, {
+      .send(SERVICE_ID, TEMPLATE_ID_CONTACT, dataContactoUsuario, {
         publicKey: PUBLIC_KEY,
       })
       .then(
         () => {
           emailjs
-            .send(SERVICE_ID, TEMPLATE_ID_ADMIN, dataContacto, {
+            .send(SERVICE_ID, TEMPLATE_ID_CONTACT, dataContactoAdmin, {
               publicKey: PUBLIC_KEY,
             })
             .then(
