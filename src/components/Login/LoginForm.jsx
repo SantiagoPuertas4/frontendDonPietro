@@ -49,7 +49,6 @@ const LoginForm = () => {
   const { mutate: postLogin } = useMutation({
     mutationFn: postLoginFn,
     onSuccess: (userData) => {
-      console.log(userData);
       toast.dismiss();
       toast.success(`Bienvenido, ${userData.fullname}`);
 
@@ -57,12 +56,20 @@ const LoginForm = () => {
 
       login(userData);
 
+      if (userData.isAdmin === true) {
+        setTimeout(() => {
+          navigate("/admin");
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          navigate("/menu");
+        }, 1000);
+      }
       setTimeout(() => {
-        navigate("/");
+        toast.dismiss();
       }, 1500);
     },
     onError: (e) => {
-      console.log(e);
       toast.dismiss();
       toast.warning(e.message);
     },
@@ -81,7 +88,6 @@ const LoginForm = () => {
     setCaptcha(false);
 
     toast.loading("Cargando...");
-    console.log(data);
     postLogin(data);
   };
 

@@ -46,7 +46,7 @@ const Header = () => {
           <i className="bi bi-list"></i>
         </button>
         <div className="collapse prueba navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto d-flex gap-2">
             <li className="nav-item">
               <NavLink
                 className={({ isActive }) =>
@@ -127,26 +127,6 @@ const Header = () => {
                     Administrador
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive ? "nav-link active" : "nav-link"
-                    }
-                    to="/create-product"
-                  >
-                    Crear Producto
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive ? "nav-link active" : "nav-link"
-                    }
-                    to="/registered-users"
-                  >
-                    Usuarios Registrados
-                  </NavLink>
-                </li>
               </>
             )}
             {!isAdmin && (
@@ -159,16 +139,6 @@ const Header = () => {
                     to="/about"
                   >
                     Acerca de
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive ? "nav-link active" : "nav-link"
-                    }
-                    to="/contact"
-                  >
-                    Contacto
                   </NavLink>
                 </li>
               </>

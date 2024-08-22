@@ -44,7 +44,7 @@ const UserRow = (props) => {
     const action = await Swal.fire({
       title: "Atencion",
       icon: "info",
-      html: `¿Estas seguro que deseas eliminar al usuario <b>${user.username}</b>?`,
+      html: `¿Estas seguro que deseas eliminar al usuario <b>${user.fullname}</b>?`,
       confirmButtonText: "Si, eliminar",
       cancelButtonText: "No, cancelar",
       showCancelButton: true,
@@ -60,7 +60,7 @@ const UserRow = (props) => {
     const action = await Swal.fire({
       title: "Atencion",
       icon: "info",
-      html: `¿Estas seguro que deseas cambiar el tipo de cuenta del usuario <b>${user.username}</b>?`,
+      html: `¿Estas seguro que deseas cambiar el tipo de cuenta del usuario <b>${user.fullname}</b>?`,
       confirmButtonText: "Si, cambiar",
       cancelButtonText: "No, cancelar",
       showCancelButton: true,
@@ -111,7 +111,6 @@ export default UserRow;
 UserRow.propTypes = {
   user: PropTypes.shape({
     fullname: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     isAdmin: PropTypes.bool.isRequired,

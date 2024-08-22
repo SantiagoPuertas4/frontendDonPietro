@@ -10,10 +10,7 @@ import MenuView from "../views/MenuView";
 import CartView from "../views/CartView";
 import MyAccountView from "../views/MyAccountView";
 import AdminView from "../views/AdminView";
-import CreateProductView from "../views/CreateProductView";
-import RegisteredUsersView from "../views/RegisteredUsersView";
 import AboutUsView from "../views/AboutUsView";
-import ContactView from "../views/ContactView";
 import Error404View from "../views/Error404View";
 
 // 2 Tipos de rutas: Públicas y Privadas
@@ -31,10 +28,7 @@ export const router = createBrowserRouter([
         path: "about",
         element: <AboutUsView />,
       },
-      {
-        path: "contact",
-        element: <ContactView />,
-      },
+
       // RUTAS DE AUTENTICACION
       // no deberían poder accederse estando logueados
       {
@@ -71,14 +65,6 @@ export const router = createBrowserRouter([
           {
             path: "admin",
             element: <AdminView />,
-          },
-          {
-            path: "create-product",
-            element: <CreateProductView />,
-          },
-          {
-            path: "registered-users",
-            element: <RegisteredUsersView />,
           },
         ],
       },
