@@ -5,13 +5,13 @@ import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { useSession } from "../../../stores/useSession";
+import { useSession } from "../../stores/useSession";
 import { useState } from "react";
 import { useRef } from "react";
 
-import { postRegisterFn } from "../../../api/auth";
-import Input from "../../ui/input/Input";
-import InvalidFeedback from "../../ui/InvalidFeedback/InvalidFeedback";
+import { postRegisterFn } from "../../api/auth";
+import Input from "../ui/input/Input";
+import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
 
 import "./Register.css";
 
@@ -136,87 +136,90 @@ const RegisterForm = () => {
   // ---------------------------------------------
 
   return (
-    <form className="row g-2" onSubmit={onSubmitRHF(handleSubmit)}>
-      <div className="col-12 col-md-6">
-        <Input
-          errors={errors.fullname}
-          label="Nombre"
-          name="fullname"
-          options={{
-            required: {
-              value: true,
-              message: "Este campo es requerido",
-            },
-            minLength: 3,
-            maxLength: 30,
-          }}
-          register={register}
-        />
-      </div>
-      <div className="col-12 col-md-6">
-        <Input
-          errors={errors.email}
-          label="Correo electronico"
-          name="email"
-          options={{
-            required: {
-              value: true,
-              message: "Este campo es requerido",
-            },
-          }}
-          register={register}
-        />
-      </div>
-      <div className="col-12 col-md-6 relative">
-        <Input
-          errors={errors.password}
-          label="Contraseña"
-          name="password"
-          options={{
-            required: {
-              value: true,
-              message: "Este campo es requerido",
-            },
-            minLength: {
-              value: 8,
-              message: "La contraseña debe tener al menos 8 caracteres",
-            },
-            maxLength: 15,
-            pattern: {
-              value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[.,@()]).{8,}$/,
-              message:
-                "La contraseña debe tener al menos 8 caracteres, una minúscula y una mayúscula",
-            },
-          }}
-          register={register}
-          type="password"
-        />
-      </div>
-      <div className="col-12 col-md-6 relative">
-        <Input
-          errors={errors.passwordRepeat}
-          label="Repetir contraseña"
-          name="repeatPassword"
-          options={{
-            required: {
-              value: true,
-              message: "Este campo es requerido",
-            },
-            minLength: {
-              value: 8,
-              message: "Revisar",
-            },
-            maxLength: 15,
-            pattern: {
-              value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[.,@()]).{8,}$/,
-              message:
-                "La contraseña debe tener al menos 8 caracteres, una minúscula y una mayúscula",
-            },
-          }}
-          register={register}
-          type="password"
-        />
-      </div>
+    <form
+      className="custom-form container px-4 d-flex flex-column gap-2 mb-4"
+      onSubmit={onSubmitRHF(handleSubmit)}
+    >
+      <Input
+        errors={errors.fullname}
+        label="NOMBRE"
+        name="fullname"
+        options={{
+          required: {
+            value: true,
+            message: "Este campo es requerido",
+          },
+          minLength: 3,
+          maxLength: 30,
+        }}
+        register={register}
+        labelClassName="mainContactLabel"
+        inputClassName="mainContactInput"
+      />
+      <Input
+        errors={errors.email}
+        label="CORREO ELECTRONICO"
+        name="email"
+        options={{
+          required: {
+            value: true,
+            message: "Este campo es requerido",
+          },
+        }}
+        register={register}
+        labelClassName="mainContactLabel"
+        inputClassName="mainContactInput"
+      />
+      <Input
+        errors={errors.password}
+        label="CONTRASEÑA"
+        name="password"
+        options={{
+          required: {
+            value: true,
+            message: "Este campo es requerido",
+          },
+          minLength: {
+            value: 8,
+            message: "La contraseña debe tener al menos 8 caracteres",
+          },
+          maxLength: 15,
+          pattern: {
+            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[.,@()]).{8,}$/,
+            message:
+              "La contraseña debe tener al menos 8 caracteres, una minúscula y una mayúscula",
+          },
+        }}
+        register={register}
+        type="password"
+        labelClassName="mainContactLabel"
+        inputClassName="mainContactInput"
+      />
+      <Input
+        errors={errors.passwordRepeat}
+        label="REPETIR CONTRASEÑA"
+        name="repeatPassword"
+        options={{
+          required: {
+            value: true,
+            message: "Este campo es requerido",
+          },
+          minLength: {
+            value: 8,
+            message: "Revisar",
+          },
+          maxLength: 15,
+          pattern: {
+            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[.,@()]).{8,}$/,
+            message:
+              "La contraseña debe tener al menos 8 caracteres, una minúscula y una mayúscula",
+          },
+        }}
+        register={register}
+        type="password"
+        labelClassName="mainContactLabel"
+        inputClassName="mainContactInput"
+      />
       <section className="d-flex flex-column align-items-center mt-2">
         {captcha && (
           <InvalidFeedback
@@ -231,13 +234,13 @@ const RegisterForm = () => {
           sitekey={CAPTCHA_KEY}
         />
       </section>
-      <div className="text-center mt-3">
-        <button className="btn btn-outline-light" type="submit">
+      <div className="text-center mt-2">
+        <button className="custom-btn" type="submit">
           Registrar
         </button>
-        <p className="mt-3">
+        <p className="account-question mt-4">
           ¿Ya tienes una cuenta?{" "}
-          <a href="/login" className="color-register">
+          <a href="/login" className="register-link">
             Inicia sesión
           </a>
         </p>

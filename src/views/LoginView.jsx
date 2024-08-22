@@ -1,6 +1,6 @@
-import LoginForm from "../components/Common/Login/LoginForm"
-import LocationMap from "../components/Common/Map/LocationMap";
-import '../components/Common/Login/Login.css';
+import "../components/Login/Login.css";
+import LoginForm from "../components/Login/LoginForm";
+import LocationMap from "../components/ui/Map/LocationMap";
 
 const LoginView = () => {
   return (
@@ -8,13 +8,9 @@ const LoginView = () => {
       <h1 className="login-header">Iniciar sesión</h1>
       <h2 className="login-subheader">Por favor, ingresa tus datos</h2>
       <section className="login-card">
-        <div className="row g-3">
-          <article className="col-12">
-            <LoginForm />
-          </article>
-          <article className="col-12">
-            <LocationMap/>
-          </article>
+        <div className="d-flex flex-column g-3">
+          <LoginForm />
+          <LocationMap />
         </div>
       </section>
     </>

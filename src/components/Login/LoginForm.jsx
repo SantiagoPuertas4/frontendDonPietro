@@ -4,13 +4,13 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { useSession } from "../../../stores/useSession";
-import { postLoginFn } from "../../../api/auth";
+import { useSession } from "../../stores/useSession";
+import { postLoginFn } from "../../api/auth";
 import { useState } from "react";
 import { useRef } from "react";
 
-import Input from "../../ui/input/Input";
-import InvalidFeedback from "../../ui/InvalidFeedback/InvalidFeedback";
+import Input from "../ui/input/Input";
+import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
 
 import "./Login.css";
 
@@ -101,14 +101,13 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={onSubmitRHF(handleSubmit)}
-      className="custom-form container"
+      className="custom-form container px-4 d-flex flex-column gap-2 mb-4"
     >
       <Input
         className="mb-3"
         error={errors.email}
-        label="Correo electronico"
+        label="CORREO ELECTRONICO"
         name="email"
-
         options={{
           required: {
             value: true,
@@ -117,8 +116,8 @@ const LoginForm = () => {
           minLength: 3,
           maxLength: 50,
         }}
-        inputClassName="custom-input"
-        labelClassName="custom-label"
+        labelClassName="mainContactLabel"
+        inputClassName="mainContactInput"
         register={register}
       />
       <Input
@@ -131,8 +130,8 @@ const LoginForm = () => {
             message: "Este campo es requerido",
           },
         }}
-        inputClassName="custom-input"
-        labelClassName="custom-label"
+        labelClassName="mainContactLabel"
+        inputClassName="mainContactInput"
         register={register}
         type="password"
       />
@@ -150,12 +149,12 @@ const LoginForm = () => {
           sitekey={CAPTCHA_KEY}
         />
       </section>
-      <div className="text-center mt-3">
+      <div className="text-center mt-2">
         <button className="custom-btn" type="submit">
           Ingresar
         </button>
       </div>
-      <p className="account-question">
+      <p className="account-question mt-4">
         ¿Aun no tienes cuenta?{" "}
         <Link to="/register" className="register-link">
           Ingresá aqui
