@@ -1,0 +1,68 @@
+.login-header {
+  text-align: center;
+  color: white;
+  padding: 20px 0;
+  background-color: #ef8a3a;
+  width: 100%;
+  margin: 0;
+}
+
+.login-subheader {
+  text-align: center;
+  color: white;
+  padding: 40px 0;
+}
+
+.login-card {
+  background-color: #111518;
+  color: dark;
+  max-width: 500px;
+  margin: auto;
+}
+
+.custom-btn {
+  background-color: #111518;
+  border: 2px solid white;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 0px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-input {
+  background-color: #4c4c4c !important;
+  border-color: #4c4c4c !important;
+  border-radius: 0;
+}
+
+.custom-input:focus {
+  outline: 2px solid #4c4c4c;
+  outline-offset: 2px;
+}
+
+.custom-label {
+  color: #000000 !important;
+  font-weight: bold !important;
+}
+
+.custom-btn:hover {
+  background-color: #ef8a3a;
+  border-color: #ef8a3a;
+}
+
+.account-question {
+  color: #cf554a;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register-link {
+  color: #ef8a3a;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}

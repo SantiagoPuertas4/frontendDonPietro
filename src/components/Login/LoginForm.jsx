@@ -4,13 +4,15 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { useSession } from "../../../stores/useSession";
-import { postLoginFn } from "../../../api/auth";
+import { useSession } from "../../stores/useSession";
+import { postLoginFn } from "../../api/auth";
 import { useState } from "react";
 import { useRef } from "react";
 
-import Input from "../../ui/input/Input";
-import InvalidFeedback from "../../ui/InvalidFeedback/InvalidFeedback";
+import Input from "../ui/input/Input";
+import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
+
+import "./Login.css";
 
 const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
 
@@ -53,7 +55,6 @@ const LoginForm = () => {
 
       reset();
 
-      // Hacer el login en el cliente
       login(userData);
 
       setTimeout(() => {
@@ -61,6 +62,7 @@ const LoginForm = () => {
       }, 1500);
     },
     onError: (e) => {
+      console.log(e);
       toast.dismiss();
       toast.warning(e.message);
     },
@@ -79,6 +81,7 @@ const LoginForm = () => {
     setCaptcha(false);
 
     toast.loading("Cargando...");
+    console.log(data);
     postLogin(data);
   };
 
@@ -96,12 +99,15 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmitRHF(handleSubmit)}>
+    <form
+      onSubmit={onSubmitRHF(handleSubmit)}
+      className="custom-form container px-4 d-flex flex-column gap-2 mb-4"
+    >
       <Input
         className="mb-3"
-        error={errors.usernameOrEmail}
-        label="Nombre de usuario o Email"
-        name="usernameOrEmail"
+        error={errors.email}
+        label="CORREO ELECTRONICO"
+        name="email"
         options={{
           required: {
             value: true,
@@ -110,20 +116,22 @@ const LoginForm = () => {
           minLength: 3,
           maxLength: 50,
         }}
+        labelClassName="mainContactLabel"
+        inputClassName="mainContactInput"
         register={register}
       />
       <Input
         error={errors.password}
-        label="Contraseña"
+        label="CONTRASEÑA"
         name="password"
         options={{
           required: {
             value: true,
             message: "Este campo es requerido",
           },
-          minLength: 3,
-          maxLength: 20,
         }}
+        labelClassName="mainContactLabel"
+        inputClassName="mainContactInput"
         register={register}
         type="password"
       />
@@ -141,13 +149,16 @@ const LoginForm = () => {
           sitekey={CAPTCHA_KEY}
         />
       </section>
-      <div className="text-center mt-3">
-        <button className="btn btn-danger" type="submit">
+      <div className="text-center mt-2">
+        <button className="custom-btn" type="submit">
           Ingresar
         </button>
       </div>
-      <p className="text-center text-md-start mt-2 mt-lg-0">
-        ¿Primera vez? <Link to="/register">Create un usuario acá</Link>
+      <p className="account-question mt-4">
+        ¿Aun no tienes cuenta?{" "}
+        <Link to="/register" className="register-link">
+          Ingresá aqui
+        </Link>
       </p>
     </form>
   );

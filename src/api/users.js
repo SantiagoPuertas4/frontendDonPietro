@@ -13,7 +13,10 @@ export const getUsersFn = async () => {
   const data = await res.json();
 
   if (!res.ok) {
-    throw new Error("Ocurrio un error cargando la lista de usuarios");
+    const resData = await res.json();
+    throw new Error(
+      resData.message || "Ocurrio un error cargando la lista de usuarios"
+    );
   }
 
   return data;
@@ -30,8 +33,10 @@ export const deleteUserFn = async (userId) => {
   });
 
   if (!res.ok) {
+    const resData = await res.json();
     throw new Error(
-      "Ocurrio un error intentando eliminar al usuario seleccionado"
+      resData.message ||
+        "Ocurrio un error intentando eliminar al usuario seleccionado"
     );
   }
 };
@@ -47,8 +52,10 @@ export const toggleUserFn = async (userId) => {
   });
 
   if (!res.ok) {
+    const resData = await res.json();
     throw new Error(
-      "Ocurrio un error intentando cambiar el tipo de cuenta al usuario seleccionado"
+      resData.message ||
+        "Ocurrio un error intentando cambiar el tipo de cuenta al usuario seleccionado"
     );
   }
 };

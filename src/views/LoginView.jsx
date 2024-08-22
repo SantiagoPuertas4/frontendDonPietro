@@ -1,33 +1,20 @@
-import LoginForm from "../components/Common/Login/LoginForm";
+import "../components/Login/Login.css";
+import LoginForm from "../components/Login/LoginForm";
+import LocationMap from "../components/ui/Map/LocationMap";
 
 const LoginView = () => {
   return (
     <>
-      <h1 className="text-center text-white" style={{ padding: "20px 0", backgroundColor: "#ef8a3a" }}>Iniciar sesión</h1>
-      <h2 className="text-center text-white">Por favor ingresa tus datos</h2>
-      <section
-        className="card bg-white text-dark p-3 container-sm mx-auto"
-        style={{ maxWidth: "500px" }}
-      >
-        
-        <div className="row g-3">
-          {/* Parte izquierda */}
-          <article className="col-12">
-            <hr />
-            <LoginForm />
-          </article>
-
-          {/* Parte derecha */}
-          <article className="col-12">
-            <img
-              alt="Hamburguesa"
-              className="rounded w-100"
-              src="/img-login.png"
-            />
-          </article>
+      <h1 className="login-header">Iniciar sesión</h1>
+      <h2 className="login-subheader">Por favor, ingresa tus datos</h2>
+      <section className="login-card">
+        <div className="d-flex flex-column g-3">
+          <LoginForm />
+          <LocationMap />
         </div>
       </section>
     </>
   );
 };
+
 export default LoginView;
