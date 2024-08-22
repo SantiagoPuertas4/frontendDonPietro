@@ -13,7 +13,10 @@ export const postProductsFn = async (data) => {
   });
 
   if (!res.ok) {
-    throw new Error("Ocurrió un error guardando el producto");
+    const resData = await res.json();
+    throw new Error(
+      resData.message || "Ocurrió un error guardando el producto"
+    );
   }
 };
 
@@ -22,7 +25,10 @@ export const getProductsFn = async () => {
   const data = await res.json();
 
   if (!res.ok) {
-    throw new Error("Ocurrió un error leyendo los productos");
+    const resData = await res.json();
+    throw new Error(
+      resData.message || "Ocurrió un error leyendo los productos"
+    );
   }
 
   return data;
@@ -33,7 +39,10 @@ export const getProductByIdFn = async (productId) => {
   const data = await res.json();
 
   if (!res.ok) {
-    throw new Error("Ocurrió un error leyendo el producto seleccionado");
+    const resData = await res.json();
+    throw new Error(
+      resData.message || "Ocurrió un error leyendo el producto seleccionado"
+    );
   }
 
   return data;
@@ -50,8 +59,10 @@ export const deleteProductsFn = async (productId) => {
   });
 
   if (!res.ok) {
+    const resData = await res.json();
     throw new Error(
-      "Ocurrió un error intentando eliminar el producto seleccionado"
+      resData.message ||
+        "Ocurrió un error intentando eliminar el producto seleccionado"
     );
   }
 };
@@ -69,8 +80,10 @@ export const putProductsFn = async ({ productId, data }) => {
   });
 
   if (!res.ok) {
+    const resData = await res.json();
     throw new Error(
-      "Ocurrió un error intentando editar el producto seleccionado"
+      resData.message ||
+        "Ocurrió un error intentando editar el producto seleccionado"
     );
   }
 };

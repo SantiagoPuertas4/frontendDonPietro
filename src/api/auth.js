@@ -47,8 +47,10 @@ export const postRegisterFn = async (data) => {
   });
 
   if (!res.ok) {
-    throw new Error("Ocurrió un error guardando el usuario");
+    const resData = await res.json();
+    throw new Error(resData.message || "Ocurrió un error");
   }
+
   const userData = await postLoginFn({
     email: data.email,
     password: data.password,
