@@ -60,6 +60,9 @@ const LoginForm = () => {
       setTimeout(() => {
         navigate("/");
       }, 1500);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 1500);
     },
     onError: (e) => {
       console.log(e);
