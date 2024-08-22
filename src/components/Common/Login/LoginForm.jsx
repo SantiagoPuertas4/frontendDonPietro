@@ -12,6 +12,8 @@ import { useRef } from "react";
 import Input from "../../ui/input/Input";
 import InvalidFeedback from "../../ui/InvalidFeedback/InvalidFeedback";
 
+import "./Login.css";
+
 const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
 
 const LoginForm = () => {
@@ -53,7 +55,6 @@ const LoginForm = () => {
 
       reset();
 
-      // Hacer el login en el cliente
       login(userData);
 
       setTimeout(() => {
@@ -98,12 +99,16 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmitRHF(handleSubmit)}>
+    <form
+      onSubmit={onSubmitRHF(handleSubmit)}
+      className="custom-form container"
+    >
       <Input
         className="mb-3"
         error={errors.email}
         label="Correo electronico"
         name="email"
+
         options={{
           required: {
             value: true,
@@ -112,11 +117,13 @@ const LoginForm = () => {
           minLength: 3,
           maxLength: 50,
         }}
+        inputClassName="custom-input"
+        labelClassName="custom-label"
         register={register}
       />
       <Input
         error={errors.password}
-        label="Contraseña"
+        label="CONTRASEÑA"
         name="password"
         options={{
           required: {
@@ -124,6 +131,8 @@ const LoginForm = () => {
             message: "Este campo es requerido",
           },
         }}
+        inputClassName="custom-input"
+        labelClassName="custom-label"
         register={register}
         type="password"
       />
@@ -142,12 +151,15 @@ const LoginForm = () => {
         />
       </section>
       <div className="text-center mt-3">
-        <button className="btn btn-danger" type="submit">
+        <button className="custom-btn" type="submit">
           Ingresar
         </button>
       </div>
-      <p className="text-center text-md-start mt-2 mt-lg-0">
-        ¿Primera vez? <Link to="/register">Create un usuario acá</Link>
+      <p className="account-question">
+        ¿Aun no tienes cuenta?{" "}
+        <Link to="/register" className="register-link">
+          Ingresá aqui
+        </Link>
       </p>
     </form>
   );
