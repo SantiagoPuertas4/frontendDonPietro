@@ -5,7 +5,7 @@ nav {
   margin-top: 0px;
   position: fixed !important;
   top: 0 !important;
-  z-index: 1 !important;
+  z-index: 100 !important;
 }
 
 .logoHeader {

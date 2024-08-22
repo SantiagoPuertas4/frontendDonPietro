@@ -4,13 +4,13 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { useSession } from "../../../stores/useSession";
-import { postLoginFn } from "../../../api/auth";
+import { useSession } from "../../stores/useSession";
+import { postLoginFn } from "../../api/auth";
 import { useState } from "react";
 import { useRef } from "react";
 
-import Input from "../../ui/input/Input";
-import InvalidFeedback from "../../ui/InvalidFeedback/InvalidFeedback";
+import Input from "../ui/input/Input";
+import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
 
 import "./Login.css";
 
@@ -101,14 +101,13 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={onSubmitRHF(handleSubmit)}
-      className="custom-form container"
+      className="custom-form container px-4 d-flex flex-column gap-2 mb-5"
     >
       <Input
         className="mb-3"
         error={errors.email}
         label="Correo electronico"
         name="email"
-
         options={{
           required: {
             value: true,

@@ -5,13 +5,13 @@ import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { useSession } from "../../../stores/useSession";
+import { useSession } from "../../stores/useSession";
 import { useState } from "react";
 import { useRef } from "react";
 
-import { postRegisterFn } from "../../../api/auth";
-import Input from "../../ui/input/Input";
-import InvalidFeedback from "../../ui/InvalidFeedback/InvalidFeedback";
+import { postRegisterFn } from "../../api/auth";
+import Input from "../ui/input/Input";
+import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
 
 import "./Register.css";
 
