@@ -151,6 +151,8 @@ const RegisterForm = () => {
             maxLength: 30,
           }}
           register={register}
+          labelClassName="mainContactLabel"
+          inputClassName="mainContactInput"
         />
       </div>
       <div className="col-12 col-md-6">
@@ -165,6 +167,8 @@ const RegisterForm = () => {
             },
           }}
           register={register}
+          labelClassName="mainContactLabel"
+          inputClassName="mainContactInput"
         />
       </div>
       <div className="col-12 col-md-6 relative">
@@ -190,6 +194,8 @@ const RegisterForm = () => {
           }}
           register={register}
           type="password"
+          labelClassName="mainContactLabel"
+          inputClassName="mainContactInput"
         />
       </div>
       <div className="col-12 col-md-6 relative">
@@ -215,6 +221,8 @@ const RegisterForm = () => {
           }}
           register={register}
           type="password"
+          labelClassName="mainContactLabel"
+          inputClassName="mainContactInput"
         />
       </div>
       <section className="d-flex flex-column align-items-center mt-2">
