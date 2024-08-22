@@ -9,12 +9,8 @@ const LoginView = () => {
       <h2 className="login-subheader">Por favor, ingresa tus datos</h2>
       <section className="login-card">
         <div className="d-flex flex-column g-3">
-          <article className="">
-            <LoginForm />
-          </article>
-          <article className="">
-            <LocationMap />
-          </article>
+          <LoginForm />
+          <LocationMap />
         </div>
       </section>
     </>
