@@ -61,6 +61,7 @@ const LoginForm = () => {
       }, 1500);
     },
     onError: (e) => {
+      console.log(e);
       toast.dismiss();
       toast.warning(e.message);
     },
@@ -79,6 +80,7 @@ const LoginForm = () => {
     setCaptcha(false);
 
     toast.loading("Cargando...");
+    console.log(data);
     postLogin(data);
   };
 
@@ -99,9 +101,9 @@ const LoginForm = () => {
     <form onSubmit={onSubmitRHF(handleSubmit)}>
       <Input
         className="mb-3"
-        error={errors.usernameOrEmail}
-        label="Nombre de usuario o Email"
-        name="usernameOrEmail"
+        error={errors.email}
+        label="Correo electronico"
+        name="email"
         options={{
           required: {
             value: true,
@@ -121,8 +123,6 @@ const LoginForm = () => {
             value: true,
             message: "Este campo es requerido",
           },
-          minLength: 3,
-          maxLength: 20,
         }}
         register={register}
         type="password"
