@@ -11,5 +11,5 @@ export const MapUpdater = ({ center }) => {
   return null;
 };
 MapUpdater.propTypes = {
-  center: PropTypes.array.isRequired,
+  center: PropTypes.object.isRequired,
 };
