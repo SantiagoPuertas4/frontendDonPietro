@@ -13,7 +13,7 @@ const InvalidFeedback = (props) => {
 };
 export default InvalidFeedback;
 InvalidFeedback.propTypes = {
-  msg: PropTypes.string.isRequired,
+  msg: PropTypes.string,
   noInput: PropTypes.bool,
   divClass: PropTypes.string,
   spanClass: PropTypes.string,
