@@ -55,7 +55,6 @@ const LoginForm = () => {
 
       reset();
 
-      // Hacer el login en el cliente
       login(userData);
 
       setTimeout(() => {

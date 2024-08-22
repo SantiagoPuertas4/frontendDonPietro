@@ -1,5 +1,4 @@
-// import { useLoadScript, GoogleMap } from "@react-google-maps/api";
-// import { useState, useEffect, useRef } from "react";
+
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 import { useState } from "react";
@@ -8,36 +7,14 @@ import "leaflet/dist/leaflet.css";
 import "./LocationMap.css";
 import { MapUpdater } from "./MapUpdater";
 
-// const libraries = ["places"];
+
 
 const LocationMap = () => {
   const [location, setLocation] = useState({
     lat: "-26.8365342",
     lng: "-65.2070863",
   });
-  // const { isLoaded } = useLoadScript({
-  //   googleMapsApiKey: "TU_API_KEY_DE_GOOGLE_MAPS",
-  //   libraries,
-  // });
-
-  // const [location] = useState({ lat: 40.7128, lng: -74.006 });
-  // const mapRef = useRef(null);
-
-  // //Para almacenar la referencia del marcador
-  // const markerRef = useRef(null);
-
-  // useEffect(() => {
-  //   if (isLoaded && mapRef.current) {
-  //     markerRef.current = new window.google.maps.marker.AdvancedMarkerElement({
-  //       map: mapRef.current,
-  //       position: location,
-  //     });
-  //   }
-  // }, [isLoaded, location]);
-
-  // if (!isLoaded) return <div>Cargando mapa...</div>;
-
-  // -26.8365833 -65.2097473
+  
 
   const handleGralPaz = () => {
     setLocation({
@@ -94,18 +71,7 @@ const LocationMap = () => {
         </div>
       </div>
     </div>
-    // <div className="container">
-    //   <div className="location-map-heading">
-    //     <h1>Nos encontramos aquí</h1>
-    //   </div>
-
-    //   <GoogleMap
-    //     center={location}
-    //     zoom={15}
-    //     mapContainerStyle={{ width: "100%", height: "400px" }}
-    //     onLoad={(map) => (mapRef.current = map)}
-    //   />
-    // </div>
+  
   );
 };
 
