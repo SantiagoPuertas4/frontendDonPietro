@@ -26,12 +26,6 @@ const LocationMap = () => {
     });
   };
 
-  const handleMiguelLillo = () => {
-    setLocation({
-      lat: "-26.8328084",
-      lng: "-65.2226200",
-    });
-  };
   return (
     <div className="px-4 text-center">
       <hr className="text-white mx-3" />
@@ -50,21 +44,15 @@ const LocationMap = () => {
         <div className="d-flex flex-column align-items-center row gap-2 my-3">
           <button
             onClick={() => handleGralPaz()}
-            className="btn btnCustom col-8"
+            className="btn btnContactanos col-8"
           >
             Surcursal Gral Paz
           </button>
           <button
             onClick={() => handleCaminoDelPeru()}
-            className="btn btnCustom col-8"
+            className="btn btnContactanos col-8"
           >
             Surcursal Camino del Peru
-          </button>
-          <button
-            onClick={() => handleMiguelLillo()}
-            className="btn btnCustom col-8"
-          >
-            Surcursal Miguel Lillo
           </button>
         </div>
       </div>

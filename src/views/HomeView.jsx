@@ -6,6 +6,7 @@ import { WordsAbout } from "../components/HomeView/WordsAbout";
 import ContactForm from "../components/ui/ContactForm/ContactForm";
 
 import "../components/HomeView/HomeView.css";
+import LocationMap from "../components/ui/Map/LocationMap";
 
 export const HomeView = () => {
   return (
@@ -15,6 +16,9 @@ export const HomeView = () => {
       <Wines />
       <WordsAbout />
       <ContactForm />
+      <div className="container">
+        <LocationMap />
+      </div>
     </>
   );
 };
