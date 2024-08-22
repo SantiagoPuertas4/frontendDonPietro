@@ -235,7 +235,7 @@ const RegisterForm = () => {
         />
       </section>
       <div className="text-center mt-2">
-        <button className="btn btnContactanos" type="submit">
+        <button className="custom-btn" type="submit">
           Registrar
         </button>
         <p className="account-question mt-4">
