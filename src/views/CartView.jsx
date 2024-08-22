@@ -2,14 +2,24 @@ import React from "react";
 import Swal from "sweetalert2";
 import { useCart } from "../stores/useCart";
 import { useSession } from "../stores/useSession";
+import { useOrders } from "../stores/useOrders"; // Importamos el store de pedidos
 import "../components/CartView/CartView.css";
-import { CartTable } from "../components/CartView/CartTable"
+import { CartTable } from "../components/CartView/CartTable";
 
 const CartView = () => {
   const { items, updateItemQuantity, removeItem, clearCart } = useCart();
   const { tableNumber } = useSession();
+  const { addOrder } = useOrders(); // Obtenemos la función para añadir pedidos
 
   const handleOrder = () => {
+    const order = {
+      items,
+      tableNumber,
+      date: new Date().toLocaleString(),
+    };
+
+    addOrder(order); // Guardamos el pedido en el store
+
     Swal.fire({
       title: "¡Éxito!",
       text: "Pedido realizado con éxito",
