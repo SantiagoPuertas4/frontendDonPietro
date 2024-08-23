@@ -47,7 +47,7 @@ const Header = () => {
         </button>
         <div className="collapse prueba navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto d-flex gap-2">
-            {isLoggedIn && !isAdmin && (
+            {!isAdmin && (
               <>
                 <li className="nav-item">
                   <NavLink
