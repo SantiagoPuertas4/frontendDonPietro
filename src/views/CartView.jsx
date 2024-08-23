@@ -2,14 +2,24 @@ import React from "react";
 import Swal from "sweetalert2";
 import { useCart } from "../stores/useCart";
 import { useSession } from "../stores/useSession";
+import { useOrders } from "../stores/useOrders";
 import "../components/CartView/CartView.css";
-import { CartTable } from "../components/CartView/CartTable"
+import { CartTable } from "../components/CartView/CartTable";
 
 const CartView = () => {
   const { items, updateItemQuantity, removeItem, clearCart } = useCart();
   const { tableNumber } = useSession();
+  const { addOrder } = useOrders();
 
   const handleOrder = () => {
+    const order = {
+      items,
+      tableNumber,
+      date: new Date().toLocaleString(),
+    };
+
+    addOrder(order);
+
     Swal.fire({
       title: "¡Éxito!",
       text: "Pedido realizado con éxito",
@@ -20,7 +30,10 @@ const CartView = () => {
       },
     }).then(() => {
       items.forEach((item) => {
-        const storedStock = parseInt(sessionStorage.getItem(`stock_${item.id}`), 10);
+        const storedStock = parseInt(
+          sessionStorage.getItem(`stock_${item.id}`),
+          10
+        );
         if (!isNaN(storedStock)) {
           const newStock = storedStock - item.quantity;
           sessionStorage.setItem(`stock_${item.id}`, newStock);
@@ -53,7 +66,10 @@ const CartView = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         items.forEach((item) => {
-          const storedStock = parseInt(sessionStorage.getItem(`stock_${item.id}`), 10);
+          const storedStock = parseInt(
+            sessionStorage.getItem(`stock_${item.id}`),
+            10
+          );
           if (!isNaN(storedStock)) {
             const restoredStock = storedStock + item.quantity;
             sessionStorage.setItem(`stock_${item.id}`, restoredStock);
@@ -75,9 +91,14 @@ const CartView = () => {
 
   if (items.length === 0) {
     return (
-      <p className="text-center text-white mt-5">
-        No hay productos en el carrito.
-      </p>
+      <>
+        <section className="h1-cart">
+          <h1>CARRITO</h1>
+        </section>
+        <p className="text-center text-white mt-5">
+          No hay productos en el carrito.
+        </p>
+      </>
     );
   }
 
