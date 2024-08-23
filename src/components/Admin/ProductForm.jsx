@@ -180,7 +180,7 @@ const ProductForm = () => {
               label="Es vegetariano"
               labelClassName="productCheckLabel"
               checkClassName="productCheckInput"
-              className="col-4"
+              className="col-12 col-md-4 col-lg-3"
             />
             <Checkbox
               register={register}
@@ -188,7 +188,7 @@ const ProductForm = () => {
               label="Es vegano"
               labelClassName="productCheckLabel"
               checkClassName="productCheckInput"
-              className="col-4"
+              className="col-12 col-md-4 col-lg-3"
             />
             <Checkbox
               register={register}
@@ -196,7 +196,7 @@ const ProductForm = () => {
               label="Es libre de gluten"
               labelClassName="productCheckLabel"
               checkClassName="productCheckInput"
-              className="col-4"
+              className="col-12 col-md-4 col-lg-3"
             />
             <Checkbox
               register={register}
@@ -204,7 +204,7 @@ const ProductForm = () => {
               label="Esta disponible"
               labelClassName="productCheckLabel"
               checkClassName="productCheckInput"
-              className="col-4"
+              className="col-12 col-md-4 col-lg-3"
             />
           </section>
           <div className="d-flex justify-content-center justify-content-sm-end  gap-2 p-0 my-1">
