@@ -1,15 +1,19 @@
 import React from "react";
 import { useOrders } from "../stores/useOrders";
+import { useSession } from "../stores/useSession";
+import UserInfoTable from "../components/MyAccountView/UserInfoTable";
 import "../components/MyAccountView/MyAccountView.css";
 
 const MyAccount = () => {
   const { orders } = useOrders();
+  const { user, logout } = useSession();
 
   return (
     <>
       <section className="h1-orders">
         <h1>MI CUENTA</h1>
       </section>
+      <UserInfoTable user={user} onLogout={logout} />
       <section>
         {orders.length === 0 ? (
           <p className="text-center text-white mt-5">
@@ -20,17 +24,25 @@ const MyAccount = () => {
             <article>
               <h2 className="text-center text-white mt-4">Mis pedidos</h2>
             </article>
-            <article className="container mt-3">
+            <article className="container mt-4">
               <div className="row">
                 {orders.map((order, index) => (
-                  <div key={index} className="col-12 col-md-4 col-sm-6 mb-4  d-flex justify-content-center">
+                  <div
+                    key={index}
+                    className="col-12 col-md-4 col-sm-6 mb-4  d-flex justify-content-center"
+                  >
                     <div className="card text-white bg-dark p-3 text-center h-100">
-                      <p className="date">Fecha: {order.date}<br />Número de mesa: {order.tableNumber}</p>
+                      <p className="date">
+                        Fecha: {order.date}
+                        <br />
+                        Número de mesa: {order.tableNumber}
+                      </p>
                       <ul className="mt-4">
                         {order.items.map((item) => (
                           <li key={item.id}>
-                            {item.name} | Cantidad: {item.quantity}<br />Precio: $
-                            {item.price.toFixed(2)}
+                            {item.name} | Cantidad: {item.quantity}
+                            <br />
+                            Precio: ${item.price.toFixed(2)}
                           </li>
                         ))}
                       </ul>

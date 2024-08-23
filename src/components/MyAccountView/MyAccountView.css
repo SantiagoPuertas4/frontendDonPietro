@@ -27,3 +27,54 @@
 .number {
     font-size: 15px;
 }
+
+.form-control {
+  width: auto;
+}
+
+.account-info {
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+table input.form-control {
+  width: 100%;
+  max-width: 100%;
+}
+
+input.form-control.form {
+  max-width: 150px;
+}
+
+@media (max-width: 576px) {
+  table thead {
+    display: none;
+  }
+
+  table tbody tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  table tbody tr td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #dee2e6;
+  }
+
+  table tbody tr td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  table tbody tr td input {
+    max-width: 100%;
+  }
+}
