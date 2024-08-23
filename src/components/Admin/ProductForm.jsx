@@ -1,8 +1,11 @@
-import { useForm } from "react-hook-form";
-import Input from "../ui/input/Input";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { postProductsFn } from "../../api/products";
 import { toast } from "sonner";
+import { useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { postProductsFn } from "../../api/products";
+
+import Input from "../ui/input/Input";
+import Checkbox from "../ui/Checkbox/Checkbox";
 
 const ProductForm = () => {
   const queryClient = useQueryClient();
@@ -32,14 +35,20 @@ const ProductForm = () => {
   });
 
   const handleSubmit = (data) => {
+    console.log(data);
     const transformedData = {
       name: data.nombreProducto,
-      price: data.precioProducto,
-      stock: data.stockProducto,
+      description: data.descripcionProducto,
       imageUrl: data.imgUrlProducto,
       category: data.categoriaProducto,
-      description: data.descripcionProducto,
+      price: data.precioProducto,
+      stock: data.stockProducto,
+      isVegan: data.checkVegan,
+      isVegetarian: data.checkVegetarian,
+      isGlutenFree: data.checkGlutenFree,
+      isAvailable: data.checkAvailable,
     };
+    console.log(transformedData);
     toast.loading("Guardando... Aguarde");
     postProduct(transformedData);
   };
@@ -151,12 +160,12 @@ const ProductForm = () => {
             options={{
               required: "El campo es requerido",
               maxLength: {
-                value: 50,
-                message: "El campo no puede tener mas de 50 caracteres",
+                value: 300,
+                message: "El campo no puede tener mas de 300 caracteres",
               },
               minLength: {
-                value: 10,
-                message: "El campo no puede tener menos de 10 caracteres",
+                value: 15,
+                message: "El campo no puede tener menos de 15 caracteres",
               },
             }}
             labelClassName="productEditLabel"
@@ -164,6 +173,40 @@ const ProductForm = () => {
             ClassName="col-12 p-0"
             textarea={true}
           />
+          <section className="row d-flex">
+            <Checkbox
+              register={register}
+              name="checkVegetarian"
+              label="Es vegetariano"
+              labelClassName="productCheckLabel"
+              checkClassName="productCheckInput"
+              className="col-12 col-md-4 col-lg-3"
+            />
+            <Checkbox
+              register={register}
+              name="checkVegan"
+              label="Es vegano"
+              labelClassName="productCheckLabel"
+              checkClassName="productCheckInput"
+              className="col-12 col-md-4 col-lg-3"
+            />
+            <Checkbox
+              register={register}
+              name="checkGlutenFree"
+              label="Es libre de gluten"
+              labelClassName="productCheckLabel"
+              checkClassName="productCheckInput"
+              className="col-12 col-md-4 col-lg-3"
+            />
+            <Checkbox
+              register={register}
+              name="checkAvailable"
+              label="Esta disponible"
+              labelClassName="productCheckLabel"
+              checkClassName="productCheckInput"
+              className="col-12 col-md-4 col-lg-3"
+            />
+          </section>
           <div className="d-flex justify-content-center justify-content-sm-end  gap-2 p-0 my-1">
             <button onClick={handleClean} className="btn btn-danger">
               Limpiar formulario
