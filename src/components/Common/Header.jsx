@@ -47,16 +47,20 @@ const Header = () => {
         </button>
         <div className="collapse prueba navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto d-flex gap-2">
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-                to="/"
-              >
-                Inicio
-              </NavLink>
-            </li>
+            {isLoggedIn && !isAdmin && (
+              <>
+                <li className="nav-item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                    to="/"
+                  >
+                    Inicio
+                  </NavLink>
+                </li>
+              </>
+            )}
             {!isLoggedIn && (
               <>
                 <li className="nav-item">
@@ -124,7 +128,7 @@ const Header = () => {
                     }
                     to="/admin"
                   >
-                    Administrador
+                    Administracion
                   </NavLink>
                 </li>
               </>
