@@ -84,7 +84,7 @@ const RegisterForm = () => {
       login(userData);
 
       setTimeout(() => {
-        navigate("/");
+        navigate("/menu");
       }, 2000);
     },
     onError: (e) => {
