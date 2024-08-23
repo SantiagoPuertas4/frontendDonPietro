@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { putProductsFn } from "../../api/products";
+import Checkbox from "../ui/Checkbox/Checkbox";
 
 const ProductEditForm = (props) => {
   const { product, setEdit } = props;
@@ -34,6 +35,7 @@ const ProductEditForm = (props) => {
   });
 
   const handleEdit = (data) => {
+    console.log(data);
     const transformedData = {
       name: data.nombreProducto,
       price: data.precioProducto,
@@ -41,7 +43,12 @@ const ProductEditForm = (props) => {
       imageUrl: data.imgProducto,
       category: data.categoriaProducto,
       description: data.descripcionProducto,
+      isVegetarian: data.checkVegetarian,
+      isVegan: data.checkVegan,
+      isGlutenFree: data.checkGlutenFree,
+      isAvailable: data.checkAvailable,
     };
+    console.log(transformedData);
     toast.loading("Guardando... Aguarde");
     putProduct({ productId: product.id, data: transformedData });
   };
@@ -57,6 +64,10 @@ const ProductEditForm = (props) => {
     setValue("imgProducto", product.imageUrl);
     setValue("categoriaProducto", product.category);
     setValue("descripcionProducto", product.description);
+    setValue("checkVegetarian", product.isVegetarian);
+    setValue("checkVegan", product.isVegan);
+    setValue("checkGlutenFree", product.isGlutenFree);
+    setValue("checkAvailable", product.isAvailable);
   }, []);
 
   return (
@@ -114,7 +125,7 @@ const ProductEditForm = (props) => {
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
-          ClassName="col-6 p-0"
+          ClassName="col-6 p-0 ps-1"
         />
         <Input
           register={register}
@@ -146,7 +157,7 @@ const ProductEditForm = (props) => {
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
-          ClassName="col-4 p-0"
+          ClassName="col-4 p-0 ps-1"
         />
         <Input
           register={register}
@@ -169,6 +180,40 @@ const ProductEditForm = (props) => {
           ClassName="g-col-12 p-0"
           textarea={true}
         />
+        <section className="row d-flex">
+          <Checkbox
+            register={register}
+            name="checkVegetarian"
+            label="Es vegetariano"
+            labelClassName="productCheckLabel"
+            checkClassName="productCheckInput"
+            className="col-12 col-md-4 col-lg-3"
+          />
+          <Checkbox
+            register={register}
+            name="checkVegan"
+            label="Es vegano"
+            labelClassName="productCheckLabel"
+            checkClassName="productCheckInput"
+            className="col-12 col-md-4 col-lg-3"
+          />
+          <Checkbox
+            register={register}
+            name="checkGlutenFree"
+            label="Es libre de gluten"
+            labelClassName="productCheckLabel"
+            checkClassName="productCheckInput"
+            className="col-12 col-md-4 col-lg-3"
+          />
+          <Checkbox
+            register={register}
+            name="checkAvailable"
+            label="Esta disponible"
+            labelClassName="productCheckLabel"
+            checkClassName="productCheckInput"
+            className="col-12 col-md-4 col-lg-3"
+          />
+        </section>
         <div className="d-flex justify-content-center gap-1 my-1">
           <button onClick={handleCancel} className="btn btn-danger">
             Cancelar
@@ -192,6 +237,10 @@ ProductEditForm.propTypes = {
     category: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     stock: PropTypes.number.isRequired,
+    isVegan: PropTypes.bool.isRequired,
+    isVegetarian: PropTypes.bool.isRequired,
+    isGlutenFree: PropTypes.bool.isRequired,
+    isAvailable: PropTypes.bool.isRequired,
   }),
   setEdit: PropTypes.func.isRequired,
 };
