@@ -68,8 +68,7 @@ const CartView = () => {
     const order = {
       userName: datos.user.fullname,
       products: items.map((item) => ({
-        product: item.id,
-        quantity: item.quantity,
+        product: item,
       })),
       comments: comments,
       total: total,
