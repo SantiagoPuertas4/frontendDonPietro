@@ -63,7 +63,28 @@ export const getWaitingOrdersFn = async () => {
 
 export const getPreparingOrdersFn = async () => {
   const token = sessionStorage.getItem("token");
-  const res = await fetch(`${BACKEND_URL}/order/preparing`, {
+  const res = await fetch(`${BACKEND_URL}/order/preparingorder`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    const resData = await res.json();
+    throw new Error(
+      resData.message || "Ocurrió un error leyendo los productos"
+    );
+  }
+
+  return data;
+};
+
+export const getPendingDeliveryOrdersFn = async () => {
+  const token = sessionStorage.getItem("token");
+  const res = await fetch(`${BACKEND_URL}/order/pendingdelivery`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -84,7 +105,7 @@ export const getPreparingOrdersFn = async () => {
 
 export const patchPendingOrderFn = async (orderId) => {
   const token = sessionStorage.getItem("token");
-  const response = await fetch(`${BACKEND_URL}/order/${orderId}/pending`, {
+  const response = await fetch(`${BACKEND_URL}/order/${orderId}/waiting`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

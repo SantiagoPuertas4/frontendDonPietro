@@ -31,7 +31,7 @@ const PendingPaymentCard = (props) => {
       toast.success("Orden movida");
 
       QueryClient.invalidateQueries({
-        queryKey: ["pendingOrders"],
+        queryKey: ["waitingOrders"],
       });
     },
     onError: (e) => {
