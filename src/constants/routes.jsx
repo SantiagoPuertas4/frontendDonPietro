@@ -12,6 +12,8 @@ import MyAccountView from "../views/MyAccountView";
 import AdminView from "../views/AdminView";
 import AboutUsView from "../views/AboutUsView";
 import Error404View from "../views/Error404View";
+import AdminPrivateView from "../views/routing/AdminPrivateView";
+import WaitingForPaymentView from "../views/PendingPaymentView";
 
 // 2 Tipos de rutas: Públicas y Privadas
 export const router = createBrowserRouter([
@@ -62,9 +64,19 @@ export const router = createBrowserRouter([
             path: "my-account",
             element: <MyAccountView />,
           },
+        ],
+      },
+      {
+        path: "",
+        element: <AdminPrivateView />,
+        children: [
           {
             path: "admin",
             element: <AdminView />,
+          },
+          {
+            path: "waiting",
+            element: <WaitingForPaymentView />,
           },
         ],
       },

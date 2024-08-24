@@ -19,3 +19,24 @@ export const postOrderFn = async (data) => {
   const result = await response.json();
   return result;
 };
+
+export const getWaitingOrdersFn = async () => {
+  const token = sessionStorage.getItem("token");
+  const res = await fetch(`${BACKEND_URL}/order/waiting`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    const resData = await res.json();
+    throw new Error(
+      resData.message || "Ocurrió un error leyendo los productos"
+    );
+  }
+
+  return data;
+};

@@ -8,6 +8,7 @@ import Input from "../components/ui/input/Input";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { postOrderFn } from "../api/order";
+import { decodeJWT } from "../utilities/decodeJWT";
 
 const CartView = () => {
   const {
@@ -61,10 +62,13 @@ const CartView = () => {
   });
 
   const handleOrder = async (comments) => {
+    const token = sessionStorage.getItem("token");
+    const datos = decodeJWT(token);
+
     const order = {
+      userName: datos.user.fullname,
       products: items.map((item) => ({
-        product: item.id,
-        quantity: item.quantity,
+        product: item,
       })),
       comments: comments,
       total: total,

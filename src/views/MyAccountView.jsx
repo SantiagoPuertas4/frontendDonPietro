@@ -1,4 +1,3 @@
-import React from "react";
 import { useOrders } from "../stores/useOrders";
 import { useSession } from "../stores/useSession";
 import UserInfoTable from "../components/MyAccountView/UserInfoTable";
@@ -26,7 +25,7 @@ const MyAccount = () => {
             </article>
             <article className="container mt-4">
               <div className="row">
-                {orders.map((order, index) => (
+                {/* {orders.map((order, index) => (
                   <div
                     key={index}
                     className="col-12 col-md-4 col-sm-6 mb-4  d-flex justify-content-center"
@@ -57,7 +56,7 @@ const MyAccount = () => {
                       </p>
                     </div>
                   </div>
-                ))}
+                ))} */}
               </div>
             </article>
           </>
