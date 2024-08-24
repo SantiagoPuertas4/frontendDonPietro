@@ -13,7 +13,7 @@ const WaitingForPaymentView = () => {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["pendingOrders"],
+    queryKey: ["waitingOrders"],
     queryFn: () => getWaitingOrdersFn(),
   });
 
