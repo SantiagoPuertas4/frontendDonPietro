@@ -6,7 +6,6 @@ const PendingPaymentCard = (props) => {
   const handleDetails = () => {
     setDetails(order);
     setModal(true);
-    console.log(order);
   };
 
   return (
@@ -31,10 +30,19 @@ const PendingPaymentCard = (props) => {
 };
 export default PendingPaymentCard;
 
-const productShape = PropTypes.shape({
-  product: PropTypes.string.isRequired,
+const productPropType = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  isAvailable: PropTypes.bool.isRequired,
+  isGlutenFree: PropTypes.bool.isRequired,
+  isVegan: PropTypes.bool.isRequired,
+  isVegetarian: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
-  _id: PropTypes.string.isRequired,
+  stock: PropTypes.number.isRequired,
 });
 
 PendingPaymentCard.propTypes = {
@@ -44,7 +52,12 @@ PendingPaymentCard.propTypes = {
     paymentMethod: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    products: PropTypes.arrayOf(productShape).isRequired,
+    products: PropTypes.arrayOf(
+      PropTypes.shape({
+        product: productPropType.isRequired,
+        _id: PropTypes.string.isRequired,
+      })
+    ).isRequired,
     total: PropTypes.number.isRequired,
   }),
   setModal: PropTypes.func.isRequired,
