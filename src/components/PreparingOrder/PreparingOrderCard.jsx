@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { patchPendingOrderFn } from "../../api/order";
+import { patchPreparingOrderFn } from "../../api/order";
 import { toast } from "sonner";
 import Swal from "sweetalert2";
 import PropTypes from "prop-types";
 
-const PendingPrepareCard = (props) => {
+const PreparingOrderCard = (props) => {
   const { order, setDetails, setModal } = props;
   const QueryClient = useQueryClient();
-  const { mutate: patchPendingOrder } = useMutation({
-    mutationFn: patchPendingOrderFn,
+  const { mutate: patchPreparingOrder } = useMutation({
+    mutationFn: patchPreparingOrderFn,
     onSuccess: () => {
       toast.dismiss();
       toast.success("Orden movida");
@@ -38,7 +38,7 @@ const PendingPrepareCard = (props) => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        patchPendingOrder(order.id);
+        patchPreparingOrder(order.id);
       }
     });
   };
@@ -69,7 +69,7 @@ const PendingPrepareCard = (props) => {
     </article>
   );
 };
-export default PendingPrepareCard;
+export default PreparingOrderCard;
 const productPropType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
@@ -85,7 +85,7 @@ const productPropType = PropTypes.shape({
   stock: PropTypes.number.isRequired,
 });
 
-PendingPrepareCard.propTypes = {
+PreparingOrderCard.propTypes = {
   order: PropTypes.shape({
     userName: PropTypes.string.isRequired,
     comments: PropTypes.string,

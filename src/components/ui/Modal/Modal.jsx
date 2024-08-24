@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import ModalRow from "./ModalRow";
 import "./Modal.css";
 
-const ModalPending = (props) => {
+const Modal = (props) => {
   const { details, setModal } = props;
 
   const handleClose = () => {
@@ -76,7 +76,7 @@ const ModalPending = (props) => {
     </div>
   );
 };
-export default ModalPending;
+export default Modal;
 const productPropType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
@@ -92,7 +92,7 @@ const productPropType = PropTypes.shape({
   stock: PropTypes.number.isRequired,
 });
 
-ModalPending.propTypes = {
+Modal.propTypes = {
   details: PropTypes.shape({
     userName: PropTypes.string.isRequired,
     comments: PropTypes.string,

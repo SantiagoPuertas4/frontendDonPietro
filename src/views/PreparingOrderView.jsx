@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getPreparingOrdersFn } from "../api/order";
 
-import PendingPrepareCard from "../components/PreparingOrder/PendingPrepareCard";
-import ModalPending from "../components/ui/Modal/ModalPending";
+import Modal from "../components/ui/Modal/Modal";
+import PreparingOrderCard from "../components/PreparingOrder/PreparingOrderCard";
 
 const PreparingOrderView = () => {
   const [details, setDetails] = useState();
@@ -44,10 +44,10 @@ const PreparingOrderView = () => {
 
   return (
     <div className="m-5 row d-flex justify-content-center">
-      {modal && <ModalPending details={details} setModal={setModal} />}
+      {modal && <Modal details={details} setModal={setModal} />}
       {orders.data.map((order) => {
         return (
-          <PendingPrepareCard
+          <PreparingOrderCard
             key={order.id}
             order={order}
             setDetails={setDetails}
