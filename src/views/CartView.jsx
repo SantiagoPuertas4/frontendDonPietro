@@ -64,7 +64,6 @@ const CartView = () => {
   const handleOrder = async (comments) => {
     const token = sessionStorage.getItem("token");
     const datos = decodeJWT(token);
-    console.log(datos);
 
     const order = {
       userName: datos.user.fullname,
