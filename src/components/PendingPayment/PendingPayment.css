@@ -59,3 +59,7 @@
 .swal-danger {
   background-color: var(--color-adicional-4) !important;
 }
+
+.swal-success {
+  background-color: #188452;
+}

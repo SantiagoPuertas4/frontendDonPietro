@@ -14,6 +14,8 @@ import AboutUsView from "../views/AboutUsView";
 import Error404View from "../views/Error404View";
 import AdminPrivateView from "../views/routing/AdminPrivateView";
 import WaitingForPaymentView from "../views/PendingPaymentView";
+import PreparingOrderView from "../views/PreparingOrderView";
+import PendingDelivery from "../views/PendingDelivery";
 
 // 2 Tipos de rutas: Públicas y Privadas
 export const router = createBrowserRouter([
@@ -77,6 +79,14 @@ export const router = createBrowserRouter([
           {
             path: "waiting",
             element: <WaitingForPaymentView />,
+          },
+          {
+            path: "preparing",
+            element: <PreparingOrderView />,
+          },
+          {
+            path: "pendingdelivery",
+            element: <PendingDelivery />,
           },
         ],
       },

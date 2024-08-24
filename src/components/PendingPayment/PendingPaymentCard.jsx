@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import PropTypes from "prop-types";
 import { toast } from "sonner";
-import { deleteOrderFn } from "../../api/order";
+import { deleteOrderFn, patchPendingOrderFn } from "../../api/order";
 import Swal from "sweetalert2";
 
 const PendingPaymentCard = (props) => {
@@ -24,6 +24,22 @@ const PendingPaymentCard = (props) => {
     },
   });
 
+  const { mutate: patchPendingOrder } = useMutation({
+    mutationFn: patchPendingOrderFn,
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Orden movida");
+
+      QueryClient.invalidateQueries({
+        queryKey: ["pendingOrders"],
+      });
+    },
+    onError: (e) => {
+      toast.dismiss();
+      toast.error(e.message);
+    },
+  });
+
   const handleDetails = () => {
     setDetails(order);
     setModal(true);
@@ -35,7 +51,7 @@ const PendingPaymentCard = (props) => {
       text: "Esto eliminara la orden. Esta acción no se puede deshacer.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Sí, vaciar carrito",
+      confirmButtonText: "Sí, eliminar orden",
       cancelButtonText: "Cancelar",
       reverseButtons: true,
       customClass: {
@@ -49,7 +65,25 @@ const PendingPaymentCard = (props) => {
     });
   };
 
-  const handlePaid = () => {};
+  const handlePaid = () => {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esto movera la orden. Esta acción no se puede deshacer.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, mover orden",
+      cancelButtonText: "Cancelar",
+      reverseButtons: true,
+      customClass: {
+        confirmButton: "swal-success",
+        cancelButton: "swal-button-cancel",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        patchPendingOrder(order.id);
+      }
+    });
+  };
 
   return (
     <article className="col-12 col-md-5 col-xl-3  m-1 pendingCard">
