@@ -1,4 +1,3 @@
-// CartView.jsx
 import React from "react";
 import Swal from "sweetalert2";
 import { useCart } from "../stores/useCart";
@@ -8,54 +7,26 @@ import "../components/CartView/CartView.css";
 import { CartTable } from "../components/CartView/CartTable";
 import Input from "../components/ui/input/Input";
 import { useForm } from "react-hook-form";
+import { decodeJWT } from "../utilities/decodeJWT";
+import { useMutation } from "@tanstack/react-query";
+import { postOrderFn } from "../api/order";
 
 const CartView = () => {
   const {
     register,
     reset,
     handleSubmit: onSubmitRHF,
-    formState: {errors},
-  } = useForm()
+    formState: { errors },
+  } = useForm();
   const { items, updateItemQuantity, removeItem, clearCart } = useCart();
   const { tableNumber } = useSession();
   const { addOrder } = useOrders();
+  const { getCartTotal } = useCart();
+  const total = getCartTotal();
 
-  const handleOrder = async (comments) => {
-    const order = {
-      products: items,
-      tableNumber,
-      date: new Date().toLocaleString(),
-      Total: items.reduce((acc, item) => acc + item.quantity * item.price, 0),
-      comments: comments
-    };
-
-    try {
-      const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-      const token = sessionStorage.getItem('token');
-
-      if (!token) {
-        throw new Error('Token de autenticación no disponible');
-      }
-
-      const response = await fetch(`${BACKEND_URL}/order/hand`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify(order),
-      });
-
-      if (!response.ok) {
-        const errorResponse = await response.json();
-        throw new Error(errorResponse.message || 'Error al realizar el pedido');
-      }
-
-      const result = await response.json();
-      console.log('Resultado del backend:', result);
-
-      addOrder(order);
-
+  const { mutate: postOrder } = useMutation({
+    mutationFn: postOrderFn,
+    onSuccess: () => {
       Swal.fire({
         title: "¡Éxito!",
         text: "Pedido realizado con éxito",
@@ -77,19 +48,37 @@ const CartView = () => {
         });
         clearCart();
       });
-
-    } catch (error) {
-      console.error('Error en handleOrder:', error);
+    },
+    onError: (e) => {
+      console.error("Error en handleOrder:", e);
       Swal.fire({
         title: "Error",
-        text: "Hubo un problema al realizar el pedido: " + error.message,
+        text: "Hubo un problema al realizar el pedido: " + e.message,
         icon: "error",
         confirmButtonText: "Aceptar",
         customClass: {
           confirmButton: "swal-button",
         },
       });
-    }
+    },
+  });
+
+  const handleOrder = async (comments) => {
+    const decrypt = decodeJWT(sessionStorage.getItem("token"));
+
+    const order = {
+      products: items.map((item) => ({
+        product: item.id,
+        quantity: item.quantity,
+      })),
+      comments: comments,
+      total: total,
+    };
+
+    console.log(order);
+
+    postOrder(order);
+    addOrder(order);
   };
 
   const handleQuantityChange = (itemId, newQuantity) => {
@@ -152,10 +141,10 @@ const CartView = () => {
   }
 
   const handleSubmit = (data) => {
-    const {comments} = data;
-    console.log(data.comments);
-    handleOrder(comments)
-  }
+    const { comments } = data;
+    console.log(comments);
+    handleOrder(comments);
+  };
 
   return (
     <>
@@ -180,13 +169,13 @@ const CartView = () => {
           Estado del pedido: <span className="waiting">En espera</span>
         </p>
       </section>
-      <section>
-        <h2>Comentario</h2>
+      <section className="container text-center">
+        <h2 className="text-white mt-4">Comentarios</h2>
         <form className="row" onSubmit={onSubmitRHF(handleSubmit)}>
-        <Input
+          <Input
             register={register}
             name="comments"
-            label="Comentarios"
+            label="Escribe tus preferencias"
             errors={errors.comments}
             options={{
               required: "El campo es requerido",
@@ -204,17 +193,16 @@ const CartView = () => {
             ClassName="col-12 p-0"
             textarea={true}
           />
-                <section className="text-center">
-        <button onClick={handleSubmit} className="btn-order">
-          Realizar Pedido
-        </button>
-        <button onClick={handleClearCart} className="btn-clear">
-          Vaciar Carrito
-        </button>
+          <article className="text-center">
+            <button type="submit" className="btn-order">
+              Realizar Pedido
+            </button>
+            <button onClick={handleClearCart} className="btn-clear">
+              Vaciar Carrito
+            </button>
+          </article>
+        </form>
       </section>
-          </form>
-      </section>
-
     </>
   );
 };
