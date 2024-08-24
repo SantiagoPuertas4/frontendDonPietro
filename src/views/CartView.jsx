@@ -1,4 +1,3 @@
-import React from "react";
 import Swal from "sweetalert2";
 import { useCart } from "../stores/useCart";
 import { useSession } from "../stores/useSession";
@@ -7,14 +6,12 @@ import "../components/CartView/CartView.css";
 import { CartTable } from "../components/CartView/CartTable";
 import Input from "../components/ui/input/Input";
 import { useForm } from "react-hook-form";
-import { decodeJWT } from "../utilities/decodeJWT";
 import { useMutation } from "@tanstack/react-query";
 import { postOrderFn } from "../api/order";
 
 const CartView = () => {
   const {
     register,
-    reset,
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm();
@@ -64,8 +61,6 @@ const CartView = () => {
   });
 
   const handleOrder = async (comments) => {
-    const decrypt = decodeJWT(sessionStorage.getItem("token"));
-
     const order = {
       products: items.map((item) => ({
         product: item.id,
@@ -178,14 +173,9 @@ const CartView = () => {
             label="Escribe tus preferencias"
             errors={errors.comments}
             options={{
-              required: "El campo es requerido",
               maxLength: {
                 value: 300,
                 message: "El campo no puede tener mas de 300 caracteres",
-              },
-              minLength: {
-                value: 15,
-                message: "El campo no puede tener menos de 15 caracteres",
               },
             }}
             labelClassName="productEditLabel"

@@ -1,4 +1,3 @@
-import React from "react";
 import { useCart } from "../../stores/useCart";
 
 export const CartTable = ({ items, onQuantityChange, onRemoveItem }) => {
