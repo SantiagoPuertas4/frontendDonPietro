@@ -25,7 +25,7 @@ export const getUsersFn = async () => {
 export const deleteUserFn = async (userId) => {
   const token = sessionStorage.getItem("token");
   const res = await fetch(`${BACKEND_URL}/users/${userId}`, {
-    method: "Delete",
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

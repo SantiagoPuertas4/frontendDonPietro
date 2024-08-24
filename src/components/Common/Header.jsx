@@ -131,6 +131,16 @@ const Header = () => {
                     Administracion
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                    to="/waiting"
+                  >
+                    A Pagar
+                  </NavLink>
+                </li>
               </>
             )}
             {!isAdmin && (
