@@ -21,39 +21,52 @@ const ModalPending = (props) => {
               </h2>
             )}
           </div>
-          <div className="w-100">
-            <div className="row p-0 my-2">
-              <div className="col-3 d-flex justify-content-center p-0">
-                <p>Imagen</p>
-              </div>
-              <div className="col-4 d-flex justify-content-center p-0">
-                <p>Nombre</p>
-              </div>
-              <div className="col-3 d-flex justify-content-center p-0">
-                <p>Precio</p>
-              </div>
-              <div className="col-2 d-flex justify-content-center p-0">
-                <p>#</p>
-              </div>
-            </div>
-            {details &&
-              details.products.map((item) => {
-                return (
-                  <ModalRow key={item.product.id} product={item.product} />
-                );
-              })}
-          </div>
+          <table className="table table-bordered table-dark w-100">
+            <thead className="d-block">
+              <tr className="row p-0">
+                <th className="col-3 w-1 p-0">
+                  <p className="text-center">Imagen</p>
+                </th>
+                <th className="col-4 p-0">
+                  <p className="text-center">Nombre</p>
+                </th>
+                <th className="col-3 p-0">
+                  <p className="text-center">Precio</p>
+                </th>
+                <th className="col-2 p-0">
+                  <p className="text-center">#</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {details &&
+                details.products.map((item) => {
+                  return (
+                    <ModalRow key={item.product.id} product={item.product} />
+                  );
+                })}
+              <tr className="row p-0 mb-0">
+                <th className="col-3 p-0"></th>
+                <td className="col-4 p-0 d-flex flex-column">
+                  <p className=" text-center h-100 text-break text-wrap">
+                    <b>TOTAL</b>
+                  </p>
+                </td>
+                <td className="col-3 p-0 d-flex flex-column">
+                  <p className="text-center h-100">
+                    <b>${details.total}</b>
+                  </p>
+                </td>
+                <td className="col-2 p-0 d-flex flex-column">
+                  <p className="text-center h-100"></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
           <div>
-            {details && (
-              <p className="titulo">
-                Aclaraciones: sfdghdfghjdfgdfghdfghdfgh{details.comments}
-              </p>
-            )}
-          </div>
-          <div>
-            {details && (
-              <p className="titulo">
-                TOTAL: <b>${details.total}</b>
+            {details.comments && (
+              <p className="text-break text-wrap">
+                <b>Comentarios:</b> {details.comments}
               </p>
             )}
           </div>

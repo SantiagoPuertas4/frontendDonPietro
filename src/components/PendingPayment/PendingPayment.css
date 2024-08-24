@@ -51,3 +51,11 @@
 .titulo {
   color: white;
 }
+
+.maxWidthModalImg {
+  max-height: 100px;
+}
+
+.swal-danger {
+  background-color: var(--color-adicional-4) !important;
+}

@@ -1,12 +1,55 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import PropTypes from "prop-types";
+import { toast } from "sonner";
+import { deleteOrderFn } from "../../api/order";
+import Swal from "sweetalert2";
 
 const PendingPaymentCard = (props) => {
   const { order, setDetails, setModal } = props;
+  const QueryClient = useQueryClient();
+
+  const { mutate: deleteOrder } = useMutation({
+    mutationFn: deleteOrderFn,
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Orden eliminado");
+
+      QueryClient.invalidateQueries({
+        queryKey: ["pendingOrders"],
+      });
+    },
+    onError: (e) => {
+      toast.dismiss();
+      toast.error(e.message);
+    },
+  });
 
   const handleDetails = () => {
     setDetails(order);
     setModal(true);
   };
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esto eliminara la orden. Esta acción no se puede deshacer.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, vaciar carrito",
+      cancelButtonText: "Cancelar",
+      reverseButtons: true,
+      customClass: {
+        confirmButton: "swal-danger",
+        cancelButton: "swal-button-cancel",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteOrder(order.id);
+      }
+    });
+  };
+
+  const handlePaid = () => {};
 
   return (
     <article className="col-12 col-md-5 col-xl-3  m-1 pendingCard">
@@ -18,11 +61,15 @@ const PendingPaymentCard = (props) => {
           </p>
         </section>
         <section className="row gap-2">
-          <button className="btn btn-danger">Eliminar</button>
+          <button onClick={handleDelete} className="btn btn-danger">
+            Eliminar
+          </button>
           <button onClick={handleDetails} className="btn btnCustom">
             Detalles
           </button>
-          <button className="btn btn-success">Pagado</button>
+          <button onClick={handlePaid} className="btn btn-success">
+            Pagado
+          </button>
         </section>
       </div>
     </article>

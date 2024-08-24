@@ -23,7 +23,7 @@ const WaitingForPaymentView = () => {
 
   if (isError) {
     return (
-      <div className="alert alert-danger mt-3">
+      <div className="alert alert-danger mt-3 container">
         <p className="text-black">
           Ocurrio un error cargando la lista de pedidos pendientes a pagar
         </p>
@@ -33,8 +33,10 @@ const WaitingForPaymentView = () => {
 
   if (orders && orders.data.length === 0) {
     return (
-      <div className="alert alert-info mt-3">
-        <p>No se encontraron pedidos pendientes a pagar</p>
+      <div className="alert alert-info mt-3 container">
+        <p className="text-black text-center">
+          No se encontraron pedidos pendientes a pagar
+        </p>
       </div>
     );
   }

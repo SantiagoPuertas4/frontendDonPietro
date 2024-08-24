@@ -40,3 +40,42 @@ export const getWaitingOrdersFn = async () => {
 
   return data;
 };
+
+export const deleteOrderFn = async (orderId) => {
+  console.log(orderId);
+  const token = sessionStorage.getItem("token");
+
+  const res = await fetch(`${BACKEND_URL}/order/${orderId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!res.ok) {
+    const resData = await res.json();
+    throw new Error(
+      resData.message ||
+        "Ocurrió un error intentando eliminar la orden seleccionada"
+    );
+  }
+};
+
+export const patchPendingOrderFn = async (orderId) => {
+  const token = sessionStorage.getItem("token");
+  const response = await fetch(`${BACKEND_URL}/order/${orderId}/preparing`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const errorResponse = await response.json();
+    throw new Error(errorResponse.message || "Error al realizar el pedido");
+  }
+
+  const result = await response.json();
+  return result;
+};
