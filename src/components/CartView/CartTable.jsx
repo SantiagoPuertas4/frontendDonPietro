@@ -1,7 +1,8 @@
-import React from 'react';
+import { useCart } from "../../stores/useCart";
 
 export const CartTable = ({ items, onQuantityChange, onRemoveItem }) => {
-  const total = items.reduce((acc, item) => acc + item.quantity * item.price, 0);
+  const { getCartTotal } = useCart();
+  const total = getCartTotal();
 
   return (
     <section className="container">

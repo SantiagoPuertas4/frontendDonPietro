@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getProductsFn } from "../api/products";
 import ProductCard from "../components/MenuView/ProductCard";
@@ -102,13 +102,15 @@ export const MenuView = () => {
   useEffect(() => {
     if (products) {
       products.data.forEach((product) => {
-        const storedStock = parseInt(sessionStorage.getItem(`stock_${product.id}`), 10);
+        const storedStock = parseInt(
+          sessionStorage.getItem(`stock_${product.id}`),
+          10
+        );
         const updatedStock = isNaN(storedStock) ? product.stock : storedStock;
         sessionStorage.setItem(`stock_${product.id}`, updatedStock);
       });
     }
   }, [products]);
-  
 
   if (isLoading) {
     return <p className="mt-3 text-center">Cargando productos...</p>;
@@ -158,7 +160,7 @@ export const MenuView = () => {
       </section>
       <section className="container text-center mt-4 mb-4 instruction">
         <h2>ESCOGE TU PLATO Y BEBIDA</h2>
-        <p>Por favor, seleccioná "Añadir" en la opción que desees.</p>
+        <p>Por favor, seleccioná `Añadir` en la opción que desees.</p>
       </section>
       <section className="text-center mb-4">
         <button

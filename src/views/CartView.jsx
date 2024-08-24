@@ -1,46 +1,79 @@
-import React from "react";
 import Swal from "sweetalert2";
 import { useCart } from "../stores/useCart";
 import { useSession } from "../stores/useSession";
 import { useOrders } from "../stores/useOrders";
 import "../components/CartView/CartView.css";
 import { CartTable } from "../components/CartView/CartTable";
+import Input from "../components/ui/input/Input";
+import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { postOrderFn } from "../api/order";
 
 const CartView = () => {
+  const {
+    register,
+    handleSubmit: onSubmitRHF,
+    formState: { errors },
+  } = useForm();
   const { items, updateItemQuantity, removeItem, clearCart } = useCart();
   const { tableNumber } = useSession();
   const { addOrder } = useOrders();
+  const { getCartTotal } = useCart();
+  const total = getCartTotal();
 
-  const handleOrder = () => {
+  const { mutate: postOrder } = useMutation({
+    mutationFn: postOrderFn,
+    onSuccess: () => {
+      Swal.fire({
+        title: "¡Éxito!",
+        text: "Pedido realizado con éxito",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          confirmButton: "swal-button",
+        },
+      }).then(() => {
+        items.forEach((item) => {
+          const storedStock = parseInt(
+            sessionStorage.getItem(`stock_${item.id}`),
+            10
+          );
+          if (!isNaN(storedStock)) {
+            const newStock = storedStock - item.quantity;
+            sessionStorage.setItem(`stock_${item.id}`, newStock);
+          }
+        });
+        clearCart();
+      });
+    },
+    onError: (e) => {
+      console.error("Error en handleOrder:", e);
+      Swal.fire({
+        title: "Error",
+        text: "Hubo un problema al realizar el pedido: " + e.message,
+        icon: "error",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          confirmButton: "swal-button",
+        },
+      });
+    },
+  });
+
+  const handleOrder = async (comments) => {
     const order = {
-      items,
-      tableNumber,
-      date: new Date().toLocaleString(),
+      products: items.map((item) => ({
+        product: item.id,
+        quantity: item.quantity,
+      })),
+      comments: comments,
+      total: total,
     };
 
-    addOrder(order);
+    console.log(order);
 
-    Swal.fire({
-      title: "¡Éxito!",
-      text: "Pedido realizado con éxito",
-      icon: "success",
-      confirmButtonText: "Aceptar",
-      customClass: {
-        confirmButton: "swal-button",
-      },
-    }).then(() => {
-      items.forEach((item) => {
-        const storedStock = parseInt(
-          sessionStorage.getItem(`stock_${item.id}`),
-          10
-        );
-        if (!isNaN(storedStock)) {
-          const newStock = storedStock - item.quantity;
-          sessionStorage.setItem(`stock_${item.id}`, newStock);
-        }
-      });
-      clearCart();
-    });
+    postOrder(order);
+    addOrder(order);
   };
 
   const handleQuantityChange = (itemId, newQuantity) => {
@@ -102,6 +135,12 @@ const CartView = () => {
     );
   }
 
+  const handleSubmit = (data) => {
+    const { comments } = data;
+    console.log(comments);
+    handleOrder(comments);
+  };
+
   return (
     <>
       <section className="h1-cart">
@@ -125,13 +164,34 @@ const CartView = () => {
           Estado del pedido: <span className="waiting">En espera</span>
         </p>
       </section>
-      <section className="text-center">
-        <button onClick={handleOrder} className="btn-order">
-          Realizar Pedido
-        </button>
-        <button onClick={handleClearCart} className="btn-clear">
-          Vaciar Carrito
-        </button>
+      <section className="container text-center">
+        <h2 className="text-white mt-4">Comentarios</h2>
+        <form className="row" onSubmit={onSubmitRHF(handleSubmit)}>
+          <Input
+            register={register}
+            name="comments"
+            label="Escribe tus preferencias"
+            errors={errors.comments}
+            options={{
+              maxLength: {
+                value: 300,
+                message: "El campo no puede tener mas de 300 caracteres",
+              },
+            }}
+            labelClassName="productEditLabel"
+            inputClassName="productEditInput"
+            ClassName="col-12 p-0"
+            textarea={true}
+          />
+          <article className="text-center">
+            <button type="submit" className="btn-order">
+              Realizar Pedido
+            </button>
+            <button onClick={handleClearCart} className="btn-clear">
+              Vaciar Carrito
+            </button>
+          </article>
+        </form>
       </section>
     </>
   );

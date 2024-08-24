@@ -51,5 +51,8 @@ export const useCart = create((set, get) => {
     getCartItem: (itemId) => {
       return get().items.find((item) => item.id === itemId);
     },
+    getCartTotal: () => {
+      return get().items.reduce((total, item) => total + item.price * item.quantity, 0);
+    },
   };
 });
