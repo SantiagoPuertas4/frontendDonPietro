@@ -142,7 +142,7 @@ export const MenuView = () => {
   const renderCards = (items) => {
     return items.length > 0 ? (
       items.map((product) => (
-        <div className="product-card-wrapper" key={product.id}>
+        <div className="product-card-wrapper h-100" key={product.id}>
           <ProductCard product={product} />
         </div>
       ))

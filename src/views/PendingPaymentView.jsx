@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getWaitingOrdersFn } from "../api/order";
 import PendingPaymentCard from "../components/PendingPayment/PendingPaymentCard";
-import { decodeJWT } from "../utilities/decodeJWT";
+import "../components/PendingPayment/PendingPayment.css";
 
 const WaitingForPaymentView = () => {
   const {
@@ -36,7 +36,7 @@ const WaitingForPaymentView = () => {
   }
 
   return (
-    <div>
+    <div className="m-5 row">
       {orders.data.map((order) => {
         return <PendingPaymentCard key={order.id} order={order} />;
       })}
