@@ -2,8 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { getWaitingOrdersFn } from "../api/order";
 import PendingPaymentCard from "../components/PendingPayment/PendingPaymentCard";
 import "../components/PendingPayment/PendingPayment.css";
+import ModalPending from "../components/PendingPayment/ModalPending";
+import { useState } from "react";
 
 const WaitingForPaymentView = () => {
+  const [details, setDetails] = useState();
+  const [modal, setModal] = useState(false);
   const {
     data: orders,
     isLoading,
@@ -36,9 +40,17 @@ const WaitingForPaymentView = () => {
   }
 
   return (
-    <div className="m-5 row">
+    <div className="m-5 row d-flex justify-content-center">
+      {modal && <ModalPending details={details} setModal={setModal} />}
       {orders.data.map((order) => {
-        return <PendingPaymentCard key={order.id} order={order} />;
+        return (
+          <PendingPaymentCard
+            key={order.id}
+            order={order}
+            setDetails={setDetails}
+            setModal={setModal}
+          />
+        );
       })}
     </div>
   );
