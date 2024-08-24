@@ -65,8 +65,8 @@ Don Pietro es un proyecto desarrollado por un equipo de 4 personas. Este proyect
     "sweetalert2": "^11.12.4"
     "zustand": "^4.5.4"
 
-    ## Contribución
 
+  ## Contribución
   Para contribuir al proyecto:
 
 - Contactarse con algun autor.
