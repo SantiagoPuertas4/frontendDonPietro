@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import ModalRow from "./ModalRow";
+import "./Modal.css";
 
 const ModalPending = (props) => {
   const { details, setModal } = props;

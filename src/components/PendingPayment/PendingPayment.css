@@ -7,53 +7,8 @@
   color: white;
 }
 
-.modalNB {
-  background-color: var(--color-adicional-1);
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 100%;
-  max-height: 80vh; /* Ajusta la altura máxima al 80% de la altura de la ventana */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  position: relative;
-  overflow-y: auto; /* Añade scroll si el contenido es más alto que el modal */
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-  padding: 20px; /* Añade un poco de padding para asegurar que el modal no toque los bordes de la pantalla */
-}
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.modal-content {
-  margin-top: 20px;
-  color: white;
-}
-
 .titulo {
   color: white;
-}
-
-.maxWidthModalImg {
-  max-height: 100px;
 }
 
 .swal-danger {

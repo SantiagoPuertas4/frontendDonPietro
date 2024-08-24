@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getPreparingOrdersFn } from "../api/order";
-import ModalPending from "../components/PendingPayment/ModalPending";
 
 import PendingPrepareCard from "../components/PreparingOrder/PendingPrepareCard";
+import ModalPending from "../components/ui/Modal/ModalPending";
 
 const PreparingOrderView = () => {
   const [details, setDetails] = useState();
