@@ -142,7 +142,7 @@ const Header = () => {
                     }
                     to="/tvpanel"
                   >
-                    Panel TV
+                    PanelTV
                   </NavLink>
                 </li>
                 <li className="nav-item">

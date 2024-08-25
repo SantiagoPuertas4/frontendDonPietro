@@ -13,7 +13,7 @@ const PreparingOrderView = () => {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["pendingOrders"],
+    queryKey: ["preparingOrders"],
     queryFn: () => getPreparingOrdersFn(),
   });
   console.log(orders);
