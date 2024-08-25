@@ -27,6 +27,7 @@
 
 .order-container ul {
   list-style-type: none;
+  padding-left: 0;
 }
 
 .order-item {
@@ -71,6 +72,10 @@
 
 .close-button-class:hover {
   background-color: #b1190b;
+}
+
+#root > main > div.order-container > section > ul {
+  padding: 0;
 }
 
 @media (max-width: 576px) {

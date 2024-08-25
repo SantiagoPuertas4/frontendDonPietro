@@ -78,7 +78,8 @@ const MyAccountView = () => {
         {orders.length === 0 ? (
           <p className="text-center text-white">No se encontraron pedidos.</p>
         ) : (
-          <ul>
+          <section className="row">
+          <ul className="col-12 col-sm-6 col-lg-6">
             {orders.map((order) => (
               <li key={order._id} className="order-item">
                 <p>
@@ -119,6 +120,7 @@ const MyAccountView = () => {
               </li>
             ))}
           </ul>
+          </section>
         )}
       </div>
       <div className="container d-flex flex-column g-3 mt-5">
