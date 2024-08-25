@@ -26,7 +26,7 @@ const PreparingOrderView = () => {
     return (
       <div className="alert alert-danger mt-3 container">
         <p className="text-black">
-          Ocurrio un error cargando la lista de pedidos pendientes a pagar
+          Ocurrió un error cargando la lista de pedidos pendientes a preparar.
         </p>
       </div>
     );
@@ -36,7 +36,7 @@ const PreparingOrderView = () => {
     return (
       <div className="alert alert-info mt-3 container">
         <p className="text-black text-center">
-          No se encontraron pedidos pendientes a pagar
+          No se encontraron pedidos pendientes a preparar.
         </p>
       </div>
     );
