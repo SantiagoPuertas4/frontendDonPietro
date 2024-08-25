@@ -27,10 +27,10 @@ const LocationMap = () => {
   };
 
   return (
-    <div className="px-4 text-center">
+    <section className="px-4 text-center">
       <hr className="text-white mx-3" />
       <h2 className="text-white my-4 mt-5">Nos encontrás aquí</h2>
-      <div>
+      <article>
         <MapContainer center={location} zoom={16} zoomControl={true}>
           <TileLayer
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -55,8 +55,8 @@ const LocationMap = () => {
             Surcursal Camino del Perú
           </button>
         </div>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 

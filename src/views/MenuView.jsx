@@ -165,7 +165,6 @@ export const MenuView = () => {
         <h2>ESCOGE TU PLATO Y BEBIDA</h2>
         <p>Por favor, seleccioná `Añadir` en la opción que desees.</p>
       </section>
-      <section className="login-card"></section>
       <section className="text-center mb-4">
         <button
           className="order-button"
@@ -192,7 +191,7 @@ export const MenuView = () => {
             </article>
           </>
         ) : (
-          <div className="text-center">
+          <article className="text-center">
             <p>Necesitamos saber tu número de mesa para continuar.</p>
             <Link to="/menu">
               <button className="btn-order">Conocé más...</button>
@@ -200,12 +199,12 @@ export const MenuView = () => {
             <button className="btn btn-danger" onClick={logout}>
               Cerrar sesión
             </button>
-          </div>
+          </article>
         )}
       </section>
-      <div className="container d-flex flex-column g-3 mt-5">
+      <section className="container d-flex flex-column g-3 mt-5">
         <LocationMap />
-      </div>
+      </section>
     </>
   );
 };

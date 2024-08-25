@@ -1,9 +1,10 @@
 import { useState } from "react";
-import "../components/Admin/adminView.css";
 import Help from "../components/Admin/Help";
 import UserList from "../components/Admin/UserList";
 import ProductList from "../components/Admin/ProductList";
 import ProductForm from "../components/Admin/ProductForm";
+
+import "../components/Admin/adminView.css";
 
 const AdminView = () => {
   const [help, setHelp] = useState(true);
@@ -45,8 +46,8 @@ const AdminView = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center flex-column align-items-center container my-2 mt-4">
-      <section className="d-flex justify-content-center row w-100">
+    <section className="d-flex justify-content-center flex-column align-items-center container my-2 mt-4">
+      <article className="d-flex justify-content-center row w-100">
         <div className="col-12 col-md-6 col-lg-4 m-1 px-1">
           <button
             onClick={() => handleButtonClick("productList")}
@@ -77,14 +78,14 @@ const AdminView = () => {
             Ver usuarios
           </button>
         </div>
-      </section>
-      <section className="w-100">
+      </article>
+      <article className="w-100">
         {help === true && <Help />}
         {productList === true && <ProductList />}
         {productForm === true && <ProductForm />}
         {userList === true && <UserList />}
-      </section>
-    </div>
+      </article>
+    </section>
   );
 };
 

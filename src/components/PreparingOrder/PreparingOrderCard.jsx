@@ -49,24 +49,24 @@ const PreparingOrderCard = (props) => {
   };
 
   return (
-    <article className="col-12 col-md-5 col-xl-3 m-1 pendingCard">
-      <div className="m-1 p-2 d-flex flex-column justify-content-between gap-2 m-2">
+    <section className="col-12 col-md-5 col-xl-3 m-1 pendingCard">
+      <article className="m-1 p-2 d-flex flex-column justify-content-between gap-2 m-2">
         <h2 className="pendingTitle text-center">{order.userName}</h2>
-        <section className="d-flex flex-column align-items-center gap-2 ">
+        <div className="d-flex flex-column align-items-center gap-2 ">
           <p>
             TOTAL: <b>${order.total}</b>
           </p>
-        </section>
-        <section className="row gap-2">
+        </div>
+        <div className="row gap-2">
           <button onClick={handleDetails} className="confirm-button-class">
             Detalles
           </button>
           <button onClick={handlePaid} className="success-button-class">
             Preparado
           </button>
-        </section>
-      </div>
-    </article>
+        </div>
+      </article>
+    </section>
   );
 };
 export default PreparingOrderCard;

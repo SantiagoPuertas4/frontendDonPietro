@@ -2,7 +2,6 @@ import Swal from "sweetalert2";
 import { useCart } from "../stores/useCart";
 import { useSession } from "../stores/useSession";
 import { useOrders } from "../stores/useOrders";
-import "../components/CartView/CartView.css";
 import { CartTable } from "../components/CartView/CartTable";
 import Input from "../components/ui/input/Input";
 import { useForm } from "react-hook-form";
@@ -10,6 +9,8 @@ import { useMutation } from "@tanstack/react-query";
 import { postOrderFn } from "../api/order";
 import { decodeJWT } from "../utilities/decodeJWT";
 import LocationMap from "../components/ui/Map/LocationMap";
+
+import "../components/CartView/CartView.css";
 
 const CartView = () => {
   const {
@@ -49,7 +50,6 @@ const CartView = () => {
       });
     },
     onError: (e) => {
-      console.error("Error en handleOrder:", e);
       Swal.fire({
         title: "Error",
         text: "Hubo un problema al realizar el pedido: " + e.message,
@@ -74,8 +74,6 @@ const CartView = () => {
       comments: comments,
       total: total,
     };
-
-    console.log(order);
 
     postOrder(order);
     addOrder(order);
@@ -142,7 +140,6 @@ const CartView = () => {
 
   const handleSubmit = (data) => {
     const { comments } = data;
-    console.log(comments);
     handleOrder(comments);
   };
 
@@ -192,15 +189,19 @@ const CartView = () => {
             <button type="submit" className="btn-order">
               Realizar Pedido
             </button>
-            <button type="button" onClick={handleClearCart} className="btn-clear">
+            <button
+              type="button"
+              onClick={handleClearCart}
+              className="btn-clear"
+            >
               Vaciar Carrito
             </button>
           </article>
         </form>
       </section>
-      <div className="container d-flex flex-column g-3 mt-5">
-          <LocationMap />
-        </div>
+      <section className="container d-flex flex-column g-3 mt-5">
+        <LocationMap />
+      </section>
     </>
   );
 };

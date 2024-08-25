@@ -23,21 +23,10 @@ const PUBLIC_KEY = import.meta.env.VITE_MAIL_PUBLIC_KEY;
 const RegisterForm = () => {
   const [captcha, setCaptcha] = useState(null);
   const captchaRef = useRef(null);
-  // ---------------------------------------------
-  // Zustand
-  // ---------------------------------------------
 
   const { login } = useSession();
 
-  // ---------------------------------------------
-  // RRD
-  // ---------------------------------------------
-
   const navigate = useNavigate();
-
-  // ---------------------------------------------
-  // RHF
-  // ---------------------------------------------
 
   const {
     register,
@@ -46,10 +35,6 @@ const RegisterForm = () => {
     reset,
     getValues,
   } = useForm();
-
-  // ---------------------------------------------
-  // RQ
-  // ---------------------------------------------
 
   const { mutate: postRegister } = useMutation({
     mutationFn: postRegisterFn,
@@ -80,7 +65,6 @@ const RegisterForm = () => {
 
       reset();
 
-      // Hacer el login en el cliente
       login(userData);
 
       setTimeout(() => {
@@ -92,10 +76,6 @@ const RegisterForm = () => {
       toast.warning(e.message);
     },
   });
-
-  // ---------------------------------------------
-  // HANDLERS
-  // ---------------------------------------------
 
   const handleSubmit = (data) => {
     if (!captchaRef.current.getValue()) {
@@ -130,10 +110,6 @@ const RegisterForm = () => {
 
     setCaptcha(false);
   };
-
-  // ---------------------------------------------
-  // RENDERIZADO
-  // ---------------------------------------------
 
   return (
     <form

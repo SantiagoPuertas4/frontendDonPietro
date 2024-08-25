@@ -32,7 +32,6 @@ const TVPanelView = () => {
           setDelivery(deliveryOrders);
         }
       }
-      console.log(delivery);
 
       if (preparingOrders) {
         if (preparingOrders !== preparing) {
@@ -45,8 +44,8 @@ const TVPanelView = () => {
   }, [deliveryOrders, preparingOrders, delivery, preparing]);
 
   return (
-    <div className="d-flex my-5 py-5">
-      <div className="w-50 d-flex flex-column text-center">
+    <section className="d-flex my-5 py-5">
+      <article className="w-50 d-flex flex-column text-center">
         <h1 className="text-white">Pedidos listos</h1>
         <Orders
           isLoading={loadingDelivery}
@@ -54,9 +53,9 @@ const TVPanelView = () => {
           order={delivery}
           isSuccess={successDelivery}
         />
-      </div>
+      </article>
 
-      <div className="w-50 text-center  d-flex flex-column text-center">
+      <article className="w-50 text-center  d-flex flex-column text-center">
         <h1 className="text-white">Pedidos listos</h1>
         <Orders
           isLoading={loadingPreparing}
@@ -64,8 +63,8 @@ const TVPanelView = () => {
           order={preparing}
           isSuccess={successPreparing}
         />
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 

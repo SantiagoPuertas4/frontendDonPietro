@@ -9,21 +9,21 @@ const Orders = (props) => {
 
   if (isError) {
     return (
-      <div className="alert alert-danger mt-3 container">
+      <section className="alert alert-danger mt-3 container">
         <p className="text-black">
           Ocurrio un error cargando la lista de pedidos pendientes a pagar
         </p>
-      </div>
+      </section>
     );
   }
 
   if (order && order.data.length === 0) {
     return (
-      <div className="alert alert-info mt-3 container">
+      <section className="alert alert-info mt-3 container">
         <p className="text-black text-center">
           No se encontraron pedidos pendientes a pagar
         </p>
-      </div>
+      </section>
     );
   }
   if (isSuccess) {

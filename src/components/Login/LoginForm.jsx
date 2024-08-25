@@ -19,21 +19,10 @@ const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
 const LoginForm = () => {
   const [captcha, setCaptcha] = useState(null);
   const captchaRef = useRef(null);
-  // ---------------------------------------------
-  // Zustand
-  // ---------------------------------------------
 
   const { login } = useSession();
 
-  // ---------------------------------------------
-  // RRD
-  // ---------------------------------------------
-
   const navigate = useNavigate();
-
-  // ---------------------------------------------
-  // RHF
-  // ---------------------------------------------
 
   const {
     register,
@@ -41,10 +30,6 @@ const LoginForm = () => {
     formState: { errors },
     reset,
   } = useForm();
-
-  // ---------------------------------------------
-  // RQ
-  // ---------------------------------------------
 
   const { mutate: postLogin } = useMutation({
     mutationFn: postLoginFn,
@@ -75,10 +60,6 @@ const LoginForm = () => {
     },
   });
 
-  // ---------------------------------------------
-  // HANDLERS
-  // ---------------------------------------------
-
   const handleSubmit = (data) => {
     if (!captchaRef.current.getValue()) {
       setCaptcha(true);
@@ -90,10 +71,6 @@ const LoginForm = () => {
     toast.loading("Cargando...");
     postLogin(data);
   };
-
-  // ---------------------------------------------
-  // RENDERIZADO
-  // ---------------------------------------------
 
   const handleCaptchaChange = () => {
     if (!captchaRef.current.getValue()) {

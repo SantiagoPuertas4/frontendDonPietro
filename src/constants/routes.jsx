@@ -18,13 +18,11 @@ import PreparingOrderView from "../views/PreparingOrderView";
 import PendingDelivery from "../views/PendingDelivery";
 import TVPanelView from "../views/TVPanelView";
 
-// 2 Tipos de rutas: Públicas y Privadas
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootView />,
     children: [
-      // RUTAS PÚBLICAS
       {
         path: "",
         element: <HomeView />,
@@ -33,9 +31,6 @@ export const router = createBrowserRouter([
         path: "about",
         element: <AboutUsView />,
       },
-
-      // RUTAS DE AUTENTICACION
-      // no deberían poder accederse estando logueados
       {
         path: "",
         element: <AuthViews />,
@@ -50,7 +45,6 @@ export const router = createBrowserRouter([
           },
         ],
       },
-      // RUTAS PRIVADAS
       {
         path: "",
         element: <PrivateView />,

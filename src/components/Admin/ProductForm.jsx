@@ -6,7 +6,7 @@ import { postProductsFn } from "../../api/products";
 
 import Input from "../ui/input/Input";
 import Checkbox from "../ui/Checkbox/Checkbox";
-import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";  // Importa el componente InvalidFeedback
+import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
 
 const ProductForm = () => {
   const queryClient = useQueryClient();
@@ -53,9 +53,9 @@ const ProductForm = () => {
   };
 
   return (
-    <div>
+    <section>
       <h1 className="titulo my-2 text-center">Ingreso de productos</h1>
-      <div className="cardUsuario p-2">
+      <article className="cardUsuario p-2">
         <form className="row row-gap-1 m-2" onSubmit={onSubmitRHF(handleSubmit)}>
           <div className="p-0">
             <Input
@@ -195,8 +195,8 @@ const ProductForm = () => {
             </button>
           </div>
         </form>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 export default ProductForm;

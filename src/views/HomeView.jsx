@@ -2,11 +2,10 @@ import { PageCover } from "../components/HomeView/PageCover";
 import { Presentation } from "../components/HomeView/Presentation";
 import { Wines } from "../components/HomeView/Wines";
 import { WordsAbout } from "../components/HomeView/WordsAbout";
-
 import ContactForm from "../components/ui/ContactForm/ContactForm";
+import LocationMap from "../components/ui/Map/LocationMap";
 
 import "../components/HomeView/HomeView.css";
-import LocationMap from "../components/ui/Map/LocationMap";
 
 export const HomeView = () => {
   return (
@@ -16,9 +15,9 @@ export const HomeView = () => {
       <Wines />
       <WordsAbout />
       <ContactForm />
-      <div className="container">
+      <section className="container">
         <LocationMap />
-      </div>
+      </section>
     </>
   );
 };

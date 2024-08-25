@@ -73,23 +73,23 @@ const UserRow = (props) => {
   };
 
   return (
-    <article className="d-flex row cardUsuario my-2 mx-1 py-1 align-items-center">
-      <div className="col-6 col-md-3 col-xl-2 my-1">
+    <section className="d-flex row cardUsuario my-2 mx-1 py-1 align-items-center">
+      <article className="col-6 col-md-3 col-xl-2 my-1">
         <p className="text-center">{user.fullname}</p>
-      </div>
-      <div className="col-6 col-md-3 col-xl-2 my-1">
+      </article>
+      <article className="col-6 col-md-3 col-xl-2 my-1">
         {user.isAdmin ? (
           <p className="text-center">Admin</p>
         ) : (
           <p className="text-center">Usuario</p>
         )}
-      </div>
+      </article>
 
-      <div className="col-12 col-md-6 my-1 mb-2">
+      <article className="col-12 col-md-6 my-1 mb-2">
         <p className="text-center">{user.email}</p>
-      </div>
+      </article>
 
-      <div className="col-12 col-xl-2 d-flex justify-content-center my-1">
+      <article className="col-12 col-xl-2 d-flex justify-content-center my-1">
         {user.isAdmin ? (
           <button onClick={handleToggle} className="confirm-button-class p-xl-2">
             Cambiar a Usuario
@@ -103,8 +103,8 @@ const UserRow = (props) => {
         <button onClick={handleDelete} className="ms-1 cancel-button-class">
           Eliminar
         </button>
-      </div>
-    </article>
+      </article>
+    </section>
   );
 };
 export default UserRow;

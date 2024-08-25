@@ -35,9 +35,9 @@ const ProductList = () => {
   }
 
   return (
-    <div>
+    <section>
       <h1 className="titulo my-2 text-center">Productos ingresados</h1>
-      <div className="d-none d-md-flex row justify-content-between">
+      <article className="d-none d-md-flex row justify-content-between">
         <div className="col-4 col-md-6 col-xl-4 p-0">
           <p className="userListTitle text-center">Foto</p>
         </div>
@@ -53,13 +53,13 @@ const ProductList = () => {
         <div className="col-1 d-none d-xxl-block">
           <p className="userListTitle text-center">Acciones</p>
         </div>
-      </div>
-      <div>
+      </article>
+      <article>
         {products.data.map((product) => {
           return <ProductRow key={product.id} product={product} />;
         })}
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 export default ProductList;
