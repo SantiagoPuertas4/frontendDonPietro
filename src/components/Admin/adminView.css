@@ -48,6 +48,7 @@ p {
   background-color: var(--color-secundario) !important;
   border: none !important;
   color: var(--color-adicional-3) !important;
+  border-radius: 5px;
 }
 
 .productCheckLabel {
@@ -61,4 +62,8 @@ p {
 
 .btn-selected {
   background-color: rgb(46, 46, 46) !important;
+}
+
+.options {
+  font-size: 11px;
 }
