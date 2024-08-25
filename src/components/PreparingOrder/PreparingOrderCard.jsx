@@ -1,37 +1,20 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import PropTypes from "prop-types";
+import { patchPreparingOrderFn } from "../../api/order";
 import { toast } from "sonner";
-import { deleteOrderFn, patchPendingOrderFn } from "../../api/order";
 import Swal from "sweetalert2";
+import PropTypes from "prop-types";
 
-const PendingPaymentCard = (props) => {
+const PreparingOrderCard = (props) => {
   const { order, setDetails, setModal } = props;
   const QueryClient = useQueryClient();
-
-  const { mutate: deleteOrder } = useMutation({
-    mutationFn: deleteOrderFn,
-    onSuccess: () => {
-      toast.dismiss();
-      toast.success("Orden eliminado");
-
-      QueryClient.invalidateQueries({
-        queryKey: ["waitingOrders"],
-      });
-    },
-    onError: (e) => {
-      toast.dismiss();
-      toast.error(e.message);
-    },
-  });
-
-  const { mutate: patchPendingOrder } = useMutation({
-    mutationFn: patchPendingOrderFn,
+  const { mutate: patchPreparingOrder } = useMutation({
+    mutationFn: patchPreparingOrderFn,
     onSuccess: () => {
       toast.dismiss();
       toast.success("Orden movida");
 
       QueryClient.invalidateQueries({
-        queryKey: ["waitingOrders"],
+        queryKey: ["pendingOrders"],
       });
     },
     onError: (e) => {
@@ -39,31 +22,6 @@ const PendingPaymentCard = (props) => {
       toast.error(e.message);
     },
   });
-
-  const handleDetails = () => {
-    setDetails(order);
-    setModal(true);
-  };
-
-  const handleDelete = () => {
-    Swal.fire({
-      title: "¿Estás seguro?",
-      text: "Esto eliminara la orden. Esta acción no se puede deshacer.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Sí, eliminar orden",
-      cancelButtonText: "Cancelar",
-      reverseButtons: true,
-      customClass: {
-        confirmButton: "swal-danger",
-        cancelButton: "swal-button-cancel",
-      },
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteOrder(order.id);
-      }
-    });
-  };
 
   const handlePaid = () => {
     Swal.fire({
@@ -80,9 +38,14 @@ const PendingPaymentCard = (props) => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        patchPendingOrder(order.id);
+        patchPreparingOrder(order.id);
       }
     });
+  };
+
+  const handleDetails = () => {
+    setDetails(order);
+    setModal(true);
   };
 
   return (
@@ -95,22 +58,18 @@ const PendingPaymentCard = (props) => {
           </p>
         </section>
         <section className="row gap-2">
-          <button onClick={handleDelete} className="btn btn-danger">
-            Eliminar
-          </button>
           <button onClick={handleDetails} className="btn btnCustom">
             Detalles
           </button>
           <button onClick={handlePaid} className="btn btn-success">
-            Pagado
+            Preparado
           </button>
         </section>
       </div>
     </article>
   );
 };
-export default PendingPaymentCard;
-
+export default PreparingOrderCard;
 const productPropType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
@@ -126,7 +85,7 @@ const productPropType = PropTypes.shape({
   stock: PropTypes.number.isRequired,
 });
 
-PendingPaymentCard.propTypes = {
+PreparingOrderCard.propTypes = {
   order: PropTypes.shape({
     userName: PropTypes.string.isRequired,
     comments: PropTypes.string,

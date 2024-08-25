@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { getWaitingOrdersFn } from "../api/order";
-import PendingPaymentCard from "../components/PendingPayment/PendingPaymentCard";
-import "../components/PendingPayment/PendingPayment.css";
 import { useState } from "react";
-import Modal from "../components/ui/Modal/Modal";
+import { getPreparingOrdersFn } from "../api/order";
 
-const WaitingForPaymentView = () => {
+import Modal from "../components/ui/Modal/Modal";
+import PreparingOrderCard from "../components/PreparingOrder/PreparingOrderCard";
+
+const PreparingOrderView = () => {
   const [details, setDetails] = useState();
   const [modal, setModal] = useState(false);
   const {
@@ -13,9 +13,10 @@ const WaitingForPaymentView = () => {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["waitingOrders"],
-    queryFn: () => getWaitingOrdersFn(),
+    queryKey: ["pendingOrders"],
+    queryFn: () => getPreparingOrdersFn(),
   });
+  console.log(orders);
 
   if (isLoading) {
     return <p className="mt-2">Cargando datos...</p>;
@@ -46,7 +47,7 @@ const WaitingForPaymentView = () => {
       {modal && <Modal details={details} setModal={setModal} />}
       {orders.data.map((order) => {
         return (
-          <PendingPaymentCard
+          <PreparingOrderCard
             key={order.id}
             order={order}
             setDetails={setDetails}
@@ -57,4 +58,4 @@ const WaitingForPaymentView = () => {
     </div>
   );
 };
-export default WaitingForPaymentView;
+export default PreparingOrderView;

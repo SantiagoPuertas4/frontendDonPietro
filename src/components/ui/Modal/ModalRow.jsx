@@ -3,24 +3,26 @@ import PropTypes from "prop-types";
 const ModalRow = (props) => {
   const { product } = props;
   return (
-    <div className="row p-0 my-2">
-      <div className="col-3 p-0">
+    <tr className="row p-0 mb-0">
+      <th className="col-3 p-0 maxWidthModalImg">
         <img
-          className="w-100 object-fit-cover"
+          className="w-100 h-100 object-fit-cover"
           src={product.imageUrl}
           alt={product.name}
         />
-      </div>
-      <div className="col-4">
-        <p className=" text-center text-break text-wrap">{product.name}</p>
-      </div>
-      <div className="col-3 p-0">
-        <p className="text-center">{product.price}</p>
-      </div>
-      <div className="col-2 p-0">
-        <p className="text-center">{product.quantity}</p>
-      </div>
-    </div>
+      </th>
+      <td className="col-4 p-0 d-flex flex-column">
+        <p className=" text-center h-100 text-break text-wrap">
+          {product.name}
+        </p>
+      </td>
+      <td className="col-3 p-0 d-flex flex-column">
+        <p className="text-center h-100">${product.price}</p>
+      </td>
+      <td className="col-2 p-0 d-flex flex-column">
+        <p className="text-center h-100">{product.quantity}</p>
+      </td>
+    </tr>
   );
 };
 export default ModalRow;
