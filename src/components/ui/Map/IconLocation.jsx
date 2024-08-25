@@ -8,6 +8,6 @@ const IconLocation = L.icon({
   shadowUrl: null,
   shadowSize: null,
   shadowAnchor: null,
-  className: "iconoLeaflet",
+  className: "leaflet-marker-icon leaflet-zoom-animated leaflet-interactive",
 });
 export default IconLocation;
