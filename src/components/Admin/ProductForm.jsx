@@ -6,7 +6,6 @@ import { postProductsFn } from "../../api/products";
 
 import Input from "../ui/input/Input";
 import Checkbox from "../ui/Checkbox/Checkbox";
-import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
 
 const ProductForm = () => {
   const queryClient = useQueryClient();
