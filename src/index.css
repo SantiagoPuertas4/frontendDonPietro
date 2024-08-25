@@ -18,8 +18,8 @@
   flex-direction: column;
 }
 
-.marginHeader {
-  margin-top: 10dvh;
+body {
+  margin-top: 90px;
 }
 
 ::-webkit-scrollbar {
