@@ -192,7 +192,7 @@ const CartView = () => {
             <button type="submit" className="btn-order">
               Realizar Pedido
             </button>
-            <button onClick={handleClearCart} className="btn-clear">
+            <button type="button" onClick={handleClearCart} className="btn-clear">
               Vaciar Carrito
             </button>
           </article>
