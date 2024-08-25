@@ -58,10 +58,10 @@ const PendingDeliveryCard = (props) => {
           </p>
         </section>
         <section className="row gap-2">
-          <button onClick={handleDetails} className="btn btnCustom">
+          <button onClick={handleDetails} className="confirm-button-class">
             Detalles
           </button>
-          <button onClick={handleDelivered} className="btn btn-success">
+          <button onClick={handleDelivered} className="success-button-class">
             Entregado
           </button>
         </section>

@@ -95,13 +95,13 @@ const PendingPaymentCard = (props) => {
           </p>
         </section>
         <section className="row gap-2">
-          <button onClick={handleDelete} className="btn btn-danger">
+          <button onClick={handleDelete} className="cancel-button-class">
             Eliminar
           </button>
-          <button onClick={handleDetails} className="btn btnCustom">
+          <button onClick={handleDetails} className="confirm-button-class">
             Detalles
           </button>
-          <button onClick={handlePaid} className="btn btn-success">
+          <button onClick={handlePaid} className="success-button-class">
             Pagado
           </button>
         </section>
