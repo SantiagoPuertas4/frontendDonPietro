@@ -1,12 +1,69 @@
-import { useOrders } from "../stores/useOrders";
-import { useSession } from "../stores/useSession";
+import React, { useEffect, useState } from "react";
+import { decodeJWT } from "../utilities/decodeJWT";
 import UserInfoTable from "../components/MyAccountView/UserInfoTable";
+import { useSession } from "../stores/useSession";
+
 import "../components/MyAccountView/MyAccountView.css";
 import LocationMap from "../components/ui/Map/LocationMap";
 
-const MyAccount = () => {
-  const { orders } = useOrders();
+const MyAccountView = () => {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { user, logout } = useSession();
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const token = sessionStorage.getItem("token");
+        if (!token) {
+          throw new Error("No se encontró el token.");
+        }
+
+        const decodedToken = decodeJWT(token);
+
+        const userId = decodedToken.user.id;
+
+        if (!userId) {
+          throw new Error("User ID no se encontró en JWT.");
+        }
+
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/orderhistorial/${userId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("La respuesta de la red no fue correcta.");
+        }
+
+        const result = await response.json();
+
+        if (Array.isArray(result.data)) {
+          setOrders(result.data);
+        } else if (result.data) {
+          setOrders([result.data]);
+        } else {
+          throw new Error("Formato de datos inesperado recibido.");
+        }
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  if (loading) return <p className="loading">Cargando...</p>;
+  if (error) return <p className="error">Error: {error}</p>;
 
   return (
     <>
@@ -14,60 +71,61 @@ const MyAccount = () => {
         <h1>MI CUENTA</h1>
       </section>
       <UserInfoTable user={user} onLogout={logout} />
-      <section>
+      <div className="order-container">
+        <h2 className="text-center text-white mt-4 mb-4">
+          Historial de pedidos
+        </h2>
         {orders.length === 0 ? (
-          <p className="text-center text-white mt-5">
-            No has realizado ningún pedido aún.
-          </p>
+          <p className="text-center text-white">No se encontraron pedidos.</p>
         ) : (
-          <>
-            <article>
-              <h2 className="text-center text-white mt-4">Mis pedidos</h2>
-            </article>
-            <article className="container mt-4">
-              <div className="row">
-                {/* {orders.map((order, index) => (
-                  <div
-                    key={index}
-                    className="col-12 col-md-4 col-sm-6 mb-4  d-flex justify-content-center"
-                  >
-                    <div className="card text-white bg-dark p-3 text-center h-100">
-                      <p className="date">
-                        Fecha: {order.date}
-                        <br />
-                        Número de mesa: {order.tableNumber}
-                      </p>
-                      <ul className="mt-4">
-                        {order.items.map((item) => (
-                          <li key={item.id}>
-                            {item.name} | Cantidad: {item.quantity}
-                            <br />
-                            Precio: ${item.price.toFixed(2)}
-                          </li>
-                        ))}
-                      </ul>
+          <ul>
+            {orders.map((order) => (
+              <li key={order._id} className="order-item">
+                <p>
+                  <strong>Estado:</strong> {order.status}
+                </p>
+                <p>
+                  <strong>Método de pago:</strong> {order.paymentMethod}
+                </p>
+                <p>
+                  <strong>Comentarios:</strong>{" "}
+                  {order.comments || "Sin comentarios."}
+                </p>
+                <p>
+                  <strong>Fecha:</strong>{" "}
+                  {new Date(order.createdAt).toLocaleDateString()}
+                </p>
+
+                <h3 className="order mt-4">Pedido:</h3>
+                <ul>
+                  {order.products.map((item, index) => (
+                    <li key={index}>
                       <p>
-                        <span className="total">Total:</span> $
-                        {order.items
-                          .reduce(
-                            (acc, item) => acc + item.quantity * item.price,
-                            0
-                          )
-                          .toFixed(2)}
+                        <strong>Producto:</strong> {item.product.name}
                       </p>
-                    </div>
-                  </div>
-                ))} */}
-              </div>
-            </article>
-          </>
+                      <p>
+                        <strong>Cantidad:</strong>{" "}
+                        {item.product.quantity || "N/A"}
+                      </p>
+                      <p>
+                        <strong>Precio:</strong> ${item.product.price}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+                <h4 className="text-white">
+                  <strong>Total:</strong> ${order.total}
+                </h4>
+              </li>
+            ))}
+          </ul>
         )}
-      </section>
+      </div>
       <div className="container d-flex flex-column g-3 mt-5">
-          <LocationMap />
-        </div>
+        <LocationMap />
+      </div>
     </>
   );
 };
 
-export default MyAccount;
+export default MyAccountView;
