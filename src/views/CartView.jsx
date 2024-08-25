@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { postOrderFn } from "../api/order";
 import { decodeJWT } from "../utilities/decodeJWT";
+import LocationMap from "../components/ui/Map/LocationMap";
 
 const CartView = () => {
   const {
@@ -197,6 +198,9 @@ const CartView = () => {
           </article>
         </form>
       </section>
+      <div className="container d-flex flex-column g-3 mt-5">
+          <LocationMap />
+        </div>
     </>
   );
 };

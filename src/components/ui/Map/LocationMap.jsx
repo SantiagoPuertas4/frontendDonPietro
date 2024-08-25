@@ -29,7 +29,7 @@ const LocationMap = () => {
   return (
     <div className="px-4 text-center">
       <hr className="text-white mx-3" />
-      <h2 className="text-white my-4 mt-5">Nos encontras aqui</h2>
+      <h2 className="text-white my-4 mt-5">Nos encontrás aquí</h2>
       <div>
         <MapContainer center={location} zoom={16} zoomControl={true}>
           <TileLayer
@@ -46,13 +46,13 @@ const LocationMap = () => {
             onClick={() => handleGralPaz()}
             className="btn btnContactanos col-8"
           >
-            Surcursal Gral Paz
+            Surcursal Gral. Paz
           </button>
           <button
             onClick={() => handleCaminoDelPeru()}
             className="btn btnContactanos col-8"
           >
-            Surcursal Camino del Peru
+            Surcursal Camino del Perú
           </button>
         </div>
       </div>

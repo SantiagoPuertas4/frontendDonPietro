@@ -10,9 +10,11 @@ const LoginView = () => {
       <section className="login-card">
         <div className="d-flex flex-column g-3">
           <LoginForm />
-          <LocationMap />
         </div>
       </section>
+      <div className="container d-flex flex-column g-3 mt-5">
+          <LocationMap />
+        </div>
     </>
   );
 };

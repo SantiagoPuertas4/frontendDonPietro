@@ -15,6 +15,10 @@ const Header = () => {
       confirmButtonText: "Sí, salir",
       cancelButtonText: "No, cancelar",
       showCancelButton: true,
+      customClass: {
+        confirmButton: 'confirm-button-class',
+        cancelButton: 'cancel-button-class'
+      }
     });
 
     if (action.isConfirmed) {
@@ -25,7 +29,7 @@ const Header = () => {
   const isAdmin = user ? user.isAdmin : false;
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark m-0 p-0">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark m-0 p-0 fixed-top">
       <div className="container-fluid custom-padding">
         <Link className="navbar-brand p-0 m-0" to="/">
           <img
@@ -45,7 +49,7 @@ const Header = () => {
         >
           <i className="bi bi-list"></i>
         </button>
-        <div className="collapse prueba navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto d-flex gap-2">
             {!isAdmin && (
               <>
@@ -128,7 +132,7 @@ const Header = () => {
                     }
                     to="/admin"
                   >
-                    Administracion
+                    Administración
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -184,7 +188,7 @@ const Header = () => {
                     <span className="nav-link">Mesa: {tableNumber}</span>
                   </li>
                 )}
-                <button className="btn btn-danger" onClick={handleLogout}>
+                <button className="close-button-class" onClick={handleLogout}>
                   Cerrar sesión
                 </button>
               </>

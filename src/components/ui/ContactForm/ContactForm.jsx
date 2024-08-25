@@ -1,13 +1,10 @@
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "sonner";
-
 import { useForm } from "react-hook-form";
 import { useRef, useState } from "react";
-
 import Input from "../input/Input";
 import InvalidFeedback from "../InvalidFeedback/InvalidFeedback";
-
 import "./ContactForm.css";
 
 const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
@@ -114,82 +111,99 @@ Diosito`,
   return (
     <section className="container mt-5">
       <div>
-        <h1 className="titulo text-center">Contactanos</h1>
-        <form className="p-3 row gap-2" onSubmit={onSubmitRHF(handleSubmit)}>
-          <Input
-            register={register}
-            name="nombreContacto"
-            label="NOMBRE"
-            errors={errors.nombreContacto}
-            options={{
-              required: "El campo es requerido",
-              maxLength: {
-                value: 40,
-                message: "El campo no puede tener mas de 40 caracteres",
-              },
-              minLength: {
-                value: 3,
-                message: "El campo no puede tener menos de 3 caracteres",
-              },
-              pattern: {
-                value: /^[A-Za-z\s]+$/,
-                message: "El campo solo acepta letras y espacios",
-              },
-            }}
-            labelClassName="mainContactLabel"
-            inputClassName="mainContactInput"
-            ClassName="col-12 p-0"
-          />
-          <Input
-            register={register}
-            name="mailContacto"
-            label="CORREO ELECTRONICO"
-            errors={errors.mailContacto}
-            options={{
-              required: "El campo es requerido",
-              maxLength: {
-                value: 50,
-                message: "El campo no puede tener mas de 50 caracteres",
-              },
-              minLength: {
-                value: 3,
-                message: "El campo no puede tener menos de 3 caracteres",
-              },
-              pattern: {
-                value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
-                message: "El campo solo acepta correos electronicos",
-              },
-            }}
-            labelClassName="mainContactLabel"
-            inputClassName="mainContactInput"
-            ClassName="col-12 p-0"
-          />
-          <Input
-            register={register}
-            name="mensajeContacto"
-            label="MENSAJE"
-            errors={errors.mensajeContacto}
-            options={{
-              required: "El campo es requerido",
-              maxLength: {
-                value: 500,
-                message: "El campo no puede tener mas de 500 caracteres",
-              },
-              minLength: {
-                value: 3,
-                message: "El campo no puede tener menos de 3 caracteres",
-              },
-              pattern: {
-                value: /^[A-Za-z0-9\s(),.]+$/,
-                message:
-                  "El campo solo acepta letras, numeros, punto, coma y parentesis",
-              },
-            }}
-            labelClassName="mainContactLabel"
-            inputClassName="mainContactInput textAreaContact"
-            ClassName="col-12 p-0"
-            textarea={true}
-          />
+        <h1 className="titulo text-center">Contáctanos</h1>
+        <form className="p-3 row gap-2 text-end" onSubmit={onSubmitRHF(handleSubmit)}>
+          <div className="form-group">
+            <Input
+              register={register}
+              name="nombreContacto"
+              label="Nombre"
+              errors={errors.nombreContacto}
+              options={{
+                required: "El campo es requerido",
+                maxLength: {
+                  value: 40,
+                  message: "El campo no puede tener más de 40 caracteres",
+                },
+                minLength: {
+                  value: 3,
+                  message: "El campo no puede tener menos de 3 caracteres",
+                },
+                pattern: {
+                  value: /^[A-Za-z\s]+$/,
+                  message: "El campo solo acepta letras y espacios",
+                },
+              }}
+              labelClassName="mainContactLabel"
+              inputClassName="mainContactInput"
+              ClassName="p-0"
+            />
+            {errors.nombreContacto && (
+              <InvalidFeedback msg={errors.nombreContacto.message} />
+            )}
+          </div>
+
+          <div className="form-group">
+            <Input
+              register={register}
+              name="mailContacto"
+              label="Correo electrónico"
+              errors={errors.mailContacto}
+              options={{
+                required: "El campo es requerido",
+                maxLength: {
+                  value: 50,
+                  message: "El campo no puede tener más de 50 caracteres",
+                },
+                minLength: {
+                  value: 3,
+                  message: "El campo no puede tener menos de 3 caracteres",
+                },
+                pattern: {
+                  value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+                  message: "El campo solo acepta correos electrónicos",
+                },
+              }}
+              labelClassName="mainContactLabel"
+              inputClassName="mainContactInput"
+              ClassName="p-0"
+            />
+            {errors.mailContacto && (
+              <InvalidFeedback msg={errors.mailContacto.message} />
+            )}
+          </div>
+
+          <div className="form-group">
+            <Input
+              register={register}
+              name="mensajeContacto"
+              label="Mensaje"
+              errors={errors.mensajeContacto}
+              options={{
+                required: "El campo es requerido",
+                maxLength: {
+                  value: 500,
+                  message: "El campo no puede tener más de 500 caracteres",
+                },
+                minLength: {
+                  value: 3,
+                  message: "El campo no puede tener menos de 3 caracteres",
+                },
+                pattern: {
+                  value: /^[A-Za-z0-9\s(),.]+$/,
+                  message:
+                    "El campo solo acepta letras, números, punto, coma y paréntesis",
+                },
+              }}
+              labelClassName="mainContactLabel"
+              inputClassName="mainContactInput textAreaContact"
+              ClassName="p-0"
+              textarea={true}
+            />
+            {errors.mensajeContacto && (
+              <InvalidFeedback msg={errors.mensajeContacto.message} />
+            )}
+          </div>
 
           <section className="d-flex flex-column align-items-center mt-2">
             {captcha && (

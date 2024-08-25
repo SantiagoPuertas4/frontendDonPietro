@@ -91,16 +91,16 @@ const UserRow = (props) => {
 
       <div className="col-12 col-xl-2 d-flex justify-content-center my-1">
         {user.isAdmin ? (
-          <button onClick={handleToggle} className="btn btnCustom p-xl-2">
+          <button onClick={handleToggle} className="confirm-button-class p-xl-2">
             Cambiar a Usuario
           </button>
         ) : (
-          <button onClick={handleToggle} className="btn btnCustom p-xl-2">
+          <button onClick={handleToggle} className="confirm-button-class p-xl-2">
             Cambiar a Admin
           </button>
         )}
 
-        <button onClick={handleDelete} className="ms-1 btn btn-danger">
+        <button onClick={handleDelete} className="ms-1 cancel-button-class">
           Eliminar
         </button>
       </div>

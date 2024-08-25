@@ -22,10 +22,10 @@ const AboutUs = () => {
               <img
                 src="./benja-img.jpg.jpeg"
                 className="card-img-top"
-                alt="Member 1"
+                alt="Benjamín Giménez"
               />
               <div className="card-body">
-                <h5 className="card-title">Benjamin Gimenez</h5>
+                <h5 className="card-title">Benjamín Giménez</h5>
                 <p className="card-text">
                   Mi pasión por el mundo de la tecnología, el diseño y la
                   informática no solo es una parte integral de mi vida, sino
@@ -41,7 +41,7 @@ const AboutUs = () => {
               <img
                 src="./anabela-img.jpg.jpeg"
                 className="card-img-top"
-                alt="Member 2"
+                alt="Anabela Guillermo"
               />
               <div className="card-body">
                 <h5 className="card-title">Anabela Guillermo</h5>
@@ -61,7 +61,7 @@ const AboutUs = () => {
               <img
                 src="./santi-img.jpg.jpeg"
                 className="card-img-top"
-                alt="Member 3"
+                alt="Santiago Puertas"
               />
               <div className="card-body">
                 <h5 className="card-title">Santiago Puertas</h5>
@@ -79,17 +79,17 @@ const AboutUs = () => {
           </div>
           <div className="col-12 col-md-6 col-lg-3 mb-4">
             <div className="card">
-              <img src="/member4.jpg" className="card-img-top" alt="Member 4" />
+              <img src="/ignacio-img.jpg" className="card-img-top" alt="Ignacio Sal Paz" />
               <div className="card-body">
-                <h5 className="card-title">Ignacio sal paz</h5>
+                <h5 className="card-title">Ignacio Sal paz</h5>
                 <p className="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Similique vero, officia dolores soluta excepturi non in illum
-                  error impedit iure pariatur eos ipsum voluptate tenetur
-                  recusandae quae, deleniti rerum et accusantium dolorem
-                  molestias aut? Reiciendis, nam itaque vitae quasi dolorum
-                  culpa quibusdam et dolores explicabo facilis cum velit beatae
-                  enim?
+                  La búsqueda de respuestas a las preguntas más profundas del
+                  universo es lo que impulsa cada uno de mis días. La física no
+                  es solo un área de estudio, es una puerta hacia los misterios
+                  que nos rodean. A través de la programación, convierto
+                  problemas complejos en desafíos apasionantes, encontrando en
+                  cada línea de código una oportunidad para refinar mi capacidad
+                  de pensar de manera crítica y creativa.
                 </p>
               </div>
             </div>

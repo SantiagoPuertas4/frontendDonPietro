@@ -18,8 +18,8 @@
   flex-direction: column;
 }
 
-.marginHeader {
-  margin-top: 10dvh;
+body {
+  margin-top: 90px;
 }
 
 ::-webkit-scrollbar {
@@ -37,4 +37,28 @@
 ::-webkit-scrollbar-thumb {
   background-color: var(--color-primario);
   border-radius: 10px;
+}
+
+.confirm-button-class {
+  background-color: var(--color-primario);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.cancel-button-class {
+  background-color: var(--color-adicional-4);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.success-button-class {
+  background-color: rgb(17, 131, 17);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
 }

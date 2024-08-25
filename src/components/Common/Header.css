@@ -1,20 +1,6 @@
-nav {
-  width: 100%;
-  display: flex;
-  text-align: center;
-  margin-top: 0px;
-  position: fixed !important;
-  top: 0 !important;
-  z-index: 100 !important;
-}
-
 .logoHeader {
-  height: 8dvh;
-  margin: 1dvh 0;
-}
-
-nav {
-  height: 10dvh;
+  height: 70px;
+  margin: 10px;
 }
 
 .navbar {
@@ -47,7 +33,16 @@ nav {
   font-size: 30px;
 }
 
-.prueba {
-  background-color: #212529 !important;
-  padding: 1rem;
+.close-button-class {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: var(--color-adicional-4);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-button-class:hover {
+  background-color: #b1190b;
 }

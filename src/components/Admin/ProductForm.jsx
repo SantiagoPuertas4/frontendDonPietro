@@ -208,10 +208,10 @@ const ProductForm = () => {
             />
           </section>
           <div className="d-flex justify-content-center justify-content-sm-end  gap-2 p-0 my-1">
-            <button onClick={handleClean} className="btn btn-danger">
+            <button onClick={handleClean} className="cancel-button-class">
               Limpiar formulario
             </button>
-            <button type="submit" className="btn btnCustom">
+            <button type="submit" className="confirm-button-class">
               Guardar
             </button>
           </div>
