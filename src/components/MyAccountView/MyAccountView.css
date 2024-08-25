@@ -35,7 +35,6 @@
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 20px;
-
 }
 
 .order-item h2 {
@@ -64,11 +63,11 @@
   margin-top: 15px;
 }
 
-.loading, .error {
+.loading,
+.error {
   text-align: center;
   margin-top: 20px;
 }
-
 
 .close-button-class:hover {
   background-color: #b1190b;
@@ -76,6 +75,25 @@
 
 #root > main > div.order-container > section > ul {
   padding: 0;
+}
+
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.order-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.order-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: var(--color-adicional-1);
 }
 
 @media (max-width: 576px) {
@@ -103,5 +121,17 @@
 
   table tbody tr td input {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .orders-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .orders-grid {
+    grid-template-columns: 1fr;
   }
 }

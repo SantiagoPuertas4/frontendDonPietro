@@ -78,10 +78,9 @@ const MyAccountView = () => {
         {orders.length === 0 ? (
           <p className="text-center text-white">No se encontraron pedidos.</p>
         ) : (
-          <section className="row">
-          <ul className="col-12 col-sm-6 col-lg-6">
+          <section className="orders-grid">
             {orders.map((order) => (
-              <li key={order._id} className="order-item">
+              <div key={order._id} className="order-item">
                 <p>
                   <strong>Estado:</strong> {order.status}
                 </p>
@@ -117,9 +116,8 @@ const MyAccountView = () => {
                 <h4 className="text-white">
                   <strong>Total:</strong> ${order.total}
                 </h4>
-              </li>
+              </div>
             ))}
-          </ul>
           </section>
         )}
       </div>
