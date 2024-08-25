@@ -6,7 +6,6 @@ import { postProductsFn } from "../../api/products";
 
 import Input from "../ui/input/Input";
 import Checkbox from "../ui/Checkbox/Checkbox";
-import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
 
 const ProductForm = () => {
   const queryClient = useQueryClient();
@@ -91,8 +90,8 @@ const ProductForm = () => {
               options={{
                 required: "El campo es requerido",
                 min: {
-                  value: 0,
-                  message: "El campo debe ser mayor o igual a 0",
+                  value: 1,
+                  message: "El campo debe ser positivo",
                 },
               }}
               labelClassName="productEditLabel"
@@ -109,28 +108,24 @@ const ProductForm = () => {
               options={{
                 required: "El campo es requerido",
                 min: {
-                  value: 0,
-                  message: "El campo debe ser mayor o igual a 0",
+                  value: 1,
+                  message: "El campo debe ser positivo",
                 },
               }}
               labelClassName="productEditLabel"
               inputClassName="productEditInput"
             />
           </div>
-          <div className="col-4 p-0 pe-1">
+          <div className="col-4 p-0">
             <Input
               register={register}
               name="categoriaProducto"
               label="Categoría"
               errors={errors.categoriaProducto}
-              type="number"
+              type="text"
               select={true}
               options={{
                 required: "El campo es requerido",
-                min: {
-                  value: 0,
-                  message: "El campo debe ser mayor o igual a 0",
-                },
               }}
               labelClassName="productEditLabel"
               inputClassName="productEditInput"

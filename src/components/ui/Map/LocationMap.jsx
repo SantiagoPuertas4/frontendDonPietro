@@ -1,10 +1,13 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Icon } from "leaflet";
 
 import { useState } from "react";
 
-import "leaflet/dist/leaflet.css";
-import "./LocationMap.css";
 import { MapUpdater } from "./MapUpdater";
+
+import Iconpng from "/markerIcon.png";
+import "./LocationMap.css";
+import "leaflet/dist/leaflet.css";
 
 const LocationMap = () => {
   const [location, setLocation] = useState({
@@ -14,8 +17,8 @@ const LocationMap = () => {
 
   const handleGralPaz = () => {
     setLocation({
-      lat: "-26.8365342",
-      lng: "-65.2070863",
+      lat: "-26.8364623",
+      lng: "-65.2070503",
     });
   };
 
@@ -25,6 +28,12 @@ const LocationMap = () => {
       lng: "-65.2625053",
     });
   };
+
+  const customIcon = new Icon({
+    iconUrl: Iconpng,
+    className:
+      "iconoLeaflet leaflet-zoom-animated leaflet-interactive leaflet-marker-icon",
+  });
 
   return (
     <section className="px-4 text-center">
@@ -36,7 +45,7 @@ const LocationMap = () => {
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="Don Pietro"
           />
-          <Marker position={location}>
+          <Marker position={location} icon={customIcon}>
             <Popup>Aqui se encuentra Don Pietro</Popup>
           </Marker>
           <MapUpdater center={location} />

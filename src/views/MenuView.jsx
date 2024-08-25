@@ -89,7 +89,7 @@ export const MenuView = () => {
             return number;
           },
         });
-  
+
         if (number) {
           setTableNumber(number);
           setShowTableNumberPrompt(false);
@@ -98,9 +98,9 @@ export const MenuView = () => {
         }
       }
     };
-  
+
     requestTableNumber();
-  }, [showTableNumberPrompt, tableNumber, setTableNumber, logout]);  
+  }, [showTableNumberPrompt, tableNumber, setTableNumber, logout]);
 
   useEffect(() => {
     if (products) {

@@ -11,3 +11,10 @@
   height: 500px;
   z-index: 0 !important;
 }
+
+.iconoLeaflet {
+  margin-left: -12px !important;
+  margin-top: -41px !important;
+  width: 25px !important;
+  height: 41px !important;
+}
