@@ -78,24 +78,6 @@ const MyAccountView = () => {
         {orders.length === 0 ? (
           <p className="text-center text-white">No se encontraron pedidos.</p>
         ) : (
-          <section className="row">
-            <ul className="col-12 col-sm-6 col-lg-6">
-              {orders.map((order) => (
-                <li key={order._id} className="order-item">
-                  <p>
-                    <strong>Estado:</strong> {order.status}
-                  </p>
-                  <p>
-                    <strong>Método de pago:</strong> {order.paymentMethod}
-                  </p>
-                  <p>
-                    <strong>Comentarios:</strong>{" "}
-                    {order.comments || "Sin comentarios."}
-                  </p>
-                  <p>
-                    <strong>Fecha:</strong>{" "}
-                    {new Date(order.createdAt).toLocaleDateString()}
-                  </p>
           <section className="orders-grid">
             {orders.map((order) => (
               <div key={order._id} className="order-item">
@@ -134,9 +116,8 @@ const MyAccountView = () => {
                 <h4 className="text-white">
                   <strong>Total:</strong> ${order.total}
                 </h4>
-              </li>
+              </div>
             ))}
-          </ul>
           </section>
         )}
       </div>
