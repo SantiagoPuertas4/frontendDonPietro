@@ -38,3 +38,11 @@ body {
   background-color: var(--color-primario);
   border-radius: 10px;
 }
+
+.confirm-button-class {
+  background-color: var(--color-primario);
+}
+
+.cancel-button-class {
+  background-color: var(--color-adicional-4);
+}

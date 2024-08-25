@@ -22,7 +22,7 @@ const UserInfoTable = ({ user, onLogout }) => {
         </table>
       </article>
       <article className="text-center mt-2">
-        <button className="btn btn-danger" onClick={onLogout}>
+        <button className="close-button-class" onClick={onLogout}>
           Cerrar sesión
         </button>
       </article>

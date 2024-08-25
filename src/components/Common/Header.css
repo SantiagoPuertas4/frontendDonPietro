@@ -32,3 +32,17 @@
   color: var(--color-primario);
   font-size: 30px;
 }
+
+.close-button-class {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: var(--color-adicional-4);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-button-class:hover {
+  background-color: #b1190b;
+}

@@ -15,6 +15,10 @@ const Header = () => {
       confirmButtonText: "Sí, salir",
       cancelButtonText: "No, cancelar",
       showCancelButton: true,
+      customClass: {
+        confirmButton: 'confirm-button-class',
+        cancelButton: 'cancel-button-class'
+      }
     });
 
     if (action.isConfirmed) {
@@ -128,7 +132,7 @@ const Header = () => {
                     }
                     to="/admin"
                   >
-                    Administracion
+                    Administración
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -184,7 +188,7 @@ const Header = () => {
                     <span className="nav-link">Mesa: {tableNumber}</span>
                   </li>
                 )}
-                <button className="btn btn-danger" onClick={handleLogout}>
+                <button className="close-button-class" onClick={handleLogout}>
                   Cerrar sesión
                 </button>
               </>
