@@ -20,7 +20,7 @@ export const WordsAbout = () => {
         cliente es parte de nuestra gran familia.
       </p>
       <Link to="/about-us">
-        <button className="btn btnContactanos">Conocé más...</button>
+        <button className="btn-order">Conocé más...</button>
       </Link>
     </section>
   );
