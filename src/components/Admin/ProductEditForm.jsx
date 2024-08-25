@@ -100,8 +100,8 @@ const ProductEditForm = (props) => {
           options={{
             required: "El campo es requerido",
             min: {
-              value: 0,
-              message: "El campo debe ser mayor o igual a 0",
+              value: 1,
+              message: "El campo debe ser positivo",
             },
           }}
           labelClassName="productEditLabel"
@@ -117,8 +117,8 @@ const ProductEditForm = (props) => {
           options={{
             required: "El campo es requerido",
             min: {
-              value: 0,
-              message: "El campo debe ser mayor o igual a 0",
+              value: 1,
+              message: "El campo debe ser positivo",
             },
           }}
           labelClassName="productEditLabel"
@@ -146,14 +146,10 @@ const ProductEditForm = (props) => {
           name="categoriaProducto"
           label="Categoría"
           errors={errors.categoriaProducto}
-          type="number"
+          type="text"
           select={true}
           options={{
             required: "El campo es requerido",
-            min: {
-              value: 0,
-              message: "El campo debe ser mayor o igual a 0",
-            },
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
@@ -167,12 +163,12 @@ const ProductEditForm = (props) => {
           options={{
             required: "El campo es requerido",
             maxLength: {
-              value: 50,
-              message: "El campo no puede tener mas de 50 caracteres",
+              value: 300,
+              message: "El campo no puede tener más de 300 caracteres",
             },
             minLength: {
-              value: 10,
-              message: "El campo no puede tener menos de 10 caracteres",
+              value: 15,
+              message: "El campo no puede tener menos de 15 caracteres",
             },
           }}
           labelClassName="productEditLabel"
