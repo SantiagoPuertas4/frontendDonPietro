@@ -2,6 +2,7 @@ import { useOrders } from "../stores/useOrders";
 import { useSession } from "../stores/useSession";
 import UserInfoTable from "../components/MyAccountView/UserInfoTable";
 import "../components/MyAccountView/MyAccountView.css";
+import LocationMap from "../components/ui/Map/LocationMap";
 
 const MyAccount = () => {
   const { orders } = useOrders();
@@ -62,6 +63,9 @@ const MyAccount = () => {
           </>
         )}
       </section>
+      <div className="container d-flex flex-column g-3 mt-5">
+          <LocationMap />
+        </div>
     </>
   );
 };
