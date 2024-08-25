@@ -16,7 +16,7 @@ import AdminPrivateView from "../views/routing/AdminPrivateView";
 import WaitingForPaymentView from "../views/PendingPaymentView";
 import PreparingOrderView from "../views/PreparingOrderView";
 import PendingDelivery from "../views/PendingDelivery";
-import TVPanel from "../views/TVPanel";
+import TVPanelView from "../views/TVPanelView";
 
 // 2 Tipos de rutas: Públicas y Privadas
 export const router = createBrowserRouter([
@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "tvpanel",
-            element: <TVPanel />,
+            element: <TVPanelView />,
           },
         ],
       },
