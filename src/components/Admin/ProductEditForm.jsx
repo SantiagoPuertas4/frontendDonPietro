@@ -34,7 +34,6 @@ const ProductEditForm = (props) => {
   });
 
   const handleEdit = (data) => {
-
     const transformedData = {
       name: data.nombreProducto,
       price: data.precioProducto,
@@ -90,7 +89,7 @@ const ProductEditForm = (props) => {
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
-          ClassName="col-12 p-0"
+          ClassName="p-0"
         />
         <Input
           register={register}
@@ -145,13 +144,15 @@ const ProductEditForm = (props) => {
         <Input
           register={register}
           name="categoriaProducto"
-          label="Categoria"
+          label="Categoría"
           errors={errors.categoriaProducto}
+          type="number"
+          select={true}
           options={{
             required: "El campo es requerido",
-            pattern: {
-              value: /^(comidas|bebidas)$/,
-              message: "'comidas' o 'bebidas'",
+            min: {
+              value: 0,
+              message: "El campo debe ser mayor o igual a 0",
             },
           }}
           labelClassName="productEditLabel"
@@ -176,7 +177,7 @@ const ProductEditForm = (props) => {
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
-          ClassName="g-col-12 p-0"
+          ClassName="p-0"
           textarea={true}
         />
         <article className="row d-flex">

@@ -5,7 +5,7 @@
   padding: 10px;
 }
 
-section.d-flex {
+.prueba {
   background-color: #333;
   border-radius: 10px;
   margin: 20px;
@@ -20,5 +20,5 @@ section.d-flex {
 }
 
 .name {
-    margin: 0px 20px 0px 20px;
+  margin: 0px 20px 0px 20px;
 }

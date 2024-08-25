@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getPendingDeliveryOrderFn, getPreparingOrdersFn } from "../api/order";
 import Orders from "../components/TVPanel/Orders";
 
-import "../components/TVPanel/TVPanel.css"
+import "../components/TVPanel/TVPanel.css";
 
 const TVPanelView = () => {
   const [delivery, setDelivery] = useState({ data: [], message: "" });
@@ -50,7 +50,7 @@ const TVPanelView = () => {
       <section className="h1-pedidos">
         <h1>Pedidos</h1>
       </section>
-      <section className="d-flex py-5">
+      <section className="d-flex prueba py-5">
         <article className="w-50 d-flex flex-column text-center">
           <h5 className="text-white mb-3 state">Listos</h5>
           <Orders
@@ -61,7 +61,7 @@ const TVPanelView = () => {
           />
         </article>
 
-        <article className="w-50 text-center  d-flex flex-column text-center">
+        <article className="w-50 text-center d-flex flex-column text-center">
           <h5 className="text-white mb-3 state">En proceso</h5>
           <Orders
             isLoading={loadingPreparing}
