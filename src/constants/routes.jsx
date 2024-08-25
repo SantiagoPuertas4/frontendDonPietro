@@ -16,7 +16,7 @@ import AdminPrivateView from "../views/routing/AdminPrivateView";
 import WaitingForPaymentView from "../views/PendingPaymentView";
 import PreparingOrderView from "../views/PreparingOrderView";
 import PendingDelivery from "../views/PendingDelivery";
-import TVPanelView from "../views/TVPanelView";
+import TVPanelView from "../views/TVPanelView.jsx";
 
 export const router = createBrowserRouter([
   {

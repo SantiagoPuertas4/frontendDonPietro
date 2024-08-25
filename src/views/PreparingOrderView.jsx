@@ -23,8 +23,8 @@ const PreparingOrderView = () => {
 
   if (isError) {
     return (
-      <section className="alert alert-danger mt-3 container">
-        <p className="text-black">
+      <section className="text-center container mt-5">
+        <p className="text-white">
           Ocurrió un error cargando la lista de pedidos pendientes a preparar.
         </p>
       </section>
@@ -33,8 +33,8 @@ const PreparingOrderView = () => {
 
   if (orders && orders.data.length === 0) {
     return (
-      <section className="alert alert-info mt-3 container">
-        <p className="text-black text-center">
+      <section className="text-center container mt-5">
+        <p className="text-white">
           No se encontraron pedidos pendientes a preparar.
         </p>
       </section>

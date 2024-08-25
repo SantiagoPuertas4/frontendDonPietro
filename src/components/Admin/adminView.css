@@ -1,3 +1,10 @@
+.h1-admin {
+  background-color: var(--color-primario);
+  text-align: center;
+  color: var(--color-adicional-3);
+  padding: 10px;
+}
+
 .btn-admin {
   color: white !important;
   border: 2px white solid !important;
@@ -61,7 +68,7 @@ p {
 }
 
 .btn-selected {
-  background-color: rgb(46, 46, 46) !important;
+  background-color: rgb(27, 27, 27) !important;
 }
 
 .options {
