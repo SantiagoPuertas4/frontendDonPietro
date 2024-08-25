@@ -142,7 +142,7 @@ const RegisterForm = () => {
     >
       <Input
         errors={errors.fullname}
-        label="NOMBRE"
+        label="Nombre"
         name="fullname"
         options={{
           required: {
@@ -158,7 +158,7 @@ const RegisterForm = () => {
       />
       <Input
         errors={errors.email}
-        label="CORREO ELECTRONICO"
+        label="Correo electrónico"
         name="email"
         options={{
           required: {
@@ -172,7 +172,7 @@ const RegisterForm = () => {
       />
       <Input
         errors={errors.password}
-        label="CONTRASEÑA"
+        label="Contraseña"
         name="password"
         options={{
           required: {
@@ -196,8 +196,8 @@ const RegisterForm = () => {
         inputClassName="mainContactInput"
       />
       <Input
-        errors={errors.passwordRepeat}
-        label="REPETIR CONTRASEÑA"
+        errors={errors.repeatPassword}
+        label="Repetir contraseña"
         name="repeatPassword"
         options={{
           required: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { decodeJWT } from "../utilities/decodeJWT";
 import UserInfoTable from "../components/MyAccountView/UserInfoTable";
 import { useSession } from "../stores/useSession";
@@ -79,47 +79,47 @@ const MyAccountView = () => {
           <p className="text-center text-white">No se encontraron pedidos.</p>
         ) : (
           <section className="row">
-          <ul className="col-12 col-sm-6 col-lg-6">
-            {orders.map((order) => (
-              <li key={order._id} className="order-item">
-                <p>
-                  <strong>Estado:</strong> {order.status}
-                </p>
-                <p>
-                  <strong>Método de pago:</strong> {order.paymentMethod}
-                </p>
-                <p>
-                  <strong>Comentarios:</strong>{" "}
-                  {order.comments || "Sin comentarios."}
-                </p>
-                <p>
-                  <strong>Fecha:</strong>{" "}
-                  {new Date(order.createdAt).toLocaleDateString()}
-                </p>
+            <ul className="col-12 col-sm-6 col-lg-6">
+              {orders.map((order) => (
+                <li key={order._id} className="order-item">
+                  <p>
+                    <strong>Estado:</strong> {order.status}
+                  </p>
+                  <p>
+                    <strong>Método de pago:</strong> {order.paymentMethod}
+                  </p>
+                  <p>
+                    <strong>Comentarios:</strong>{" "}
+                    {order.comments || "Sin comentarios."}
+                  </p>
+                  <p>
+                    <strong>Fecha:</strong>{" "}
+                    {new Date(order.createdAt).toLocaleDateString()}
+                  </p>
 
-                <h3 className="order mt-4">Pedido:</h3>
-                <ul>
-                  {order.products.map((item, index) => (
-                    <li key={index}>
-                      <p>
-                        <strong>Producto:</strong> {item.product.name}
-                      </p>
-                      <p>
-                        <strong>Cantidad:</strong>{" "}
-                        {item.product.quantity || "N/A"}
-                      </p>
-                      <p>
-                        <strong>Precio:</strong> ${item.product.price}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-                <h4 className="text-white">
-                  <strong>Total:</strong> ${order.total}
-                </h4>
-              </li>
-            ))}
-          </ul>
+                  <h3 className="order mt-4">Pedido:</h3>
+                  <ul>
+                    {order.products.map((item, index) => (
+                      <li key={index}>
+                        <p>
+                          <strong>Producto:</strong> {item.product.name}
+                        </p>
+                        <p>
+                          <strong>Cantidad:</strong>{" "}
+                          {item.product.quantity || "N/A"}
+                        </p>
+                        <p>
+                          <strong>Precio:</strong> ${item.product.price}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                  <h4 className="text-white">
+                    <strong>Total:</strong> ${order.total}
+                  </h4>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
       </div>
