@@ -12,7 +12,7 @@ const PendingDelivery = () => {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["pendingOrders"],
+    queryKey: ["deliveryOrders"],
     queryFn: () => getPendingDeliveryOrderFn(),
   });
   console.log(orders);

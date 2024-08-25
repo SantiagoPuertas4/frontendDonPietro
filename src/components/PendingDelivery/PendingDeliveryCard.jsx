@@ -14,7 +14,7 @@ const PendingDeliveryCard = (props) => {
       toast.success("Orden guardada");
 
       QueryClient.invalidateQueries({
-        queryKey: ["pendingOrders"],
+        queryKey: ["deliveryOrders"],
       });
     },
     onError: (e) => {
