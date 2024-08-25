@@ -5,12 +5,14 @@ import ProductList from "../components/Admin/ProductList";
 import ProductForm from "../components/Admin/ProductForm";
 
 import "../components/Admin/adminView.css";
+import TableConfigForm from "../components/Admin/tableConfigForm";
 
 const AdminView = () => {
   const [help, setHelp] = useState(true);
   const [productList, setProductList] = useState(false);
   const [productForm, setProductForm] = useState(false);
   const [userList, setUserList] = useState(false);
+  const [tableConfig, setTableConfig] = useState(false);
   const [selectedButton, setSelectedButton] = useState(null);
 
   const handleProductList = () => {
@@ -18,6 +20,7 @@ const AdminView = () => {
     setProductList(true);
     setProductForm(false);
     setUserList(false);
+    setTableConfig(false);
   };
 
   const handleProductForm = () => {
@@ -25,6 +28,7 @@ const AdminView = () => {
     setProductList(false);
     setProductForm(true);
     setUserList(false);
+    setTableConfig(false);
   };
 
   const handleUserList = () => {
@@ -32,16 +36,30 @@ const AdminView = () => {
     setProductList(false);
     setProductForm(false);
     setUserList(true);
+    setTableConfig(false);
+  };
+
+  const handleTableConfig = () => {
+    setHelp(false);
+    setProductList(false);
+    setProductForm(false);
+    setUserList(false);
+    setTableConfig(true);
   };
 
   const handleButtonClick = (button) => {
     setSelectedButton(button);
     if (button === "productList") {
       handleProductList();
-    } else if (button === "productForm") {
+    }
+    if (button === "productForm") {
       handleProductForm();
-    } else if (button === "userList") {
+    }
+    if (button === "userList") {
       handleUserList();
+    }
+    if (button === "tableConfig") {
+      handleTableConfig();
     }
   };
 
@@ -82,12 +100,23 @@ const AdminView = () => {
               Ver usuarios
             </button>
           </div>
+          <div className="col-12 col-md-6 col-lg-4 my-1 px-1">
+            <button
+              onClick={() => handleButtonClick("tableConfig")}
+              className={`btn btn-admin w-100 h-100 ${
+                selectedButton === "tableConfig" ? "btn-selected" : ""
+              }`}
+            >
+              Cantidad de mesas
+            </button>
+          </div>
         </article>
         <article className="w-100">
           {help === true && <Help />}
           {productList === true && <ProductList />}
           {productForm === true && <ProductForm />}
           {userList === true && <UserList />}
+          {tableConfig === true && <TableConfigForm />}
         </article>
       </section>
     </>

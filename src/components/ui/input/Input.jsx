@@ -52,7 +52,7 @@ const Input = (props) => {
           autoComplete={autocomplete}
           {...register(name, options)}
         >
-          <option selected disabled>
+          <option value="" disabled>
             Seleccionar
           </option>
           <option value="comidas">Comidas</option>
