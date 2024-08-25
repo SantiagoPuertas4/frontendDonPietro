@@ -16,9 +16,11 @@ const RegisterView = () => {
         </div>
         <div className="d-flex flex-column">
           <RegisterForm />
-          <LocationMap />
         </div>
       </section>
+      <div className="container d-flex flex-column g-3 mt-5">
+          <LocationMap />
+        </div>
     </>
   );
 };
