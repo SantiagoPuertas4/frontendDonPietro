@@ -112,7 +112,7 @@ const LoginForm = () => {
       <Input
         className="mb-3"
         error={errors.email}
-        label="CORREO ELECTRONICO"
+        label="Correo electrónico"
         name="email"
         options={{
           required: {
@@ -128,7 +128,7 @@ const LoginForm = () => {
       />
       <Input
         error={errors.password}
-        label="CONTRASEÑA"
+        label="Contraseña"
         name="password"
         options={{
           required: {
@@ -146,7 +146,7 @@ const LoginForm = () => {
           <InvalidFeedback
             noInput={true}
             divClass="text-center mb-2"
-            msg="El Captcha debe ser resuelto para poder enviar un mail"
+            msg="El Captcha debe ser resuelto para poder ingresar"
           />
         )}
         <ReCAPTCHA
@@ -161,9 +161,9 @@ const LoginForm = () => {
         </button>
       </div>
       <p className="account-question mt-4">
-        ¿Aun no tienes cuenta?{" "}
+        ¿Aún no tienes cuenta?{" "}
         <Link to="/register" className="register-link">
-          Ingresá aqui
+          Ingresá aquí
         </Link>
       </p>
     </form>
