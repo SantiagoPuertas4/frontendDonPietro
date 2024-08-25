@@ -56,7 +56,10 @@ const ProductForm = () => {
     <section>
       <h1 className="titulo my-2 text-center">Ingreso de productos</h1>
       <article className="cardUsuario p-2">
-        <form className="row row-gap-1 m-2" onSubmit={onSubmitRHF(handleSubmit)}>
+        <form
+          className="row row-gap-1 m-2"
+          onSubmit={onSubmitRHF(handleSubmit)}
+        >
           <div className="p-0">
             <Input
               register={register}
@@ -65,13 +68,18 @@ const ProductForm = () => {
               errors={errors.nombreProducto}
               options={{
                 required: "El campo es requerido",
-                maxLength: { value: 25, message: "El campo no puede tener más de 25 caracteres" },
-                minLength: { value: 3, message: "El campo no puede tener menos de 3 caracteres" },
+                maxLength: {
+                  value: 25,
+                  message: "El campo no puede tener más de 25 caracteres",
+                },
+                minLength: {
+                  value: 3,
+                  message: "El campo no puede tener menos de 3 caracteres",
+                },
               }}
               labelClassName="productEditLabel"
               inputClassName="productEditInput"
             />
-            <InvalidFeedback msg={errors.nombreProducto?.message} />
           </div>
           <div className="col-4 p-0 pe-1">
             <Input
@@ -82,12 +90,14 @@ const ProductForm = () => {
               type="number"
               options={{
                 required: "El campo es requerido",
-                min: { value: 0, message: "El campo debe ser mayor o igual a 0" },
+                min: {
+                  value: 0,
+                  message: "El campo debe ser mayor o igual a 0",
+                },
               }}
               labelClassName="productEditLabel"
               inputClassName="productEditInput"
             />
-            <InvalidFeedback msg={errors.precioProducto?.message} />
           </div>
           <div className="col-4 p-0 pe-1">
             <Input
@@ -98,28 +108,34 @@ const ProductForm = () => {
               type="number"
               options={{
                 required: "El campo es requerido",
-                min: { value: 0, message: "El campo debe ser mayor o igual a 0" },
+                min: {
+                  value: 0,
+                  message: "El campo debe ser mayor o igual a 0",
+                },
               }}
               labelClassName="productEditLabel"
               inputClassName="productEditInput"
             />
-            <InvalidFeedback msg={errors.stockProducto?.message} />
           </div>
-          <div className="col-4 p-0 productEditInput">
-          <label className="productEditLabel ms-3 mt-1" htmlFor="categoriaProducto">Categoría</label>
-          <select
-            id="categoriaProducto"
-            {...register("categoriaProducto", {
-              required: "El campo es requerido",
-            })}
-            className="productEditInput options d-flex ms-3 mt-1"
-          >
-            <option value="">Seleccionar</option>
-            <option value="comidas">Comidas</option>
-            <option value="bebidas">Bebidas</option>
-          </select>
-          <InvalidFeedback msg={errors.categoriaProducto?.message} />
-        </div>
+          <div className="col-4 p-0 pe-1">
+            <Input
+              register={register}
+              name="categoriaProducto"
+              label="Categoría"
+              errors={errors.categoriaProducto}
+              type="number"
+              select={true}
+              options={{
+                required: "El campo es requerido",
+                min: {
+                  value: 0,
+                  message: "El campo debe ser mayor o igual a 0",
+                },
+              }}
+              labelClassName="productEditLabel"
+              inputClassName="productEditInput"
+            />
+          </div>
           <div className="p-0">
             <Input
               register={register}
@@ -128,12 +144,14 @@ const ProductForm = () => {
               errors={errors.imgUrlProducto}
               options={{
                 required: "El campo es requerido",
-                minLength: { value: 3, message: "El campo no puede tener menos de 3 caracteres" },
+                minLength: {
+                  value: 3,
+                  message: "El campo no puede tener menos de 3 caracteres",
+                },
               }}
               labelClassName="productEditLabel"
               inputClassName="productEditInput"
             />
-            <InvalidFeedback msg={errors.imgUrlProducto?.message} />
           </div>
           <div className="p-0">
             <Input
@@ -143,14 +161,19 @@ const ProductForm = () => {
               errors={errors.descripcionProducto}
               options={{
                 required: "El campo es requerido",
-                maxLength: { value: 300, message: "El campo no puede tener más de 300 caracteres" },
-                minLength: { value: 15, message: "El campo no puede tener menos de 15 caracteres" },
+                maxLength: {
+                  value: 300,
+                  message: "El campo no puede tener más de 300 caracteres",
+                },
+                minLength: {
+                  value: 15,
+                  message: "El campo no puede tener menos de 15 caracteres",
+                },
               }}
               labelClassName="productEditLabel"
               inputClassName="productEditInput"
               textarea
             />
-            <InvalidFeedback msg={errors.descripcionProducto?.message} />
           </div>
           <section className="row d-flex">
             <Checkbox

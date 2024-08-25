@@ -12,6 +12,7 @@ const Input = (props) => {
     options,
     placeholder = "Ingrese un texto",
     textarea = false,
+    select = false,
     labelClassName = "",
     inputClassName = "",
     autocomplete = "off",
@@ -33,11 +34,34 @@ const Input = (props) => {
         <label htmlFor={`${name}-input`} className={labelClassName}>
           {label}
         </label>
-        <div className="invalid-feedback">
-          <span className="badge text-bg-danger text-wrap text-break">
-            {errors?.message}
-          </span>
-        </div>
+        <InvalidFeedback msg={errors?.message} />
+      </fieldset>
+    );
+  }
+
+  if (select) {
+    return (
+      <fieldset className={`form-floating ${ClassName}`}>
+        <select
+          className={`form-select ${inputClassName} ${
+            errors ? "is-invalid" : ""
+          }`}
+          id={`${name}-input`}
+          placeholder={placeholder}
+          type={type}
+          autoComplete={autocomplete}
+          {...register(name, options)}
+        >
+          <option selected disabled>
+            Seleccionar
+          </option>
+          <option value="comidas">Comidas</option>
+          <option value="bebidas">Bebidas</option>
+        </select>
+        <label htmlFor={`${name}-input`} className={labelClassName}>
+          {label}
+        </label>
+        <InvalidFeedback msg={errors?.message} />
       </fieldset>
     );
   }
@@ -76,6 +100,7 @@ Input.propTypes = {
   options: PropTypes.object,
   placeholder: PropTypes.string,
   textarea: PropTypes.bool,
+  select: PropTypes.bool,
   labelClassName: PropTypes.string,
   inputClassName: PropTypes.string,
   autocomplete: PropTypes.string,
