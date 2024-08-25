@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useRef, useState } from "react";
 import Input from "../input/Input";
 import InvalidFeedback from "../InvalidFeedback/InvalidFeedback";
+
 import "./ContactForm.css";
 
 const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
@@ -110,7 +111,7 @@ Diosito`,
 
   return (
     <section className="container mt-5">
-      <div>
+      <article>
         <h1 className="titulo text-center">Contáctanos</h1>
         <form className="p-3 row gap-2 text-end" onSubmit={onSubmitRHF(handleSubmit)}>
           <div className="form-group">
@@ -205,7 +206,7 @@ Diosito`,
             )}
           </div>
 
-          <section className="d-flex flex-column align-items-center mt-2">
+          <div className="d-flex flex-column align-items-center mt-2">
             {captcha && (
               <InvalidFeedback
                 noInput={true}
@@ -218,13 +219,13 @@ Diosito`,
               onChange={handleCaptchaChange}
               sitekey={CAPTCHA_KEY}
             />
-          </section>
+          </div>
 
           <div className="d-flex justify-content-center p-0 my-4">
             <button className="btn btnContactanos px-5">Enviar</button>
           </div>
         </form>
-      </div>
+      </article>
     </section>
   );
 };

@@ -3,7 +3,6 @@ import { decodeJWT } from "../utilities/decodeJWT";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const postLoginFn = async (data) => {
-  // data: { email, password }
 
   const res = await fetch(`${BACKEND_URL}/auth/login`, {
     method: "POST",

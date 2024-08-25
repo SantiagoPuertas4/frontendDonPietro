@@ -3,8 +3,8 @@ import { decodeJWT } from "../utilities/decodeJWT";
 import UserInfoTable from "../components/MyAccountView/UserInfoTable";
 import { useSession } from "../stores/useSession";
 
-import "../components/MyAccountView/MyAccountView.css";
 import LocationMap from "../components/ui/Map/LocationMap";
+import "../components/MyAccountView/MyAccountView.css";
 
 const MyAccountView = () => {
   const [orders, setOrders] = useState([]);
@@ -71,14 +71,14 @@ const MyAccountView = () => {
         <h1>MI CUENTA</h1>
       </section>
       <UserInfoTable user={user} onLogout={logout} />
-      <div className="order-container">
+      <section className="order-container">
         <h2 className="text-center text-white mt-4 mb-4">
           Historial de pedidos
         </h2>
         {orders.length === 0 ? (
           <p className="text-center text-white">No se encontraron pedidos.</p>
         ) : (
-          <section className="orders-grid">
+          <article className="orders-grid">
             {orders.map((order) => (
               <div key={order._id} className="order-item">
                 <p>
@@ -118,12 +118,12 @@ const MyAccountView = () => {
                 </h4>
               </div>
             ))}
-          </section>
+          </article>
         )}
-      </div>
-      <div className="container d-flex flex-column g-3 mt-5">
+      </section>
+      <section className="container d-flex flex-column g-3 mt-5">
         <LocationMap />
-      </div>
+      </section>
     </>
   );
 };

@@ -6,9 +6,9 @@ export const AboutUsView = () => {
   return (
     <>
       <AboutUs />
-      <div className="container d-flex flex-column g-3 mt-5">
-          <LocationMap />
-        </div>
+      <section className="container d-flex flex-column g-3 mt-5">
+        <LocationMap />
+      </section>
     </>
   );
 };

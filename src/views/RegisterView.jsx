@@ -6,21 +6,21 @@ const RegisterView = () => {
     <>
       <h1 className="login-header">Registro</h1>
       <section className="login-card">
-        <div className=" text-white py-2">
+        <article className=" text-white py-2">
           <h2 className="text-center color-register pt-3 mt-3">
             Creá tu cuenta
           </h2>
           <p className="text-center pt-1 my-2 mt-3">
             Por favor, completá el formulario.
           </p>
-        </div>
-        <div className="d-flex flex-column">
+        </article>
+        <article className="d-flex flex-column">
           <RegisterForm />
-        </div>
+        </article>
       </section>
-      <div className="container d-flex flex-column g-3 mt-5">
-          <LocationMap />
-        </div>
+      <section className="container d-flex flex-column g-3 mt-5">
+        <LocationMap />
+      </section>
     </>
   );
 };

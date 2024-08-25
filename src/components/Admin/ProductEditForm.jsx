@@ -23,7 +23,6 @@ const ProductEditForm = (props) => {
       toast.dismiss();
       toast.success("Entrada actualizada");
 
-      //Avisarle a la tabla que se debe actualizar
       QueryClient.invalidateQueries({
         queryKey: ["products"],
       });
@@ -35,7 +34,7 @@ const ProductEditForm = (props) => {
   });
 
   const handleEdit = (data) => {
-    console.log(data);
+
     const transformedData = {
       name: data.nombreProducto,
       price: data.precioProducto,
@@ -48,7 +47,7 @@ const ProductEditForm = (props) => {
       isGlutenFree: data.checkGlutenFree,
       isAvailable: data.checkAvailable,
     };
-    console.log(transformedData);
+
     toast.loading("Guardando... Aguarde");
     putProduct({ productId: product.id, data: transformedData });
   };
@@ -180,7 +179,7 @@ const ProductEditForm = (props) => {
           ClassName="g-col-12 p-0"
           textarea={true}
         />
-        <section className="row d-flex">
+        <article className="row d-flex">
           <Checkbox
             register={register}
             name="checkVegetarian"
@@ -213,15 +212,15 @@ const ProductEditForm = (props) => {
             checkClassName="productCheckInput"
             className="col-12 col-md-4 col-lg-3"
           />
-        </section>
-        <div className="d-flex justify-content-center gap-1 my-1">
+        </article>
+        <article className="d-flex justify-content-center gap-1 my-1">
           <button onClick={handleCancel} className="btn btn-danger">
             Cancelar
           </button>
           <button type="submit" className="btn btn-success">
             Guardar
           </button>
-        </div>
+        </article>
       </form>
     </section>
   );

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import ModalRow from "./ModalRow";
+
 import "./Modal.css";
 
 const Modal = (props) => {
@@ -9,12 +10,12 @@ const Modal = (props) => {
     setModal(false);
   };
   return (
-    <div className="modal-overlay d-flex justify-content-center">
-      <div className="modalNB d-block">
+    <section className="modal-overlay d-flex justify-content-center">
+      <article className="modalNB d-block">
         <button className="close-button" onClick={handleClose}>
           &times;
         </button>
-        <section className="modal-content d-flex flex-column gap-3">
+        <div className="modal-content d-flex flex-column gap-3">
           <div>
             {details && (
               <h2 className="titulo text-center">
@@ -71,9 +72,9 @@ const Modal = (props) => {
               </p>
             )}
           </div>
-        </section>
-      </div>
-    </div>
+        </div>
+      </article>
+    </section>
   );
 };
 export default Modal;

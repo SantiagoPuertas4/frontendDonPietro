@@ -1,4 +1,3 @@
-// AboutUs.jsx
 import "./AboutUs.css";
 
 const AboutUs = () => {
@@ -16,7 +15,7 @@ const AboutUs = () => {
         </p>
       </section>
       <section className="about-us">
-        <div className="row m-4">
+        <article className="row m-4">
           <div className="col-12 col-md-6 col-lg-3 mb-4">
             <div className="card">
               <img
@@ -94,7 +93,7 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-        </div>
+        </article>
       </section>
     </>
   );

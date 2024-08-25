@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { getWaitingOrdersFn } from "../api/order";
 import PendingPaymentCard from "../components/PendingPayment/PendingPaymentCard";
-import "../components/PendingPayment/PendingPayment.css";
 import { useState } from "react";
 import Modal from "../components/ui/Modal/Modal";
+
+import "../components/PendingPayment/PendingPayment.css";
 
 const WaitingForPaymentView = () => {
   const [details, setDetails] = useState();
@@ -23,26 +24,26 @@ const WaitingForPaymentView = () => {
 
   if (isError) {
     return (
-      <div className="alert alert-danger mt-3 container">
-        <p className="text-black">
-          Ocurrio un error cargando la lista de pedidos pendientes a pagar
+      <section className="text-center container mt-5">
+        <p className="text-white">
+          Ocurrió un error cargando la lista de pedidos pendientes a pagar.
         </p>
-      </div>
+      </section>
     );
   }
 
   if (orders && orders.data.length === 0) {
     return (
-      <div className="alert alert-info mt-3 container">
-        <p className="text-black text-center">
-          No se encontraron pedidos pendientes a pagar
+      <section className="text-center container mt-5">
+        <p className="text-white">
+          No se encontraron pedidos pendientes a pagar.
         </p>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className="m-5 row d-flex justify-content-center">
+    <section className="m-5 row d-flex justify-content-center">
       {modal && <Modal details={details} setModal={setModal} />}
       {orders.data.map((order) => {
         return (
@@ -54,7 +55,7 @@ const WaitingForPaymentView = () => {
           />
         );
       })}
-    </div>
+    </section>
   );
 };
 export default WaitingForPaymentView;

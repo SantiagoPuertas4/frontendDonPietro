@@ -21,7 +21,7 @@ export const postOrderFn = async (data) => {
 };
 
 export const deleteOrderFn = async (orderId) => {
-  console.log(orderId);
+
   const token = sessionStorage.getItem("token");
 
   const res = await fetch(`${BACKEND_URL}/order/${orderId}`, {

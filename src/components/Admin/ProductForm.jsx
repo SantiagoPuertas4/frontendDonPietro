@@ -6,6 +6,7 @@ import { postProductsFn } from "../../api/products";
 
 import Input from "../ui/input/Input";
 import Checkbox from "../ui/Checkbox/Checkbox";
+import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
 
 const ProductForm = () => {
   const queryClient = useQueryClient();
@@ -21,12 +22,8 @@ const ProductForm = () => {
     onSuccess: () => {
       toast.dismiss();
       toast.success("Entrada guardada");
-
       reset();
-
-      queryClient.invalidateQueries({
-        queryKey: ["products"],
-      });
+      queryClient.invalidateQueries({ queryKey: ["products"] });
     },
     onError: (e) => {
       toast.dismiss();
@@ -35,7 +32,6 @@ const ProductForm = () => {
   });
 
   const handleSubmit = (data) => {
-    console.log(data);
     const transformedData = {
       name: data.nombreProducto,
       description: data.descripcionProducto,
@@ -48,7 +44,6 @@ const ProductForm = () => {
       isGlutenFree: data.checkGlutenFree,
       isAvailable: data.checkAvailable,
     };
-    console.log(transformedData);
     toast.loading("Guardando... Aguarde");
     postProduct(transformedData);
   };
@@ -58,121 +53,105 @@ const ProductForm = () => {
   };
 
   return (
-    <div>
+    <section>
       <h1 className="titulo my-2 text-center">Ingreso de productos</h1>
-      <div className="cardUsuario p-2">
-        <form
-          className="row row-gap-1 m-2"
-          onSubmit={onSubmitRHF(handleSubmit)}
-        >
-          <Input
-            register={register}
-            name="nombreProducto"
-            label="Nombre"
-            errors={errors.nombreProducto}
-            options={{
+      <article className="cardUsuario p-2">
+        <form className="row row-gap-1 m-2" onSubmit={onSubmitRHF(handleSubmit)}>
+          <div className="p-0">
+            <Input
+              register={register}
+              name="nombreProducto"
+              label="Nombre"
+              errors={errors.nombreProducto}
+              options={{
+                required: "El campo es requerido",
+                maxLength: { value: 25, message: "El campo no puede tener más de 25 caracteres" },
+                minLength: { value: 3, message: "El campo no puede tener menos de 3 caracteres" },
+              }}
+              labelClassName="productEditLabel"
+              inputClassName="productEditInput"
+            />
+            <InvalidFeedback msg={errors.nombreProducto?.message} />
+          </div>
+          <div className="col-4 p-0 pe-1">
+            <Input
+              register={register}
+              name="precioProducto"
+              label="Precio"
+              errors={errors.precioProducto}
+              type="number"
+              options={{
+                required: "El campo es requerido",
+                min: { value: 0, message: "El campo debe ser mayor o igual a 0" },
+              }}
+              labelClassName="productEditLabel"
+              inputClassName="productEditInput"
+            />
+            <InvalidFeedback msg={errors.precioProducto?.message} />
+          </div>
+          <div className="col-4 p-0 pe-1">
+            <Input
+              register={register}
+              name="stockProducto"
+              label="Stock"
+              errors={errors.stockProducto}
+              type="number"
+              options={{
+                required: "El campo es requerido",
+                min: { value: 0, message: "El campo debe ser mayor o igual a 0" },
+              }}
+              labelClassName="productEditLabel"
+              inputClassName="productEditInput"
+            />
+            <InvalidFeedback msg={errors.stockProducto?.message} />
+          </div>
+          <div className="col-4 p-0 productEditInput">
+          <label className="productEditLabel ms-3 mt-1" htmlFor="categoriaProducto">Categoría</label>
+          <select
+            id="categoriaProducto"
+            {...register("categoriaProducto", {
               required: "El campo es requerido",
-              maxLength: {
-                value: 25,
-                message: "El campo no puede tener mas de 25 caracteres",
-              },
-              minLength: {
-                value: 3,
-                message: "El campo no puede tener menos de 3 caracteres",
-              },
-            }}
-            labelClassName="productEditLabel"
-            inputClassName="productEditInput"
-            ClassName="col-12 p-0"
-          />
-          <Input
-            register={register}
-            name="precioProducto"
-            label="Precio"
-            errors={errors.precioProducto}
-            type="number"
-            options={{
-              required: "El campo es requerido",
-              min: {
-                value: 0,
-                message: "El campo debe ser mayor o igual a 0",
-              },
-            }}
-            labelClassName="productEditLabel"
-            inputClassName="productEditInput"
-            ClassName="col-4 p-0 pe-1"
-          />
-          <Input
-            register={register}
-            name="stockProducto"
-            label="Stock"
-            errors={errors.stockProducto}
-            type="number"
-            options={{
-              required: "El campo es requerido",
-              min: {
-                value: 0,
-                message: "El campo debe ser mayor o igual a 0",
-              },
-            }}
-            labelClassName="productEditLabel"
-            inputClassName="productEditInput"
-            ClassName="col-4 p-0 pe-1"
-          />
-          <Input
-            register={register}
-            name="categoriaProducto"
-            label="Categoria"
-            errors={errors.categoriaProducto}
-            options={{
-              required: "El campo es requerido",
-              pattern: {
-                value: /^(comidas|bebidas)$/,
-                message:
-                  "El campos solo acepta los valores 'comidas' o 'bebidas'",
-              },
-            }}
-            labelClassName="productEditLabel"
-            inputClassName="productEditInput"
-            ClassName="col-4 p-0"
-          />
-          <Input
-            register={register}
-            name="imgUrlProducto"
-            label="Imagen"
-            errors={errors.imgUrlProducto}
-            options={{
-              required: "El campo es requerido",
-              minLength: {
-                value: 3,
-                message: "El campo no puede tener menos de 3 caracteres",
-              },
-            }}
-            labelClassName="productEditLabel"
-            inputClassName="productEditInput"
-            ClassName="col-12 p-0"
-          />
-          <Input
-            register={register}
-            name="descripcionProducto"
-            label="Descripcion"
-            errors={errors.descripcionProducto}
-            options={{
-              required: "El campo es requerido",
-              maxLength: {
-                value: 300,
-                message: "El campo no puede tener mas de 300 caracteres",
-              },
-              minLength: {
-                value: 15,
-                message: "El campo no puede tener menos de 15 caracteres",
-              },
-            }}
-            labelClassName="productEditLabel"
-            inputClassName="productEditInput"
-            ClassName="col-12 p-0"
-            textarea={true}
-          />
+            })}
+            className="productEditInput options d-flex ms-3 mt-1"
+          >
+            <option value="">Seleccionar</option>
+            <option value="comidas">Comidas</option>
+            <option value="bebidas">Bebidas</option>
+          </select>
+          <InvalidFeedback msg={errors.categoriaProducto?.message} />
+        </div>
+          <div className="p-0">
+            <Input
+              register={register}
+              name="imgUrlProducto"
+              label="Imagen"
+              errors={errors.imgUrlProducto}
+              options={{
+                required: "El campo es requerido",
+                minLength: { value: 3, message: "El campo no puede tener menos de 3 caracteres" },
+              }}
+              labelClassName="productEditLabel"
+              inputClassName="productEditInput"
+            />
+            <InvalidFeedback msg={errors.imgUrlProducto?.message} />
+          </div>
+          <div className="p-0">
+            <Input
+              register={register}
+              name="descripcionProducto"
+              label="Descripción"
+              errors={errors.descripcionProducto}
+              options={{
+                required: "El campo es requerido",
+                maxLength: { value: 300, message: "El campo no puede tener más de 300 caracteres" },
+                minLength: { value: 15, message: "El campo no puede tener menos de 15 caracteres" },
+              }}
+              labelClassName="productEditLabel"
+              inputClassName="productEditInput"
+              textarea
+            />
+            <InvalidFeedback msg={errors.descripcionProducto?.message} />
+          </div>
           <section className="row d-flex">
             <Checkbox
               register={register}
@@ -201,13 +180,13 @@ const ProductForm = () => {
             <Checkbox
               register={register}
               name="checkAvailable"
-              label="Esta disponible"
+              label="Está disponible"
               labelClassName="productCheckLabel"
               checkClassName="productCheckInput"
               className="col-12 col-md-4 col-lg-3"
             />
           </section>
-          <div className="d-flex justify-content-center justify-content-sm-end  gap-2 p-0 my-1">
+          <div className="d-flex justify-content-center justify-content-sm-end gap-2 p-0 my-1">
             <button onClick={handleClean} className="cancel-button-class">
               Limpiar formulario
             </button>
@@ -216,8 +195,8 @@ const ProductForm = () => {
             </button>
           </div>
         </form>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 export default ProductForm;

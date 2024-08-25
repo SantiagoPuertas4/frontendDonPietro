@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 const OrderRow = (props) => {
   const { order } = props;
-  console.log(order);
+
   return (
-    <article className="my-3">
-      <h1 className="text-white">{order.userName}</h1>
+    <article className="my-2">
+      <h5 className="text-white name">{order.userName}</h5>
     </article>
   );
 };

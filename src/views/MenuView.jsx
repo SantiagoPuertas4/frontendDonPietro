@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import "../components/MenuView/MenuView.css";
 import { useSession } from "../stores/useSession";
 import LocationMap from "../components/ui/Map/LocationMap";
+import { Link } from "react-router-dom";
 
 const responsive = {
   desktop: {
@@ -75,9 +76,10 @@ export const MenuView = () => {
           customClass: {
             confirmButton: "swal-button",
           },
-          cancelButtonText: "Cerrar sesión",
           showDenyButton: true,
           denyButtonText: "Cerrar sesión",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
           preConfirm: (number) => {
             if (!number) {
               Swal.showValidationMessage(
@@ -87,7 +89,7 @@ export const MenuView = () => {
             return number;
           },
         });
-
+  
         if (number) {
           setTableNumber(number);
           setShowTableNumberPrompt(false);
@@ -96,9 +98,9 @@ export const MenuView = () => {
         }
       }
     };
-
+  
     requestTableNumber();
-  }, [showTableNumberPrompt, setTableNumber, logout]);
+  }, [showTableNumberPrompt, tableNumber, setTableNumber, logout]);  
 
   useEffect(() => {
     if (products) {
@@ -163,8 +165,6 @@ export const MenuView = () => {
         <h2>ESCOGE TU PLATO Y BEBIDA</h2>
         <p>Por favor, seleccioná `Añadir` en la opción que desees.</p>
       </section>
-      <section className="login-card">
-      </section>
       <section className="text-center mb-4">
         <button
           className="order-button"
@@ -191,23 +191,20 @@ export const MenuView = () => {
             </article>
           </>
         ) : (
-          <div className="text-center">
+          <article className="text-center">
             <p>Necesitamos saber tu número de mesa para continuar.</p>
-            <button
-              className="btn btn-primary"
-              onClick={() => setShowTableNumberPrompt(true)}
-            >
-              Guardar número de mesa
-            </button>
+            <Link to="/menu">
+              <button className="btn-order">Conocé más...</button>
+            </Link>
             <button className="btn btn-danger" onClick={logout}>
               Cerrar sesión
             </button>
-          </div>
+          </article>
         )}
       </section>
-      <div className="container d-flex flex-column g-3 mt-5">
-          <LocationMap />
-        </div>
+      <section className="container d-flex flex-column g-3 mt-5">
+        <LocationMap />
+      </section>
     </>
   );
 };

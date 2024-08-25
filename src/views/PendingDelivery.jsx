@@ -15,7 +15,6 @@ const PendingDelivery = () => {
     queryKey: ["deliveryOrders"],
     queryFn: () => getPendingDeliveryOrderFn(),
   });
-  console.log(orders);
 
   if (isLoading) {
     return <p className="mt-2">Cargando datos...</p>;
@@ -23,26 +22,26 @@ const PendingDelivery = () => {
 
   if (isError) {
     return (
-      <div className="alert alert-danger mt-3 container">
-        <p className="text-black">
-          Ocurrio un error cargando la lista de pedidos pendientes a pagar
+      <section className="text-center container mt-5">
+        <p className="text-white">
+          Ocurrió un error cargando la lista de pedidos pendientes a retirar.
         </p>
-      </div>
+      </section>
     );
   }
 
   if (orders && orders.data.length === 0) {
     return (
-      <div className="alert alert-info mt-3 container">
-        <p className="text-black text-center">
-          No se encontraron pedidos pendientes a pagar
+      <section className="text-center container mt-5">
+        <p className="text-white text-center">
+          No se encontraron pedidos pendientes a retirar.
         </p>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className="m-5 row d-flex justify-content-center">
+    <section className="m-5 row d-flex justify-content-center">
       {modal && <Modal details={details} setModal={setModal} />}
       {orders.data.map((order) => {
         return (
@@ -54,7 +53,7 @@ const PendingDelivery = () => {
           />
         );
       })}
-    </div>
+    </section>
   );
 };
 export default PendingDelivery;
