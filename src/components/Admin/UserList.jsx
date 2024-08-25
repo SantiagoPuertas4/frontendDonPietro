@@ -28,8 +28,8 @@ const UserList = () => {
 
   if (users && users.data.length === 0) {
     return (
-      <div className="alert alert-info mt-3">
-        <p>No se encontraron usuarios para listar</p>
+      <div className="text-white text-center mt-5">
+        <p>No se encontraron usuarios para listar.</p>
       </div>
     );
   }

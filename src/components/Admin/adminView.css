@@ -58,3 +58,7 @@ p {
   background-color: var(--color-primario) !important;
   border-color: var(--color-primario) !important;
 }
+
+.btn-selected {
+  background-color: rgb(46, 46, 46) !important;
+}

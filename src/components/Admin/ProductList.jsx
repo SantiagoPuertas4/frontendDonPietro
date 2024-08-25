@@ -20,7 +20,7 @@ const ProductList = () => {
     return (
       <div className="alert alert-danger mt-3">
         <p className="text-black">
-          Ocurrio un error cargando la lista de productos
+          Ocurrió un error cargando la lista de productos.
         </p>
       </div>
     );
@@ -28,8 +28,8 @@ const ProductList = () => {
 
   if (products && products.data.length === 0) {
     return (
-      <div className="alert alert-info mt-3">
-        <p>No se encontraron usuarios para listar</p>
+      <div className="text-white text-center mt-5">
+        <p>No se encontraron productos para listar.</p>
       </div>
     );
   }
@@ -48,7 +48,7 @@ const ProductList = () => {
           <p className="userListTitle text-center padding0">Precio</p>
         </div>
         <div className="col-2 d-none d-xl-block col-xl-4 col-xxl-4">
-          <p className="userListTitle text-center">Descripcion</p>
+          <p className="userListTitle text-center">Descripción</p>
         </div>
         <div className="col-1 d-none d-xxl-block">
           <p className="userListTitle text-center">Acciones</p>
