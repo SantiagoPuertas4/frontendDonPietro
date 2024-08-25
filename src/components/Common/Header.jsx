@@ -16,9 +16,9 @@ const Header = () => {
       cancelButtonText: "No, cancelar",
       showCancelButton: true,
       customClass: {
-        confirmButton: 'confirm-button-class',
-        cancelButton: 'cancel-button-class'
-      }
+        confirmButton: "confirm-button-class",
+        cancelButton: "cancel-button-class",
+      },
     });
 
     if (action.isConfirmed) {
@@ -133,6 +133,16 @@ const Header = () => {
                     to="/admin"
                   >
                     Administración
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                    to="/tvpanel"
+                  >
+                    Panel TV
                   </NavLink>
                 </li>
                 <li className="nav-item">
