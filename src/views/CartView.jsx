@@ -81,15 +81,27 @@ const CartView = () => {
       }
       console.log(msg);
 
-      Swal.fire({
-        title: "Stock insuficiente",
-        html: msg || "Hubo un problema al realizar el pedido: " + e.message,
-        icon: "warning",
-        confirmButtonText: "Aceptar",
-        customClass: {
-          confirmButton: "swal-button",
-        },
-      });
+      if (hasLowStock) {
+        Swal.fire({
+          title: "Stock insuficiente",
+          html: msg,
+          icon: "warning",
+          confirmButtonText: "Aceptar",
+          customClass: {
+            confirmButton: "swal-button",
+          },
+        });
+      } else {
+        Swal.fire({
+          title: "Stock insuficiente",
+          html: "Hubo un problema al realizar el pedido: " + e.message,
+          icon: "warning",
+          confirmButtonText: "Aceptar",
+          customClass: {
+            confirmButton: "swal-button",
+          },
+        });
+      }
     },
   });
 
