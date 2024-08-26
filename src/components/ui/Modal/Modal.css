@@ -4,10 +4,10 @@
   border-radius: 8px;
   max-width: 500px;
   width: 100%;
-  max-height: 80vh; /* Ajusta la altura máxima al 80% de la altura de la ventana */
+  max-height: 80vh;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   position: relative;
-  overflow-y: auto; /* Añade scroll si el contenido es más alto que el modal */
+  overflow-y: auto;
 }
 
 .modal-overlay {
@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
-  padding: 20px; /* Añade un poco de padding para asegurar que el modal no toque los bordes de la pantalla */
+  padding: 20px;
 }
 
 .close-button {

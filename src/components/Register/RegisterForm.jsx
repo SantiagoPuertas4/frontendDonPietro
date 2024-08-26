@@ -120,13 +120,20 @@ const RegisterForm = () => {
         errors={errors.fullname}
         label="Nombre"
         name="fullname"
+        maxLength={30}
         options={{
           required: {
             value: true,
             message: "Este campo es requerido",
           },
-          minLength: 3,
-          maxLength: 30,
+          minLength: {
+            value: 3,
+            message: "El campo no puede tener menos de 3 caracteres",
+          },
+          maxLength: {
+            value: 30,
+            message: "El campo no puede tener más de 30 caracteres",
+          },
         }}
         register={register}
         labelClassName="mainContactLabel"
@@ -136,10 +143,19 @@ const RegisterForm = () => {
         errors={errors.email}
         label="Correo electrónico"
         name="email"
+        maxLength={50}
         options={{
           required: {
             value: true,
             message: "Este campo es requerido",
+          },
+          minLength: {
+            value: 3,
+            message: "El campo no puede tener menos de 3 caracteres",
+          },
+          maxLength: {
+            value: 50,
+            message: "El campo no puede tener más de 50 caracteres",
           },
         }}
         register={register}
@@ -157,13 +173,17 @@ const RegisterForm = () => {
           },
           minLength: {
             value: 8,
-            message: "La contraseña debe tener al menos 8 caracteres",
+            message: "Revisa tu contraseña",
           },
-          maxLength: 15,
+          maxLength: {
+            value: 100,
+            message: "Revisa tu contraseña",
+          },
           pattern: {
-            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[.,@()]).{8,}$/,
+            value:
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,100}$/,
             message:
-              "La contraseña debe tener al menos 8 caracteres, una minúscula y una mayúscula",
+              "La contraseña debe tener al menos 8 caracteres, una minúscula, una mayúscula y un caracter especial",
           },
         }}
         register={register}
@@ -182,13 +202,17 @@ const RegisterForm = () => {
           },
           minLength: {
             value: 8,
-            message: "Revisar",
+            message: "Revisa tu contraseña",
           },
-          maxLength: 15,
+          maxLength: {
+            value: 100,
+            message: "Revisa tu contraseña",
+          },
           pattern: {
-            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[.,@()]).{8,}$/,
+            value:
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,100}$/,
             message:
-              "La contraseña debe tener al menos 8 caracteres, una minúscula y una mayúscula",
+              "La contraseña debe tener al menos 8 caracteres, una minúscula, una mayúscula y un caracter especial",
           },
         }}
         register={register}
