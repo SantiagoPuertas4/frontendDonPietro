@@ -73,6 +73,7 @@ const CartView = () => {
       })),
       comments: comments,
       total: total,
+      table: tableNumber,
     };
 
     postOrder(order);
@@ -180,8 +181,8 @@ const CartView = () => {
                 message: "El campo no puede tener mas de 300 caracteres",
               },
             }}
-            labelClassName="productEditLabel"
-            inputClassName="productEditInput"
+            labelClassName="mainContactLabel"
+            inputClassName="mainContactInput"
             ClassName="col-12 p-0"
             textarea={true}
           />

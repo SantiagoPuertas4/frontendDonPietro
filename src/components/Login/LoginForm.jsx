@@ -3,7 +3,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useSession } from "../../stores/useSession";
 import { postLoginFn } from "../../api/auth";
 import { useState } from "react";
@@ -13,12 +13,19 @@ import Input from "../ui/input/Input";
 import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
 
 import "./Login.css";
+import { getConfigFn } from "../../api/config";
+import { generarMesas } from "../../utilities/generarMesas";
 
 const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
 
 const LoginForm = () => {
   const [captcha, setCaptcha] = useState(null);
   const captchaRef = useRef(null);
+
+  const { data: config, isSuccess } = useQuery({
+    queryKey: ["config"],
+    queryFn: getConfigFn,
+  });
 
   const { login } = useSession();
 
@@ -38,6 +45,11 @@ const LoginForm = () => {
       toast.success(`Bienvenido, ${userData.fullname}`);
 
       reset();
+
+      if (isSuccess) {
+        const mesas = generarMesas(config.data.cantidadMesas);
+        sessionStorage.setItem("mesas", JSON.stringify(mesas));
+      }
 
       login(userData);
 

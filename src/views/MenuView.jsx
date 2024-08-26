@@ -10,6 +10,8 @@ import { useSession } from "../stores/useSession";
 import LocationMap from "../components/ui/Map/LocationMap";
 import { Link } from "react-router-dom";
 
+const mesas = JSON.parse(sessionStorage.getItem("mesas"));
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -47,7 +49,7 @@ export const MenuView = () => {
           title: "Número de Mesa",
           text: "Por favor, selecciona tu número de mesa para continuar. Si prefieres, puedes cerrar sesión.",
           input: "select",
-          inputOptions: {
+          inputOptions: mesas || {
             1: "Mesa 1",
             2: "Mesa 2",
             3: "Mesa 3",
