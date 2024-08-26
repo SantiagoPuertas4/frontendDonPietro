@@ -20,7 +20,7 @@ const AboutUs = () => {
             <div className="cardAboutUs">
               <img
                 src="./benja-img.jpg.jpeg"
-                className="card-img-top"
+                className="card-img-top-aboutUs"
                 alt="Benjamín Giménez"
               />
               <div className="card-body">
@@ -39,7 +39,7 @@ const AboutUs = () => {
             <div className="cardAboutUs">
               <img
                 src="./anabela-img.jpg.jpeg"
-                className="card-img-top"
+                className="card-img-top-aboutUs"
                 alt="Anabela Guillermo"
               />
               <div className="card-body">
@@ -59,7 +59,7 @@ const AboutUs = () => {
             <div className="cardAboutUs">
               <img
                 src="./santi-img.jpg.jpeg"
-                className="card-img-top"
+                className="card-img-top-aboutUs"
                 alt="Santiago Puertas"
               />
               <div className="card-body">
@@ -80,7 +80,7 @@ const AboutUs = () => {
             <div className="cardAboutUs">
               <img
                 src="/ignacio-img.jpg"
-                className="card-img-top"
+                className="card-img-top-aboutUs"
                 alt="Ignacio Sal Paz"
               />
               <div className="card-body">
