@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import Modal from "../components/ui/Modal/Modal";
+
 import { getPendingDeliveryOrderFn } from "../api/order";
+
+import Modal from "../components/ui/Modal/Modal";
 import PendingDeliveryCard from "../components/PendingDelivery/PendingDeliveryCard";
 
 const PendingDelivery = () => {

@@ -1,7 +1,12 @@
 import PropTypes from "prop-types";
+import Swal from "sweetalert2";
+
 import { useState, useEffect } from "react";
 import { useCart } from "../../stores/useCart";
-import Swal from "sweetalert2";
+
+import Vegano from "/vegano.png";
+import Vegetariano from "/vegetariano.png";
+import SinGluten from "/sinGluten.png";
 
 const ProductCard = (props) => {
   const { product } = props;
@@ -54,14 +59,59 @@ const ProductCard = (props) => {
 
   return (
     <section className="card text-center h-100">
-      <img alt={product.name} className="card-img-top" src={product.imageUrl} />
+      <div className="position-relative">
+        <img
+          alt={product.name}
+          className="card-img-top"
+          src={product.imageUrl}
+        />
+        <div className="position-absolute iconos-div d-flex gap-1">
+          {product.isVegetarian && (
+            <img className="vegano-icon" src={Vegano} alt="Vegano" />
+          )}
+          {product.isVegan && (
+            <img
+              className="vegetariano-icon"
+              src={Vegetariano}
+              alt="Vegetariano"
+            />
+          )}
+          {product.isGlutenFree && (
+            <img
+              className="sin-gluten-icon"
+              src={SinGluten}
+              alt="Vegetariano"
+            />
+          )}
+        </div>
+      </div>
       <article className="card-body p-0 d-flex flex-column justify-content-between">
         <div>
           <h5 className="card-title px-1">{product.name}</h5>
-          <p className="card-text">{product.description}</p>
+          <p className="card-text-menu">{product.description}</p>
           <h6 className="card-price mb-2">${product.price}</h6>
         </div>
+
         <div className="mb-4">
+          <div className="d-flex d-flex flex-wrap justify-content-center mb-2 gap-1">
+            {product.isVegetarian && (
+              <img className="vegano-icon" src={Vegano} alt="Vegano" />
+            )}
+            {product.isVegan && (
+              <img
+                className="vegetariano-icon"
+                src={Vegetariano}
+                alt="Vegetariano"
+              />
+            )}
+            {product.isGlutenFree && (
+              <img
+                className="sin-gluten-icon"
+                src={SinGluten}
+                alt="Vegetariano"
+              />
+            )}
+          </div>
           {localStock > 0 ? (
             <button className="order-button" onClick={handleAddToCart}>
               Añadir
@@ -83,6 +133,10 @@ ProductCard.propTypes = {
     description: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     stock: PropTypes.number.isRequired,
+    isAvailable: PropTypes.bool.isRequired,
+    isVegetarian: PropTypes.bool.isRequired,
+    isVegan: PropTypes.bool.isRequired,
+    isGlutenFree: PropTypes.bool.isRequired,
   }),
 };
 

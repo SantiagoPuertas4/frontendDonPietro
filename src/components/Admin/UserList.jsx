@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { getUsersFn } from "../../api/users";
+
 import UserRow from "./UserRow";
 
 const UserList = () => {

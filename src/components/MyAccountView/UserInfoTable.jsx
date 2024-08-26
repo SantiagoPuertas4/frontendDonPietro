@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export const UserInfoTable = ({ user, onLogout }) => {
-
   return (
     <section className="account-info">
       <h2 className="text-center text-white mt-4">Información del Usuario</h2>

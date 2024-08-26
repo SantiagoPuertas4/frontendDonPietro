@@ -73,6 +73,25 @@
   color: var(--color-adicional-3);
 }
 
+.card-text-menu {
+  padding: 0 5px;
+}
+
 .product-card-wrapper {
   margin: 10px;
+}
+
+.iconos-div {
+  bottom: 10px;
+  left: 10px;
+  width: 90px;
+}
+.vegano-icon {
+  width: 50px;
+}
+.vegetariano-icon {
+  width: 50px;
+}
+.sin-gluten-icon {
+  width: 50px;
 }

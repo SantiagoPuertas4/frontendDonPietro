@@ -1,10 +1,11 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { useSession } from '../../stores/useSession';
+import { Navigate, Outlet } from "react-router-dom";
+
+import { useSession } from "../../stores/useSession";
 
 const AuthViews = () => {
   const { isLoggedIn } = useSession();
 
-  if (isLoggedIn) return <Navigate to='/' />;
+  if (isLoggedIn) return <Navigate to="/" />;
 
   return <Outlet />;
 };

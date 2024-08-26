@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../../stores/useSession.js";
+
 import logo from "/DonPietroBlanco.png";
 
 export const PageCover = () => {

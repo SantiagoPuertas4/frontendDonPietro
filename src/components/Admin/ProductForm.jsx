@@ -1,6 +1,8 @@
 import { toast } from "sonner";
+
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 import { postProductsFn } from "../../api/products";
 
@@ -12,6 +14,8 @@ const ProductForm = () => {
   const {
     register,
     reset,
+    setValue,
+    watch,
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm();
@@ -29,6 +33,21 @@ const ProductForm = () => {
       toast.error(e.message);
     },
   });
+
+  const isVegetarian = watch("checkVegetarian");
+  const isVegan = watch("checkVegan");
+
+  useEffect(() => {
+    if (isVegetarian) {
+      setValue("checkVegan", false);
+    }
+  }, [isVegetarian, setValue]);
+
+  useEffect(() => {
+    if (isVegan) {
+      setValue("checkVegetarian", false);
+    }
+  }, [isVegan, setValue]);
 
   const handleSubmit = (data) => {
     const transformedData = {

@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
-import Input from "../ui/input/Input";
+import { toast } from "sonner";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
-import { toast } from "sonner";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { putProductsFn } from "../../api/products";
+
+import Input from "../ui/input/Input";
 import Checkbox from "../ui/Checkbox/Checkbox";
 
 const ProductEditForm = (props) => {
@@ -13,6 +16,7 @@ const ProductEditForm = (props) => {
   const {
     register,
     setValue,
+    watch,
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm();
@@ -32,6 +36,21 @@ const ProductEditForm = (props) => {
       toast.error(e.message);
     },
   });
+
+  const isVegetarian = watch("checkVegetarian");
+  const isVegan = watch("checkVegan");
+
+  useEffect(() => {
+    if (isVegetarian) {
+      setValue("checkVegan", false);
+    }
+  }, [isVegetarian, setValue]);
+
+  useEffect(() => {
+    if (isVegan) {
+      setValue("checkVegetarian", false);
+    }
+  }, [isVegan, setValue]);
 
   const handleEdit = (data) => {
     const transformedData = {

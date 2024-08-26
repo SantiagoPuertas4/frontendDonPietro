@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 import InvalidFeedback from "../InvalidFeedback/InvalidFeedback";
 
 const Checkbox = (props) => {

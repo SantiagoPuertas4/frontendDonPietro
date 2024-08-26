@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { getProductsFn } from "../../api/products.js";
+
 import ProductRow from "./ProductRow.jsx";
 
 const ProductList = () => {
@@ -38,19 +40,25 @@ const ProductList = () => {
     <section>
       <h1 className="titulo my-2 text-center">Productos ingresados</h1>
       <article className="d-none d-md-flex row justify-content-between">
-        <div className="col-4 col-md-6 col-xl-4 p-0">
+        <div className="col-4 col-md-5 col-xl-4 col-xxl-3 p-0">
           <p className="userListTitle text-center">Foto</p>
         </div>
-        <div className="col-4 col-xl-2">
+        <div className="col-4 col-lg-3 col-xxl-2 p-0">
           <p className="userListTitle text-center ">Nombre</p>
         </div>
-        <div className="col-2 col-xxl-1 padding0">
+        <div className="col-2 col-xl-1 padding0  p-0">
           <p className="userListTitle text-center padding0">Precio</p>
         </div>
-        <div className="col-2 d-none d-xl-block col-xl-4 col-xxl-4">
+        <div className="col-2 d-none d-md-block col-xl-1 p-0">
+          <p className="userListTitle text-center">Stock</p>
+        </div>
+        <div className="col-2 d-none d-xl-block col-xl-3 col-xxl-1 p-0">
+          <p className="userListTitle text-center">Propiedades</p>
+        </div>
+        <div className="col-2 d-none d-xxl-block col-xl-3 p-0">
           <p className="userListTitle text-center">Descripción</p>
         </div>
-        <div className="col-1 d-none d-xxl-block">
+        <div className="col-1 d-none d-xxl-block p-0">
           <p className="userListTitle text-center">Acciones</p>
         </div>
       </article>

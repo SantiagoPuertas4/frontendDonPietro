@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { getWaitingOrdersFn } from "../api/order";
-import PendingPaymentCard from "../components/PendingPayment/PendingPaymentCard";
 import { useState } from "react";
+
+import { getWaitingOrdersFn } from "../api/order";
+
+import PendingPaymentCard from "../components/PendingPayment/PendingPaymentCard";
 import Modal from "../components/ui/Modal/Modal";
 
 import "../components/PendingPayment/PendingPayment.css";
