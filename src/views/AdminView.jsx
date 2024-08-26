@@ -5,7 +5,7 @@ import ProductList from "../components/Admin/ProductList";
 import ProductForm from "../components/Admin/ProductForm";
 
 import "../components/Admin/adminView.css";
-import TableConfigForm from "../components/Admin/tableConfigForm";
+import ConfigForm from "../components/Admin/ConfigForm";
 
 const AdminView = () => {
   const [help, setHelp] = useState(true);
@@ -116,7 +116,7 @@ const AdminView = () => {
           {productList === true && <ProductList />}
           {productForm === true && <ProductForm />}
           {userList === true && <UserList />}
-          {tableConfig === true && <TableConfigForm />}
+          {tableConfig === true && <ConfigForm />}
         </article>
       </section>
     </>
