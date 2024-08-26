@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
+import { useMemo } from "react";
 
 import { postProductsFn } from "../../api/products";
 
@@ -36,6 +37,14 @@ const ProductForm = () => {
 
   const isVegetarian = watch("checkVegetarian");
   const isVegan = watch("checkVegan");
+
+  const allFields = watch();
+
+  const isFormFilled = useMemo(() => {
+    return Object.values(allFields).some(
+      (value) => value !== undefined && value !== ""
+    );
+  }, [allFields]);
 
   useEffect(() => {
     if (isVegetarian) {
@@ -228,10 +237,18 @@ const ProductForm = () => {
             />
           </section>
           <div className="d-flex justify-content-center justify-content-sm-end gap-2 p-0 my-1">
-            <button onClick={handleClean} className="cancel-button-class">
+            <button
+              onClick={handleClean}
+              className="cancel-button-class"
+              disabled={!isFormFilled}
+            >
               Limpiar formulario
             </button>
-            <button type="submit" className="confirm-button-class">
+            <button
+              type="submit"
+              className="confirm-button-class"
+              disabled={!isFormFilled}
+            >
               Guardar
             </button>
           </div>

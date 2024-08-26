@@ -47,8 +47,24 @@ body {
   padding: 5px;
 }
 
+.confirm-button-class:disabled {
+  background-color: #9e5b24;
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+
 .cancel-button-class {
   background-color: var(--color-adicional-4);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.cancel-button-class:disabled {
+  background-color: #8a150b;
   color: var(--color-adicional-3);
   border: none;
   border-radius: 3px;

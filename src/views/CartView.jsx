@@ -111,7 +111,7 @@ const CartView = () => {
             10
           );
           if (!isNaN(storedStock)) {
-            const restoredStock = storedStock + item.quantity;
+            const restoredStock = storedStock;
             sessionStorage.setItem(`stock_${item.id}`, restoredStock);
           }
         });
