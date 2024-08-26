@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { decodeJWT } from "../utilities/decodeJWT";
-import UserInfoTable from "../components/MyAccountView/UserInfoTable";
+
 import { useSession } from "../stores/useSession";
 
+import { decodeJWT } from "../utilities/decodeJWT";
+
+import UserInfoTable from "../components/MyAccountView/UserInfoTable";
 import LocationMap from "../components/ui/Map/LocationMap";
+
 import "../components/MyAccountView/MyAccountView.css";
 
 const MyAccountView = () => {

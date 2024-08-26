@@ -1,8 +1,10 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import PropTypes from "prop-types";
 import { toast } from "sonner";
-import { deleteOrderFn, patchPendingOrderFn } from "../../api/order";
+import PropTypes from "prop-types";
 import Swal from "sweetalert2";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { deleteOrderFn, patchPendingOrderFn } from "../../api/order";
 
 const PendingPaymentCard = (props) => {
   const { order, setDetails, setModal } = props;

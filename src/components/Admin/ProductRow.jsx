@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
-import ProductEditForm from "./ProductEditForm";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { toast } from "sonner";
+
+import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { deleteProductsFn } from "../../api/products";
+
+import ProductEditForm from "./ProductEditForm";
 
 const ProductRow = (props) => {
   const { product } = props;

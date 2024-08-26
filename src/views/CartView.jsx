@@ -1,13 +1,16 @@
 import Swal from "sweetalert2";
-import { useCart } from "../stores/useCart";
 import { useSession } from "../stores/useSession";
 import { useOrders } from "../stores/useOrders";
-import { CartTable } from "../components/CartView/CartTable";
-import Input from "../components/ui/input/Input";
+import { useCart } from "../stores/useCart";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
+
 import { postOrderFn } from "../api/order";
+
 import { decodeJWT } from "../utilities/decodeJWT";
+
+import Input from "../components/ui/input/Input";
+import { CartTable } from "../components/CartView/CartTable";
 import LocationMap from "../components/ui/Map/LocationMap";
 
 import "../components/CartView/CartView.css";

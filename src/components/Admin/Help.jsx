@@ -5,7 +5,7 @@ const Help = () => {
         En caso de necesitar ayuda envía un mail a:
       </h2>
       <h3 className="tituloCustom text-center text-break text-wrap">
-        anabela.guillermo@gmail.com
+        donpietro.grupo2@gmail.com
       </h3>
     </section>
   );

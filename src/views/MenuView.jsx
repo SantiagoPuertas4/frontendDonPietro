@@ -1,14 +1,18 @@
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import Carousel from "react-multi-carousel";
+
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getProductsFn } from "../api/products";
-import ProductCard from "../components/MenuView/ProductCard";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import Swal from "sweetalert2";
-import "../components/MenuView/MenuView.css";
 import { useSession } from "../stores/useSession";
+
+import { getProductsFn } from "../api/products";
+
+import ProductCard from "../components/MenuView/ProductCard";
 import LocationMap from "../components/ui/Map/LocationMap";
-import { Link } from "react-router-dom";
+
+import "../components/MenuView/MenuView.css";
+import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
   desktop: {

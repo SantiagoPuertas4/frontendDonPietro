@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+
 import { getPendingDeliveryOrderFn, getPreparingOrdersFn } from "../api/order";
+
 import Orders from "../components/TVPanel/Orders";
 
 import "../components/TVPanel/TVPanel.css";

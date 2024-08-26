@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
-import Input from "../ui/input/Input";
+import { toast } from "sonner";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
-import { toast } from "sonner";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { putProductsFn } from "../../api/products";
+
+import Input from "../ui/input/Input";
 import Checkbox from "../ui/Checkbox/Checkbox";
 
 const ProductEditForm = (props) => {

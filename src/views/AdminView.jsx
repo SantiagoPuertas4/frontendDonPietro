@@ -1,11 +1,12 @@
 import { useState } from "react";
+
 import Help from "../components/Admin/Help";
 import UserList from "../components/Admin/UserList";
 import ProductList from "../components/Admin/ProductList";
 import ProductForm from "../components/Admin/ProductForm";
+import ConfigForm from "../components/Admin/ConfigForm";
 
 import "../components/Admin/adminView.css";
-import ConfigForm from "../components/Admin/ConfigForm";
 
 const AdminView = () => {
   const [help, setHelp] = useState(true);

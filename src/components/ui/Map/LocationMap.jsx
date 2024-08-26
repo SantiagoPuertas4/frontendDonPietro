@@ -5,9 +5,9 @@ import { useState } from "react";
 
 import { MapUpdater } from "./MapUpdater";
 
-import Iconpng from "/markerIcon.png";
 import "./LocationMap.css";
 import "leaflet/dist/leaflet.css";
+import Iconpng from "/markerIcon.png";
 
 const LocationMap = () => {
   const [location, setLocation] = useState({

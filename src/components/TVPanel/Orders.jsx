@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 import OrderRow from "./OrderRow";
 
 const Orders = (props) => {
@@ -20,9 +21,7 @@ const Orders = (props) => {
   if (order && order.data.length === 0) {
     return (
       <section className="text-center">
-        <p className="text-white">
-          No se encontraron pedidos.
-        </p>
+        <p className="text-white">No se encontraron pedidos.</p>
       </section>
     );
   }

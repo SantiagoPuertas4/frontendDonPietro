@@ -1,8 +1,10 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import PropTypes from "prop-types";
-import { deleteUserFn, toggleUserFn } from "../../api/users";
-import { toast } from "sonner";
 import Swal from "sweetalert2";
+import PropTypes from "prop-types";
+import { toast } from "sonner";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { deleteUserFn, toggleUserFn } from "../../api/users";
 
 const UserRow = (props) => {
   const { user } = props;
@@ -91,11 +93,17 @@ const UserRow = (props) => {
 
       <article className="col-12 col-xl-2 d-flex justify-content-center my-1">
         {user.isAdmin ? (
-          <button onClick={handleToggle} className="confirm-button-class p-xl-2">
+          <button
+            onClick={handleToggle}
+            className="confirm-button-class p-xl-2"
+          >
             Cambiar a Usuario
           </button>
         ) : (
-          <button onClick={handleToggle} className="confirm-button-class p-xl-2">
+          <button
+            onClick={handleToggle}
+            className="confirm-button-class p-xl-2"
+          >
             Cambiar a Admin
           </button>
         )}

@@ -1,8 +1,10 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { patchPreparingOrderFn } from "../../api/order";
-import { toast } from "sonner";
 import Swal from "sweetalert2";
+import { toast } from "sonner";
 import PropTypes from "prop-types";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { patchPreparingOrderFn } from "../../api/order";
 
 const PreparingOrderCard = (props) => {
   const { order, setDetails, setModal } = props;

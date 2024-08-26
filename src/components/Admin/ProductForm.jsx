@@ -1,12 +1,13 @@
 import { toast } from "sonner";
+
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 import { postProductsFn } from "../../api/products";
 
 import Input from "../ui/input/Input";
 import Checkbox from "../ui/Checkbox/Checkbox";
-import { useEffect } from "react";
 
 const ProductForm = () => {
   const queryClient = useQueryClient();

@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { getProductsFn } from "../../api/products.js";
 
 import ProductRow from "./ProductRow.jsx";

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 const InvalidFeedback = (props) => {
   const { msg, noInput, divClass, spanClass } = props;
   return (

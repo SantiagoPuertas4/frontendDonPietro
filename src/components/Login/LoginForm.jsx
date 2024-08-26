@@ -5,16 +5,18 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useSession } from "../../stores/useSession";
-import { postLoginFn } from "../../api/auth";
 import { useState } from "react";
 import { useRef } from "react";
+
+import { postLoginFn } from "../../api/auth";
+import { getConfigFn } from "../../api/config";
+
+import { generarMesas } from "../../utilities/generarMesas";
 
 import Input from "../ui/input/Input";
 import InvalidFeedback from "../ui/InvalidFeedback/InvalidFeedback";
 
 import "./Login.css";
-import { getConfigFn } from "../../api/config";
-import { generarMesas } from "../../utilities/generarMesas";
 
 const CAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_KEY;
 

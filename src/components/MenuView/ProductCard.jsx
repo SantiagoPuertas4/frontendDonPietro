@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
+import Swal from "sweetalert2";
+
 import { useState, useEffect } from "react";
 import { useCart } from "../../stores/useCart";
-import Swal from "sweetalert2";
 
 import Vegano from "/vegano.png";
 import Vegetariano from "/vegetariano.png";
