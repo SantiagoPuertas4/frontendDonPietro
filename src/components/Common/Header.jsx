@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark m-0 p-0 fixed-top">
       <div className="container-fluid custom-padding">
-        <Link className="navbar-brand p-0 m-0" to="/">
+        <Link className="navbar-brand p-0 m-0" to={isAdmin ? "/admin" : "/"}>
           <img
             className="logoHeader"
             src="/DonPietro.png"
