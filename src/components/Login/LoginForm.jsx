@@ -49,7 +49,6 @@ const LoginForm = () => {
       if (isSuccess) {
         const mesas = generarMesas(config.data.cantidadMesas);
         sessionStorage.setItem("mesas", JSON.stringify(mesas));
-        console.log(sessionStorage.getItem("mesas"));
       }
 
       login(userData);

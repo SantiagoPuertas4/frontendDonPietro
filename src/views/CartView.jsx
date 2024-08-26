@@ -73,7 +73,7 @@ const CartView = () => {
       })),
       comments: comments,
       total: total,
-      mesa: tableNumber,
+      table: tableNumber,
     };
 
     postOrder(order);

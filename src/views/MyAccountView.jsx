@@ -64,7 +64,6 @@ const MyAccountView = () => {
 
   if (loading) return <p className="loading">Cargando...</p>;
   if (error) return <p className="error">Error: {error}</p>;
-
   return (
     <>
       <section className="h1-orders">
@@ -90,6 +89,9 @@ const MyAccountView = () => {
                 <p>
                   <strong>Comentarios:</strong>{" "}
                   {order.comments || "Sin comentarios."}
+                </p>
+                <p>
+                  <strong>Mesa:</strong> {order.table}
                 </p>
                 <p>
                   <strong>Fecha:</strong>{" "}
