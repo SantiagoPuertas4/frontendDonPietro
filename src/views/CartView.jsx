@@ -212,8 +212,8 @@ const CartView = () => {
           Estado del pedido: <span className="waiting">En espera</span>
         </p>
       </section>
-      <section className="container text-center">
-        <h2 className="text-white mt-4">Comentarios</h2>
+      <section className="container">
+        <h2 className="text-white mt-4 text-center">Comentarios</h2>
         <form className="row" onSubmit={onSubmitRHF(handleSubmit)}>
           <Input
             register={register}
@@ -225,6 +225,10 @@ const CartView = () => {
               maxLength: {
                 value: 300,
                 message: "El campo no puede tener más de 300 caracteres",
+              },
+              pattern: {
+                value: /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ,]+$/,
+                message: "El campo solo permite letras, numeros y coma",
               },
             }}
             labelClassName="mainContactLabel"
