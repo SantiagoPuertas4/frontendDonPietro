@@ -135,7 +135,7 @@ export const MenuView = () => {
   useEffect(() => {
     if (isSuccess) {
       products.data.forEach((product) => {
-        const updatedStock = product.stock;
+        const updatedStock = product.stock > 30 ? 30 : product.stock;
         sessionStorage.setItem(`stock_${product.id}`, updatedStock);
         updateItemStock(product.id, product.stock);
       });

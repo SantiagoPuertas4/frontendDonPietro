@@ -50,7 +50,7 @@ export const useCart = create((set, get) => {
         );
 
         sessionStorage.setItem("cartItems", JSON.stringify(newItems));
-
+        console.log(newItems);
         return { items: newItems };
       });
     },
