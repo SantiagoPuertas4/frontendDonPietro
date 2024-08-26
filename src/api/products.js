@@ -21,7 +21,14 @@ export const postProductsFn = async (data) => {
 };
 
 export const getProductsFn = async () => {
-  const res = await fetch(`${BACKEND_URL}/products`);
+  const token = sessionStorage.getItem("token");
+  const res = await fetch(`${BACKEND_URL}/products`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const data = await res.json();
 
   if (!res.ok) {
@@ -35,7 +42,15 @@ export const getProductsFn = async () => {
 };
 
 export const getProductByIdFn = async (productId) => {
-  const res = await fetch(`${BACKEND_URL}/products/${productId}`);
+  const token = sessionStorage.getItem("token");
+  const res = await fetch(`${BACKEND_URL}/products/${productId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   const data = await res.json();
 
   if (!res.ok) {
