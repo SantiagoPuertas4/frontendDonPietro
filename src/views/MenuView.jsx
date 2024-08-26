@@ -156,8 +156,8 @@ export const MenuView = () => {
 
   if (products && products.data.length === 0) {
     return (
-      <div className="alert alert-danger">
-        No se encontraron productos para mostrar
+      <div className="alert alert-danger text-center">
+        <p>No se encontraron productos para mostrar</p>
       </div>
     );
   }
@@ -184,7 +184,7 @@ export const MenuView = () => {
         </div>
       ))
     ) : (
-      <div className="text-center">
+      <div>
         <p>No hay productos disponibles</p>
       </div>
     );

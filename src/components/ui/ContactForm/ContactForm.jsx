@@ -115,10 +115,7 @@ Diosito`,
     <section className="container mt-5">
       <article>
         <h1 className="titulo text-center">Contáctanos</h1>
-        <form
-          className="p-3 row gap-2 text-end"
-          onSubmit={onSubmitRHF(handleSubmit)}
-        >
+        <form className="p-3 row gap-2" onSubmit={onSubmitRHF(handleSubmit)}>
           <div className="form-group">
             <Input
               register={register}
