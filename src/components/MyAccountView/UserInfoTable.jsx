@@ -1,6 +1,24 @@
-import { useState } from "react";
+import Swal from 'sweetalert2';
 
 export const UserInfoTable = ({ user, onLogout }) => {
+  const handleLogout = async () => {
+    const result = await Swal.fire({
+      title: '¿Estás seguro de que quieres cerrar sesión?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, cerrar sesión',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        confirmButton: "swal-button",
+        cancelButton: "swal-button-cancel",
+      },
+    });
+
+    if (result.isConfirmed) {
+      onLogout();
+    }
+  };
+
   return (
     <section className="account-info">
       <h2 className="text-center text-white mt-4">Información del Usuario</h2>
@@ -21,7 +39,7 @@ export const UserInfoTable = ({ user, onLogout }) => {
         </table>
       </article>
       <article className="text-center mt-2">
-        <button className="close-button-class" onClick={onLogout}>
+        <button className="close-button-class" onClick={handleLogout}>
           Cerrar sesión
         </button>
       </article>
