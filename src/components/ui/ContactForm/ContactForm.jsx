@@ -113,13 +113,17 @@ Diosito`,
     <section className="container mt-5">
       <article>
         <h1 className="titulo text-center">Contáctanos</h1>
-        <form className="p-3 row gap-2 text-end" onSubmit={onSubmitRHF(handleSubmit)}>
+        <form
+          className="p-3 row gap-2 text-end"
+          onSubmit={onSubmitRHF(handleSubmit)}
+        >
           <div className="form-group">
             <Input
               register={register}
               name="nombreContacto"
               label="Nombre"
               errors={errors.nombreContacto}
+              maxLength={40}
               options={{
                 required: "El campo es requerido",
                 maxLength: {
@@ -150,6 +154,7 @@ Diosito`,
               name="mailContacto"
               label="Correo electrónico"
               errors={errors.mailContacto}
+              maxLength={50}
               options={{
                 required: "El campo es requerido",
                 maxLength: {
@@ -180,6 +185,7 @@ Diosito`,
               name="mensajeContacto"
               label="Mensaje"
               errors={errors.mensajeContacto}
+              maxLength={500}
               options={{
                 required: "El campo es requerido",
                 maxLength: {

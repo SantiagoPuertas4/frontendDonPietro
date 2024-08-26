@@ -55,13 +55,13 @@ const ProductCard = (props) => {
   return (
     <section className="card text-center h-100">
       <img alt={product.name} className="card-img-top" src={product.imageUrl} />
-      <article className="card-body d-flex flex-column justify-content-between">
+      <article className="card-body p-0 d-flex flex-column justify-content-between">
         <div>
-          <h5 className="card-title">{product.name}</h5>
+          <h5 className="card-title px-1">{product.name}</h5>
           <p className="card-text">{product.description}</p>
           <h6 className="card-price mb-2">${product.price}</h6>
         </div>
-        <div>
+        <div className="mb-4">
           {localStock > 0 ? (
             <button className="order-button" onClick={handleAddToCart}>
               Añadir
