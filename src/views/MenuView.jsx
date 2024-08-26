@@ -10,8 +10,6 @@ import { useSession } from "../stores/useSession";
 import LocationMap from "../components/ui/Map/LocationMap";
 import { Link } from "react-router-dom";
 
-const mesas = JSON.parse(sessionStorage.getItem("mesas"));
-
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -28,6 +26,7 @@ const responsive = {
 };
 
 export const MenuView = () => {
+  const mesas = JSON.parse(sessionStorage.getItem("mesas"));
   const {
     data: products,
     isLoading,
@@ -137,7 +136,9 @@ export const MenuView = () => {
     );
   }
 
-  const availableProducts = products.data.filter((product) => product.isAvailable);
+  const availableProducts = products.data.filter(
+    (product) => product.isAvailable
+  );
 
   const comidas = availableProducts.filter(
     (product) => product.category === "comidas"
