@@ -137,10 +137,12 @@ export const MenuView = () => {
     );
   }
 
-  const comidas = products.data.filter(
+  const availableProducts = products.data.filter((product) => product.isAvailable);
+
+  const comidas = availableProducts.filter(
     (product) => product.category === "comidas"
   );
-  const bebidas = products.data.filter(
+  const bebidas = availableProducts.filter(
     (product) => product.category === "bebidas"
   );
 
