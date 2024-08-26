@@ -181,12 +181,12 @@ const CartView = () => {
             options={{
               maxLength: {
                 value: 300,
-                message: "El campo no puede tener mas de 300 caracteres",
+                message: "El campo no puede tener más de 300 caracteres",
               },
             }}
             labelClassName="mainContactLabel"
             inputClassName="mainContactInput"
-            ClassName="col-12 p-0"
+            ClassName="p-0"
             textarea={true}
           />
           <article className="text-center">

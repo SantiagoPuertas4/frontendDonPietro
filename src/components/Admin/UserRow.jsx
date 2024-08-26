@@ -60,10 +60,10 @@ const UserRow = (props) => {
 
   const handleToggle = async () => {
     const action = await Swal.fire({
-      title: "Atencion",
+      title: "Atención",
       icon: "info",
-      html: `¿Estas seguro que deseas cambiar el tipo de cuenta del usuario <b>${user.fullname}</b>?`,
-      confirmButtonText: "Si, cambiar",
+      html: `¿Estás seguro que deseas cambiar el tipo de cuenta del usuario <b>${user.fullname}</b>?`,
+      confirmButtonText: "Sí, cambiar",
       cancelButtonText: "No, cancelar",
       showCancelButton: true,
     });

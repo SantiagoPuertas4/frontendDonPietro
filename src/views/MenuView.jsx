@@ -86,7 +86,7 @@ export const MenuView = () => {
           allowOutsideClick: false,
           allowEscapeKey: false,
           preConfirm: (number) => {
-            if (!number) {
+            if (!number && number !== false) {
               Swal.showValidationMessage(
                 "Por favor, selecciona un número de mesa."
               );
@@ -94,19 +94,34 @@ export const MenuView = () => {
             return number;
           },
         });
-
-        if (number) {
+  
+        if (number === false) {
+          const confirmLogout = await Swal.fire({
+            title: "Confirmar Cierre de Sesión",
+            text: "¿Estás seguro de que quieres cerrar sesión?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sí, cerrar sesión",
+            cancelButtonText: "Cancelar",
+            customClass: {
+              confirmButton: "swal-button",
+              cancelButton: "swal-button-cancel",
+            },
+          });
+  
+          if (confirmLogout.isConfirmed) {
+            logout();
+          }
+        } else if (number) {
           setTableNumber(number);
           setShowTableNumberPrompt(false);
-        } else if (number === false) {
-          logout();
         }
       }
     };
-
+  
     requestTableNumber();
-  }, [showTableNumberPrompt, tableNumber, setTableNumber, logout]);
-
+  }, [showTableNumberPrompt, mesas, tableNumber, logout, setTableNumber, setShowTableNumberPrompt]);
+  
   useEffect(() => {
     if (products) {
       products.data.forEach((product) => {

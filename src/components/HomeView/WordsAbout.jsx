@@ -19,7 +19,7 @@ export const WordsAbout = () => {
         Bienvenidos a Don Pietro, donde cada plato se sirve con amor y cada
         cliente es parte de nuestra gran familia.
       </p>
-      <Link to="/about-us">
+      <Link to="/about">
         <button className="btn-order">Conocé más...</button>
       </Link>
     </section>

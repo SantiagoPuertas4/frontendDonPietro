@@ -34,10 +34,14 @@ const ProductRow = (props) => {
     const action = await Swal.fire({
       title: "Atencion",
       icon: "info",
-      html: `¿Estas seguro que deseas eliminar el producto <b>${product.name}</b>?`,
-      confirmButtonText: "Si, eliminar",
+      html: `¿Estás seguro que deseas eliminar el producto <b>${product.name}</b>?`,
+      confirmButtonText: "Sí, eliminar",
       cancelButtonText: "No, cancelar",
       showCancelButton: true,
+      customClass: {
+        confirmButton: "swal-danger",
+        cancelButton: "swal-button-cancel",
+      },
     });
 
     if (action.isConfirmed) {
