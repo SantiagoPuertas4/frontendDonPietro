@@ -57,8 +57,6 @@ const ProductCard = (props) => {
     }
   };
 
-  console.log(product);
-
   return (
     <section className="card text-center h-100">
       <div className="position-relative">
