@@ -5,6 +5,7 @@ import Carousel from "react-multi-carousel";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "../stores/useSession";
+import { useCart } from "../stores/useCart";
 
 import { getProductsFn } from "../api/products";
 
@@ -13,7 +14,6 @@ import LocationMap from "../components/ui/Map/LocationMap";
 
 import "../components/MenuView/MenuView.css";
 import "react-multi-carousel/lib/styles.css";
-import { useCart } from "../stores/useCart";
 
 const responsive = {
   desktop: {
