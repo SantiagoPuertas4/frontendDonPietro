@@ -49,20 +49,29 @@ const ProductRow = (props) => {
 
   return (
     <section className="d-flex row cardUsuario my-2 px-3 py-4 align-items-center">
-      <article className="col-12 col-md-6 col-xl-4">
+      <article className="col-12 col-md-5 col-xl-4 col-xxl-3">
         <img
           className="w-100 imgProductAdmin"
           src={product.imageUrl}
           alt={product.name}
         />
       </article>
-      <article className="col-8 col-md-4 col-xl-2 my-1 p-1">
+      <article className="col-8 col-md-3 col-xl-3 col-xxl-2 my-1 p-1">
         <p className="text-center">{product.name}</p>
       </article>
-      <article className="col-4 col-md-2 col-xl-2 col-xxl-1 my-1">
+      <article className="col-4 col-md-2 col-xl-1 my-1">
         <p className="text-center">${product.price}</p>
       </article>
-      <article className="col-12 col-xl-4 py-3 col-xxl-4 my-1 mb-2">
+      <article className="col-6 col-md-2 col-xl-1 py-3 my-1 mb-2">
+        <p className="text-center">{product.stock} unidades</p>
+      </article>
+      <article className="col-6 py-3 col-xl-3 col-xxl-1 my-1 mb-2 d-flex flex-column">
+        {product.isVegan && <p className="text-center">Vegetariano</p>}
+        {product.isVegetarian && <p className="text-center">Vegano</p>}
+        {product.isGlutenFree && <p className="text-center">Libre de Gluten</p>}
+        {product.isAvailable && <p className="text-center">Disponible</p>}
+      </article>
+      <article className="col-12 col-md-6 col-xl-4 py-3 col-xxl-3 my-1 mb-2">
         <p className="text-center">{product.description}</p>
       </article>
       <article className="col-12 col-xxl-1 d-flex flex-xxl-column align-items-xxl-center justify-content-center my-1">
@@ -93,5 +102,9 @@ ProductRow.propTypes = {
     id: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     stock: PropTypes.number.isRequired,
+    isVegan: PropTypes.bool.isRequired,
+    isVegetarian: PropTypes.bool.isRequired,
+    isGlutenFree: PropTypes.bool.isRequired,
+    isAvailable: PropTypes.bool.isRequired,
   }),
 };

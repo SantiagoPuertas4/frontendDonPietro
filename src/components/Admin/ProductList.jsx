@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProductsFn } from "../../api/products.js";
+
 import ProductRow from "./ProductRow.jsx";
-import ProductRowTwo from "./ProductRowTwo.jsx";
 
 const ProductList = () => {
   const {
@@ -63,7 +63,7 @@ const ProductList = () => {
       </article>
       <article>
         {products.data.map((product) => {
-          return <ProductRowTwo key={product.id} product={product} />;
+          return <ProductRow key={product.id} product={product} />;
         })}
       </article>
     </section>
