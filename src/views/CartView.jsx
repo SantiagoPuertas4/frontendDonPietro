@@ -32,7 +32,7 @@ const CartView = () => {
     onSuccess: () => {
       Swal.fire({
         title: "¡Éxito!",
-        text: "Pedido realizado con éxito",
+        text: "Pedido realizado con éxito. Aparecera tu historial una vez completado el pedido ",
         icon: "success",
         confirmButtonText: "Aceptar",
         customClass: {
@@ -178,6 +178,7 @@ const CartView = () => {
             name="comments"
             label="Escribe tus preferencias"
             errors={errors.comments}
+            maxLength={300}
             options={{
               maxLength: {
                 value: 300,

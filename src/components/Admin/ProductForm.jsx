@@ -107,6 +107,7 @@ const ProductForm = () => {
               label="Precio"
               errors={errors.precioProducto}
               type="number"
+              maxLength={6}
               options={{
                 required: "El campo es requerido",
                 min: {
@@ -125,6 +126,7 @@ const ProductForm = () => {
               label="Stock"
               errors={errors.stockProducto}
               type="number"
+              maxLength={6}
               options={{
                 required: "El campo es requerido",
                 min: {

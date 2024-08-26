@@ -45,21 +45,26 @@ const LoginForm = () => {
     onSuccess: (userData) => {
       toast.dismiss();
       toast.success(`Bienvenido, ${userData.fullname}`);
+      console.log(userData);
 
       reset();
+      console.log("Hace reset");
 
       if (isSuccess) {
         const mesas = generarMesas(config.data.cantidadMesas);
         sessionStorage.setItem("mesas", JSON.stringify(mesas));
       }
-
+      console.log("Carga mesas");
       login(userData);
+      console.log("Hace login");
 
       if (userData.isAdmin === true) {
+        console.log("Deberia llevar a /admin");
         setTimeout(() => {
           navigate("/admin");
         }, 1000);
       } else {
+        console.log("Deberia llevar a /menu");
         setTimeout(() => {
           navigate("/menu");
         }, 1000);
@@ -105,6 +110,7 @@ const LoginForm = () => {
         error={errors.email}
         label="Correo electrónico"
         name="email"
+        maxLength={50}
         options={{
           required: {
             value: true,
@@ -121,6 +127,7 @@ const LoginForm = () => {
         error={errors.password}
         label="Contraseña"
         name="password"
+        maxLength={100}
         options={{
           required: {
             value: true,
