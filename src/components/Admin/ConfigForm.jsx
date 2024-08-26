@@ -59,6 +59,8 @@ const ConfigForm = () => {
           label="Cantidad de mesas"
           errors={errors.cantidadMesas}
           type="number"
+          max={100}
+          maxLength={3}
           options={{
             required: "El campo es requerido",
             min: {

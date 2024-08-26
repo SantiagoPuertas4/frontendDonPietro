@@ -167,6 +167,7 @@ const RegisterForm = () => {
         errors={errors.password}
         label="Contraseña"
         name="password"
+        maxLength={100}
         options={{
           required: {
             value: true,
@@ -196,6 +197,7 @@ const RegisterForm = () => {
         errors={errors.repeatPassword}
         label="Repetir contraseña"
         name="repeatPassword"
+        maxLength={100}
         options={{
           required: {
             value: true,
