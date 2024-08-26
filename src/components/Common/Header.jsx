@@ -49,7 +49,7 @@ const Header = () => {
         >
           <i className="bi bi-list"></i>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse pb-2" id="navbarNav">
           <ul className="navbar-nav ms-auto d-flex gap-2">
             {!isAdmin && (
               <>
