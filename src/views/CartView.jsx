@@ -79,7 +79,6 @@ const CartView = () => {
           msg = msg.replace(/\n/g, "<br>");
         });
       }
-      console.log(msg);
 
       if (hasLowStock) {
         Swal.fire({
