@@ -106,6 +106,10 @@ const ProductEditForm = (props) => {
               value: 3,
               message: "El campo no puede tener menos de 3 caracteres",
             },
+            pattern: {
+              value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]+$/,
+              message: "El campo solo permite letras",
+            },
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
@@ -160,6 +164,11 @@ const ProductEditForm = (props) => {
               value: 3,
               message: "El campo no puede tener menos de 3 caracteres",
             },
+            pattern: {
+              value:
+                /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp|svg|tiff|ico))$/i,
+              message: "El campo solo acepta links de imagenes",
+            },
           }}
           labelClassName="productEditLabel"
           inputClassName="productEditInput"
@@ -194,6 +203,10 @@ const ProductEditForm = (props) => {
             minLength: {
               value: 15,
               message: "El campo no puede tener menos de 15 caracteres",
+            },
+            pattern: {
+              value: /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ,|]+$/,
+              message: "El campo solo permite letras y barra vertical",
             },
           }}
           labelClassName="productEditLabel"

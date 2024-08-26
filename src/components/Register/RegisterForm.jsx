@@ -135,6 +135,10 @@ const RegisterForm = () => {
             value: 30,
             message: "El campo no puede tener más de 30 caracteres",
           },
+          pattern: {
+            value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]+$/,
+            message: "El campo solo permite letras",
+          },
         }}
         register={register}
         labelClassName="mainContactLabel"
@@ -157,6 +161,10 @@ const RegisterForm = () => {
           maxLength: {
             value: 50,
             message: "El campo no puede tener más de 50 caracteres",
+          },
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: "El campo solo permite correos electronicos",
           },
         }}
         register={register}

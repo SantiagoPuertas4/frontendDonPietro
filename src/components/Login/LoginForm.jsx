@@ -140,7 +140,7 @@ const LoginForm = () => {
         {captcha && (
           <InvalidFeedback
             noInput={true}
-            divClass="text-center mb-2"
+            divClass="text-center mb-2 d-flex justify-content-center"
             msg="El Captcha debe ser resuelto para poder ingresar"
           />
         )}
