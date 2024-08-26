@@ -3,7 +3,6 @@ import { decodeJWT } from "../utilities/decodeJWT";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const postLoginFn = async (data) => {
-
   const res = await fetch(`${BACKEND_URL}/auth/login`, {
     method: "POST",
     headers: {
@@ -25,7 +24,6 @@ export const postLoginFn = async (data) => {
 
   const userData = decodeJWT(token).user;
 
-  // Persistir el JWT
   sessionStorage.setItem("token", token);
 
   return userData;

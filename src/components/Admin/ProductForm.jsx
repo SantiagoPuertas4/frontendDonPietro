@@ -65,6 +65,7 @@ const ProductForm = () => {
               name="nombreProducto"
               label="Nombre"
               errors={errors.nombreProducto}
+              maxLength={25}
               options={{
                 required: "El campo es requerido",
                 maxLength: {
@@ -154,11 +155,12 @@ const ProductForm = () => {
               name="descripcionProducto"
               label="Descripción"
               errors={errors.descripcionProducto}
+              maxLength={50}
               options={{
                 required: "El campo es requerido",
                 maxLength: {
-                  value: 300,
-                  message: "El campo no puede tener más de 300 caracteres",
+                  value: 50,
+                  message: "El campo no puede tener más de 50 caracteres",
                 },
                 minLength: {
                   value: 15,

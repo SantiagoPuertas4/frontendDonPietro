@@ -10,6 +10,7 @@ const Input = (props) => {
     ClassName = "",
     register,
     options,
+    maxLength,
     placeholder = "Ingrese un texto",
     textarea = false,
     select = false,
@@ -28,6 +29,7 @@ const Input = (props) => {
           id={`${name}-input`}
           placeholder={placeholder}
           type={type}
+          maxLength={maxLength}
           autoComplete={autocomplete}
           {...register(name, options)}
         />
@@ -75,6 +77,7 @@ const Input = (props) => {
         id={`${name}-input`}
         placeholder={placeholder}
         type={type}
+        maxLength={maxLength}
         autoComplete={autocomplete}
         {...register(name, options)}
       />
@@ -98,6 +101,7 @@ Input.propTypes = {
   ClassName: PropTypes.string,
   register: PropTypes.func.isRequired,
   options: PropTypes.object,
+  maxLength: PropTypes.number,
   placeholder: PropTypes.string,
   textarea: PropTypes.bool,
   select: PropTypes.bool,

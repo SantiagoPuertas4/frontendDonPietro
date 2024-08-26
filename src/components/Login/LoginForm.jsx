@@ -124,6 +124,8 @@ const LoginForm = () => {
             value: true,
             message: "Este campo es requerido",
           },
+          minLength: 8,
+          maxLength: 100,
         }}
         labelClassName="mainContactLabel"
         inputClassName="mainContactInput"

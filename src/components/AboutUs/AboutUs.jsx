@@ -17,7 +17,7 @@ const AboutUs = () => {
       <section className="about-us">
         <article className="row m-4">
           <div className="col-12 col-md-6 col-lg-3 mb-4">
-            <div className="card">
+            <div className="cardAboutUs">
               <img
                 src="./benja-img.jpg.jpeg"
                 className="card-img-top"
@@ -36,7 +36,7 @@ const AboutUs = () => {
             </div>
           </div>
           <div className="col-12 col-md-6 col-lg-3 mb-4">
-            <div className="card">
+            <div className="cardAboutUs">
               <img
                 src="./anabela-img.jpg.jpeg"
                 className="card-img-top"
@@ -56,7 +56,7 @@ const AboutUs = () => {
             </div>
           </div>
           <div className="col-12 col-md-6 col-lg-3 mb-4">
-            <div className="card">
+            <div className="cardAboutUs">
               <img
                 src="./santi-img.jpg.jpeg"
                 className="card-img-top"
@@ -77,8 +77,12 @@ const AboutUs = () => {
             </div>
           </div>
           <div className="col-12 col-md-6 col-lg-3 mb-4">
-            <div className="card">
-              <img src="/ignacio-img.jpg" className="card-img-top" alt="Ignacio Sal Paz" />
+            <div className="cardAboutUs">
+              <img
+                src="/ignacio-img.jpg"
+                className="card-img-top"
+                alt="Ignacio Sal Paz"
+              />
               <div className="card-body">
                 <h5 className="card-title">Ignacio Sal paz</h5>
                 <p className="card-text">

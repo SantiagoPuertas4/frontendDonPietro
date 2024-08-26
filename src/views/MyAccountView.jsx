@@ -87,15 +87,15 @@ const MyAccountView = () => {
                   <strong>Método de pago:</strong> {order.paymentMethod}
                 </p>
                 <p>
-                  <strong>Comentarios:</strong>{" "}
-                  {order.comments || "Sin comentarios."}
-                </p>
-                <p>
                   <strong>Mesa:</strong> {order.table}
                 </p>
                 <p>
                   <strong>Fecha:</strong>{" "}
                   {new Date(order.createdAt).toLocaleDateString()}
+                </p>
+                <p>
+                  <strong>Comentarios:</strong>{" "}
+                  {order.comments || "Sin comentarios."}
                 </p>
 
                 <h3 className="order mt-4">Pedido:</h3>
