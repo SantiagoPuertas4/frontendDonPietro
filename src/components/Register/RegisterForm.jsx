@@ -4,7 +4,7 @@ import emailjs from "@emailjs/browser";
 
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSession } from "../../stores/useSession";
 import { useState } from "react";
 import { useRef } from "react";
@@ -243,9 +243,9 @@ const RegisterForm = () => {
         </button>
         <p className="account-question mt-4">
           ¿Ya tienes una cuenta?{" "}
-          <a href="/login" className="register-link">
-            Inicia sesión
-          </a>
+          <Link to="/login" className="register-link">
+            Inicia Sesion
+          </Link>
         </p>
       </div>
     </form>

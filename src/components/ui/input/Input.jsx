@@ -54,6 +54,7 @@ const Input = (props) => {
           placeholder={placeholder}
           type={type}
           autoComplete={autocomplete}
+          defaultValue=""
           {...register(name, options)}
         >
           <option value="" disabled>
