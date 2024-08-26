@@ -11,8 +11,8 @@ import "leaflet/dist/leaflet.css";
 
 const LocationMap = () => {
   const [location, setLocation] = useState({
-    lat: "-26.8365342",
-    lng: "-65.2070863",
+    lat: "-26.8364623",
+    lng: "-65.2070503",
   });
 
   const handleGralPaz = () => {
