@@ -22,7 +22,6 @@ export const getConfigFn = async () => {
 };
 
 export const postConfigFn = async (data) => {
-  console.log(data);
   const token = sessionStorage.getItem("token");
   const response = await fetch(`${BACKEND_URL}/config`, {
     method: "PUT",
