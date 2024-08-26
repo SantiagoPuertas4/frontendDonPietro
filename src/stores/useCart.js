@@ -43,6 +43,17 @@ export const useCart = create((set, get) => {
         return { items: newItems };
       });
     },
+    updateItemStock: (itemId, stock) => {
+      set((state) => {
+        const newItems = state.items.map((item) =>
+          item.id === itemId ? { ...item, stock } : item
+        );
+
+        sessionStorage.setItem("cartItems", JSON.stringify(newItems));
+
+        return { items: newItems };
+      });
+    },
     clearCart: () => {
       set({ items: [] });
 
@@ -52,7 +63,10 @@ export const useCart = create((set, get) => {
       return get().items.find((item) => item.id === itemId);
     },
     getCartTotal: () => {
-      return get().items.reduce((total, item) => total + item.price * item.quantity, 0);
+      return get().items.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
     },
   };
 });

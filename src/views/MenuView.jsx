@@ -13,6 +13,7 @@ import LocationMap from "../components/ui/Map/LocationMap";
 
 import "../components/MenuView/MenuView.css";
 import "react-multi-carousel/lib/styles.css";
+import { useCart } from "../stores/useCart";
 
 const responsive = {
   desktop: {
@@ -42,6 +43,7 @@ export const MenuView = () => {
   });
 
   const { tableNumber, setTableNumber, logout } = useSession();
+  const { updateItemStock } = useCart();
   const [showTableNumberPrompt, setShowTableNumberPrompt] = useState(
     !tableNumber
   );
@@ -135,6 +137,7 @@ export const MenuView = () => {
       products.data.forEach((product) => {
         const updatedStock = product.stock;
         sessionStorage.setItem(`stock_${product.id}`, updatedStock);
+        updateItemStock(product.id, product.stock);
       });
     }
   }, [products]);
