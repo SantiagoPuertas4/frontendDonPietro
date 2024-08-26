@@ -35,6 +35,7 @@ export const MenuView = () => {
     data: products,
     isLoading,
     isError,
+    isSuccess,
   } = useQuery({
     queryKey: ["products"],
     queryFn: getProductsFn,
@@ -94,7 +95,7 @@ export const MenuView = () => {
             return number;
           },
         });
-  
+
         if (number === false) {
           const confirmLogout = await Swal.fire({
             title: "Confirmar Cierre de Sesión",
@@ -108,7 +109,7 @@ export const MenuView = () => {
               cancelButton: "swal-button-cancel",
             },
           });
-  
+
           if (confirmLogout.isConfirmed) {
             logout();
           }
@@ -118,18 +119,21 @@ export const MenuView = () => {
         }
       }
     };
-  
+
     requestTableNumber();
-  }, [showTableNumberPrompt, mesas, tableNumber, logout, setTableNumber, setShowTableNumberPrompt]);
-  
+  }, [
+    showTableNumberPrompt,
+    mesas,
+    tableNumber,
+    logout,
+    setTableNumber,
+    setShowTableNumberPrompt,
+  ]);
+
   useEffect(() => {
-    if (products) {
+    if (isSuccess) {
       products.data.forEach((product) => {
-        const storedStock = parseInt(
-          sessionStorage.getItem(`stock_${product.id}`),
-          10
-        );
-        const updatedStock = isNaN(storedStock) ? product.stock : storedStock;
+        const updatedStock = product.stock;
         sessionStorage.setItem(`stock_${product.id}`, updatedStock);
       });
     }
