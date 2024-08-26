@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
-import Input from "../ui/input/Input";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getConfigFn, postConfigFn } from "../../api/config";
+import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { toast } from "sonner";
+import Input from "../ui/input/Input";
 
-const TableConfigForm = () => {
+const ConfigForm = () => {
   const QueryClient = useQueryClient();
 
   const { data: config } = useQuery({
@@ -81,4 +81,4 @@ const TableConfigForm = () => {
     </section>
   );
 };
-export default TableConfigForm;
+export default ConfigForm;
