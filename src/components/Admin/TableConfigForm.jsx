@@ -6,11 +6,13 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 
 const TableConfigForm = () => {
+  const QueryClient = useQueryClient();
+
   const { data: config } = useQuery({
     queryKey: ["config"],
     queryFn: () => getConfigFn(),
   });
-  const QueryClient = useQueryClient();
+
   const {
     register,
     setValue,
@@ -19,7 +21,6 @@ const TableConfigForm = () => {
   } = useForm();
 
   useEffect(() => {
-    console.log(config);
     if (config) {
       setValue("cantidadMesas", config.data.cantidadMesas);
     }
@@ -42,7 +43,6 @@ const TableConfigForm = () => {
   });
 
   const handleSubmit = (data) => {
-    console.log(data);
     postConfig(data);
   };
 
