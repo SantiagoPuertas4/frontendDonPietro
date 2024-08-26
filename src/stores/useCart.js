@@ -45,8 +45,9 @@ export const useCart = create((set, get) => {
     },
     updateItemStock: (itemId, stock) => {
       set((state) => {
+        const limitedStock = stock > 30 ? 30 : stock;
         const newItems = state.items.map((item) =>
-          item.id === itemId ? { ...item, stock } : item
+          item.id === itemId ? { ...item, stock: limitedStock } : item
         );
 
         sessionStorage.setItem("cartItems", JSON.stringify(newItems));
