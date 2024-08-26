@@ -2,16 +2,33 @@ import PropTypes from "prop-types";
 import ModalRow from "./ModalRow";
 
 import "./Modal.css";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 const Modal = (props) => {
   const { details, setModal } = props;
+  const modalRef = useRef(null);
 
   const handleClose = () => {
     setModal(false);
   };
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <section className="modal-overlay d-flex justify-content-center">
-      <article className="modalNB d-block">
+      <article ref={modalRef} className="modalNB d-block">
         <button className="close-button" onClick={handleClose}>
           &times;
         </button>
