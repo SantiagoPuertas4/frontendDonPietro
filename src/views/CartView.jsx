@@ -3,9 +3,10 @@ import { useSession } from "../stores/useSession";
 import { useOrders } from "../stores/useOrders";
 import { useCart } from "../stores/useCart";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { postOrderFn } from "../api/order";
+import { getProductsFn } from "../api/products";
 
 import { decodeJWT } from "../utilities/decodeJWT";
 
@@ -21,10 +22,17 @@ const CartView = () => {
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm();
+
+  const { data: products, isSuccess } = useQuery({
+    queryKey: ["products"],
+    queryFn: getProductsFn,
+  });
+  const QueryClient = useQueryClient();
+
   const { items, updateItemQuantity, removeItem, clearCart } = useCart();
   const { tableNumber } = useSession();
   const { addOrder } = useOrders();
-  const { getCartTotal } = useCart();
+  const { getCartTotal, updateItemStock } = useCart();
   const total = getCartTotal();
 
   const { mutate: postOrder } = useMutation({
@@ -53,19 +61,54 @@ const CartView = () => {
       });
     },
     onError: (e) => {
-      Swal.fire({
-        title: "Error",
-        text: "Hubo un problema al realizar el pedido: " + e.message,
-        icon: "error",
-        confirmButtonText: "Aceptar",
-        customClass: {
-          confirmButton: "swal-button",
-        },
-      });
+      let msg = "Los siguientes productos tienen un stock menor a lo pedido:\n";
+      let hasLowStock = false;
+      if (isSuccess) {
+        products.data.forEach((product) => {
+          const storedStock = product.stock;
+          const requestedQuantity =
+            items.find((item) => item.id === product.id)?.quantity || 0;
+
+          if (storedStock < requestedQuantity) {
+            msg += `- ${product.name}: Disponible (${storedStock}), Solicitado (${requestedQuantity})\n`;
+            hasLowStock = true;
+          }
+
+          sessionStorage.setItem(`stock_${product.id}`, storedStock);
+          updateItemStock(product.id, product.stock);
+          msg = msg.replace(/\n/g, "<br>");
+        });
+      }
+      console.log(msg);
+
+      if (hasLowStock) {
+        Swal.fire({
+          title: "Stock insuficiente",
+          html: msg,
+          icon: "warning",
+          confirmButtonText: "Aceptar",
+          customClass: {
+            confirmButton: "swal-button",
+          },
+        });
+      } else {
+        Swal.fire({
+          title: "Stock insuficiente",
+          html: "Hubo un problema al realizar el pedido: " + e.message,
+          icon: "warning",
+          confirmButtonText: "Aceptar",
+          customClass: {
+            confirmButton: "swal-button",
+          },
+        });
+      }
     },
   });
 
   const handleOrder = async (comments) => {
+    QueryClient.invalidateQueries({
+      queryKey: ["productos"],
+    });
     const token = sessionStorage.getItem("token");
     const datos = decodeJWT(token);
 

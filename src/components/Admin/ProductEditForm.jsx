@@ -118,6 +118,7 @@ const ProductEditForm = (props) => {
           errors={errors.precioProducto}
           type="number"
           maxLength={6}
+          max={999999}
           options={{
             required: "El campo es requerido",
             min: {
@@ -135,7 +136,8 @@ const ProductEditForm = (props) => {
           label="Stock"
           errors={errors.stockProducto}
           type="number"
-          maxLength={6}
+          maxLength={3}
+          max={999}
           options={{
             required: "El campo es requerido",
             min: {

@@ -5,6 +5,7 @@ import Carousel from "react-multi-carousel";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "../stores/useSession";
+import { useCart } from "../stores/useCart";
 
 import { getProductsFn } from "../api/products";
 
@@ -35,12 +36,14 @@ export const MenuView = () => {
     data: products,
     isLoading,
     isError,
+    isSuccess,
   } = useQuery({
     queryKey: ["products"],
     queryFn: getProductsFn,
   });
 
   const { tableNumber, setTableNumber, logout } = useSession();
+  const { updateItemStock } = useCart();
   const [showTableNumberPrompt, setShowTableNumberPrompt] = useState(
     !tableNumber
   );
@@ -94,7 +97,7 @@ export const MenuView = () => {
             return number;
           },
         });
-  
+
         if (number === false) {
           const confirmLogout = await Swal.fire({
             title: "Confirmar Cierre de Sesión",
@@ -108,7 +111,7 @@ export const MenuView = () => {
               cancelButton: "swal-button-cancel",
             },
           });
-  
+
           if (confirmLogout.isConfirmed) {
             logout();
           }
@@ -118,19 +121,23 @@ export const MenuView = () => {
         }
       }
     };
-  
+
     requestTableNumber();
-  }, [showTableNumberPrompt, mesas, tableNumber, logout, setTableNumber, setShowTableNumberPrompt]);
-  
+  }, [
+    showTableNumberPrompt,
+    mesas,
+    tableNumber,
+    logout,
+    setTableNumber,
+    setShowTableNumberPrompt,
+  ]);
+
   useEffect(() => {
-    if (products) {
+    if (isSuccess) {
       products.data.forEach((product) => {
-        const storedStock = parseInt(
-          sessionStorage.getItem(`stock_${product.id}`),
-          10
-        );
-        const updatedStock = isNaN(storedStock) ? product.stock : storedStock;
+        const updatedStock = product.stock > 30 ? 30 : product.stock;
         sessionStorage.setItem(`stock_${product.id}`, updatedStock);
+        updateItemStock(product.id, product.stock);
       });
     }
   }, [products]);
