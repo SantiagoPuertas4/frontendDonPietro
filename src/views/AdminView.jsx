@@ -70,7 +70,7 @@ const AdminView = () => {
       </section>
       <section className="d-flex justify-content-center flex-column align-items-center container my-2 mt-4">
         <article className="d-flex justify-content-center row w-100">
-          <div className="col-12 col-md-6 col-lg-4 m-1 px-1">
+          <div className="col-12 col-md-6 col-lg-4 my-1 px-1">
             <button
               onClick={() => handleButtonClick("productList")}
               className={`btn btn-admin w-100 h-100 ${

@@ -6,12 +6,15 @@ import { postProductsFn } from "../../api/products";
 
 import Input from "../ui/input/Input";
 import Checkbox from "../ui/Checkbox/Checkbox";
+import { useEffect } from "react";
 
 const ProductForm = () => {
   const queryClient = useQueryClient();
   const {
     register,
     reset,
+    setValue,
+    watch,
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm();
@@ -29,6 +32,21 @@ const ProductForm = () => {
       toast.error(e.message);
     },
   });
+
+  const isVegetarian = watch("checkVegetarian");
+  const isVegan = watch("checkVegan");
+
+  useEffect(() => {
+    if (isVegetarian) {
+      setValue("checkVegan", false);
+    }
+  }, [isVegetarian, setValue]);
+
+  useEffect(() => {
+    if (isVegan) {
+      setValue("checkVegetarian", false);
+    }
+  }, [isVegan, setValue]);
 
   const handleSubmit = (data) => {
     const transformedData = {
