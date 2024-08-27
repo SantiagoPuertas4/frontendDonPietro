@@ -34,7 +34,7 @@ export const CartTable = ({ items, onQuantityChange, onRemoveItem }) => {
                 <button
                   className="btn-quantity"
                   onClick={() => onQuantityChange(item.id, item.quantity + 1)}
-                  disabled={item.quantity >= item.stock}
+                  disabled={item.quantity >= item.stock || item.quantity >= 30}
                 >
                   +
                 </button>
