@@ -7,7 +7,7 @@ const Error404View = () => {
     <section className="d-flex flex-column align-items-center pt-3">
       <article className="d-flex flex-column align-items-center">
         <div>
-          <img className="w-100" src="/404.png" alt="" />
+          <img className="w-100" src="/404.png" alt="Error404" />
         </div>
         <div>
           <p className="error mt-5">ERROR</p>
