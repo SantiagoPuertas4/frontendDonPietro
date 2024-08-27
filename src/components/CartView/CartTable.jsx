@@ -1,8 +1,12 @@
+import PropTypes from "prop-types";
+
 import { useCart } from "../../stores/useCart";
 
 export const CartTable = ({ items, onQuantityChange, onRemoveItem }) => {
   const { getCartTotal } = useCart();
   const total = getCartTotal();
+
+  console.log(items);
 
   return (
     <section className="container">
@@ -64,3 +68,23 @@ export const CartTable = ({ items, onQuantityChange, onRemoveItem }) => {
 };
 
 export default CartTable;
+const productPropType = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  isAvailable: PropTypes.bool.isRequired,
+  isGlutenFree: PropTypes.bool.isRequired,
+  isVegan: PropTypes.bool.isRequired,
+  isVegetarian: PropTypes.bool.isRequired,
+  price: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
+  stock: PropTypes.number.isRequired,
+});
+
+CartTable.propTypes = {
+  items: PropTypes.arrayOf(productPropType),
+  onRemoveItem: PropTypes.func.isRequired,
+  onQuantityChange: PropTypes.func.isRequired,
+};

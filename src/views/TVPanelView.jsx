@@ -55,9 +55,9 @@ const TVPanelView = () => {
       <section className="h1-pedidos">
         <h1>Pedidos</h1>
       </section>
-      <section className="d-flex prueba py-5">
-        <article className="w-50 d-flex flex-column text-center">
-          <h5 className="text-white mb-3 state">Listos</h5>
+      <section className="d-flex tvPanel py-5">
+        <article className="w-50 d-flex flex-column text-center h-100">
+          <h5 className="text-white mb-3 state h-100">Listos</h5>
           <Orders
             isLoading={loadingDelivery}
             isError={errorDelivery}
@@ -67,7 +67,7 @@ const TVPanelView = () => {
         </article>
 
         <article className="w-50 text-center d-flex flex-column text-center">
-          <h5 className="text-white mb-3 state">En proceso</h5>
+          <h5 className="text-white mb-3 state">Preparando</h5>
           <Orders
             isLoading={loadingPreparing}
             isError={errorPreparing}

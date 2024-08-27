@@ -1,13 +1,14 @@
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
+import PropTypes from "prop-types";
 
 export const UserInfoTable = ({ user, onLogout }) => {
   const handleLogout = async () => {
     const result = await Swal.fire({
-      title: '¿Estás seguro de que quieres cerrar sesión?',
-      icon: 'warning',
+      title: "¿Estás seguro de que quieres cerrar sesión?",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: 'Sí, cerrar sesión',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText: "Sí, cerrar sesión",
+      cancelButtonText: "Cancelar",
       customClass: {
         confirmButton: "swal-button",
         cancelButton: "swal-button-cancel",
@@ -48,3 +49,10 @@ export const UserInfoTable = ({ user, onLogout }) => {
 };
 
 export default UserInfoTable;
+UserInfoTable.propTypes = {
+  onLogout: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    fullname: PropTypes.string.isRequired,
+  }),
+};

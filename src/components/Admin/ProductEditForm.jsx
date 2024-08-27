@@ -30,6 +30,7 @@ const ProductEditForm = (props) => {
       QueryClient.invalidateQueries({
         queryKey: ["products"],
       });
+      setEdit(false);
     },
     onError: (e) => {
       toast.dismiss();

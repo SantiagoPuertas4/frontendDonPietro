@@ -50,6 +50,10 @@ const UserRow = (props) => {
       confirmButtonText: "Si, eliminar",
       cancelButtonText: "No, cancelar",
       showCancelButton: true,
+      customClass: {
+        confirmButton: "swal-button",
+        cancelButton: "swal-button-cancel",
+      },
     });
 
     if (action.isConfirmed) {
