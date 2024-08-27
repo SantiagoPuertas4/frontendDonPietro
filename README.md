@@ -29,7 +29,7 @@ Don Pietro es un proyecto desarrollado por un equipo de 4 personas. Este proyect
 
   npm start
 
-- La aplicación estará disponible en http://localhost:3000.
+- La aplicación estará disponible en https://donpietro.netlify.app
 
 - ## Tecnologias utilizadas
 
