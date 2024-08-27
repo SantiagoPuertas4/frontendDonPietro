@@ -136,8 +136,8 @@ const RegisterForm = () => {
             message: "El campo no puede tener más de 30 caracteres",
           },
           pattern: {
-            value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]+$/,
-            message: "El campo solo permite letras",
+            value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/,
+            message: "El campo solo permite letras y espacios",
           },
         }}
         register={register}

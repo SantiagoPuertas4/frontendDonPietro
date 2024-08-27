@@ -21,7 +21,6 @@ export const postOrderFn = async (data) => {
 };
 
 export const deleteOrderFn = async (orderId) => {
-
   const token = sessionStorage.getItem("token");
 
   const res = await fetch(`${BACKEND_URL}/order/${orderId}`, {
@@ -85,6 +84,48 @@ export const getPreparingOrdersFn = async () => {
 export const getPendingDeliveryOrderFn = async () => {
   const token = sessionStorage.getItem("token");
   const res = await fetch(`${BACKEND_URL}/order/pendingdelivery`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    const resData = await res.json();
+    throw new Error(
+      resData.message || "Ocurrió un error leyendo los productos"
+    );
+  }
+
+  return data;
+};
+
+export const getPreparingOrdersTVFn = async () => {
+  const token = sessionStorage.getItem("token");
+  const res = await fetch(`${BACKEND_URL}/order/preparingordertv`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    const resData = await res.json();
+    throw new Error(
+      resData.message || "Ocurrió un error leyendo los productos"
+    );
+  }
+
+  return data;
+};
+
+export const getPendingDeliveryOrderTVFn = async () => {
+  const token = sessionStorage.getItem("token");
+  const res = await fetch(`${BACKEND_URL}/order/pendingdeliverytv`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

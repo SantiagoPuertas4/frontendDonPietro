@@ -165,7 +165,7 @@ Diosito`,
                   message: "El campo no puede tener menos de 3 caracteres",
                 },
                 pattern: {
-                  value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                   message: "El campo solo acepta correos electrónicos",
                 },
               }}
@@ -198,7 +198,7 @@ Diosito`,
                 pattern: {
                   value: /^[A-Za-z0-9\s(),.]+$/,
                   message:
-                    "El campo solo acepta letras, números, punto, coma y paréntesis",
+                    "El campo solo acepta letras, números, punto, coma, paréntesis y espacios",
                 },
               }}
               labelClassName="mainContactLabel"
