@@ -67,6 +67,7 @@ const MyAccountView = () => {
 
   if (loading) return <p className="loading">Cargando...</p>;
   if (error) return <p className="error">Error: {error}</p>;
+  console.log(orders);
   return (
     <>
       <section className="h1-orders">
@@ -82,7 +83,7 @@ const MyAccountView = () => {
         ) : (
           <article className="orders-grid">
             {orders.map((order) => (
-              <div key={order._id} className="order-item">
+              <div key={order.id} className="order-item">
                 <p>
                   <strong>Estado:</strong> {order.status}
                 </p>

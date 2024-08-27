@@ -5,11 +5,11 @@
   padding: 10px;
 }
 
-.prueba {
+.tvPanel {
   background-color: #333;
   border-radius: 10px;
   margin: 20px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .state {
@@ -21,4 +21,8 @@
 
 .name {
   margin: 0px 20px 0px 20px;
+}
+
+.tituloTvPanel {
+  font-size: x-large;
 }

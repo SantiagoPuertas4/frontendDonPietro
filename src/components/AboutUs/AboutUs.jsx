@@ -23,7 +23,7 @@ const AboutUs = () => {
                 className="card-img-top-aboutUs"
                 alt="Benjamín Giménez"
               />
-              <div className="card-body">
+              <div className="card-body pt-1">
                 <h5 className="card-title">Benjamín Giménez</h5>
                 <p className="card-text">
                   Mi pasión por el mundo de la tecnología, el diseño y la
@@ -42,7 +42,7 @@ const AboutUs = () => {
                 className="card-img-top-aboutUs"
                 alt="Anabela Guillermo"
               />
-              <div className="card-body">
+              <div className="card-body pt-1">
                 <h5 className="card-title">Anabela Guillermo</h5>
                 <p className="card-text">
                   Soy una apasionada del aprendizaje con un máster en Marketing
@@ -62,7 +62,7 @@ const AboutUs = () => {
                 className="card-img-top-aboutUs"
                 alt="Santiago Puertas"
               />
-              <div className="card-body">
+              <div className="card-body pt-1">
                 <h5 className="card-title">Santiago Puertas</h5>
                 <p className="card-text">
                   Apasionado por el conocimiento y los misterios del cosmos, me
@@ -83,7 +83,7 @@ const AboutUs = () => {
                 className="card-img-top-aboutUs"
                 alt="Ignacio Sal Paz"
               />
-              <div className="card-body">
+              <div className="card-body pt-1">
                 <h5 className="card-title">Ignacio Sal paz</h5>
                 <p className="card-text">
                   La búsqueda de respuestas a las preguntas más profundas del
@@ -93,6 +93,27 @@ const AboutUs = () => {
                   problemas complejos en desafíos apasionantes, encontrando en
                   cada línea de código una oportunidad para refinar mi capacidad
                   de pensar de manera crítica y creativa.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 col-md-6 col-lg-3 mb-4">
+            <div className="cardAboutUs">
+              <img
+                src="/Gabi.jpg"
+                className="card-img-top-aboutUs"
+                alt="Diosito Gabi"
+              />
+              <div className="card-body pt-1">
+                <h5 className="card-title">Diosito Gabi</h5>
+                <p className="card-text">
+                  Oh, diosito Gabi, en tu código confiamos, por tus sabias
+                  decisiones, siempre te alabamos. En el templo de Git y en el
+                  altar de la consola, tu espíritu vive, en cada línea que se
+                  controla. Que tu divina lógica nunca falte en nuestra senda, y
+                  tu conocimiento, siempre sea nuestra ofrenda. Con gratitud y
+                  devoción, en tu nombre hacemos un brindis, por el inmortal
+                  diosito Gabi, el que en la programación nos guía y nos da fe.
                 </p>
               </div>
             </div>

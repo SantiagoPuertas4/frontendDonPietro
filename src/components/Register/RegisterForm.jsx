@@ -57,10 +57,16 @@ const RegisterForm = () => {
             toast.dismiss();
             toast.success("Se envio un correo a tu mail!");
             reset();
+            setTimeout(() => {
+              toast.dismiss();
+            }, 2000);
           },
           (error) => {
             toast.dismiss();
             toast.error(error || "El correo no pudo ser enviado correctamente");
+            setTimeout(() => {
+              toast.dismiss();
+            }, 2000);
           }
         );
 
@@ -75,6 +81,9 @@ const RegisterForm = () => {
     onError: (e) => {
       toast.dismiss();
       toast.warning(e.message);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
   });
 
@@ -101,6 +110,9 @@ const RegisterForm = () => {
     };
     toast.loading("Guardando nuevo usuario");
     postRegister(transformedData);
+    setTimeout(() => {
+      toast.dismiss();
+    }, 2000);
   };
 
   const handleCaptchaChange = () => {
@@ -222,8 +234,7 @@ const RegisterForm = () => {
           pattern: {
             value:
               /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,100}$/,
-            message:
-              "La contraseña debe tener al menos 8 caracteres, una minúscula, una mayúscula y un caracter especial",
+            message: "Las contraseñas deben coincidir",
           },
         }}
         register={register}
@@ -235,7 +246,7 @@ const RegisterForm = () => {
         {captcha && (
           <InvalidFeedback
             noInput={true}
-            divClass="text-center mb-2"
+            divClass="text-center mb-2 d-flex justify-content-center"
             msg="El Captcha debe ser resuelto para poder registrarte"
           />
         )}
@@ -252,7 +263,7 @@ const RegisterForm = () => {
         <p className="account-question mt-4">
           ¿Ya tienes una cuenta?{" "}
           <Link to="/login" className="register-link">
-            Inicia Sesion
+            Inicia sesión
           </Link>
         </p>
       </div>

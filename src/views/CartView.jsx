@@ -40,7 +40,7 @@ const CartView = () => {
     onSuccess: () => {
       Swal.fire({
         title: "¡Éxito!",
-        text: "Pedido realizado con éxito. Aparecera tu historial una vez completado el pedido ",
+        text: "Pedido realizado con éxito. Aparecerá tu historial una vez completado el pedido.",
         icon: "success",
         confirmButtonText: "Aceptar",
         customClass: {

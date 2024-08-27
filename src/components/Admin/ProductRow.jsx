@@ -23,10 +23,16 @@ const ProductRow = (props) => {
       QueryClient.invalidateQueries({
         queryKey: ["products"],
       });
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
     onError: (e) => {
       toast.dismiss();
       toast.error(e.message);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
   });
 
@@ -47,6 +53,9 @@ const ProductRow = (props) => {
     if (action.isConfirmed) {
       toast.loading("Eliminando usuario ...");
       deleteProduct(product.id);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     }
   };
 
