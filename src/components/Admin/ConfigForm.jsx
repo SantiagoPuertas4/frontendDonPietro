@@ -38,10 +38,16 @@ const ConfigForm = () => {
       QueryClient.invalidateQueries({
         queryKey: ["config"],
       });
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
     onError: (e) => {
       toast.dismiss();
       toast.error(e.message);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
   });
 

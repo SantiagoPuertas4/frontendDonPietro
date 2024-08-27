@@ -19,10 +19,16 @@ const UserRow = (props) => {
       QueryClient.invalidateQueries({
         queryKey: ["users"],
       });
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
     onError: (e) => {
       toast.dismiss();
       toast.error(e.message);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
   });
 
@@ -39,6 +45,9 @@ const UserRow = (props) => {
     onError: (e) => {
       toast.dismiss();
       toast.error(e.message);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
   });
 
@@ -59,6 +68,9 @@ const UserRow = (props) => {
     if (action.isConfirmed) {
       toast.loading("Eliminando usuario ...");
       deleteUser(user.id);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     }
   };
 
@@ -75,6 +87,9 @@ const UserRow = (props) => {
     if (action.isConfirmed) {
       toast.loading("Eliminando usuario ...");
       toggleUser(user.id);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     }
   };
 

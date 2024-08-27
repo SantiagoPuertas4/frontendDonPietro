@@ -84,12 +84,18 @@ Diosito`,
                 toast.dismiss();
                 toast.success("El mensaje fue registrado correctamente");
                 reset();
+                setTimeout(() => {
+                  toast.dismiss();
+                }, 2000);
               },
               (error) => {
                 toast.dismiss();
                 toast.error(
                   error || "El mensaje no pudo ser registrado correctamente"
                 );
+                setTimeout(() => {
+                  toast.dismiss();
+                }, 2000);
               }
             );
         },
@@ -98,6 +104,9 @@ Diosito`,
           toast.error(
             error || "El mensaje no pudo ser registrado correctamente"
           );
+          setTimeout(() => {
+            toast.dismiss();
+          }, 2000);
         }
       );
   };

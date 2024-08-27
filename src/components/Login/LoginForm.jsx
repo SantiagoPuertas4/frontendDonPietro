@@ -45,6 +45,9 @@ const LoginForm = () => {
     onSuccess: (userData) => {
       toast.dismiss();
       toast.success(`Bienvenido, ${userData.fullname}`);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
 
       reset();
 
@@ -71,6 +74,9 @@ const LoginForm = () => {
     onError: (e) => {
       toast.dismiss();
       toast.warning(e.message);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
   });
 

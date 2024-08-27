@@ -57,10 +57,16 @@ const RegisterForm = () => {
             toast.dismiss();
             toast.success("Se envio un correo a tu mail!");
             reset();
+            setTimeout(() => {
+              toast.dismiss();
+            }, 2000);
           },
           (error) => {
             toast.dismiss();
             toast.error(error || "El correo no pudo ser enviado correctamente");
+            setTimeout(() => {
+              toast.dismiss();
+            }, 2000);
           }
         );
 
@@ -75,6 +81,9 @@ const RegisterForm = () => {
     onError: (e) => {
       toast.dismiss();
       toast.warning(e.message);
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
   });
 
@@ -101,6 +110,9 @@ const RegisterForm = () => {
     };
     toast.loading("Guardando nuevo usuario");
     postRegister(transformedData);
+    setTimeout(() => {
+      toast.dismiss();
+    }, 2000);
   };
 
   const handleCaptchaChange = () => {
