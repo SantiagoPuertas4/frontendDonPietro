@@ -227,8 +227,9 @@ const CartView = () => {
                 message: "El campo no puede tener más de 300 caracteres",
               },
               pattern: {
-                value: /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ,]+$/,
-                message: "El campo solo permite letras, numeros y coma",
+                value: /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ,\s]+$/,
+                message:
+                  "El campo solo permite letras, numeros, coma y espacio",
               },
             }}
             labelClassName="mainContactLabel"

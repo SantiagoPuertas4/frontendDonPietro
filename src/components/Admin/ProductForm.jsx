@@ -105,8 +105,8 @@ const ProductForm = () => {
                   message: "El campo no puede tener menos de 3 caracteres",
                 },
                 pattern: {
-                  value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]+$/,
-                  message: "El campo solo permite letras",
+                  value: /^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/,
+                  message: "El campo solo permite letras y espacios",
                 },
               }}
               labelClassName="productEditLabel"
@@ -208,8 +208,9 @@ const ProductForm = () => {
                   message: "El campo no puede tener menos de 15 caracteres",
                 },
                 pattern: {
-                  value: /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ,|]+$/,
-                  message: "El campo solo permite letras y barra vertical",
+                  value: /^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ,|\s]+$/,
+                  message:
+                    "El campo solo permite letras, barra vertical y espacios",
                 },
               }}
               labelClassName="productEditLabel"
