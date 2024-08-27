@@ -52,7 +52,7 @@ const PendingDeliveryCard = (props) => {
 
   return (
     <section className="col-12 col-md-5 col-xl-3 m-1 pendingCard">
-      <article className="m-1 p-2 d-flex flex-column justify-content-between gap-2 m-2">
+      <article className="m-1 p-2 d-flex flex-column justify-content-between gap-2 m-2  w-100">
         <h2 className="pendingTitle text-center">{order.userName}</h2>
         <div className="d-flex flex-column align-items-center gap-2 ">
           <p>
