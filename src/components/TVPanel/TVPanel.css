@@ -1,0 +1,28 @@
+.h1-pedidos {
+  background-color: var(--color-primario);
+  text-align: center;
+  color: var(--color-adicional-3);
+  padding: 10px;
+}
+
+.tvPanel {
+  background-color: #333;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+}
+
+.state {
+  background-color: var(--color-secundario);
+  margin: 0px 10px 0px 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.name {
+  margin: 0px 20px 0px 20px;
+}
+
+.tituloTvPanel {
+  font-size: x-large;
+}

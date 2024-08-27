@@ -1,0 +1,20 @@
+.location-map-heading {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.leaflet-container {
+  width: 100%;
+  max-width: 100dvw;
+  height: 500px;
+  z-index: 0 !important;
+}
+
+.iconoLeaflet {
+  margin-left: -12px !important;
+  margin-top: -41px !important;
+  width: 25px !important;
+  height: 41px !important;
+}

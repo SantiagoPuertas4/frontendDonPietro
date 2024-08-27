@@ -1,0 +1,72 @@
+.about-header {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+  padding: 20px 0;
+  background-color: #ef8a3a;
+  width: 100%;
+  margin: 0;
+}
+
+.about-us {
+  margin-top: 20px;
+  text-align: center;
+  color: #ef8a3a;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ef8a3a;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.col-12 {
+  display: flex;
+  justify-content: center;
+}
+
+.cardAboutUs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.cardAboutUs:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top-aboutUs {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #ffffff;
+  padding: 10px;
+}

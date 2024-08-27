@@ -1,0 +1,76 @@
+.h1-admin {
+  background-color: var(--color-primario);
+  text-align: center;
+  color: var(--color-adicional-3);
+  padding: 10px;
+}
+
+.btn-admin {
+  color: white !important;
+  border: 2px white solid !important;
+}
+
+.btnCustom {
+  background-color: var(--color-primario) !important;
+}
+
+.titulo {
+  color: white;
+}
+
+.tituloCustom {
+  color: var(--color-primario) !important;
+}
+
+.userListTitle {
+  color: var(--color-primario);
+  margin: 0;
+}
+
+p {
+  margin: 0 !important;
+  color: white;
+}
+
+.cardUsuario {
+  background-color: var(--color-adicional-1) !important;
+}
+
+.imgProductAdmin {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.productEditLabel {
+  color: var(--color-adicional-3) !important;
+}
+
+.productEditLabel::after {
+  background-color: var(--color-secundario) !important;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+.productEditInput {
+  background-color: var(--color-secundario) !important;
+  border: none !important;
+  color: var(--color-adicional-3) !important;
+  border-radius: 5px;
+}
+
+.productCheckLabel {
+  color: white;
+}
+
+.productCheckInput:checked {
+  background-color: var(--color-primario) !important;
+  border-color: var(--color-primario) !important;
+}
+
+.btn-selected {
+  background-color: rgb(37, 37, 37) !important;
+}
+
+.options {
+  font-size: 11px;
+}

@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --color-primario: #ef8a3a;
+  --color-secundario: #111518;
+  --color-terciario: #13171a;
+  --color-adicional-1: #232426;
+  --color-adicional-2: #4c4c4c;
+  --color-adicional-3: #ffffff;
+  --color-adicional-4: #d02514;
+}
+
+#root {
+  background: var(--color-secundario);
+  font-family: "Work Sans", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin-top: 90px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #f57a16;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-adicional-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primario);
+  border-radius: 10px;
+}
+
+.confirm-button-class {
+  background-color: var(--color-primario);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.confirm-button-class:disabled {
+  background-color: #9e5b24;
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.cancel-button-class {
+  background-color: var(--color-adicional-4);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.cancel-button-class:disabled {
+  background-color: #8a150b;
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.success-button-class {
+  background-color: rgb(17, 131, 17);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}

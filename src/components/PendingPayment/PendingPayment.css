@@ -1,0 +1,20 @@
+.pendingCard {
+  background-color: var(--color-adicional-1) !important;
+  width: 20dvw;
+}
+
+.pendingTitle {
+  color: white;
+}
+
+.titulo {
+  color: white;
+}
+
+.swal-danger {
+  background-color: var(--color-adicional-4) !important;
+}
+
+.swal-success {
+  background-color: #188452;
+}

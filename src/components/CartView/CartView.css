@@ -1,0 +1,142 @@
+:root {
+  --color-primario: #ef8a3a;
+  --color-secundario: #111518;
+  --color-terciario: #13171a;
+  --color-adicional-1: #232426;
+  --color-adicional-2: #4c4c4c;
+  --color-adicional-3: #ffffff;
+  --color-adicional-4: #d02514;
+}
+
+.h1-cart {
+  background-color: var(--color-primario);
+  text-align: center;
+  color: var(--color-adicional-3);
+  padding: 10px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.cart-table th,
+.cart-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.cart-table th {
+  background-color: #f4f4f4;
+}
+
+.cart-table tfoot {
+  font-weight: bold;
+}
+
+.cart-table td {
+  color: var(--color-adicional-3);
+  text-align: center;
+  background-color: var(--color-terciario);
+}
+
+.btn-order {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: var(--color-primario);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.btn-order:hover {
+  background-color: #d17529;
+}
+
+.btn-clear {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: var(--color-adicional-4);
+  color: var(--color-adicional-3);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.btn-clear:hover {
+  background-color: #9e1a0e;
+}
+
+.status {
+  color: var(--color-adicional-3);
+}
+
+.waiting {
+  color: var(--color-primario);
+}
+
+@media (max-width: 768px) {
+  .cart-table thead {
+    display: none;
+  }
+
+  .cart-table,
+  .cart-table tbody,
+  .cart-table tfoot,
+  .cart-table tr,
+  .cart-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .cart-table tr {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .cart-table td {
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+    background-color: var(--color-adicional-1);
+  }
+
+  .cart-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}
+
+.btn-remove {
+    border: none;
+    background-color: var(--color-adicional-4);
+    color: white;
+    border-radius: 2px;
+}
+
+.btn-quantity {
+    border: none;
+    background-color: var(--color-adicional-2);
+    color: white;
+    border-radius: 2px;
+    margin: 5px;
+}
+
+.swal-button {
+  background-color: var(--color-primario);
+}
+
+
+.form-cart {
+  background-color: red;
+}

@@ -1,0 +1,20 @@
+:root {
+  --color-primario: #ef8a3a;
+  --color-secundario: #111518;
+  --color-terciario: #13171a;
+  --color-adicional-1: #232426;
+  --color-adicional-2: #4c4c4c;
+  --color-adicional-3: #ffffff;
+  --color-adicional-4: #d02514;
+}
+
+.icon {
+  text-decoration: none;
+  color: inherit;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.icon:hover {
+  color: var(--color-primario);
+}
