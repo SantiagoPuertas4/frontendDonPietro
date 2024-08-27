@@ -96,7 +96,7 @@ const PendingPaymentCard = (props) => {
             TOTAL: <b>${order.total}</b>
           </p>
         </div>
-        <div className="row gap-2">
+        <div className="row gap-2 p-2">
           <button onClick={handleDelete} className="cancel-button-class">
             Eliminar
           </button>

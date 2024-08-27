@@ -59,7 +59,7 @@ const PendingDeliveryCard = (props) => {
             TOTAL: <b>${order.total}</b>
           </p>
         </div>
-        <div className="row gap-2">
+        <div className="row gap-2 p-2">
           <button onClick={handleDetails} className="confirm-button-class">
             Detalles
           </button>
