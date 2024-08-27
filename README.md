@@ -11,15 +11,15 @@ Don Pietro es un proyecto desarrollado por un equipo de 4 personas. Este proyect
 
 ### Pasos para la instalacion
 
-- clonar el repositorio:
+- Clonar el repositorio:
 
   https://github.com/SantiagoPuertas4/frontendDonPietro.git
 
- - Navegar al directorio del proyecto.
+- Navegar al directorio del proyecto.
 
- - Instalar las dependencias:
+- Instalar las dependencias:
 
-   npm install
+  npm install
 
 ## Uso
 
@@ -32,7 +32,6 @@ Don Pietro es un proyecto desarrollado por un equipo de 4 personas. Este proyect
 - La aplicación estará disponible en https://donpietro.netlify.app
 
 - ## Tecnologias utilizadas
-
 
 **HTML:** Para la estructura del sitio web.
 
@@ -65,9 +64,9 @@ Don Pietro es un proyecto desarrollado por un equipo de 4 personas. Este proyect
     "sweetalert2": "^11.12.4"
     "zustand": "^4.5.4"
 
+## Contribución
 
-  ## Contribución
-  Para contribuir al proyecto:
+Para contribuir al proyecto:
 
 - Contactarse con algun autor.
 - Crear un fork del repositorio.
@@ -84,9 +83,7 @@ Don Pietro es un proyecto desarrollado por un equipo de 4 personas. Este proyect
 
 **Navegación Intuitiva:** Incluye un menú de navegación fácil de usar.
 
-
 **Interactividad:** Elementos interactivos implementados con JavaScript y React.
-
 
 **Aplicación de Una Sola Página (SPA):** La navegación dentro del sitio es rápida y sin recargas completas, lo que ofrece una experiencia fluida.
 
@@ -96,7 +93,7 @@ Don Pietro es un proyecto desarrollado por un equipo de 4 personas. Este proyect
 
 **API RESTful:** permite la comunicación entre el frontend y el backend, asegurando una integración fluida de datos.
 
-## Agradecimientos 
+## Agradecimientos
 
 Nosotros, los 4 integrantes del equipo Don Pietro, queremos expresar nuestro más sincero agradecimiento por el apoyo incondicional y la guía que nos brindaron nuestros mentores durante el desarrollo de este proyecto. Su conocimiento, paciencia y dedicación fueron fundamentales para que pudiéramos superar los desafíos y alcanzar nuestros objetivos. Gracias por estar siempre ahí para nosotros y por ayudarnos a crecer tanto profesional como personalmente.
 
