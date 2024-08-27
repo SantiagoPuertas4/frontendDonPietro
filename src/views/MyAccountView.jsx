@@ -67,7 +67,6 @@ const MyAccountView = () => {
 
   if (loading) return <p className="loading">Cargando...</p>;
   if (error) return <p className="error">Error: {error}</p>;
-  console.log(orders);
   return (
     <>
       <section className="h1-orders">

@@ -6,8 +6,6 @@ export const CartTable = ({ items, onQuantityChange, onRemoveItem }) => {
   const { getCartTotal } = useCart();
   const total = getCartTotal();
 
-  console.log(items);
-
   return (
     <section className="container">
       <table className="cart-table">
