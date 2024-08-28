@@ -74,3 +74,11 @@ p {
 .options {
   font-size: 11px;
 }
+
+.textPlaceholder {
+  height: 24px;
+}
+
+.imgPlaceholder {
+  height: 175px;
+}

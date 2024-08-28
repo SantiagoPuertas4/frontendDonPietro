@@ -65,7 +65,7 @@ const ProductRow = (props) => {
 
   return (
     <section className="d-flex row cardUsuario my-2 px-3 py-4 align-items-center">
-      <article className="col-12 col-md-5 col-xl-4 col-xxl-3">
+      <article className="col-12 col-md-5 col-xl-4 col-xxl-3  imgProductAdmin">
         <img
           className="w-100 imgProductAdmin"
           src={product.imageUrl}
