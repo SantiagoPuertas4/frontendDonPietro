@@ -62,7 +62,7 @@ export const getOrdersFn = async (type) => {
 
 export const getOrdersTVFn = async (status) => {
   const token = sessionStorage.getItem("token");
-  const res = await fetch(`${BACKEND_URL}/order/${status}`, {
+  const res = await fetch(`${BACKEND_URL}/order/tv/${status}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

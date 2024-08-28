@@ -27,6 +27,7 @@ const Orders = (props) => {
     );
   }
   if (isSuccess) {
+    console.log(order);
     return (
       <>
         {order.data.map((order, index) => {
