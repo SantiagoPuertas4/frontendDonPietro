@@ -2,7 +2,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const postOrderFn = async (data) => {
   const token = sessionStorage.getItem("token");
-  const response = await fetch(`${BACKEND_URL}/order/hand`, {
+  const response = await fetch(`${BACKEND_URL}/order/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
