@@ -27,7 +27,7 @@ const PreparingOrderView = () => {
           </h2>
           <div className="d-flex flex-column align-items-center gap-2 ">
             <p className="text-center placeholder-glow textPlaceholder w-100 mt-3">
-              <span className="placeholder col-6">fghdfgh</span>
+              <span className="placeholder col-6">.</span>
             </p>
           </div>
           <div className="row gap-2 p-2">

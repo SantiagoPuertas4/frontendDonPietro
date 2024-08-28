@@ -1,7 +1,11 @@
 import Swal from "sweetalert2";
 import PropTypes from "prop-types";
 
-export const UserInfoTable = ({ user, onLogout }) => {
+import { useSession } from "../../stores/useSession";
+
+export const UserInfoTable = (onLogout) => {
+  const { user } = useSession();
+
   const handleLogout = async () => {
     const result = await Swal.fire({
       title: "¿Estás seguro de que quieres cerrar sesión?",
@@ -51,8 +55,4 @@ export const UserInfoTable = ({ user, onLogout }) => {
 export default UserInfoTable;
 UserInfoTable.propTypes = {
   onLogout: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    email: PropTypes.string.isRequired,
-    fullname: PropTypes.string.isRequired,
-  }),
 };

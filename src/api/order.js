@@ -1,3 +1,5 @@
+import { decodeJWT } from "../utilities/decodeJWT";
+
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const postOrderFn = async (data) => {
@@ -42,6 +44,28 @@ export const deleteOrderFn = async (orderId) => {
 export const getOrdersFn = async (type) => {
   const token = sessionStorage.getItem("token");
   const res = await fetch(`${BACKEND_URL}/order/${type}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    const resData = await res.json();
+    throw new Error(
+      resData.message || "Ocurrió un error leyendo los productos"
+    );
+  }
+
+  return data;
+};
+
+export const getOrdersHistorialFn = async () => {
+  const token = sessionStorage.getItem("token");
+  const info = decodeJWT(token);
+  const res = await fetch(`${BACKEND_URL}/orderhistorial/${info.user.id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
