@@ -113,13 +113,13 @@ const MyAccountView = () => {
                         {item.product.quantity || "N/A"}
                       </p>
                       <p>
-                        <strong>Precio:</strong> ${item.product.price}
+                        <strong>Precio:</strong> ${item.product.price}.00
                       </p>
                     </li>
                   ))}
                 </ul>
                 <h4 className="text-white">
-                  <strong>Total:</strong> ${order.total}
+                  <strong>Total:</strong> ${order.total}.00
                 </h4>
               </div>
             ))}

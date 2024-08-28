@@ -89,7 +89,7 @@ const ProductCard = (props) => {
         <div>
           <h5 className="card-title px-1">{product.name}</h5>
           <p className="card-text-menu">{product.description}</p>
-          <h6 className="card-price mb-2">${product.price}</h6>
+          <h6 className="card-price mb-2">${product.price}.00</h6>
         </div>
         <div className="mb-4">
           {localStock > 0 ? (
