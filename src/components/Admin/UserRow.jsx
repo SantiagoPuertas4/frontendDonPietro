@@ -129,10 +129,16 @@ const UserRow = (props) => {
               Cambiar a Admin
             </button>
           ))}
-
-        <button onClick={handleDelete} className="ms-1 cancel-button-class">
-          Eliminar
-        </button>
+        {showButton &&
+          (user.isAdmin ? (
+            <button onClick={handleDelete} className="ms-1 cancel-button-class">
+              Eliminar
+            </button>
+          ) : (
+            <button onClick={handleDelete} className="ms-1 cancel-button-class">
+              Eliminar
+            </button>
+          ))}
       </article>
     </section>
   );
