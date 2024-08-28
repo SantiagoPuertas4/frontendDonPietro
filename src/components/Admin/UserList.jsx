@@ -29,9 +29,9 @@ const UserList = () => {
         </article>
 
         <article className="col-12 col-xl-2 d-flex justify-content-center my-1">
-          <button className="confirm-button-class p-xl-2 placeholder w-100"></button>
+          <button className="confirm-button-class p-xl-2 placeholder buttonPlaceholder w-100"></button>
 
-          <button className="ms-1 cancel-button-class placeholder w-100"></button>
+          <button className="ms-1 cancel-button-class placeholder buttonPlaceholder w-100"></button>
         </article>
       </section>
     );

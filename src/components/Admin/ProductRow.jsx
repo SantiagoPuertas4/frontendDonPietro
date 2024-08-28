@@ -93,13 +93,13 @@ const ProductRow = (props) => {
       <article className="col-12 col-xxl-1 d-flex flex-xxl-column align-items-xxl-center justify-content-center my-1">
         <button
           onClick={prepareEdit}
-          className="ms-1 confirm-button-class w-100 mb-xxl-2"
+          className="ms-1 btnCustomWidth confirm-button-class w-100 mb-xxl-2"
         >
           Editar
         </button>
         <button
           onClick={handleDelete}
-          className="ms-1 cancel-button-class w-100 p-1"
+          className="ms-1 btnCustomWidth cancel-button-class w-100 p-1"
         >
           Eliminar
         </button>

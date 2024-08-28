@@ -257,10 +257,13 @@ const ProductEditForm = (props) => {
           />
         </article>
         <article className="d-flex justify-content-center gap-1 my-1">
-          <button onClick={handleCancel} className="btn btn-danger">
+          <button
+            onClick={handleCancel}
+            className="btn btn-danger btnCustomWidth"
+          >
             Cancelar
           </button>
-          <button type="submit" className="btn btn-success">
+          <button type="submit" className="btn btn-success btnCustomWidth">
             Guardar
           </button>
         </article>

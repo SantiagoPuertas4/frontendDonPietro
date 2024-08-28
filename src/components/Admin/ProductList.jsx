@@ -49,8 +49,8 @@ const ProductList = () => {
             </p>
           </article>
           <article className="col-12 col-xxl-1 d-flex flex-xxl-column align-items-xxl-center justify-content-center my-1">
-            <button className="ms-1 placeholder confirm-button-class w-100 mb-xxl-2"></button>
-            <button className="ms-1 placeholder  cancel-button-class w-100 p-1"></button>
+            <button className="ms-1 placeholder btnCustomWidth buttonPlaceholder confirm-button-class w-100 mb-xxl-2"></button>
+            <button className="ms-1 placeholder btnCustomWidth buttonPlaceholder cancel-button-class w-100 p-1"></button>
           </article>
         </section>
       </article>
