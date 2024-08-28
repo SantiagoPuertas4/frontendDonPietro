@@ -18,14 +18,20 @@ const UserList = () => {
     return (
       <section className="d-flex row cardUsuario my-2 mx-1 py-1 align-items-center">
         <article className="col-6 col-md-3 col-xl-2 my-1">
-          <p className="text-center placeholder textPlaceholder w-100"></p>
+          <p className="text-center placeholder-glow textPlaceholder w-100">
+            <span className="placeholder col-12"></span>
+          </p>
         </article>
         <article className="col-6 col-md-3 col-xl-2 my-1">
-          <p className="text-center placeholder textPlaceholder w-100">Admin</p>
+          <p className="text-center placeholder-glow textPlaceholder w-100">
+            <span className="placeholder col-12"></span>
+          </p>
         </article>
 
-        <article className="col-12 col-md-6 my-1 mb-2">
-          <p className="text-center placeholder textPlaceholder w-100"></p>
+        <article className="col-12 col-md-6 my-1">
+          <p className="text-center placeholder-glow textPlaceholder w-100">
+            <span className="placeholder col-12"></span>
+          </p>
         </article>
 
         <article className="col-12 col-xl-2 d-flex justify-content-center my-1">
@@ -58,16 +64,20 @@ const UserList = () => {
         <article>
           <section className="d-flex row cardUsuario my-2 mx-1 py-1 align-items-center">
             <article className="col-6 col-md-3 col-xl-2 my-1">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
+              <p className="text-center placeholder-glow textPlaceholder w-100">
+                <span className="placeholder col-12"></span>
+              </p>
             </article>
             <article className="col-6 col-md-3 col-xl-2 my-1">
-              <p className="text-center placeholder textPlaceholder w-100">
-                Admin
+              <p className="text-center placeholder-glow textPlaceholder w-100">
+                <span className="placeholder col-12"></span>
               </p>
             </article>
 
-            <article className="col-12 col-md-6 my-1 mb-2">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
+            <article className="col-12 col-md-6 my-1">
+              <p className="text-center placeholder-glow textPlaceholder w-100">
+                <span className="placeholder col-12"></span>
+              </p>
             </article>
 
             <article className="col-12 col-xl-2 d-flex justify-content-center my-1"></article>
@@ -89,7 +99,7 @@ const UserList = () => {
   if (isError) {
     return (
       <section className="alert alert-danger mt-3">
-        <p className="text-black">
+        <p className="text-black text-center">
           Ocurrio un error cargando la lista de usuarios
         </p>
       </section>

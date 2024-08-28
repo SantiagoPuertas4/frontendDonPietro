@@ -235,7 +235,7 @@ export const MenuView = () => {
   if (isError) {
     return (
       <section className="alert alert-danger mt-3 container">
-        <p className="text-black">
+        <p className="text-black text-center">
           Ocurrió un error cargando la lista de productos
         </p>
       </section>

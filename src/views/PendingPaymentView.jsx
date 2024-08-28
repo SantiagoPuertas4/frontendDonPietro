@@ -20,14 +20,48 @@ const WaitingForPaymentView = () => {
     queryFn: () => getOrdersFn("WaitingForPayment"),
   });
 
+  const orderPlaceholder = () => {
+    return (
+      <section className="col-12 col-md-5 col-xl-3 m-1 pendingCard">
+        <article className="m-1 p-2 d-flex flex-column justify-content-between gap-2 m-2  w-100">
+          <h2 className="pendingTitle text-center placeholder-glow textPlaceholder w-100">
+            <span className="placeholder col-12"></span>
+          </h2>
+          <div className="d-flex flex-column align-items-center gap-2 ">
+            <p className="text-center placeholder-glow textPlaceholder w-100 mt-3">
+              <span className="placeholder col-6">fghdfgh</span>
+            </p>
+          </div>
+          <div className="row gap-2 p-2">
+            <button className="cancel-button-class placeholderButtonTV"></button>
+            <button className="confirm-button-class placeholderButtonTV"></button>
+            <button className="success-button-class placeholderButtonTV"></button>
+          </div>
+        </article>
+      </section>
+    );
+  };
+
   if (isLoading) {
-    return <p className="mt-2">Cargando datos...</p>;
+    return (
+      <section className="m-5 row d-flex justify-content-center">
+        {orderPlaceholder()}
+        {orderPlaceholder()}
+        {orderPlaceholder()}
+        {orderPlaceholder()}
+        {orderPlaceholder()}
+        {orderPlaceholder()}
+        {orderPlaceholder()}
+        {orderPlaceholder()}
+        {orderPlaceholder()}
+      </section>
+    );
   }
 
   if (isError) {
     return (
-      <section className="text-center container mt-5">
-        <p className="text-white">
+      <section className="alert alert-danger mt-3 container">
+        <p className="text-black text-center">
           Ocurrió un error cargando la lista de pedidos pendientes a pagar.
         </p>
       </section>
