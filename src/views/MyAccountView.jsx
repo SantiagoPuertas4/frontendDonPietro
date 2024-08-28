@@ -103,8 +103,7 @@ const MyAccountView = () => {
           </h2>
           <section className="alert alert-danger mt-3 container">
             <p className="text-black text-center">
-              Ocurrió un error cargando la lista de pedidos pendientes a
-              preparar.
+              Ocurrió un error cargando el historial
             </p>
           </section>
         </section>
