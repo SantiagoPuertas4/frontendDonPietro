@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 import OrderRow from "./OrderRow";
 
 const Orders = (props) => {
-  const { isLoading, isError, isSuccess, order } = props;
+  const { loadingInterval, isLoading, isError, isSuccess, order } = props;
+
+  if (loadingInterval === false) {
+    return <p className="mt-2">Cargando datos...</p>;
+  }
 
   if (isLoading) {
     return <p className="mt-2">Cargando datos...</p>;
@@ -49,6 +53,7 @@ Orders.propTypes = {
       })
     ).isRequired,
   }),
+  loadingInterval: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
