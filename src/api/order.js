@@ -82,7 +82,6 @@ export const getOrdersTVFn = async (status) => {
 };
 
 export const patchOrderFn = async ({ orderId, status, newStatus }) => {
-  console.log(orderId, status, newStatus);
   const token = sessionStorage.getItem("token");
   const response = await fetch(
     `${BACKEND_URL}/order/${orderId}/${status}/${newStatus}`,
