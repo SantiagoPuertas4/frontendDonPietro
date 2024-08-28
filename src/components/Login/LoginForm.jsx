@@ -108,7 +108,7 @@ const LoginForm = () => {
     >
       <Input
         className="mb-3"
-        error={errors.email}
+        errors={errors.email}
         label="Correo electrónico"
         name="email"
         maxLength={50}
@@ -117,15 +117,19 @@ const LoginForm = () => {
             value: true,
             message: "Este campo es requerido",
           },
-          minLength: 3,
-          maxLength: 50,
+          minLength: {
+            value: 3,
+          },
+          maxLength: {
+            value: 50,
+          },
         }}
         labelClassName="mainContactLabel"
         inputClassName="mainContactInput"
         register={register}
       />
       <Input
-        error={errors.password}
+        errors={errors.password}
         label="Contraseña"
         name="password"
         maxLength={100}
@@ -134,11 +138,16 @@ const LoginForm = () => {
             value: true,
             message: "Este campo es requerido",
           },
-          minLength: 8,
-          maxLength: 100,
+          minLength: {
+            value: 8,
+          },
+          maxLength: {
+            value: 100,
+          },
         }}
         labelClassName="mainContactLabel"
         inputClassName="mainContactInput"
+        buttonShowPassword={true}
         register={register}
         type="password"
       />

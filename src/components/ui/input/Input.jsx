@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 import InvalidFeedback from "../InvalidFeedback/InvalidFeedback";
+import { useState } from "react";
 
 const Input = (props) => {
   const {
@@ -14,12 +15,19 @@ const Input = (props) => {
     maxLength,
     max,
     placeholder = "Ingrese un texto",
+    buttonShowPassword = false,
     textarea = false,
     select = false,
     labelClassName = "",
     inputClassName = "",
     autocomplete = "off",
   } = props;
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   if (textarea) {
     return (
@@ -71,6 +79,43 @@ const Input = (props) => {
     );
   }
 
+  if (buttonShowPassword) {
+    return (
+      <div className="d-flex">
+        <fieldset className={`form-floating w-100 ${ClassName}`}>
+          <input
+            className={`form-control ${inputClassName} ${
+              errors ? "is-invalid" : ""
+            }`}
+            id={`${name}-input`}
+            placeholder={placeholder}
+            type={showPassword ? "text" : "password"}
+            max={max}
+            maxLength={maxLength}
+            autoComplete={autocomplete}
+            {...register(name, options)}
+          />
+
+          <label htmlFor={`${name}-input`} className={labelClassName}>
+            {label}
+          </label>
+          <InvalidFeedback msg={errors?.message} />
+        </fieldset>
+        <button
+          type="button"
+          onClick={togglePasswordVisibility}
+          className="btn btn-outline-secondary ms-1"
+        >
+          {showPassword ? (
+            <i className="bi bi-eye-slash-fill"></i>
+          ) : (
+            <i className="bi bi-eye-fill"></i>
+          )}
+        </button>
+      </div>
+    );
+  }
+
   return (
     <fieldset className={`form-floating ${ClassName}`}>
       <input
@@ -108,6 +153,7 @@ Input.propTypes = {
   maxLength: PropTypes.number,
   max: PropTypes.number,
   placeholder: PropTypes.string,
+  buttonShowPassword: PropTypes.bool,
   textarea: PropTypes.bool,
   select: PropTypes.bool,
   labelClassName: PropTypes.string,
