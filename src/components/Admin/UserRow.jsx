@@ -51,6 +51,8 @@ const UserRow = (props) => {
     },
   });
 
+  const showButton = !user.superAdmin;
+
   const handleDelete = async () => {
     const action = await Swal.fire({
       title: "Atencion",
@@ -111,21 +113,22 @@ const UserRow = (props) => {
       </article>
 
       <article className="col-12 col-xl-2 d-flex justify-content-center my-1">
-        {user.isAdmin ? (
-          <button
-            onClick={handleToggle}
-            className="confirm-button-class p-xl-2"
-          >
-            Cambiar a Usuario
-          </button>
-        ) : (
-          <button
-            onClick={handleToggle}
-            className="confirm-button-class p-xl-2"
-          >
-            Cambiar a Admin
-          </button>
-        )}
+        {showButton &&
+          (user.isAdmin ? (
+            <button
+              onClick={handleToggle}
+              className="confirm-button-class p-xl-2"
+            >
+              Cambiar a Usuario
+            </button>
+          ) : (
+            <button
+              onClick={handleToggle}
+              className="confirm-button-class p-xl-2"
+            >
+              Cambiar a Admin
+            </button>
+          ))}
 
         <button onClick={handleDelete} className="ms-1 cancel-button-class">
           Eliminar
@@ -141,5 +144,6 @@ UserRow.propTypes = {
     id: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     isAdmin: PropTypes.bool.isRequired,
+    superAdmin: PropTypes.bool,
   }),
 };
