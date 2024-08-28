@@ -5,21 +5,50 @@ import OrderRow from "./OrderRow";
 const Orders = (props) => {
   const { loadingInterval, isLoading, isError, isSuccess, order } = props;
 
+  const placeholderPanel = () => {
+    return (
+      <p className="my-3 placeholder-glow textPlaceholder mx-3">
+        <span className="placeholder col-12">Cargando datos...</span>
+      </p>
+    );
+  };
+
   if (loadingInterval === false) {
-    return <p className="mt-2">Cargando datos...</p>;
+    return (
+      <div>
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+      </div>
+    );
   }
 
   if (isLoading) {
-    return <p className="mt-2">Cargando datos...</p>;
+    return (
+      <div>
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+        {placeholderPanel()}
+      </div>
+    );
   }
 
   if (isError) {
     return (
-      <section className="text-center">
-        <p className="text-white">
+      <div className="alert alert-danger mt-3 state">
+        <p className="text-black">
           Ocurrió un error cargando la lista de pedidos.
         </p>
-      </section>
+      </div>
     );
   }
 
@@ -31,7 +60,6 @@ const Orders = (props) => {
     );
   }
   if (isSuccess) {
-    console.log(order);
     return (
       <>
         {order.data.map((order, index) => {
