@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { patchPreparingOrderFn } from "../../api/order";
+import { patchOrderFn } from "../../api/order";
 
 const PreparingOrderCard = (props) => {
   const { order, setDetails, setModal } = props;
   const QueryClient = useQueryClient();
-  const { mutate: patchPreparingOrder } = useMutation({
-    mutationFn: patchPreparingOrderFn,
+  const { mutate: patchOrder } = useMutation({
+    mutationFn: patchOrderFn,
     onSuccess: () => {
       toast.dismiss();
       toast.success("Orden movida");
@@ -46,7 +46,11 @@ const PreparingOrderCard = (props) => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        patchPreparingOrder(order.id);
+        patchOrder({
+          orderId: order.id,
+          status: "PreparingOrder",
+          newStatus: "PendingDelivery",
+        });
       }
     });
   };

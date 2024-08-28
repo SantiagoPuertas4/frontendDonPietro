@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { deleteOrderFn, patchPendingOrderFn } from "../../api/order";
+import { deleteOrderFn, patchOrderFn } from "../../api/order";
 
 const PendingPaymentCard = (props) => {
   const { order, setDetails, setModal } = props;
@@ -26,8 +26,8 @@ const PendingPaymentCard = (props) => {
     },
   });
 
-  const { mutate: patchPendingOrder } = useMutation({
-    mutationFn: patchPendingOrderFn,
+  const { mutate: patchOrder } = useMutation({
+    mutationFn: patchOrderFn,
     onSuccess: () => {
       toast.dismiss();
       toast.success("Orden movida");
@@ -88,7 +88,11 @@ const PendingPaymentCard = (props) => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        patchPendingOrder(order.id);
+        patchOrder({
+          orderId: order.id,
+          status: "WaitingForPayment",
+          newStatus: "PreparingOrder",
+        });
       }
     });
   };
