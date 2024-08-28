@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-import { getWaitingOrdersFn } from "../api/order";
+import { getOrdersFn } from "../api/order";
 
 import PendingPaymentCard from "../components/PendingPayment/PendingPaymentCard";
 import Modal from "../components/ui/Modal/Modal";
@@ -17,7 +17,7 @@ const WaitingForPaymentView = () => {
     isError,
   } = useQuery({
     queryKey: ["waitingOrders"],
-    queryFn: () => getWaitingOrdersFn(),
+    queryFn: () => getOrdersFn("WaitingForPayment"),
   });
 
   if (isLoading) {

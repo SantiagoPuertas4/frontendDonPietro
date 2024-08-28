@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-import { getPendingDeliveryOrderFn } from "../api/order";
+import { getOrdersFn } from "../api/order";
 
 import Modal from "../components/ui/Modal/Modal";
 import PendingDeliveryCard from "../components/PendingDelivery/PendingDeliveryCard";
@@ -15,7 +15,7 @@ const PendingDelivery = () => {
     isError,
   } = useQuery({
     queryKey: ["deliveryOrders"],
-    queryFn: () => getPendingDeliveryOrderFn(),
+    queryFn: () => getOrdersFn("PendingDelivery"),
   });
 
   if (isLoading) {

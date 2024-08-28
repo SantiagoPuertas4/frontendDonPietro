@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-import { getPreparingOrdersFn } from "../api/order";
+import { getOrdersFn } from "../api/order";
 
 import Modal from "../components/ui/Modal/Modal";
 import PreparingOrderCard from "../components/PreparingOrder/PreparingOrderCard";
@@ -15,7 +15,7 @@ const PreparingOrderView = () => {
     isError,
   } = useQuery({
     queryKey: ["preparingOrders"],
-    queryFn: () => getPreparingOrdersFn(),
+    queryFn: () => getOrdersFn("PreparingOrder"),
   });
 
   if (isLoading) {
