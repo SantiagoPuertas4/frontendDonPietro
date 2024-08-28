@@ -33,11 +33,6 @@ const Orders = (props) => {
         {placeholderPanel()}
         {placeholderPanel()}
         {placeholderPanel()}
-        {placeholderPanel()}
-        {placeholderPanel()}
-        {placeholderPanel()}
-        {placeholderPanel()}
-        {placeholderPanel()}
       </div>
     );
   }

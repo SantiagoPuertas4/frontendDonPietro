@@ -142,15 +142,103 @@ export const MenuView = () => {
     }
   }, [products]);
 
+  const productPlaceholder = () => {
+    return (
+      <div className="product-card-wrapper d-flex justify-content-center h-100">
+        <section className="card text-center h-100">
+          <article className="position-relative">
+            <p className="card-img-top text-center placeholder-glow  w-100">
+              <span className="placeholder col-12 imgPlaceholderProduct"></span>
+            </p>
+          </article>
+          <article className="card-body pt-1 d-flex flex-column justify-content-between">
+            <div>
+              <h5 className="card-title px-1 placeholder-glow textPlaceholder w-100">
+                <span className="placeholder col-12"></span>
+              </h5>
+              <p className="card-text-menu"></p>
+              <p className="card-text-menu placeholder-glow textPlaceholder w-100">
+                <span className="placeholder col-12"></span>
+              </p>
+              <h6 className="card-price mb-2 placeholder-glow textPlaceholder w-100">
+                <span className="placeholder col-4"></span>
+              </h6>
+            </div>
+            <div className="mb-2">
+              <button className="order-button buttonPlaceholderProduct "></button>
+            </div>
+          </article>
+        </section>
+      </div>
+    );
+  };
+
   if (isLoading) {
-    return <p className="mt-3 text-center">Cargando productos...</p>;
+    return (
+      <>
+        <section className="h1-menu">
+          <h1>MENÚ</h1>
+        </section>
+        <section className="container text-center mt-4 mb-4 instruction">
+          <h2>ESCOGE TU PLATO Y BEBIDA</h2>
+          <p>Por favor, seleccioná `Añadir` en la opción que desees.</p>
+        </section>
+        <section className="text-center mb-4">
+          <button
+            className="order-button"
+            onClick={() => setShowTableNumberPrompt(true)}
+          >
+            Editar número de mesa
+          </button>
+        </section>
+        <section className="container mt-3 category">
+          {tableNumber ? (
+            <>
+              <article>
+                <h2 className="mb-4 text-center">Platos</h2>
+                <Carousel responsive={responsive}>
+                  {productPlaceholder()}
+                  {productPlaceholder()}
+                  {productPlaceholder()}
+                  {productPlaceholder()}
+                  {productPlaceholder()}
+                </Carousel>
+              </article>
+
+              <article className="mt-5">
+                <h2 className="mb-4 text-center">Bebidas</h2>
+                <Carousel responsive={responsive}>
+                  {productPlaceholder()}
+                  {productPlaceholder()}
+                  {productPlaceholder()}
+                  {productPlaceholder()}
+                  {productPlaceholder()}
+                </Carousel>
+              </article>
+            </>
+          ) : (
+            <article className="text-center">
+              <p>Necesitamos saber tu número de mesa para continuar.</p>
+              <Link to="/menu">
+                <button className="btn-order">Conocé más...</button>
+              </Link>
+              <button className="btn btn-danger" onClick={logout}>
+                Cerrar sesión
+              </button>
+            </article>
+          )}
+        </section>
+      </>
+    );
   }
 
   if (isError) {
     return (
-      <div className="alert alert-danger">
-        Ocurrió un error leyendo los productos
-      </div>
+      <section className="alert alert-danger mt-3 container">
+        <p className="text-black">
+          Ocurrió un error cargando la lista de productos
+        </p>
+      </section>
     );
   }
 
