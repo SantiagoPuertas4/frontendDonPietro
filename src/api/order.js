@@ -60,30 +60,9 @@ export const getOrdersFn = async (type) => {
   return data;
 };
 
-export const getPreparingOrdersTVFn = async () => {
+export const getOrdersTVFn = async (status) => {
   const token = sessionStorage.getItem("token");
-  const res = await fetch(`${BACKEND_URL}/order/preparingordertv`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const data = await res.json();
-
-  if (!res.ok) {
-    const resData = await res.json();
-    throw new Error(
-      resData.message || "Ocurrió un error leyendo los productos"
-    );
-  }
-
-  return data;
-};
-
-export const getPendingDeliveryOrderTVFn = async () => {
-  const token = sessionStorage.getItem("token");
-  const res = await fetch(`${BACKEND_URL}/order/pendingdeliverytv`, {
+  const res = await fetch(`${BACKEND_URL}/order/${status}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

@@ -1,10 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
-import {
-  getPendingDeliveryOrderTVFn,
-  getPreparingOrdersTVFn,
-} from "../api/order";
+import { getOrdersTVFn, getPendingDeliveryOrderTVFn } from "../api/order";
 
 import Orders from "../components/TVPanel/Orders";
 
@@ -20,7 +17,7 @@ const TVPanelView = () => {
     isSuccess: successDelivery,
   } = useQuery({
     queryKey: ["deliveryOrders"],
-    queryFn: () => getPendingDeliveryOrderTVFn(),
+    queryFn: () => getOrdersTVFn("PendingDelivery"),
   });
   const {
     data: preparingOrders,
@@ -29,7 +26,7 @@ const TVPanelView = () => {
     isSuccess: successPreparing,
   } = useQuery({
     queryKey: ["preparingOrders"],
-    queryFn: () => getPreparingOrdersTVFn(),
+    queryFn: () => getOrdersTVFn("PreparingOrder"),
   });
 
   useEffect(() => {
