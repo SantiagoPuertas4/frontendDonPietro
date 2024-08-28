@@ -14,6 +14,39 @@ const ProductList = () => {
     queryFn: () => getProductsFn(),
   });
 
+  const placeholderProduct = () => {
+    return (
+      <article>
+        <section className="d-flex row cardUsuario my-2 px-3 py-4 align-items-center">
+          <article className="col-12 col-md-5 col-xl-4 col-xxl-3">
+            <p className="text-center placeholder imgPlaceholder w-100"></p>
+          </article>
+          <article className="col-8 col-md-3 col-xl-3 col-xxl-2 my-1">
+            <p className="text-center placeholder textPlaceholder w-100"></p>
+          </article>
+          <article className="col-4 col-md-2 col-xl-1 my-1">
+            <p className="text-center placeholder textPlaceholder w-100 "></p>
+          </article>
+          <article className="col-6 col-md-2 col-xl-1 py-3 my-1 mb-2">
+            <p className="text-center placeholder textPlaceholder w-100"></p>
+          </article>
+          <article className="col-6 py-3 col-xl-3 col-xxl-1 my-1 mb-2 d-flex flex-column">
+            <p className="text-center placeholder textPlaceholder w-100"></p>
+          </article>
+          <article className="col-12 col-md-6 col-xl-4 py-3 col-xxl-3 my-1 mb-2">
+            <p className="text-center placeholder  textPlaceholder w-100">
+              sdfgsdfgsdfg
+            </p>
+          </article>
+          <article className="col-12 col-xxl-1 d-flex flex-xxl-column align-items-xxl-center justify-content-center my-1">
+            <button className="ms-1  placeholder  confirm-button-class w-100 mb-xxl-2"></button>
+            <button className="ms-1  placeholder  cancel-button-class w-100 p-1"></button>
+          </article>
+        </section>
+      </article>
+    );
+  };
+
   if (isLoading) {
     return (
       <section>
@@ -41,90 +74,9 @@ const ProductList = () => {
             <p className="userListTitle text-center">Acciones</p>
           </div>
         </article>
-        <article>
-          <section className="d-flex row cardUsuario my-2 px-3 py-4 align-items-center">
-            <article className="col-12 col-md-5 col-xl-4 col-xxl-3">
-              <p className="text-center placeholder imgPlaceholder w-100"></p>
-            </article>
-            <article className="col-8 col-md-3 col-xl-3 col-xxl-2 my-1">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
-            </article>
-            <article className="col-4 col-md-2 col-xl-1 my-1">
-              <p className="text-center placeholder textPlaceholder w-100 "></p>
-            </article>
-            <article className="col-6 col-md-2 col-xl-1 py-3 my-1 mb-2">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
-            </article>
-            <article className="col-6 py-3 col-xl-3 col-xxl-1 my-1 mb-2 d-flex flex-column">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
-            </article>
-            <article className="col-12 col-md-6 col-xl-4 py-3 col-xxl-3 my-1 mb-2">
-              <p className="text-center placeholder  textPlaceholder w-100">
-                sdfgsdfgsdfg
-              </p>
-            </article>
-            <article className="col-12 col-xxl-1 d-flex flex-xxl-column align-items-xxl-center justify-content-center my-1">
-              <button className="ms-1  placeholder  confirm-button-class w-100 mb-xxl-2"></button>
-              <button className="ms-1  placeholder  cancel-button-class w-100 p-1"></button>
-            </article>
-          </section>
-        </article>
-        <article>
-          <section className="d-flex row cardUsuario my-2 px-3 py-4 align-items-center">
-            <article className="col-12 col-md-5 col-xl-4 col-xxl-3">
-              <p className="text-center placeholder imgPlaceholder w-100"></p>
-            </article>
-            <article className="col-8 col-md-3 col-xl-3 col-xxl-2 my-1">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
-            </article>
-            <article className="col-4 col-md-2 col-xl-1 my-1">
-              <p className="text-center placeholder textPlaceholder w-100 "></p>
-            </article>
-            <article className="col-6 col-md-2 col-xl-1 py-3 my-1 mb-2">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
-            </article>
-            <article className="col-6 py-3 col-xl-3 col-xxl-1 my-1 mb-2 d-flex flex-column">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
-            </article>
-            <article className="col-12 col-md-6 col-xl-4 py-3 col-xxl-3 my-1 mb-2">
-              <p className="text-center placeholder  textPlaceholder w-100">
-                sdfgsdfgsdfg
-              </p>
-            </article>
-            <article className="col-12 col-xxl-1 d-flex flex-xxl-column align-items-xxl-center justify-content-center my-1">
-              <button className="ms-1  placeholder  confirm-button-class w-100 mb-xxl-2"></button>
-              <button className="ms-1  placeholder  cancel-button-class w-100 p-1"></button>
-            </article>
-          </section>
-        </article>
-        <article>
-          <section className="d-flex row cardUsuario my-2 px-3 py-4 align-items-center">
-            <article className="col-12 col-md-5 col-xl-4 col-xxl-3">
-              <p className="text-center placeholder imgPlaceholder w-100"></p>
-            </article>
-            <article className="col-8 col-md-3 col-xl-3 col-xxl-2 my-1">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
-            </article>
-            <article className="col-4 col-md-2 col-xl-1 my-1">
-              <p className="text-center placeholder textPlaceholder w-100 "></p>
-            </article>
-            <article className="col-6 col-md-2 col-xl-1 py-3 my-1 mb-2">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
-            </article>
-            <article className="col-6 py-3 col-xl-3 col-xxl-1 my-1 mb-2 d-flex flex-column">
-              <p className="text-center placeholder textPlaceholder w-100"></p>
-            </article>
-            <article className="col-12 col-md-6 col-xl-4 py-3 col-xxl-3 my-1 mb-2">
-              <p className="text-center placeholder  textPlaceholder w-100">
-                sdfgsdfgsdfg
-              </p>
-            </article>
-            <article className="col-12 col-xxl-1 d-flex flex-xxl-column align-items-xxl-center justify-content-center my-1">
-              <button className="ms-1  placeholder  confirm-button-class w-100 mb-xxl-2"></button>
-              <button className="ms-1  placeholder  cancel-button-class w-100 p-1"></button>
-            </article>
-          </section>
-        </article>
+        {placeholderProduct()}
+        {placeholderProduct()}
+        {placeholderProduct()}
       </section>
     );
   }
