@@ -205,7 +205,7 @@ const RegisterForm = () => {
             value:
               /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,100}$/,
             message:
-              "La contraseña debe tener al menos 8 caracteres, una minúscula, una mayúscula y un caracter especial",
+              "La contraseña debe tener al menos 8 caracteres, una minúscula, una mayúscula y un caracter especial ($ @ ! % * ? &}",
           },
         }}
         register={register}
