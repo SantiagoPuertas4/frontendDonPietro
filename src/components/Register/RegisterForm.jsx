@@ -193,14 +193,6 @@ const RegisterForm = () => {
             value: true,
             message: "Este campo es requerido",
           },
-          minLength: {
-            value: 8,
-            message: "La contraseña debe tener al menos 8 caracteres",
-          },
-          maxLength: {
-            value: 100,
-            message: "La contraseña no debe tener mas de 100 caracteres",
-          },
           pattern: {
             value:
               /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,100}$/,
@@ -222,14 +214,6 @@ const RegisterForm = () => {
           required: {
             value: true,
             message: "Este campo es requerido",
-          },
-          minLength: {
-            value: 8,
-            message: "La contraseña debe tener al menos 8 caracteres",
-          },
-          maxLength: {
-            value: 100,
-            message: "La contraseña no debe tener mas de 100 caracteres",
           },
           pattern: {
             value:
