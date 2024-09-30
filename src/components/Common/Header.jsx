@@ -2,11 +2,13 @@ import Swal from "sweetalert2";
 import { Link, NavLink } from "react-router-dom";
 
 import { useSession } from "../../stores/useSession";
+import { useCart } from "../../stores/useCart";
 
 import "./Header.css";
 
 const Header = () => {
   const { user, isLoggedIn, logout, tableNumber } = useSession();
+  const { items } = useCart();
 
   const handleLogout = async () => {
     const action = await Swal.fire({
@@ -28,6 +30,7 @@ const Header = () => {
   };
 
   const isAdmin = user ? user.isAdmin : false;
+  const totalItems = items.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark m-0 p-0 fixed-top">
@@ -110,6 +113,11 @@ const Header = () => {
                     to="/cart"
                   >
                     Carrito
+                    {totalItems > 0 && (
+                      <span className="badge bg-light text-dark ms-2">
+                        {totalItems}
+                      </span>
+                    )}
                   </NavLink>
                 </li>
                 <li className="nav-item">
