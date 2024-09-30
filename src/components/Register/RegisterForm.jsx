@@ -195,11 +195,11 @@ const RegisterForm = () => {
           },
           minLength: {
             value: 8,
-            message: "Revisa tu contraseña",
+            message: "La contraseña debe tener al menos 8 caracteres",
           },
           maxLength: {
             value: 100,
-            message: "Revisa tu contraseña",
+            message: "La contraseña no debe tener mas de 100 caracteres",
           },
           pattern: {
             value:
@@ -225,11 +225,11 @@ const RegisterForm = () => {
           },
           minLength: {
             value: 8,
-            message: "Revisa tu contraseña",
+            message: "La contraseña debe tener al menos 8 caracteres",
           },
           maxLength: {
             value: 100,
-            message: "Revisa tu contraseña",
+            message: "La contraseña no debe tener mas de 100 caracteres",
           },
           pattern: {
             value:
